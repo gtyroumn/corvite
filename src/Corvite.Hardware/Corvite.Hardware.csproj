@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Corvite.Hardware</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- MPL-2.0. System.Management comes in transitively (this version requires >= 10.0.2). -->
+    <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Corvite.Core\Corvite.Core.csproj" />
+  </ItemGroup>
+
+</Project>

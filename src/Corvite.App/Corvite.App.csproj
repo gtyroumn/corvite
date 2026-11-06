@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.22000.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Corvite.App</RootNamespace>
+    <AssemblyName>Corvite</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\corvite.ico</ApplicationIcon>
+    <NeutralLanguage>ru</NeutralLanguage>
+    <SatelliteResourceLanguages>ru;uk;en</SatelliteResourceLanguages>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Corvite.Core\Corvite.Core.csproj" />
+    <ProjectReference Include="..\Corvite.Hardware\Corvite.Hardware.csproj" />
+    <ProjectReference Include="..\Corvite.Tweaks\Corvite.Tweaks.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\**\*" Exclude="Assets\corvite.ico" />
+    <Resource Include="Assets\corvite.ico" />
+  </ItemGroup>
+
+</Project>

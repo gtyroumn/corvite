@@ -1,0 +1,86 @@
+{
+ "DDR5": {
+  "amd": [
+   {
+    "speed": 5600,
+    "timings": "CL36-36-36-76",
+    "dram": "1.25 V",
+    "ctrl": "SoC ~1.20 V"
+   },
+   {
+    "speed": 6000,
+    "timings": "CL30-36-36-76",
+    "dram": "1.35 V",
+    "ctrl": "SoC ~1.25 V"
+   },
+   {
+    "speed": 6400,
+    "timings": "CL32-38-38-80",
+    "dram": "1.40 V",
+    "ctrl": "SoC ~1.30 V"
+   }
+  ],
+  "intel": [
+   {
+    "speed": 5600,
+    "timings": "CL36-36-36-76",
+    "dram": "1.25 V",
+    "ctrl": "VCCSA ~1.15 V"
+   },
+   {
+    "speed": 6400,
+    "timings": "CL32-39-39-102",
+    "dram": "1.35 V",
+    "ctrl": "VCCSA ~1.25 V"
+   },
+   {
+    "speed": 7200,
+    "timings": "CL34-45-45-115",
+    "dram": "1.40 V",
+    "ctrl": "VCCSA ~1.30 V"
+   }
+  ]
+ },
+ "DDR4": {
+  "amd": [
+   {
+    "speed": 3200,
+    "timings": "CL16-18-18-36",
+    "dram": "1.35 V",
+    "ctrl": "FCLK 1600"
+   },
+   {
+    "speed": 3600,
+    "timings": "CL16-19-19-38",
+    "dram": "1.38 V",
+    "ctrl": "FCLK 1800"
+   },
+   {
+    "speed": 3800,
+    "timings": "CL16-19-19-38",
+    "dram": "1.42 V",
+    "ctrl": "FCLK 1900"
+   }
+  ],
+  "intel": [
+   {
+    "speed": 3200,
+    "timings": "CL16-18-18-36",
+    "dram": "1.35 V",
+    "ctrl": "VCCSA ~1.15 V"
+   },
+   {
+    "speed": 3600,
+    "timings": "CL16-18-18-36",
+    "dram": "1.38 V",
+    "ctrl": "VCCSA ~1.20 V"
+   },
+   {
+    "speed": 4000,
+    "timings": "CL17-19-19-40",
+    "dram": "1.42 V",
+    "ctrl": "VCCSA ~1.25 V"
+   }
+  ]
+ }
+}

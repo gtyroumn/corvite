@@ -1,0 +1,714 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Corvite</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&family=Tektur:wght@500;600;700&display=swap">
+<style>
+:root{
+  /* Layout: frameless desktop window. Titlebar on top, section rail on the left, scrolling control panel, sticky apply bar at the bottom. Single dark look by design. */
+  --ground:#0a0910; --win:#14121c; --title:#0f0d16; --rail:#110f18;
+  --panel:#1b1825; --raise:#262235; --line:#2f2a3f;
+  --fg:#ece9f5; --fg2:#a39db8; --fg3:#6f6985;
+  --ac:#7a0dd4; --ach:#8f2ae6; --ok:#3ddc84; --go:#a259f0; --lime:#a5d84a; --warn:#e9c93f; --hot:#f2873a; --stop:#f04b4b;
+  --dim:rgba(20,18,28,.82);
+  --ramp:linear-gradient(90deg,#3ddc84 0%,#a5d84a 30%,#e9c93f 55%,#f2873a 78%,#f04b4b 100%);
+  --f-display:'Tektur','Exo 2','Segoe UI',sans-serif;
+  --f-body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  --f-mono:'JetBrains Mono','Consolas',monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ground);color:var(--fg);font:14px/1.45 var(--f-body);
+  padding-block:16px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+
+.win{position:relative;max-width:1240px;height:100%;min-height:720px;margin:0 auto;background:var(--win);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.55)}
+
+/* titlebar */
+.titlebar{display:flex;align-items:center;gap:16px;height:46px;padding:0 14px 0 16px;background:var(--title);border-bottom:1px solid var(--line);flex:none}
+.brand{display:flex;align-items:center;gap:10px;font:700 15px var(--f-display);letter-spacing:.18em}
+.brand small{font:400 12px var(--f-body);letter-spacing:0;color:var(--fg3)}
+.proto{margin-left:auto;font:500 11px var(--f-mono);color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 40%,transparent);background:color-mix(in srgb,var(--warn) 9%,transparent);padding:3px 10px;border-radius:99px;white-space:nowrap}
+.wc{display:flex;gap:4px}
+.wc span{width:34px;height:26px;display:grid;place-items:center;border-radius:6px;color:var(--fg3)}
+.wc span:hover{background:var(--raise);color:var(--fg)}
+.wc svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:1.6}
+
+.body{flex:1;min-height:0;display:grid;grid-template-columns:224px minmax(0,1fr)}
+
+/* rail */
+.rail{background:var(--rail);border-right:1px solid var(--line);padding:14px 10px;display:flex;flex-direction:column;gap:2px;overflow:auto}
+.nav{display:flex;align-items:center;gap:11px;width:100%;padding:10px 12px;border:0;border-radius:8px;background:transparent;color:var(--fg2);cursor:pointer;text-align:left;font-weight:500}
+.nav svg{width:18px;height:18px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nav:hover{background:var(--panel);color:var(--fg)}
+.nav[aria-current="page"]{background:var(--raise);color:var(--fg)}
+.nav[aria-current="page"] svg{color:var(--go)}
+.nav .n{margin-left:auto;font:500 11px var(--f-mono);color:var(--fg3);min-width:20px;text-align:right}
+.nav[aria-current="page"] .n{color:var(--go)}
+.hw{margin-top:auto;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-size:12px;color:var(--fg2);display:grid;gap:5px}
+.hw b{font:600 10px var(--f-display);letter-spacing:.14em;color:var(--fg3);text-transform:uppercase}
+.hw div{display:flex;justify-content:space-between;gap:8px}
+.hw div span:last-child{color:var(--fg);font-family:var(--f-mono);font-size:11.5px;text-align:right}
+.hw p{font-size:11px;color:var(--fg3);line-height:1.35;margin-top:2px}
+
+/* main */
+.main{overflow:auto;padding:22px 26px 28px;min-width:0;outline:0}
+.sechead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.sechead h2{font:600 24px var(--f-display);letter-spacing:.02em;text-wrap:balance}
+.sechead p{color:var(--fg2);margin-top:4px;max-width:60ch}
+.btn{border:1px solid var(--line);background:var(--raise);color:var(--fg);padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:500;white-space:nowrap}
+.btn:hover{border-color:var(--fg3)}
+.btn:disabled{opacity:.38;cursor:default}
+.btn:disabled:hover{border-color:var(--line)}
+.btn.primary{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600}
+.btn.primary:hover{background:var(--ach);border-color:var(--ach)}
+.btn.primary:disabled:hover{background:var(--ac);border-color:var(--ac)}
+.btn.sm{padding:5px 10px;font-size:12.5px}
+:focus-visible{outline:2px solid var(--go);outline-offset:2px}
+
+.gt{font:600 11px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--fg3);margin:20px 0 8px 2px}
+.sechead + .gt{margin-top:0}
+.group{background:var(--panel);border:1px solid var(--line);border-radius:10px}
+
+.row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,330px);gap:18px;align-items:center;padding:14px 18px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row.t{grid-template-columns:minmax(0,1fr) auto}
+.ttl{display:flex;align-items:center;font-weight:500;font-size:14.5px}
+.ttl label{cursor:pointer}
+.sub{color:var(--fg2);font-size:12.5px;margin-top:1px}
+.dot{display:none;width:7px;height:7px;border-radius:50%;background:var(--go);margin-right:9px;flex:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--go) 20%,transparent)}
+.row.chg .dot{display:inline-block}
+.info{width:16px;height:16px;flex:none;border-radius:50%;border:1.5px solid var(--fg3);background:transparent;color:var(--fg2);font:700 10px/1 var(--f-mono);display:inline-grid;place-items:center;padding:0;margin-left:8px;cursor:help}
+.info:hover,.info[aria-expanded="true"]{border-color:var(--go);color:var(--go)}
+.ctl{display:flex;align-items:center;justify-content:flex-end;gap:14px}
+.row.s .ctl{display:block}
+.chip{font:600 10.5px var(--f-mono);letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:99px;border:1px solid;white-space:nowrap}
+.r0{color:var(--ok)}.r1{color:var(--warn)}.r2{color:var(--stop)}
+.chip.r0{border-color:color-mix(in srgb,var(--ok) 35%,transparent);background:color-mix(in srgb,var(--ok) 9%,transparent)}
+.chip.r1{border-color:color-mix(in srgb,var(--warn) 35%,transparent);background:color-mix(in srgb,var(--warn) 9%,transparent)}
+.chip.r2{border-color:color-mix(in srgb,var(--stop) 40%,transparent);background:color-mix(in srgb,var(--stop) 10%,transparent)}
+
+/* switch */
+.sw{position:relative;width:44px;height:25px;flex:none;display:block}
+.sw input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;z-index:1}
+.knob{position:absolute;inset:0;border-radius:99px;background:var(--raise);border:1px solid var(--line);transition:background .18s,border-color .18s}
+.knob::after{content:"";position:absolute;top:3px;left:3px;width:17px;height:17px;border-radius:50%;background:var(--fg2);transition:transform .18s,background .18s}
+.sw input:checked + .knob{background:var(--ac);border-color:var(--ach)}
+.sw input:checked + .knob::after{transform:translateX(19px);background:#fff}
+.sw input:focus-visible + .knob{outline:2px solid var(--go);outline-offset:2px}
+
+/* slider */
+.sl-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.val{font:500 13px var(--f-mono)}
+.rw{font:600 10.5px var(--f-mono);letter-spacing:.04em;text-transform:uppercase}
+.rw.r-1{color:var(--fg3)}
+.rng{-webkit-appearance:none;appearance:none;display:block;width:100%;height:22px;margin:0;background:transparent;cursor:pointer;
+  --t:0;--c:var(--ok);--p:calc(9px + (100% - 18px) * var(--t))}
+.rng[data-zone="1"]{--c:var(--warn)}
+.rng[data-zone="2"]{--c:var(--stop)}
+.rng::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:linear-gradient(90deg,transparent var(--p),var(--dim) var(--p)),var(--ramp)}
+.rng::-moz-range-track{height:8px;border-radius:4px;background:linear-gradient(90deg,transparent var(--p),var(--dim) var(--p)),var(--ramp)}
+.rng::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--fg);border:4px solid var(--c);margin-top:-5px;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent)}
+.rng::-moz-range-thumb{width:10px;height:10px;border-radius:50%;background:var(--fg);border:4px solid var(--c);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 22%,transparent)}
+.rng:focus-visible{outline:2px solid var(--go);outline-offset:3px;border-radius:4px}
+
+/* overview */
+.ov{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}
+.ov>*{min-width:0}
+.mon{grid-column:span 12;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card h3{font:600 11px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--fg3);display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.tag{font:500 10px var(--f-mono);letter-spacing:.04em;color:var(--fg3);text-transform:none;border:1px solid var(--line);padding:1px 7px;border-radius:99px}
+.big{font:600 30px/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.big small{font:500 14px var(--f-mono);color:var(--fg2);margin-left:3px}
+.mc-sub{color:var(--fg2);font-size:12px;margin-top:2px;font-family:var(--f-mono)}
+.spark{display:block;width:100%;height:38px;margin-top:10px}
+.span7{grid-column:span 7}.span5{grid-column:span 5}.span12{grid-column:span 12}.plat{position:absolute;inset:0;z-index:60;background:rgba(5,7,6,.45);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);display:grid;place-items:center;padding:16px}.pdlg{width:min(520px,100%);background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.6)}.pdlg h3{font:600 18px var(--f-display);margin-bottom:6px}.pdlg.w{border-color:color-mix(in srgb,var(--hot) 55%,var(--line))}.pdlg.w h3{color:var(--hot)}.pchoice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0}.pchoice .prof{padding:16px}.bkr{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.bkp{font:500 12px var(--f-mono);color:var(--fg2)}
+.profs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.prof{border:1px solid var(--line);background:var(--raise);border-radius:9px;padding:12px 13px;text-align:left;cursor:pointer;display:grid;gap:4px}
+.prof:hover{border-color:var(--fg3)}
+.prof[aria-pressed="true"]{border-color:var(--go);background:color-mix(in srgb,var(--go) 8%,var(--raise))}
+.prof b{font:600 14px var(--f-display);letter-spacing:.04em}
+.prof span{font-size:12px;color:var(--fg2)}
+.pd{display:flex;gap:4px;margin-top:3px}
+.pd i{width:16px;height:4px;border-radius:2px;background:var(--line)}
+.pd i.on:nth-child(1){background:var(--ok)}.pd i.on:nth-child(2){background:var(--warn)}.pd i.on:nth-child(3){background:var(--hot)}.pd i.on:nth-child(4){background:var(--stop)}
+.gain{font:600 36px/1 var(--f-display);color:var(--go);font-variant-numeric:tabular-nums}
+.cap{color:var(--fg2);font-size:12.5px;margin-top:6px}
+.gauge{position:relative;height:10px;border-radius:5px;background:var(--ramp);margin:20px 0 8px}
+.mk{position:absolute;top:-5px;width:4px;height:20px;border-radius:2px;background:var(--fg);box-shadow:0 0 0 3px rgba(10,12,11,.6);left:calc(var(--s,0) * 100%);transform:translateX(-50%);transition:left .25s}
+.gl{display:flex;justify-content:space-between;font:500 11px var(--f-mono);color:var(--fg3)}
+.rl{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;font-size:13px;color:var(--fg2)}
+.rl b{font:600 14px var(--f-display);letter-spacing:.04em}
+.bench-bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden;margin:12px 0}
+.bench-bar i{display:block;height:100%;width:0;background:var(--go)}
+.res{display:grid;gap:12px;margin-top:6px}
+.res .rr{display:grid;grid-template-columns:90px minmax(0,1fr) 54px;gap:10px;align-items:center;font-size:12.5px;color:var(--fg2)}
+.res .tr{height:8px;border-radius:4px;background:var(--raise);overflow:hidden}
+.res .tr i{display:block;height:100%;border-radius:4px}
+.res .tr i.b{background:var(--fg3)}.res .tr i.a{background:var(--go)}
+.res .rr span:last-child{font:500 12px var(--f-mono);color:var(--fg);text-align:right}
+.res .hd{font:600 11px var(--f-display);letter-spacing:.1em;color:var(--fg3);text-transform:uppercase}
+.guard .row{padding:12px 0}
+.guard .row:first-of-type{padding-top:0}
+
+/* action bar */
+.actionbar{flex:none;display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--title);border-top:1px solid var(--line)}
+.pend{display:flex;align-items:center;gap:10px;color:var(--fg2);font-size:13px;min-width:0}
+.pend .pd2{width:8px;height:8px;border-radius:50%;background:var(--fg3);flex:none}
+.pend.has{color:var(--fg)}
+.pend.has .pd2{background:var(--go);box-shadow:0 0 0 3px color-mix(in srgb,var(--go) 22%,transparent)}
+.actionbar .btn:first-of-type{margin-left:auto}
+
+/* tooltip */
+.tip{position:fixed;z-index:100;width:min(330px,calc(100vw - 24px));background:#0f0d16;border:1px solid #3a3552;border-radius:10px;padding:14px 15px;box-shadow:0 14px 44px rgba(0,0,0,.65);pointer-events:none}
+.tip h4{margin:0 0 5px;font:600 14px var(--f-display);letter-spacing:.02em}
+.tip p{font-size:12.5px;color:var(--fg2);margin:0}
+.tm{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;margin:11px 0 0;padding-top:10px;border-top:1px solid var(--line);font-size:12px}
+.tm dt{color:var(--fg3);font:600 10px var(--f-display);letter-spacing:.12em;text-transform:uppercase;align-self:center}
+.tm dd{margin:0;font:500 12px var(--f-mono);color:var(--fg)}
+.tm dd.g{color:var(--go)}
+.tn{margin-top:10px;font-size:11.5px;color:var(--fg3);line-height:1.4}
+.tn.w{color:var(--warn)}
+.tr0{display:flex;align-items:center;gap:8px;margin-top:10px}
+
+/* modal + toast */
+.modal{position:absolute;inset:0;z-index:30;background:rgba(7,5,12,.72);display:grid;place-items:center;padding:16px}
+.dlg{width:min(500px,100%);background:var(--panel);border:1px solid color-mix(in srgb,var(--stop) 50%,var(--line));border-radius:12px;padding:20px}
+.dlg h3{font:600 17px var(--f-display);color:var(--stop);letter-spacing:.02em}
+.dlg p{color:var(--fg2);margin-top:8px}
+.dlg ul{margin:12px 0;padding:0;list-style:none;display:grid;gap:6px}
+.dlg li{display:flex;justify-content:space-between;gap:12px;font-size:13px;background:var(--raise);border-radius:7px;padding:7px 10px}
+.dlg li span:last-child{font-family:var(--f-mono);color:var(--stop)}
+.ack{display:flex;gap:10px;align-items:flex-start;margin:14px 0;font-size:13px;cursor:pointer}
+.ack input{margin-top:3px;accent-color:var(--go);width:16px;height:16px}
+.dact{display:flex;justify-content:flex-end;gap:10px}
+.toast{position:absolute;left:50%;bottom:82px;z-index:40;transform:translate(-50%,8px);max-width:calc(100% - 32px);background:var(--raise);border:1px solid var(--line);border-radius:9px;padding:10px 16px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .span7,.span5{grid-column:span 12}
+}
+@media (max-width:820px){
+  .win{height:auto;min-height:0;overflow:visible}
+  .titlebar{border-radius:14px 14px 0 0}
+  .proto{margin-left:auto;white-space:normal;text-align:center}
+  .wc{display:none}
+  .body{display:block}
+  .rail{flex-direction:row;overflow-x:auto;border-right:0;border-bottom:1px solid var(--line);padding:8px}
+  .nav{width:auto;flex:none;padding:8px 12px}
+  .nav .n{display:none}
+  .hw{display:none}
+  .main{overflow:visible;padding:18px 16px 24px}
+  .actionbar{position:sticky;bottom:0;border-radius:0 0 14px 14px;flex-wrap:wrap}
+  .mon{grid-template-columns:1fr}
+  .profs{grid-template-columns:1fr}
+  .row,.row.s{grid-template-columns:minmax(0,1fr);gap:10px}
+  .row.t{grid-template-columns:minmax(0,1fr) auto}
+  .toast{position:fixed;bottom:90px}
+}
+
+.lg{display:flex;gap:2px;margin-left:12px}.lg button,.aib{border:0;background:transparent;color:var(--fg3);font:600 11px var(--f-mono);padding:4px 7px;border-radius:5px;cursor:pointer}.lg button[aria-pressed=true]{background:var(--raise);color:var(--go)}.aib{border:1px solid var(--line);color:var(--go);margin-left:8px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0;font-size:13px}.kv dt{color:var(--fg3)}.kv dd{margin:0;font:500 12.5px var(--f-mono);text-align:right}
+.hwg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+.tw{overflow-x:auto}.tbl{width:100%;border-collapse:collapse;font-size:12.5px}.tbl th{font:600 10px var(--f-display);letter-spacing:.12em;text-transform:uppercase;color:var(--fg3);text-align:left;padding:8px 10px}.tbl td{padding:10px;border-top:1px solid var(--line);vertical-align:top}.tbl .m{font-family:var(--f-mono);white-space:nowrap}
+.chat{position:absolute;right:16px;bottom:78px;z-index:35;width:min(340px,calc(100% - 32px));height:380px;display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:0 14px 44px rgba(0,0,0,.6)}
+.chat h3{font:600 11px var(--f-display);letter-spacing:.16em;text-transform:uppercase;color:var(--fg3);padding:12px 14px;border-bottom:1px solid var(--line)}
+.cl{flex:1;overflow:auto;padding:12px;display:grid;gap:8px;align-content:start}.cl div{padding:8px 10px;border-radius:9px;background:var(--raise);font-size:13px;max-width:90%}.cl .u{justify-self:end;background:color-mix(in srgb,var(--go) 14%,var(--raise))}
+.cin{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}.cin input{flex:1;min-width:0;background:var(--raise);border:1px solid var(--line);border-radius:8px;color:var(--fg);padding:7px 10px;font:inherit}
+@media (max-width:820px){.hwg{grid-template-columns:1fr}.lg{margin-left:0}}
+
+*{scrollbar-color:#3a3552 transparent}
+.titlebar{background:linear-gradient(90deg,var(--title) 40%,color-mix(in srgb,var(--ac) 9%,var(--title)))}
+.nav[aria-current="page"]{background:color-mix(in srgb,var(--ac) 20%,var(--rail));box-shadow:inset 3px 0 0 var(--go)}
+.prof[aria-pressed="true"]{background:color-mix(in srgb,var(--ac) 16%,var(--raise));border-color:var(--go)}
+.guard .chip.r0{color:var(--go);border-color:color-mix(in srgb,var(--go) 40%,transparent);background:color-mix(in srgb,var(--ac) 16%,transparent)}
+.guard .row.s{grid-template-columns:minmax(0,1fr);gap:10px}
+.guard .row.t{grid-template-columns:minmax(0,1fr) auto;gap:12px}
+.guard .ttl{align-items:flex-start}.guard .ttl label{line-height:1.3}.guard .info{margin-top:2px}
+.btn.primary:not(:disabled){box-shadow:0 6px 18px color-mix(in srgb,var(--ac) 38%,transparent)}
+#btnRevert{background:transparent}
+#btnUndo{background:transparent;color:var(--go);border-color:color-mix(in srgb,var(--ac) 60%,var(--line))}
+#btnUndo:hover:not(:disabled){background:color-mix(in srgb,var(--ac) 16%,transparent);border-color:var(--go)}
+#btnUndo:disabled{color:var(--fg3);border-color:var(--line)}
+.actionbar{background:color-mix(in srgb,var(--ac) 5%,var(--title))}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="win" id="win">
+  <header class="titlebar">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 100 100" fill="none" role="img" aria-label="Corvite"><path d="M75 33.4 A30 30 0 1 0 75 66.6" stroke="#a259f0" stroke-width="9"/><path d="M66 28 L96 46 L70 40 Z" fill="#a259f0"/></svg>
+      CORVITE <small data-i="sub">оптимизатор ПК</small>
+    </div>
+    <div class="proto" data-i="proto">ПРОТОТИП: изменения не применяются к вашему ПК</div>
+    <button class="aib" id="platBtn" type="button" style="margin-left:12px" hidden></button><div class="lg" role="group" aria-label="Language"><button type="button" data-l="ru">RU</button><button type="button" data-l="ua">UA</button><button type="button" data-l="en">EN</button></div><button class="aib" id="aiBtn" type="button">AI</button>
+    <div class="wc" aria-hidden="true">
+      <span><svg viewBox="0 0 12 12"><path d="M1 6h10"/></svg></span>
+      <span><svg viewBox="0 0 12 12"><rect x="1.5" y="1.5" width="9" height="9" rx="1.5"/></svg></span>
+      <span><svg viewBox="0 0 12 12"><path d="M1.5 1.5l9 9M10.5 1.5l-9 9"/></svg></span>
+    </div>
+  </header>
+  <div class="body">
+    <nav class="rail" id="rail" aria-label="Sections"></nav>
+    <main class="main" id="main" tabindex="-1"></main>
+  </div>
+  <footer class="actionbar">
+    <div class="pend" id="pend"><span class="pd2"></span><span id="pendTxt">Все изменения применены</span></div>
+    <button class="btn" id="btnUndo" type="button" disabled data-i="undo">Вернуть как было</button>
+    <button class="btn" id="btnRevert" type="button" disabled data-i="rv">Отменить изменения</button>
+    <button class="btn primary" id="btnApply" type="button" disabled data-i="ap">Применить</button>
+  </footer>
+  <div class="modal" id="modal" hidden>
+    <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="dlgT">
+      <h3 id="dlgT" data-i="rz_t">Параметры в красной зоне</h3>
+      <p data-i="rz1">Эти значения выше безопасного диапазона для большинства систем. Они повышают температуру и нагрузку на питание, возможны сбои и перезагрузки.</p>
+      <ul id="dlgList"></ul>
+      <p data-i="rz2">Перед применением будет создана точка восстановления. При перегреве параметры откатятся автоматически.</p>
+      <label class="ack"><input type="checkbox" id="ack"><span data-i="ack">Я понимаю риск и хочу продолжить</span></label>
+      <div class="dact"><button class="btn" id="dlgNo" type="button" data-i="cancel">Отмена</button><button class="btn primary" id="dlgYes" type="button" disabled data-i="ap">Применить</button></div>
+    </div>
+  </div>
+  <div class="plat" id="plat" hidden><div class="pdlg" role="dialog" aria-modal="true" aria-labelledby="plT"></div></div>
+  <div class="chat" id="chat" hidden><h3 data-i="ai_t">ИИ</h3><div class="cl" id="cl"></div><div class="cin"><input id="cq" autocomplete="off"><button class="btn sm primary" id="cs" type="button">›</button></div></div>
+  <div class="toast" id="toast" role="status"></div>
+</div>
+<div class="tip" id="tip" role="tooltip" hidden></div>
+
+<script>
+(function(){
+var RISKR=['Безопасно','Умеренно','Высокий риск'];var RISK={};[0,1,2].forEach(function(i){Object.defineProperty(RISK,i,{get:function(){return R(RISKR[i])}})});
+var $=function(s,r){return (r||document).querySelector(s)};
+var pl=function(n,a,b,c){var m=n%100,k=n%10;return m>10&&m<20?c:k===1?a:(k>1&&k<5)?b:c};
+
+var SEC=[
+ {id:'overview',name:'Обзор',t:'Состояние системы, профили и безопасность',ic:'<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="5" rx="2"/><rect x="13" y="11" width="8" height="10" rx="2"/><rect x="3" y="14" width="8" height="7" rx="2"/>'},
+ {id:'system',name:'Система',t:'Схема питания, игровой режим и приоритеты Windows',ic:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>'},
+ {id:'cpu',name:'Процессор',t:'Ядра, лимиты мощности и частоты',ic:'<rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/>'},
+ {id:'gpu',name:'Видеокарта',t:'Разгон, лимиты и задержка кадра',ic:'<rect x="2.5" y="6" width="19" height="11" rx="2"/><circle cx="9" cy="11.5" r="3"/><path d="M16 9.5h2.5M16 13.5h2.5M6 20h12"/>'},
+ {id:'memory',name:'Память и диск',t:'Оперативная память, SSD и временные файлы',ic:'<rect x="3" y="8" width="18" height="8" rx="1.5"/><path d="M7 16v3M11 16v3M15 16v3M7 11v2M11 11v2M15 11v2"/>'},
+ {id:'network',name:'Сеть',t:'Задержка и стабильность соединения в онлайн-играх',ic:'<circle cx="12" cy="5" r="2"/><circle cx="5" cy="18" r="2"/><circle cx="19" cy="18" r="2"/><path d="M11 7l-5 9M13 7l5 9M7 18h10"/>'},
+ {id:'background',name:'Фон и службы',t:'Что работает рядом с игрой и отнимает ресурсы',ic:'<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>'}
+];
+
+var CTL=[
+ {id:'plan',sec:'system',grp:'Windows',type:'toggle',name:'Схема «Максимальная производительность»',sub:'Процессор не снижает частоту в простое',desc:'Включает скрытую схему питания Ultimate Performance. Процессор и шины не уходят в энергосберегающие состояния, поэтому отклик в играх ровнее.',g:[0,3],stab:'Выше',lat:'Немного ниже',temp:'В простое теплее на 2–6 °C',risk:0,note:'На ноутбуке сократит время работы от батареи.'},
+ {id:'gamemode',sec:'system',grp:'Windows',type:'toggle',name:'Игровой режим Windows',sub:'Приоритет игре, меньше фоновых задач',desc:'Windows отдаёт игре больше процессорного времени и не запускает обновления драйверов во время игры.',g:[0,2],stab:'Немного выше',lat:'Без изменений',temp:'Без изменений',risk:0},
+ {id:'dvr',sec:'system',grp:'Windows',type:'toggle',name:'Отключить фоновую запись (Game DVR)',sub:'Меньше нагрузка на GPU и диск',desc:'Останавливает постоянную запись видео в фоне. Освобождает часть ресурсов видеокарты и диска.',g:[1,5],stab:'Выше',lat:'Немного ниже',temp:'Чуть холоднее',risk:0,note:'Клипы через Game Bar перестанут записываться.'},
+ {id:'hags',sec:'system',grp:'Windows',type:'toggle',name:'Аппаратное планирование GPU (HAGS)',sub:'Видеокарта сама управляет очередью кадров',desc:'Снимает часть работы с процессора. Эффект зависит от игры и драйвера: иногда выигрыш, иногда небольшой минус до −2%.',g:[0,3],stab:'Зависит от игры',lat:'Ниже при генерации кадров',temp:'Без изменений',risk:0},
+ {id:'fso',sec:'system',grp:'Windows',type:'toggle',name:'Оптимизация полноэкранного режима',sub:'Чистый эксклюзивный полноэкранный режим',desc:'Отключает оверлейную обработку Windows для игр на весь экран, что снижает задержку вывода кадра.',g:[0,2],stab:'Без изменений',lat:'Ниже',temp:'Без изменений',risk:0},
+ {id:'timer',sec:'system',grp:'Windows',type:'toggle',name:'Высокоточный таймер 0,5 мс',sub:'Точнее планирование потоков',desc:'Уменьшает шаг системного таймера. Игры реже «спотыкаются» на ровном месте, но ПК чаще выходит из простоя.',g:[0,2],stab:'Выше',lat:'Ниже',temp:'Чуть теплее',risk:1,note:'Повышает энергопотребление в простое.'},
+ {id:'vfx',sec:'system',grp:'Windows',type:'toggle',name:'Упрощённые визуальные эффекты',sub:'Без анимаций и прозрачности интерфейса',desc:'Отключает анимации окон и прозрачность. Заметно только на слабых видеокартах и интегрированной графике.',g:[0,1],stab:'Без изменений',lat:'Без изменений',temp:'Без изменений',risk:0},
+ {id:'prio',sec:'system',grp:'Приоритеты',type:'slider',name:'Приоритет игрового процесса',sub:'Кто первым получает процессорное время',desc:'Игра получает ядра раньше фоновых программ. «Реального времени» может заблокировать ввод и диск, поэтому приложение не советует его выше значения «Высокий».',min:0,max:3,step:1,labels:['Обычный','Выше обычного','Высокий','Реального времени'],g:[0,3],stab:'Выше при высокой загрузке',lat:'Ниже',temp:'Без изменений'},
+
+ {id:'park',sec:'cpu',grp:'Питание и ядра',type:'toggle',name:'Отключить парковку ядер',sub:'Все ядра готовы к работе сразу',desc:'Windows перестаёт «усыплять» неиспользуемые ядра. Игры получают ресурсы без задержки на пробуждение.',g:[0,4],stab:'Заметно выше (1% low)',lat:'Ниже',temp:'+1…+4 °C',risk:0},
+ {id:'minst',sec:'cpu',grp:'Питание и ядра',type:'slider',name:'Минимальное состояние процессора',sub:'Нижняя граница частоты в простое',desc:'Чем выше значение, тем выше держится частота даже без нагрузки. Отклик лучше, но в простое греется и потребляет больше.',min:5,max:100,step:5,unit:'%',g:[0,3],stab:'Выше',lat:'Ниже',temp:'В простое +5…+15 °C'},
+ {id:'ppt',sec:'cpu',grp:'Частоты и лимиты',type:'slider',name:'Лимит мощности процессора (PL1/PPT)',sub:'Сколько ватт процессор может держать долго',desc:'Позволяет процессору дольше держать высокую частоту под нагрузкой. Нужен хороший кулер и плата с мощным питанием.',min:100,max:130,step:5,unit:'%',g:[0,6],stab:'Выше при долгой нагрузке',lat:'Без изменений',temp:'+5…+15 °C'},
+ {id:'boost',sec:'cpu',grp:'Частоты и лимиты',type:'slider',name:'Прибавка к boost-частоте',sub:'Смещение максимальной частоты ядер',desc:'Поднимает потолок частоты в одноядерных нагрузках. Выше определённого значения процессор перестаёт быть стабильным.',min:0,max:300,step:25,unit:'МГц',plus:true,g:[0,5],stab:'Может ухудшиться',lat:'Без изменений',temp:'+4…+12 °C'},
+ {id:'tlim',sec:'cpu',grp:'Частоты и лимиты',type:'slider',name:'Допустимая температура процессора',sub:'При каком нагреве начинается сброс частоты',desc:'Чем выше порог, тем позже процессор начинает снижать частоту. Постоянная работа у верхней границы сокращает срок службы.',min:85,max:100,step:1,unit:'°C',g:[0,3],stab:'Выше под нагрузкой',lat:'Без изменений',temp:'До +10 °C'},
+
+ {id:'gpow',sec:'gpu',grp:'Разгон',type:'slider',name:'Лимит мощности видеокарты',sub:'Верхняя граница потребления в ваттах',desc:'Видеокарта дольше держит максимальную частоту, пока не упирается в лимит мощности.',min:100,max:115,step:1,unit:'%',g:[0,4],stab:'Выше',lat:'Без изменений',temp:'+3…+9 °C'},
+ {id:'gcore',sec:'gpu',grp:'Разгон',type:'slider',name:'Смещение частоты ядра',sub:'Разгон графического процессора',desc:'Добавляет к частоте ядра фиксированное значение. Ближе к максимуму растёт риск артефактов и вылетов драйвера.',min:0,max:200,step:5,unit:'МГц',plus:true,g:[0,6],stab:'Риск артефактов у максимума',lat:'Без изменений',temp:'+2…+8 °C'},
+ {id:'gmem',sec:'gpu',grp:'Разгон',type:'slider',name:'Смещение частоты памяти',sub:'Разгон видеопамяти',desc:'Повышает пропускную способность видеопамяти. Помогает в высоких разрешениях. Ошибки памяти могут снижать FPS без явных сбоев.',min:0,max:1200,step:50,unit:'МГц',plus:true,g:[0,5],stab:'Зависит от чипов памяти',lat:'Без изменений',temp:'+2…+6 °C'},
+ {id:'gtemp',sec:'gpu',grp:'Разгон',type:'slider',name:'Целевая температура видеокарты',sub:'До какого нагрева разрешён буст',desc:'Определяет, когда видеокарта начнёт сбрасывать частоту из-за нагрева. Высокие значения требуют хорошего обдува корпуса.',min:65,max:90,step:1,unit:'°C',g:[0,3],stab:'Выше под нагрузкой',lat:'Без изменений',temp:'До +10 °C'},
+ {id:'lowlat',sec:'gpu',grp:'Драйвер и задержка',type:'toggle',name:'Режим низкой задержки',sub:'Короче очередь кадров между CPU и GPU',desc:'Драйвер держит очередь кадров минимальной. Ввод с мыши и клавиатуры отзывается быстрее, особенно в играх, где упор идёт в видеокарту.',g:[0,1],stab:'Без изменений',lat:'Заметно ниже',temp:'Без изменений',risk:0},
+ {id:'shader',sec:'gpu',grp:'Драйвер и задержка',type:'toggle',name:'Расширенный кэш шейдеров',sub:'Меньше подлагов при загрузке эффектов',desc:'Увеличивает объём сохранённых шейдеров. Уменьшает «заикания» при первом показе эффектов в игре.',g:[0,1],stab:'Меньше подлагов',lat:'Без изменений',temp:'Без изменений',risk:0},
+ {id:'gpm',sec:'gpu',grp:'Драйвер и задержка',type:'toggle',name:'Максимальная производительность в драйвере',sub:'Видеокарта не снижает частоты в простое',desc:'Переключает режим питания драйвера. Частота не падает между сценами, поэтому фреймтайм ровнее.',g:[0,2],stab:'Выше',lat:'Ниже',temp:'В простое теплее',risk:0},
+
+ {id:'standby',sec:'memory',grp:'Оперативная память',type:'toggle',name:'Автоочистка резервной памяти',sub:'Освобождает кэш, который забил ОЗУ',desc:'Когда резервный список памяти разрастается, игры начинают подвисать. Приложение сбрасывает его по порогу.',g:[0,2],stab:'Меньше фризов при 16 ГБ и меньше',lat:'Без изменений',temp:'Без изменений',risk:0},
+ {id:'aggr',sec:'memory',grp:'Оперативная память',type:'slider',name:'Агрессивность очистки',sub:'Как часто сбрасывать кэш',desc:'Чем выше значение, тем чаще очищается память. Слишком частая очистка заставляет игру заново читать данные с диска.',min:0,max:100,step:5,unit:'%',g:[0,2],stab:'Зависит от объёма ОЗУ',lat:'Без изменений',temp:'Без изменений'},
+ {id:'sysmain',sec:'memory',grp:'Диск',type:'toggle',name:'Отключить SysMain (Superfetch)',sub:'Меньше фоновых обращений к диску',desc:'Служба предзагружает программы в память. На SSD пользы мало, а нагрузка на диск остаётся.',g:[0,1],stab:'Немного выше',lat:'Без изменений',temp:'Без изменений',risk:1,note:'Рекомендуется только для SSD. На HDD оставьте включённой.'},
+ {id:'trim',sec:'memory',grp:'Диск',type:'toggle',name:'TRIM по расписанию',sub:'SSD сохраняет скорость записи',desc:'Регулярно сообщает SSD, какие блоки свободны. Скорость записи не падает со временем.',g:[0,0],stab:'Стабильнее скорость диска',lat:'Без изменений',temp:'Без изменений',risk:0},
+ {id:'fast',sec:'memory',grp:'Диск',type:'toggle',name:'Отключить быстрый запуск Windows',sub:'Полная перезагрузка вместо гибернации',desc:'Быстрый запуск сохраняет часть состояния системы между включениями, из-за чего накапливаются сбои драйверов.',g:[0,0],stab:'Выше',lat:'Без изменений',temp:'Без изменений',risk:0},
+ {id:'tmp',sec:'memory',grp:'Диск',type:'toggle',name:'Очистка временных файлов перед игрой',sub:'Освобождает место и ускоряет обращения к диску',desc:'Перед запуском игры удаляет безопасные временные файлы Windows и браузеров.',g:[0,1],stab:'Немного выше',lat:'Без изменений',temp:'Без изменений',risk:0},
+
+ {id:'nagle',sec:'network',grp:'Сетевой стек',type:'toggle',name:'Отключить алгоритм Нейгла',sub:'Пакеты уходят сразу, без накопления',desc:'Windows перестаёт объединять мелкие пакеты. Для игр на TCP это снижает задержку отклика.',g:[0,0],stab:'Выше',lat:'Ниже на 0–10 мс (TCP-игры)',temp:'Без изменений',risk:0},
+ {id:'nthr',sec:'network',grp:'Сетевой стек',type:'toggle',name:'Снять сетевое ограничение мультимедиа',sub:'Параметр NetworkThrottlingIndex',desc:'Windows ограничивает скорость обработки пакетов во время воспроизведения мультимедиа. Параметр снимает это ограничение.',g:[0,0],stab:'Выше',lat:'Немного ниже',temp:'Без изменений',risk:0},
+ {id:'dns',sec:'network',grp:'Сетевой стек',type:'toggle',name:'Быстрый DNS-сервер',sub:'Публичный DNS вместо DNS провайдера',desc:'Ускоряет определение адреса игрового сервера при подключении. На задержку внутри матча не влияет.',g:[0,0],stab:'Без изменений',lat:'Быстрее подключение к серверу',temp:'Без изменений',risk:0},
+ {id:'tcpauto',sec:'network',grp:'Сетевой стек',type:'toggle',name:'Автонастройка окна TCP: обычная',sub:'Стабильная скорость на любом канале',desc:'Возвращает безопасный режим подбора размера окна TCP. Помогает при странных просадках скорости.',g:[0,0],stab:'Выше',lat:'Без изменений',temp:'Без изменений',risk:0},
+
+ {id:'telem',sec:'background',grp:'Службы',type:'toggle',name:'Ограничить телеметрию Windows',sub:'Меньше фоновых отчётов',desc:'Снижает объём диагностических данных, которые Windows отправляет в фоне. Применяется через политики, службы не удаляются.',g:[0,2],stab:'Выше',lat:'Без изменений',temp:'Без изменений',risk:1},
+ {id:'upd',sec:'background',grp:'Службы',type:'toggle',name:'Приостановить обновления на время игры',sub:'Без загрузок и установки в фоне',desc:'Пока запущена игра, Центр обновления не качает и не устанавливает пакеты.',g:[0,2],stab:'Выше',lat:'Ниже',temp:'Без изменений',risk:0},
+ {id:'idx',sec:'background',grp:'Службы',type:'toggle',name:'Остановить индексацию на время игры',sub:'Поиск Windows не читает диск',desc:'Индексатор поиска во время игры не обращается к диску и не нагружает процессор.',g:[0,2],stab:'Выше',lat:'Без изменений',temp:'Без изменений',risk:0},
+ {id:'focus',sec:'background',grp:'Службы',type:'toggle',name:'Отключить уведомления в игре',sub:'Без всплывающих окон поверх игры',desc:'Включает режим фокусировки. Окна уведомлений не сворачивают игру и не вызывают подвисания.',g:[0,1],stab:'Выше',lat:'Без изменений',temp:'Без изменений',risk:0},
+ {id:'kill',sec:'background',grp:'Нагрузка',type:'toggle',name:'Закрывать фоновые приложения при запуске игры',sub:'Список приложений настраивается',desc:'Закрывает выбранные программы (мессенджеры, браузеры, синхронизацию) и возвращает их после игры.',g:[1,4],stab:'Выше',lat:'Без изменений',temp:'Холоднее на 1–3 °C',risk:1,note:'Несохранённые данные в закрываемых программах могут пропасть.'},
+ {id:'bgcap',sec:'background',grp:'Нагрузка',type:'slider',name:'Лимит фоновой нагрузки на процессор',sub:'Сколько CPU могут занимать фоновые процессы',desc:'Ограничивает фоновые процессы, пока запущена игра. Слишком жёсткий лимит замедлит антивирус и облачную синхронизацию.',min:0,max:50,step:5,unit:'%',g:[0,3],stab:'Выше',lat:'Ниже',temp:'Холоднее'},
+
+ {id:'g_roll',sec:'overview',guard:true,type:'toggle',name:'Авто-откат при перегреве',sub:'Параметры вернутся, если превышен порог',desc:'Если температура процессора или видеокарты превысит порог, приложение вернёт параметры к последнему безопасному состоянию.',g:[0,0],stab:'Защищает от сбоев',lat:'Без изменений',temp:'Ограничивает нагрев',risk:0,def:true},
+ {id:'g_temp',sec:'overview',guard:true,type:'slider',name:'Порог температуры для отката',sub:'Выше значение, позже сработает защита',desc:'Температура, при которой сработает откат. Оставляйте ниже заводского предела троттлинга вашего железа.',min:80,max:100,step:1,unit:'°C',g:[0,0],stab:'Защищает от сбоев',lat:'Без изменений',temp:'Ограничивает нагрев',def:92},
+ {id:'g_rest',sec:'overview',guard:true,type:'toggle',name:'Точка восстановления перед применением',sub:'Создаётся автоматически',desc:'Перед каждым применением создаётся точка восстановления Windows, чтобы можно было вернуть систему.',g:[0,0],stab:'Защищает от сбоев',lat:'Без изменений',temp:'Без изменений',risk:0,def:true},
+ {id:'g_reg',sec:'overview',guard:true,type:'toggle',name:'Резервная копия изменяемых параметров',sub:'Старые значения хранятся для кнопки «Вернуть всё»',desc:'Приложение запоминает исходные значения каждого параметра. Любой твик можно вернуть к заводскому состоянию в один клик.',g:[0,0],stab:'Защищает от сбоев',lat:'Без изменений',temp:'Без изменений',risk:0,def:true}
+];
+CTL.push(
+{id:'co',v:'amd',sec:'cpu',grp:'Частоты и лимиты',type:'slider',name:'Curve Optimizer (смещение)',sub:'Андервольт ядер Ryzen',desc:'Снижает напряжение ядер при той же частоте: меньше нагрев, выше boost. Слишком сильное смещение даёт ошибки в простое.',min:0,max:30,step:1,unit:'ед.',g:[0,3],stab:'Зависит от кристалла',lat:'Без изменений',temp:'Холоднее на 2–6 °C'},
+{id:'pbo',v:'amd',sec:'cpu',grp:'Частоты и лимиты',type:'toggle',name:'Precision Boost Overdrive',sub:'Расширенный авто-разгон Ryzen',desc:'Поднимает лимиты питания и тока платы для boost. Нужна плата с хорошим питанием и кулер.',g:[1,4],stab:'Немного ниже',lat:'Без изменений',temp:'Горячее на 4–10 °C',risk:1},
+{id:'pl2',v:'intel',sec:'cpu',grp:'Частоты и лимиты',type:'slider',name:'Лимит PL2 (турбо-мощность)',sub:'Кратковременный пик мощности Intel',desc:'Позволяет процессору дольше держать пиковую частоту. Для K-серий нужен мощный кулер, иначе будет троттлинг.',min:0,max:60,step:5,unit:'Вт',plus:true,g:[0,4],stab:'Ниже на максимуме',lat:'Без изменений',temp:'Горячее на 5–15 °C'},
+{id:'uvi',v:'intel',sec:'cpu',grp:'Частоты и лимиты',type:'slider',name:'Андервольт ядер (offset)',sub:'Снижение напряжения Intel',desc:'Уменьшает напряжение: меньше нагрев и больше времени на высоком boost. Слишком большое значение вызывает вылеты.',min:0,max:100,step:5,unit:'мВ',g:[0,2],stab:'Зависит от кристалла',lat:'Без изменений',temp:'Холоднее на 3–8 °C'},
+{id:'antil',v:'rx',sec:'gpu',grp:'Драйвер и задержка',type:'toggle',name:'Radeon Anti-Lag',sub:'Меньше задержка ввода на AMD',desc:'Драйвер синхронизирует работу CPU и GPU, чтобы кадр приходил позже в очереди. Отклик ниже. Совместимость зависит от игры.',g:[0,2],stab:'Выше',lat:'Ниже',temp:'Без изменений',risk:0},
+{id:'refl',v:'nv',sec:'gpu',grp:'Драйвер и задержка',type:'toggle',name:'NVIDIA Reflex (если есть в игре)',sub:'Меньше задержка ввода на NVIDIA',desc:'Включает режим Reflex там, где игра его поддерживает. Очередь кадров короче, отклик быстрее.',g:[0,2],stab:'Выше',lat:'Ниже',temp:'Без изменений',risk:0});
+var BY={};CTL.forEach(function(c){BY[c.id]=c});
+['name','sub','desc','stab','lat','temp','note','grp','unit'].forEach(function(k){CTL.forEach(function(c){if(c[k]==null)return;var v=c[k];Object.defineProperty(c,k,{get:function(){return R(v)},configurable:true})})});
+CTL.forEach(function(c){if(!c.labels)return;var a=c.labels;Object.defineProperty(c,'labels',{get:function(){return a.map(function(x){return R(x)})},configurable:true})});
+var PROF=[
+ {id:'stock',name:'Стандарт',sub:'Параметры Windows и драйверов по умолчанию',lvl:0},
+ {id:'safe',name:'Безопасный',sub:'Только проверенные твики, без разгона',lvl:1},
+ {id:'game',name:'Игровой',sub:'Баланс отклика, FPS и температуры',lvl:2},
+ {id:'max',name:'Максимум',sub:'Предел для вашего охлаждения, красная зона',lvl:4}
+];
+
+PROF.forEach(function(p){var n=p.name,u=p.sub;Object.defineProperty(p,'name',{get:function(){return R(n)}});Object.defineProperty(p,'sub',{get:function(){return R(u)}})});
+var tOf=function(c,v){return (v-c.min)/(c.max-c.min)};
+var zoneOf=function(t){var a=PLAT==='laptop'?[.35,.65]:[.5,.8];return t<a[0]?0:t<a[1]?1:2};
+function valT(c,t){var n=Math.round(t*(c.max-c.min)/c.step);return Math.min(c.max,c.min+n*c.step)}
+function preset(p){var o={};CTL.forEach(function(c){
+  if(c.guard){o[c.id]=c.def;return}
+  if(c.type==='toggle'){o[c.id]=p==='stock'?false:p==='safe'?c.risk===0:p==='game'?c.risk<=1:true}
+  else{o[c.id]=valT(c,(PLAT==='laptop'?{stock:0,safe:.15,game:.3,max:.55}:{stock:0,safe:.2,game:.5,max:.85})[p])}
+});return o}
+var S=preset('game'),A=Object.assign({},S),cur='overview',prof='game',pinned=null;
+
+function fmt(c,v){
+  if(c.labels)return c.labels[v];
+  var u=c.unit==='%'?'%':' '+c.unit;
+  return (c.plus&&v>0?'+':'')+v+u;
+}
+function isActive(c){return c.type==='toggle'?!!S[c.id]:S[c.id]>c.min}
+function scored(){return CTL.filter(function(c){return !c.guard&&vis(c)})}
+function f20(x){return 20*(1-Math.exp(-x/20))}
+function gain(){var lo=0,hi=0;scored().forEach(function(c){if(!isActive(c))return;var k=c.type==='toggle'?1:tOf(c,S[c.id]);lo+=c.g[0]*k;hi+=c.g[1]*k});return [f20(lo),f20(hi)]}
+function riskScore(){var a=scored().filter(isActive);if(!a.length)return 0;var mx=0,sum=0;a.forEach(function(c){var r=c.type==='toggle'?[.12,.4,.8][c.risk]:tOf(c,S[c.id]);mx=Math.max(mx,r);sum+=r});return Math.min(1,(.6*mx+.4*sum/a.length)*(PLAT==='laptop'?1.3:1))}
+function riskWord(s){return R(s<.3?'Низкий':s<.55?'Умеренный':s<.75?'Повышенный':'Высокий')}
+function changedIds(){return CTL.filter(function(c){return vis(c)&&S[c.id]!==A[c.id]})}
+
+/* ---------- tooltip ---------- */
+function infoBtn(c){return '<button class="info" type="button" data-tip="'+c.id+'" aria-label="'+R('Подробнее: ')+c.name+'" aria-expanded="false">i</button>'}
+function tipHTML(c){
+  var fps;
+  if(c.g[1]===0)fps=R('Без влияния');
+  else if(c.type==='toggle')fps='~+'+c.g[0]+'–'+c.g[1]+'%';
+  else fps=({ru:'до ~+',ua:'до ~+',en:'up to ~+'})[LG]+c.g[1]+'% '+R('на максимуме');
+  var rk=c.type==='toggle'?c.risk:2;
+  var h='<h4>'+c.name+'</h4><p>'+c.desc+'</p><dl class="tm"><dt>FPS</dt><dd class="'+(c.g[1]?'g':'')+'">'+fps+'</dd><dt>'+R('Стабильность')+'</dt><dd>'+c.stab+'</dd><dt>'+R('Отклик')+'</dt><dd>'+c.lat+'</dd><dt>'+R('Температура')+'</dt><dd>'+c.temp+'</dd></dl>';
+  if(c.type==='toggle'){h+='<div class="tr0"><span class="chip r'+c.risk+'">'+RISK[c.risk]+'</span></div>'}
+  else if(!c.guard){h+='<div class="tn w">'+R('Зелёная часть шкалы безопасна для большинства систем. Красная требует хорошего охлаждения и может вызывать сбои.')+'</div>'}
+  if(c.note)h+='<div class="tn w">'+c.note+'</div>';
+  h+='<div class="tn">'+R('Оценка для типичной игровой системы. Значения ориентировочные (~).')+'</div>';
+  return h;
+}
+var tip=$('#tip');
+function showTip(btn){
+  var c=BY[btn.dataset.tip];tip.innerHTML=tipHTML(c);tip.hidden=false;
+  var r=btn.getBoundingClientRect(),w=tip.offsetWidth,h=tip.offsetHeight;
+  var x=Math.min(Math.max(12,r.left+r.width/2-w/2),innerWidth-w-12);
+  var y=r.bottom+8;if(y+h>innerHeight-8)y=Math.max(8,r.top-h-8);
+  tip.style.left=x+'px';tip.style.top=y+'px';
+}
+function hideTip(){tip.hidden=true;document.querySelectorAll('.info[aria-expanded="true"]').forEach(function(b){b.setAttribute('aria-expanded','false')});pinned=null}
+document.addEventListener('mouseover',function(e){var b=e.target.closest&&e.target.closest('.info');if(b&&!pinned)showTip(b)});
+document.addEventListener('mouseout',function(e){var b=e.target.closest&&e.target.closest('.info');if(b&&!pinned)tip.hidden=true});
+document.addEventListener('focusin',function(e){var b=e.target.closest&&e.target.closest('.info');if(b&&!pinned)showTip(b)});
+document.addEventListener('focusout',function(e){var b=e.target.closest&&e.target.closest('.info');if(b&&!pinned)tip.hidden=true});
+document.addEventListener('click',function(e){
+  var b=e.target.closest&&e.target.closest('.info');
+  if(b){if(pinned===b){hideTip();return}hideTip();pinned=b;b.setAttribute('aria-expanded','true');showTip(b);return}
+  if(pinned)hideTip();
+});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){hideTip();closeModal()}});
+$('#main').addEventListener('scroll',function(){if(!tip.hidden)hideTip()});
+addEventListener('scroll',function(){if(!tip.hidden)hideTip()},true);
+
+/* ---------- rows ---------- */
+function rowHTML(c){
+  var head='<div class="meta"><div class="ttl"><span class="dot"></span><label for="c-'+c.id+'">'+c.name+'</label>'+infoBtn(c)+'</div><div class="sub">'+c.sub+'</div></div>';
+  if(c.type==='toggle'){
+    return '<div class="row t" data-id="'+c.id+'">'+head+'<div class="ctl"><span class="chip"></span><label class="sw"><input type="checkbox" id="c-'+c.id+'" data-id="'+c.id+'"><span class="knob"></span></label></div></div>';
+  }
+  return '<div class="row s" data-id="'+c.id+'">'+head+'<div class="ctl"><div class="sl-top"><span class="val"></span><span class="rw"></span></div><input class="rng" type="range" id="c-'+c.id+'" data-id="'+c.id+'" min="'+c.min+'" max="'+c.max+'" step="'+c.step+'"></div></div>';
+}
+function paintRow(c,el){
+  var v=S[c.id];
+  el.classList.toggle('chg',v!==A[c.id]);
+  if(c.type==='toggle'){
+    $('input',el).checked=!!v;
+    var ch=$('.chip',el);ch.className='chip r'+c.risk;ch.textContent=c.guard?R('Защита'):RISK[c.risk];
+  }else{
+    var t=tOf(c,v),z=zoneOf(t),r=$('input',el);
+    r.value=v;r.style.setProperty('--t',t);r.dataset.zone=z;
+    $('.val',el).textContent=fmt(c,v);
+    var rw=$('.rw',el);
+    if(c.guard){rw.textContent='';}
+    else if(t===0){rw.className='rw r-1';rw.textContent=R('Стандарт')}
+    else{rw.className='rw r'+z;rw.textContent=RISK[z]}
+  }
+}
+function paintAll(){document.querySelectorAll('.row[data-id]').forEach(function(el){paintRow(BY[el.dataset.id],el)})}
+
+/* ---------- sections ---------- */
+function secHTML(id){
+  var s=SEC.filter(function(x){return x.id===id})[0];
+  var h='<div class="sechead"><div><h2>'+s.name+'</h2><p>'+s.t+'</p></div><button class="btn sm" type="button" data-reset="'+id+'">'+L('reset')+'</button></div>';
+  var list=CTL.filter(function(c){return c.sec===id&&vis(c)}),seen=[];
+  list.forEach(function(c){if(seen.indexOf(c.grp)<0)seen.push(c.grp)});
+  seen.forEach(function(g){
+    h+='<div class="gt">'+g+'</div><div class="group">'+list.filter(function(c){return c.grp===g}).map(rowHTML).join('')+'</div>';
+  });
+  return h;
+}
+function spark(id,label,unit,sub){
+  return '<div class="card"><h3>'+R(label)+'<span class="tag">'+R('демо')+'</span></h3><div class="big"><span id="'+id+'V">0</span><small>'+R(unit)+'</small></div><div class="mc-sub" id="'+id+'S">'+R(sub)+'</div><svg class="spark" id="'+id+'G" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true"><polygon fill="color-mix(in srgb,var(--go) 14%,transparent)"/><polyline fill="none" stroke="var(--go)" stroke-width="1.6" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg></div>';
+}
+function ovHTML(){
+  var h='<div class="sechead"><div><h2>'+L('n_overview')+'</h2><p>'+R('Состояние системы, готовые профили и защита. Профиль задаёт стартовые значения, дальше всё можно подправить вручную в разделах.')+'</p></div></div><div class="ov">';
+  h+='<div class="mon">'+spark('mc','Температура CPU','°C','Загрузка 0%')+spark('mg','Температура GPU','°C','Загрузка 0%')+spark('mr','Оперативная память','ГБ','из 32 ГБ')+'</div>';
+  h+='<section class="card span7"><h3>'+L('prof')+'</h3><div class="profs">'+PROF.map(function(p){
+    var d='';for(var i=0;i<4;i++)d+='<i class="'+(i<p.lvl?'on':'')+'"></i>';
+    return '<button class="prof" type="button" data-prof="'+p.id+'" aria-pressed="false"><b>'+p.name+'</b><span>'+p.sub+'</span><div class="pd">'+d+'</div></button>';
+  }).join('')+'</div></section>';
+  h+='<section class="card span5"><h3>'+L('eff')+'</h3><div class="gain" id="gainV">+0%</div><div class="cap" id="gainC"></div><div class="gauge"><div class="mk" id="mk"></div></div><div class="gl"><span>'+R('безопасно')+'</span><span>'+R('предел')+'</span></div><div class="rl"><span>'+R('Общий уровень риска')+'</span><b id="riskV">Низкий</b></div></section>';
+  h+=aiCard();
+  h+='<section class="card span5 guard"><h3>'+L('guard')+'</h3>'+CTL.filter(function(c){return c.guard}).map(rowHTML).join('')+'</section>';
+  h+=bkCard();return h+'</div>';
+}
+function go(id){
+  cur=id;hideTip();
+  var m=$('#main');m.innerHTML=page(id);
+  paintAll();m.scrollTop=0;
+  document.querySelectorAll('.nav').forEach(function(b){if(b.dataset.sec===id)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+  refresh();drawMon();
+}
+function buildRail(){
+  var r=$('#rail');
+  r.innerHTML=SEC.map(function(s){return '<button class="nav" type="button" data-sec="'+s.id+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+s.ic+'</svg>'+s.name+'<span class="n"></span></button>'}).join('')+
+  hwRail();
+}
+
+/* ---------- refresh ---------- */
+function refresh(){aiUpd();var u=$('#btnUndo');if(u)u.disabled=!(H&&H.length);
+  var ch=changedIds().length;
+  $('#btnApply').disabled=!ch;$('#btnRevert').disabled=!ch;
+  $('#pend').classList.toggle('has',!!ch);
+  $('#pendTxt').textContent=ch?L('pend')+ch:L('done');
+  document.querySelectorAll('.nav').forEach(function(b){
+    var id=b.dataset.sec,n=$('.n',b);if(id==='overview'||id==='hardware'||id==='ramt'){n.textContent='';return}
+    n.textContent=CTL.filter(function(c){return c.sec===id&&vis(c)&&isActive(c)}).length;
+  });
+  var g=gain(),e=$('#gainV');
+  if(e){
+    var lo=Math.round(g[0]),hi=Math.round(g[1]);
+    e.textContent=hi<1?'≈ 0%':'~+'+lo+'–'+hi+'%';
+    $('#gainC').textContent=R('Ожидаемый прирост FPS от активных настроек. Эффекты частично перекрываются, поэтому верхняя граница не превышает 20%.');
+    var s=riskScore();$('#mk').style.setProperty('--s',s);$('#riskV').textContent=riskWord(s);
+    $('#riskV').style.color=s<.3?'var(--ok)':s<.55?'var(--lime)':s<.75?'var(--hot)':'var(--stop)';
+    document.querySelectorAll('.prof').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.prof===prof))});
+  }
+}
+
+/* ---------- events ---------- */
+$('#rail').addEventListener('click',function(e){var b=e.target.closest('.nav');if(b)go(b.dataset.sec)});
+$('#main').addEventListener('input',function(e){
+  var id=e.target.dataset&&e.target.dataset.id;if(!id)return;
+  var c=BY[id];S[id]=c.type==='toggle'?e.target.checked:+e.target.value;
+  if(!c.guard)prof='custom';
+  paintRow(c,e.target.closest('.row'));refresh();
+});
+$('#main').addEventListener('click',function(e){
+  var p=e.target.closest('[data-prof]');
+  if(p){var pr=preset(p.dataset.prof);Object.keys(pr).forEach(function(k){if(!BY[k].guard)S[k]=pr[k]});prof=p.dataset.prof;refresh();toast(R('Профиль «')+PROF.filter(function(x){return x.id===prof})[0].name+R('» выбран. Нажмите «Применить».'));return}
+  var r=e.target.closest('[data-reset]');
+  if(r){var st=preset('stock');CTL.forEach(function(c){if(c.sec===r.dataset.reset&&!c.guard)S[c.id]=st[c.id]});prof='custom';go(cur);return}
+  if(e.target.id==='aiPick')aiPick();var hb=e.target.closest('[data-hw]');if(hb)setHW(hb.dataset.hw);
+});
+$('#btnRevert').addEventListener('click',function(){S=Object.assign({},A);prof=profOf();go(cur);toast(R('Изменения отменены'))});
+function profOf(){
+  for(var i=0;i<PROF.length;i++){var p=preset(PROF[i].id),same=true;CTL.forEach(function(c){if(!c.guard&&p[c.id]!==S[c.id])same=false});if(same)return PROF[i].id}
+  return 'custom';
+}
+function redPending(){return changedIds().filter(function(c){return !c.guard&&((c.type==='toggle'&&S[c.id]&&c.risk===2)||(c.type==='slider'&&zoneOf(tOf(c,S[c.id]))===2))})}
+$('#btnApply').addEventListener('click',function(){
+  var r=redPending();
+  if(r.length){
+    $('#dlgList').innerHTML=r.map(function(c){return '<li><span>'+c.name+'</span><span>'+(c.type==='toggle'?R('включено'):fmt(c,S[c.id]))+'</span></li>'}).join('');
+    $('#ack').checked=false;$('#dlgYes').disabled=true;$('#modal').hidden=false;$('#ack').focus();
+  }else doApply();
+});
+function closeModal(){$('#modal').hidden=true}
+$('#ack').addEventListener('change',function(e){$('#dlgYes').disabled=!e.target.checked});
+$('#dlgNo').addEventListener('click',closeModal);
+$('#dlgYes').addEventListener('click',function(){closeModal();doApply()});
+function doApply(){
+  var n=changedIds().length;H.push(Object.assign({},A));A=Object.assign({},S);paintAll();refresh();
+  toast(R('Применено: ')+n+R('. Точка восстановления создана (демо).'));
+}
+var tt;function toast(t){var e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){e.classList.remove('on')},2800)}
+
+/* ---------- live monitor (simulated) ---------- */
+var M={c:[],g:[],r:[],cl:34,gl:41};
+var cv=48,gv=52,rv=11.2;
+function tick(){
+  var s=riskScore(),act=scored().filter(isActive).length;
+  cv=cv*.82+(46+s*20+4)*.18+(Math.random()-.5)*2.4;
+  gv=gv*.82+(50+s*16+6)*.18+(Math.random()-.5)*2.4;
+  rv=Math.min(30,Math.max(8,rv+(Math.random()-.5)*.3));
+  M.cl=Math.max(8,Math.min(96,M.cl+(Math.random()-.5)*9));M.gl=Math.max(10,Math.min(98,M.gl+(Math.random()-.5)*10));
+  [['c',cv],['g',gv],['r',rv]].forEach(function(p){var a=M[p[0]];a.push(p[1]);if(a.length>40)a.shift()});
+}
+function line(a,lo,hi){return a.map(function(v,i){return (i/(a.length-1)*100).toFixed(1)+','+(28-(v-lo)/(hi-lo)*26).toFixed(1)}).join(' ')}
+function drawMon(){
+  if(!$('#mcV'))return;
+  [['mc',M.c,30,95,1,R('Загрузка ')+Math.round(M.cl)+'%'],['mg',M.g,30,95,1,R('Загрузка ')+Math.round(M.gl)+'%'],['mr',M.r,0,32,1,R('из 32 ГБ')]].forEach(function(p){
+    var a=p[1],last=a[a.length-1];
+    $('#'+p[0]+'V').textContent=p[0]==='mr'?last.toFixed(1):Math.round(last);
+    $('#'+p[0]+'S').textContent=p[5];
+    var pts=line(a,p[2],p[3]),g=$('#'+p[0]+'G');
+    $('polyline',g).setAttribute('points',pts);$('polygon',g).setAttribute('points','0,30 '+pts+' 100,30');
+  });
+}
+for(var i=0;i<40;i++)tick();
+setInterval(function(){tick();drawMon()},1500);
+
+/* ---------- i18n ---------- */
+var LG='en',D={ru:{},ua:{},en:{}};
+var TR={"Схема «Максимальная производительность»": ["Схема «Максимальна продуктивність»", "\"Ultimate Performance\" power plan"], "Игровой режим Windows": ["Ігровий режим Windows", "Windows Game Mode"], "Отключить фоновую запись (Game DVR)": ["Вимкнути фоновий запис (Game DVR)", "Disable background recording (Game DVR)"], "Аппаратное планирование GPU (HAGS)": ["Апаратне планування GPU (HAGS)", "Hardware-accelerated GPU scheduling (HAGS)"], "Оптимизация полноэкранного режима": ["Оптимізація повноекранного режиму", "Fullscreen optimizations"], "Высокоточный таймер 0,5 мс": ["Високоточний таймер 0,5 мс", "High-precision 0.5 ms timer"], "Упрощённые визуальные эффекты": ["Спрощені візуальні ефекти", "Simplified visual effects"], "Приоритет игрового процесса": ["Пріоритет ігрового процесу", "Game process priority"], "Отключить парковку ядер": ["Вимкнути паркування ядер", "Disable core parking"], "Минимальное состояние процессора": ["Мінімальний стан процесора", "Minimum processor state"], "Лимит мощности процессора (PL1/PPT)": ["Ліміт потужності процесора (PL1/PPT)", "CPU power limit (PL1/PPT)"], "Прибавка к boost-частоте": ["Додаток до boost-частоти", "Boost clock offset"], "Допустимая температура процессора": ["Допустима температура процесора", "CPU temperature limit"], "Лимит мощности видеокарты": ["Ліміт потужності відеокарти", "GPU power limit"], "Смещение частоты ядра": ["Зсув частоти ядра", "Core clock offset"], "Смещение частоты памяти": ["Зсув частоти пам'яті", "Memory clock offset"], "Целевая температура видеокарты": ["Цільова температура відеокарти", "GPU target temperature"], "Режим низкой задержки": ["Режим низької затримки", "Low latency mode"], "Расширенный кэш шейдеров": ["Розширений кеш шейдерів", "Extended shader cache"], "Максимальная производительность в драйвере": ["Максимальна продуктивність у драйвері", "Maximum performance in driver"], "Автоочистка резервной памяти": ["Автоочищення резервної пам'яті", "Auto-clear standby memory"], "Агрессивность очистки": ["Агресивність очищення", "Cleanup aggressiveness"], "Отключить SysMain (Superfetch)": ["Вимкнути SysMain (Superfetch)", "Disable SysMain (Superfetch)"], "TRIM по расписанию": ["TRIM за розкладом", "Scheduled TRIM"], "Отключить быстрый запуск Windows": ["Вимкнути швидкий запуск Windows", "Disable Windows Fast Startup"], "Очистка временных файлов перед игрой": ["Очищення тимчасових файлів перед грою", "Clean temp files before gaming"], "Отключить алгоритм Нейгла": ["Вимкнути алгоритм Нейгла", "Disable Nagle's algorithm"], "Снять сетевое ограничение мультимедиа": ["Зняти мережеве обмеження мультимедіа", "Remove multimedia network throttling"], "Быстрый DNS-сервер": ["Швидкий DNS-сервер", "Fast DNS server"], "Автонастройка окна TCP: обычная": ["Автоналаштування вікна TCP: звичайне", "TCP window auto-tuning: normal"], "Ограничить телеметрию Windows": ["Обмежити телеметрію Windows", "Limit Windows telemetry"], "Приостановить обновления на время игры": ["Призупинити оновлення на час гри", "Pause updates while gaming"], "Остановить индексацию на время игры": ["Зупинити індексацію на час гри", "Stop indexing while gaming"], "Отключить уведомления в игре": ["Вимкнути сповіщення в грі", "Disable notifications in game"], "Закрывать фоновые приложения при запуске игры": ["Закривати фонові застосунки під час запуску гри", "Close background apps when a game starts"], "Лимит фоновой нагрузки на процессор": ["Ліміт фонового навантаження на процесор", "Background CPU load limit"], "Авто-откат при перегреве": ["Авто-відкат при перегріві", "Auto-rollback on overheating"], "Порог температуры для отката": ["Поріг температури для відкату", "Rollback temperature threshold"], "Точка восстановления перед применением": ["Точка відновлення перед застосуванням", "Restore point before applying"], "Резервная копия изменяемых параметров": ["Резервна копія змінюваних параметрів", "Backup of changed settings"], "Curve Optimizer (смещение)": ["Curve Optimizer (зсув)", "Curve Optimizer (offset)"], "Precision Boost Overdrive": ["Precision Boost Overdrive", "Precision Boost Overdrive"], "Лимит PL2 (турбо-мощность)": ["Ліміт PL2 (турбо-потужність)", "PL2 limit (turbo power)"], "Андервольт ядер (offset)": ["Андервольт ядер (offset)", "Core undervolt (offset)"], "Radeon Anti-Lag": ["Radeon Anti-Lag", "Radeon Anti-Lag"], "NVIDIA Reflex (если есть в игре)": ["NVIDIA Reflex (якщо є в грі)", "NVIDIA Reflex (if the game supports it)"], "Процессор не снижает частоту в простое": ["Процесор не знижує частоту в простої", "CPU does not drop its clock at idle"], "Приоритет игре, меньше фоновых задач": ["Пріоритет грі, менше фонових задач", "Priority to the game, fewer background tasks"], "Меньше нагрузка на GPU и диск": ["Менше навантаження на GPU і диск", "Less load on GPU and disk"], "Видеокарта сама управляет очередью кадров": ["Відеокарта сама керує чергою кадрів", "The GPU manages its own frame queue"], "Чистый эксклюзивный полноэкранный режим": ["Чистий ексклюзивний повноекранний режим", "Clean exclusive fullscreen mode"], "Точнее планирование потоков": ["Точніше планування потоків", "More precise thread scheduling"], "Без анимаций и прозрачности интерфейса": ["Без анімацій і прозорості інтерфейсу", "No UI animations or transparency"], "Кто первым получает процессорное время": ["Хто першим отримує процесорний час", "Who gets CPU time first"], "Все ядра готовы к работе сразу": ["Усі ядра готові до роботи одразу", "All cores are ready immediately"], "Нижняя граница частоты в простое": ["Нижня межа частоти в простої", "Lower clock bound at idle"], "Сколько ватт процессор может держать долго": ["Скільки ват процесор може тримати довго", "How many watts the CPU can sustain"], "Смещение максимальной частоты ядер": ["Зсув максимальної частоти ядер", "Shift of the maximum core clock"], "При каком нагреве начинается сброс частоты": ["За якого нагріву починається скидання частоти", "Temperature at which clocks start dropping"], "Верхняя граница потребления в ваттах": ["Верхня межа споживання у ватах", "Upper power draw limit in watts"], "Разгон графического процессора": ["Розгін графічного процесора", "Graphics processor overclock"], "Разгон видеопамяти": ["Розгін відеопам'яті", "Video memory overclock"], "До какого нагрева разрешён буст": ["До якого нагріву дозволено буст", "Temperature up to which boost is allowed"], "Короче очередь кадров между CPU и GPU": ["Коротша черга кадрів між CPU і GPU", "Shorter frame queue between CPU and GPU"], "Меньше подлагов при загрузке эффектов": ["Менше підлагів під час завантаження ефектів", "Fewer stutters when effects load"], "Видеокарта не снижает частоты в простое": ["Відеокарта не знижує частоти в простої", "GPU does not lower clocks at idle"], "Освобождает кэш, который забил ОЗУ": ["Звільняє кеш, що забив ОЗП", "Frees the cache that has filled RAM"], "Как часто сбрасывать кэш": ["Як часто скидати кеш", "How often to flush the cache"], "Меньше фоновых обращений к диску": ["Менше фонових звернень до диска", "Fewer background disk accesses"], "SSD сохраняет скорость записи": ["SSD зберігає швидкість запису", "SSD keeps its write speed"], "Полная перезагрузка вместо гибернации": ["Повне перезавантаження замість гібернації", "Full restart instead of hibernation"], "Освобождает место и ускоряет обращения к диску": ["Звільняє місце та прискорює звернення до диска", "Frees space and speeds up disk access"], "Пакеты уходят сразу, без накопления": ["Пакети йдуть одразу, без накопичення", "Packets are sent immediately, without batching"], "Параметр NetworkThrottlingIndex": ["Параметр NetworkThrottlingIndex", "NetworkThrottlingIndex parameter"], "Публичный DNS вместо DNS провайдера": ["Публічний DNS замість DNS провайдера", "Public DNS instead of your ISP's DNS"], "Стабильная скорость на любом канале": ["Стабільна швидкість на будь-якому каналі", "Stable speed on any connection"], "Меньше фоновых отчётов": ["Менше фонових звітів", "Fewer background reports"], "Без загрузок и установки в фоне": ["Без завантажень і встановлення у фоні", "No background downloads or installs"], "Поиск Windows не читает диск": ["Пошук Windows не читає диск", "Windows Search does not read the disk"], "Без всплывающих окон поверх игры": ["Без спливаючих вікон поверх гри", "No pop-up windows over the game"], "Список приложений настраивается": ["Список застосунків налаштовується", "The app list is configurable"], "Сколько CPU могут занимать фоновые процессы": ["Скільки CPU можуть займати фонові процеси", "How much CPU background processes may use"], "Параметры вернутся, если превышен порог": ["Параметри повернуться, якщо перевищено поріг", "Settings revert if the threshold is exceeded"], "Выше значение, позже сработает защита": ["Більше значення, пізніше спрацює захист", "Higher value, later the protection triggers"], "Создаётся автоматически": ["Створюється автоматично", "Created automatically"], "Старые значения хранятся для кнопки «Вернуть всё»": ["Старі значення зберігаються для кнопки «Повернути все»", "Old values are kept for the \"Restore all\" button"], "Андервольт ядер Ryzen": ["Андервольт ядер Ryzen", "Ryzen core undervolt"], "Расширенный авто-разгон Ryzen": ["Розширений авто-розгін Ryzen", "Extended Ryzen auto-overclock"], "Кратковременный пик мощности Intel": ["Короткочасний пік потужності Intel", "Short-term Intel power peak"], "Снижение напряжения Intel": ["Зниження напруги Intel", "Intel voltage reduction"], "Меньше задержка ввода на AMD": ["Менша затримка вводу на AMD", "Lower input latency on AMD"], "Меньше задержка ввода на NVIDIA": ["Менша затримка вводу на NVIDIA", "Lower input latency on NVIDIA"], "Включает скрытую схему питания Ultimate Performance. Процессор и шины не уходят в энергосберегающие состояния, поэтому отклик в играх ровнее.": ["Вмикає прихований план живлення Ultimate Performance. Процесор і шини не переходять в енергозберігаючі стани, тому відгук в іграх рівніший.", "Enables the hidden Ultimate Performance power plan. The CPU and buses never enter power-saving states, so response in games is smoother."], "Windows отдаёт игре больше процессорного времени и не запускает обновления драйверов во время игры.": ["Windows віддає грі більше процесорного часу й не запускає оновлення драйверів під час гри.", "Windows gives the game more CPU time and does not start driver updates while you play."], "Останавливает постоянную запись видео в фоне. Освобождает часть ресурсов видеокарты и диска.": ["Зупиняє постійний запис відео у фоні. Звільняє частину ресурсів відеокарти та диска.", "Stops constant background video recording. Frees some GPU and disk resources."], "Снимает часть работы с процессора. Эффект зависит от игры и драйвера: иногда выигрыш, иногда небольшой минус до −2%.": ["Знімає частину роботи з процесора. Ефект залежить від гри та драйвера: іноді виграш, іноді невеликий мінус до −2%.", "Takes some work off the CPU. The effect depends on the game and driver: sometimes a gain, sometimes a small loss of up to −2%."], "Отключает оверлейную обработку Windows для игр на весь экран, что снижает задержку вывода кадра.": ["Вимикає оверлейну обробку Windows для ігор на весь екран, що знижує затримку виведення кадру.", "Turns off Windows overlay processing for fullscreen games, which reduces frame output latency."], "Уменьшает шаг системного таймера. Игры реже «спотыкаются» на ровном месте, но ПК чаще выходит из простоя.": ["Зменшує крок системного таймера. Ігри рідше «спотикаються» на рівному місці, але ПК частіше виходить із простою.", "Reduces the system timer step. Games stumble less often for no reason, but the PC wakes from idle more often."], "Отключает анимации окон и прозрачность. Заметно только на слабых видеокартах и интегрированной графике.": ["Вимикає анімації вікон і прозорість. Помітно лише на слабких відеокартах та інтегрованій графіці.", "Disables window animations and transparency. Only noticeable on weak GPUs and integrated graphics."], "Игра получает ядра раньше фоновых программ. «Реального времени» может заблокировать ввод и диск, поэтому приложение не советует его выше значения «Высокий».": ["Гра отримує ядра раніше за фонові програми. «Реального часу» може заблокувати введення та диск, тому застосунок не радить значення вище за «Високий».", "The game gets cores before background programs. \"Realtime\" can block input and disk, so the app does not recommend going above \"High\"."], "Windows перестаёт «усыплять» неиспользуемые ядра. Игры получают ресурсы без задержки на пробуждение.": ["Windows перестає «присипляти» невикористані ядра. Ігри отримують ресурси без затримки на пробудження.", "Windows stops \"sleeping\" unused cores. Games get resources without a wake-up delay."], "Чем выше значение, тем выше держится частота даже без нагрузки. Отклик лучше, но в простое греется и потребляет больше.": ["Чим вище значення, тим вище тримається частота навіть без навантаження. Відгук кращий, але в простої гріється й споживає більше.", "The higher the value, the higher the clock stays even without load. Response is better, but idle temperature and power draw rise."], "Позволяет процессору дольше держать высокую частоту под нагрузкой. Нужен хороший кулер и плата с мощным питанием.": ["Дозволяє процесору довше тримати високу частоту під навантаженням. Потрібен хороший кулер і плата з потужним живленням.", "Lets the CPU hold a high clock longer under load. Needs a good cooler and a board with strong power delivery."], "Поднимает потолок частоты в одноядерных нагрузках. Выше определённого значения процессор перестаёт быть стабильным.": ["Піднімає стелю частоти в одноядерних навантаженнях. Вище певного значення процесор перестає бути стабільним.", "Raises the clock ceiling in single-core loads. Above a certain value the CPU stops being stable."], "Чем выше порог, тем позже процессор начинает снижать частоту. Постоянная работа у верхней границы сокращает срок службы.": ["Чим вищий поріг, тим пізніше процесор починає знижувати частоту. Постійна робота біля верхньої межі скорочує строк служби.", "The higher the limit, the later the CPU starts lowering its clock. Constantly running near the upper limit shortens lifespan."], "Видеокарта дольше держит максимальную частоту, пока не упирается в лимит мощности.": ["Відеокарта довше тримає максимальну частоту, поки не впирається в ліміт потужності.", "The GPU holds its maximum clock longer until it hits the power limit."], "Добавляет к частоте ядра фиксированное значение. Ближе к максимуму растёт риск артефактов и вылетов драйвера.": ["Додає до частоти ядра фіксоване значення. Ближче до максимуму зростає ризик артефактів і збоїв драйвера.", "Adds a fixed value to the core clock. Near the maximum the risk of artifacts and driver crashes grows."], "Повышает пропускную способность видеопамяти. Помогает в высоких разрешениях. Ошибки памяти могут снижать FPS без явных сбоев.": ["Підвищує пропускну здатність відеопам'яті. Допомагає у високих роздільних здатностях. Помилки пам'яті можуть знижувати FPS без явних збоїв.", "Increases video memory bandwidth. Helps at high resolutions. Memory errors can lower FPS without obvious crashes."], "Определяет, когда видеокарта начнёт сбрасывать частоту из-за нагрева. Высокие значения требуют хорошего обдува корпуса.": ["Визначає, коли відеокарта почне скидати частоту через нагрів. Високі значення потребують доброго обдуву корпусу.", "Defines when the GPU starts dropping clocks because of heat. High values require good case airflow."], "Драйвер держит очередь кадров минимальной. Ввод с мыши и клавиатуры отзывается быстрее, особенно в играх, где упор идёт в видеокарту.": ["Драйвер тримає чергу кадрів мінімальною. Введення з миші та клавіатури відгукується швидше, особливо в іграх, де упор іде у відеокарту.", "The driver keeps the frame queue minimal. Mouse and keyboard input responds faster, especially in GPU-bound games."], "Увеличивает объём сохранённых шейдеров. Уменьшает «заикания» при первом показе эффектов в игре.": ["Збільшує обсяг збережених шейдерів. Зменшує «заїкання» під час першого показу ефектів у грі.", "Increases the amount of stored shaders. Reduces stutter when effects first appear in a game."], "Переключает режим питания драйвера. Частота не падает между сценами, поэтому фреймтайм ровнее.": ["Перемикає режим живлення драйвера. Частота не падає між сценами, тому фреймтайм рівніший.", "Switches the driver power mode. The clock does not drop between scenes, so frametime is smoother."], "Когда резервный список памяти разрастается, игры начинают подвисать. Приложение сбрасывает его по порогу.": ["Коли резервний список пам'яті розростається, ігри починають підвисати. Застосунок скидає його за порогом.", "When the standby memory list grows, games start to hang. The app flushes it when a threshold is reached."], "Чем выше значение, тем чаще очищается память. Слишком частая очистка заставляет игру заново читать данные с диска.": ["Чим вище значення, тим частіше очищається пам'ять. Надто часте очищення змушує гру знову читати дані з диска.", "The higher the value, the more often memory is cleared. Clearing too often forces the game to re-read data from disk."], "Служба предзагружает программы в память. На SSD пользы мало, а нагрузка на диск остаётся.": ["Служба попередньо завантажує програми в пам'ять. На SSD користі мало, а навантаження на диск залишається.", "The service preloads programs into memory. It helps little on an SSD, while the disk load remains."], "Регулярно сообщает SSD, какие блоки свободны. Скорость записи не падает со временем.": ["Регулярно повідомляє SSD, які блоки вільні. Швидкість запису не падає з часом.", "Regularly tells the SSD which blocks are free. Write speed does not degrade over time."], "Быстрый запуск сохраняет часть состояния системы между включениями, из-за чего накапливаются сбои драйверов.": ["Швидкий запуск зберігає частину стану системи між вмиканнями, через що накопичуються збої драйверів.", "Fast Startup keeps part of the system state between boots, which lets driver faults accumulate."], "Перед запуском игры удаляет безопасные временные файлы Windows и браузеров.": ["Перед запуском гри видаляє безпечні тимчасові файли Windows і браузерів.", "Before a game starts, removes safe Windows and browser temporary files."], "Windows перестаёт объединять мелкие пакеты. Для игр на TCP это снижает задержку отклика.": ["Windows перестає об'єднувати дрібні пакети. Для ігор на TCP це знижує затримку відгуку.", "Windows stops merging small packets. For TCP games this lowers response latency."], "Windows ограничивает скорость обработки пакетов во время воспроизведения мультимедиа. Параметр снимает это ограничение.": ["Windows обмежує швидкість обробки пакетів під час відтворення мультимедіа. Параметр знімає це обмеження.", "Windows limits packet processing speed during multimedia playback. This setting removes the limit."], "Ускоряет определение адреса игрового сервера при подключении. На задержку внутри матча не влияет.": ["Прискорює визначення адреси ігрового сервера під час підключення. На затримку всередині матчу не впливає.", "Speeds up resolving the game server address when connecting. Does not affect in-match latency."], "Возвращает безопасный режим подбора размера окна TCP. Помогает при странных просадках скорости.": ["Повертає безпечний режим добору розміру вікна TCP. Допомагає за дивних просідань швидкості.", "Restores the safe TCP window sizing mode. Helps with odd speed drops."], "Снижает объём диагностических данных, которые Windows отправляет в фоне. Применяется через политики, службы не удаляются.": ["Знижує обсяг діагностичних даних, які Windows надсилає у фоні. Застосовується через політики, служби не видаляються.", "Reduces the diagnostic data Windows sends in the background. Applied via policies; services are not removed."], "Пока запущена игра, Центр обновления не качает и не устанавливает пакеты.": ["Поки запущена гра, Центр оновлення не завантажує й не встановлює пакети.", "While a game is running, Windows Update does not download or install packages."], "Индексатор поиска во время игры не обращается к диску и не нагружает процессор.": ["Індексатор пошуку під час гри не звертається до диска й не навантажує процесор.", "During a game the search indexer does not touch the disk or load the CPU."], "Включает режим фокусировки. Окна уведомлений не сворачивают игру и не вызывают подвисания.": ["Вмикає режим фокусування. Вікна сповіщень не згортають гру й не викликають підвисання.", "Turns on focus mode. Notification windows do not minimize the game or cause hangs."], "Закрывает выбранные программы (мессенджеры, браузеры, синхронизацию) и возвращает их после игры.": ["Закриває вибрані програми (месенджери, браузери, синхронізацію) і повертає їх після гри.", "Closes selected programs (messengers, browsers, sync) and restores them after the game."], "Ограничивает фоновые процессы, пока запущена игра. Слишком жёсткий лимит замедлит антивирус и облачную синхронизацию.": ["Обмежує фонові процеси, поки запущена гра. Надто жорсткий ліміт уповільнить антивірус і хмарну синхронізацію.", "Limits background processes while a game runs. Too strict a limit will slow antivirus and cloud sync."], "Если температура процессора или видеокарты превысит порог, приложение вернёт параметры к последнему безопасному состоянию.": ["Якщо температура процесора або відеокарти перевищить поріг, застосунок поверне параметри до останнього безпечного стану.", "If CPU or GPU temperature exceeds the threshold, the app restores the last safe settings."], "Температура, при которой сработает откат. Оставляйте ниже заводского предела троттлинга вашего железа.": ["Температура, за якої спрацює відкат. Залишайте нижче за заводську межу тротлінгу вашого заліза.", "The temperature at which the rollback triggers. Keep it below your hardware's factory throttling limit."], "Перед каждым применением создаётся точка восстановления Windows, чтобы можно было вернуть систему.": ["Перед кожним застосуванням створюється точка відновлення Windows, щоб можна було повернути систему.", "A Windows restore point is created before every apply so the system can be restored."], "Приложение запоминает исходные значения каждого параметра. Любой твик можно вернуть к заводскому состоянию в один клик.": ["Застосунок запам'ятовує вихідні значення кожного параметра. Будь-який твік можна повернути до заводського стану одним кліком.", "The app remembers the original value of every setting. Any tweak can be returned to factory state in one click."], "Снижает напряжение ядер при той же частоте: меньше нагрев, выше boost. Слишком сильное смещение даёт ошибки в простое.": ["Знижує напругу ядер за тієї самої частоти: менше нагрів, вищий boost. Надто сильний зсув дає помилки в простої.", "Lowers core voltage at the same clock: less heat, higher boost. Too strong an offset causes errors at idle."], "Поднимает лимиты питания и тока платы для boost. Нужна плата с хорошим питанием и кулер.": ["Піднімає ліміти живлення й струму плати для boost. Потрібна плата з хорошим живленням і кулер.", "Raises the board's power and current limits for boost. Needs a board with good power delivery and a cooler."], "Позволяет процессору дольше держать пиковую частоту. Для K-серий нужен мощный кулер, иначе будет троттлинг.": ["Дозволяє процесору довше тримати пікову частоту. Для K-серій потрібен потужний кулер, інакше буде тротлінг.", "Lets the CPU hold its peak clock longer. K-series chips need a strong cooler, otherwise they throttle."], "Уменьшает напряжение: меньше нагрев и больше времени на высоком boost. Слишком большое значение вызывает вылеты.": ["Зменшує напругу: менше нагрів і більше часу на високому boost. Надто велике значення спричиняє збої.", "Reduces voltage: less heat and more time at high boost. Too large a value causes crashes."], "Драйвер синхронизирует работу CPU и GPU, чтобы кадр приходил позже в очереди. Отклик ниже. Совместимость зависит от игры.": ["Драйвер синхронізує роботу CPU та GPU, щоб кадр приходив пізніше в черзі. Відгук нижчий. Сумісність залежить від гри.", "The driver synchronizes CPU and GPU so frames are queued later. Latency is lower. Compatibility depends on the game."], "Включает режим Reflex там, где игра его поддерживает. Очередь кадров короче, отклик быстрее.": ["Вмикає режим Reflex там, де гра його підтримує. Черга кадрів коротша, відгук швидший.", "Enables Reflex where the game supports it. The frame queue is shorter, response is faster."], "Выше": ["Вище", "Higher"], "Немного выше": ["Трохи вище", "Slightly higher"], "Зависит от игры": ["Залежить від гри", "Depends on the game"], "Без изменений": ["Без змін", "No change"], "Выше при высокой загрузке": ["Вище за високого навантаження", "Higher under heavy load"], "Заметно выше (1% low)": ["Помітно вище (1% low)", "Noticeably higher (1% low)"], "Выше при долгой нагрузке": ["Вище за довгого навантаження", "Higher under sustained load"], "Может ухудшиться": ["Може погіршитися", "May get worse"], "Выше под нагрузкой": ["Вище під навантаженням", "Higher under load"], "Риск артефактов у максимума": ["Ризик артефактів біля максимуму", "Artifact risk near the maximum"], "Зависит от чипов памяти": ["Залежить від чипів пам'яті", "Depends on memory chips"], "Меньше подлагов": ["Менше підлагів", "Fewer stutters"], "Меньше фризов при 16 ГБ и меньше": ["Менше фризів за 16 ГБ і менше", "Fewer freezes with 16 GB or less"], "Зависит от объёма ОЗУ": ["Залежить від обсягу ОЗП", "Depends on RAM size"], "Стабильнее скорость диска": ["Стабільніша швидкість диска", "More stable disk speed"], "Защищает от сбоев": ["Захищає від збоїв", "Protects against crashes"], "Зависит от кристалла": ["Залежить від кристала", "Depends on the silicon"], "Немного ниже": ["Трохи нижче", "Slightly lower"], "Ниже на максимуме": ["Нижче на максимумі", "Lower at maximum"], "Ниже при генерации кадров": ["Нижче за генерації кадрів", "Lower with frame generation"], "Ниже": ["Нижче", "Lower"], "Заметно ниже": ["Помітно нижче", "Noticeably lower"], "Ниже на 0–10 мс (TCP-игры)": ["Нижче на 0–10 мс (TCP-ігри)", "Lower by 0–10 ms (TCP games)"], "Быстрее подключение к серверу": ["Швидше підключення до сервера", "Faster server connection"], "В простое теплее на 2–6 °C": ["У простої тепліше на 2–6 °C", "Warmer at idle by 2–6 °C"], "Чуть холоднее": ["Трохи холодніше", "Slightly cooler"], "Чуть теплее": ["Трохи тепліше", "Slightly warmer"], "В простое +5…+15 °C": ["У простої +5…+15 °C", "At idle +5…+15 °C"], "До +10 °C": ["До +10 °C", "Up to +10 °C"], "В простое теплее": ["У простої тепліше", "Warmer at idle"], "Холоднее на 1–3 °C": ["Холодніше на 1–3 °C", "Cooler by 1–3 °C"], "Холоднее": ["Холодніше", "Cooler"], "Ограничивает нагрев": ["Обмежує нагрів", "Limits heating"], "Холоднее на 2–6 °C": ["Холодніше на 2–6 °C", "Cooler by 2–6 °C"], "Горячее на 4–10 °C": ["Гарячіше на 4–10 °C", "Hotter by 4–10 °C"], "Горячее на 5–15 °C": ["Гарячіше на 5–15 °C", "Hotter by 5–15 °C"], "Холоднее на 3–8 °C": ["Холодніше на 3–8 °C", "Cooler by 3–8 °C"], "На ноутбуке сократит время работы от батареи.": ["На ноутбуці скоротить час роботи від батареї.", "On a laptop it will shorten battery life."], "Клипы через Game Bar перестанут записываться.": ["Кліпи через Game Bar перестануть записуватися.", "Clips through Game Bar will stop being recorded."], "Повышает энергопотребление в простое.": ["Підвищує енергоспоживання в простої.", "Increases power consumption at idle."], "Рекомендуется только для SSD. На HDD оставьте включённой.": ["Рекомендується лише для SSD. На HDD залишайте ввімкненою.", "Recommended for SSD only. Leave it on for HDD."], "Несохранённые данные в закрываемых программах могут пропасть.": ["Незбережені дані в програмах, що закриваються, можуть зникнути.", "Unsaved data in the programs being closed may be lost."], "Приоритеты": ["Пріоритети", "Priorities"], "Питание и ядра": ["Живлення та ядра", "Power and cores"], "Частоты и лимиты": ["Частоти та ліміти", "Clocks and limits"], "Разгон": ["Розгін", "Overclocking"], "Драйвер и задержка": ["Драйвер і затримка", "Driver and latency"], "Оперативная память": ["Оперативна пам'ять", "Memory (RAM)"], "Диск": ["Диск", "Disk"], "Сетевой стек": ["Мережевий стек", "Network stack"], "Службы": ["Служби", "Services"], "Нагрузка": ["Навантаження", "Load"], "МГц": ["МГц", "MHz"], "ед.": ["од.", "units"], "Вт": ["Вт", "W"], "мВ": ["мВ", "mV"], "Обычный": ["Звичайний", "Normal"], "Выше обычного": ["Вище звичайного", "Above normal"], "Высокий": ["Високий", "High"], "Реального времени": ["Реального часу", "Realtime"], "Безопасно": ["Безпечно", "Safe"], "Умеренно": ["Помірно", "Moderate"], "Высокий риск": ["Високий ризик", "High risk"], "Защита": ["Захист", "Safety"], "Стандарт": ["Стандарт", "Default"], "Стандартный": ["Стандартний", "Default"], "Безопасный": ["Безпечний", "Safe"], "Игровой": ["Ігровий", "Gaming"], "Максимум": ["Максимум", "Maximum"], "Параметры Windows и драйверов по умолчанию": ["Параметри Windows і драйверів за замовчуванням", "Default Windows and driver settings"], "Только проверенные твики, без разгона": ["Лише перевірені твіки, без розгону", "Only proven tweaks, no overclocking"], "Баланс отклика, FPS и температуры": ["Баланс відгуку, FPS і температури", "Balance of response, FPS and temperature"], "Предел для вашего охлаждения, красная зона": ["Межа для вашого охолодження, червона зона", "Limit of your cooling, red zone"], "Низкий": ["Низький", "Low"], "Умеренный": ["Помірний", "Moderate"], "Повышенный": ["Підвищений", "Elevated"], "Без влияния": ["Без впливу", "No effect"], "на максимуме": ["на максимумі", "at maximum"], "Стабильность": ["Стабільність", "Stability"], "Отклик": ["Відгук", "Response"], "Температура": ["Температура", "Temperature"], "Подробнее: ": ["Докладніше: ", "More:"], "Зелёная часть шкалы безопасна для большинства систем. Красная требует хорошего охлаждения и может вызывать сбои.": ["Зелена частина шкали безпечна для більшості систем. Червона потребує доброго охолодження й може викликати збої.", "The green part of the scale is safe for most systems. The red part needs good cooling and can cause crashes."], "Оценка для типичной игровой системы. Значения ориентировочные (~).": ["Оцінка для типової ігрової системи. Значення орієнтовні (~).", "Estimate for a typical gaming system. Values are approximate (~)."], "Состояние системы, готовые профили и защита. Профиль задаёт стартовые значения, дальше всё можно подправить вручную в разделах.": ["Стан системи, готові профілі та захист. Профіль задає стартові значення, далі все можна підкоригувати вручну в розділах.", "System status, ready-made profiles and safety. A profile sets the starting values; you can then fine-tune everything manually in the sections."], "Температура CPU": ["Температура CPU", "CPU temperature"], "Температура GPU": ["Температура GPU", "GPU temperature"], "Загрузка ": ["Завантаження ", "Load"], "из 32 ГБ": ["із 32 ГБ", "of 32 GB"], "демо": ["демо", "demo"], "безопасно": ["безпечно", "safe"], "предел": ["межа", "limit"], "Общий уровень риска": ["Загальний рівень ризику", "Overall risk level"], "Ожидаемый прирост FPS от активных настроек. Эффекты частично перекрываются, поэтому верхняя граница не превышает 20%.": ["Очікуваний приріст FPS від активних налаштувань. Ефекти частково перекриваються, тому верхня межа не перевищує 20%.", "Expected FPS gain from active settings. Effects partly overlap, so the upper bound does not exceed 20%."], "Профиль «": ["Профіль «", "Profile \""], "» выбран. Нажмите «Применить».": ["» вибрано. Натисніть «Застосувати».", "\" selected. Press \"Apply\"."], "Изменения отменены": ["Зміни скасовано", "Changes discarded"], "Применено: ": ["Застосовано: ", "Applied:"], ". Точка восстановления создана (демо).": [". Точку відновлення створено (демо).", ". Restore point created (demo)."], "включено": ["увімкнено", "enabled"], "Разделы": ["Розділи", "Sections"], "выкл → вкл": ["вимк → увімк", "off → on"], "ГБ": ["ГБ", "GB"], "Загрузка 0%": ["Завантаження 0%", "Load 0%"]};
+function R(s,l){l=l||LG;if(l==="ru"||s==null)return s;var t=TR[s];return t?(l==="ua"?t[0]:t[1]):s}
+
+function T(x){x.split('\n').forEach(function(l){var a=l.split('|');if(a.length<4)return;D.ru[a[0]]=a[1];D.ua[a[0]]=a[2];D.en[a[0]]=a[3]})}
+function L(k,l){return D[l||LG][k]||D.ru[k]||k}
+T("n_overview|Обзор|Огляд|Overview\nn_hardware|Железо и частоты|Залізо та частоти|Hardware & clocks\nn_system|Windows|Windows|Windows\nn_cpu|Процессор|Процесор|CPU\nn_gpu|Видеокарта|Відеокарта|GPU\nn_memory|Память и диск|Пам'ять і диск|Memory & disk\nn_ramt|Тайминги ОЗУ|Таймінги ОЗП|RAM timings\nn_network|Сеть|Мережа|Network\nn_background|Фон и службы|Фон і служби|Background\n"+
+"d_overview|Состояние системы, профили и защита|Стан системи, профілі та захист|System status, profiles and safety\nd_hardware|Определённое железо, частоты и подбор профиля|Визначене залізо, частоти та добір профілю|Detected hardware, clocks and profile match\nd_system|Схема питания, игровой режим и приоритеты Windows|Схема живлення, ігровий режим і пріоритети Windows|Power plan, Game Mode and Windows priorities\nd_cpu|Ядра, лимиты мощности и частоты|Ядра, ліміти потужності та частоти|Cores, power limits and clocks\nd_gpu|Разгон, лимиты и задержка кадра|Розгін, ліміти та затримка кадру|Overclock, limits and frame latency\nd_memory|Оперативная память, SSD и временные файлы|Оперативна пам'ять, SSD і тимчасові файли|RAM, SSD and temp files\nd_ramt|Ориентировочные частоты и тайминги для BIOS: слабый, средний и сильный разгон|Орієнтовні частоти й таймінги для BIOS: слабкий, середній і сильний розгін|Approximate BIOS speeds and timings: mild, medium and strong overclock\nd_network|Задержка и стабильность соединения в онлайн-играх|Затримка й стабільність з'єднання в онлайн-іграх|Latency and connection stability in online games\nd_background|Что работает рядом с игрой и отнимает ресурсы|Що працює поруч із грою й забирає ресурси|What runs next to the game and eats resources\n"+
+"reset|Сбросить раздел|Скинути розділ|Reset section\nap|Применить|Застосувати|Apply\nrv|Отменить изменения|Скасувати зміни|Discard changes\npend|Ожидают применения: |Очікують застосування: |Pending: \ndone|Все изменения применены|Усі зміни застосовано|All changes applied\nsub|оптимизатор ПК|оптимізатор ПК|PC optimizer\nproto|ПРОТОТИП: изменения не применяются к вашему ПК|ПРОТОТИП: зміни не застосовуються до вашого ПК|PROTOTYPE: nothing is applied to your PC\ncancel|Отмена|Скасувати|Cancel\nack|Я понимаю риск и хочу продолжить|Я розумію ризик і хочу продовжити|I understand the risk and want to continue\nprof|Профили|Профілі|Profiles\neff|Оценка эффекта|Оцінка ефекту|Estimated effect\nguard|Защита|Захист|Safety\nrz_t|Параметры в красной зоне|Параметри в червоній зоні|Red-zone settings\nrz1|Эти значения выше безопасного диапазона для большинства систем. Они повышают температуру и нагрузку на питание, возможны сбои и перезагрузки.|Ці значення вищі за безпечний діапазон для більшості систем. Вони підвищують температуру й навантаження на живлення, можливі збої та перезавантаження.|These values exceed the safe range for most systems. They raise temperature and power load; crashes and reboots are possible.\nrz2|Перед применением будет создана точка восстановления. При перегреве параметры откатятся автоматически.|Перед застосуванням буде створено точку відновлення. У разі перегріву параметри відкотяться автоматично.|A restore point is created before applying. Settings roll back automatically on overheating.\n"+
+"hw_pc|Ваш ПК|Ваш ПК|Your PC\nh_cfg|Демо-конфигурация ПК (в приложении определяется автоматически)|Демо-конфігурація ПК (в застосунку визначається автоматично)|Demo PC configuration (auto-detected in the app)\nvp|Показан профиль|Показано профіль|Active profile\ncores|Ядра / потоки|Ядра / потоки|Cores / threads\nbase|Базовая частота|Базова частота|Base clock\nboost|Макс. boost|Макс. boost|Max boost\ncache|Кэш|Кеш|Cache\nsock|Сокет|Сокет|Socket\ntdp|TDP|TDP|TDP\nvram|Видеопамять|Відеопам'ять|VRAM\ngc|Частота ядра|Частота ядра|Core clock\ngm|Частота памяти|Частота пам'яті|Memory clock\ncap|Объём|Обсяг|Capacity\nty|Тип|Тип|Type\nsp|Частота|Частота|Speed\nkit|Комплект|Комплект|Kit\nstk|Планки|Планки|Modules\nmb|Плата|Плата|Board\ndk|Диск|Диск|Drive\nsup|Поддерживается|Підтримується|Supported\nnosup|Не поддерживается|Не підтримується|Not supported\nmhz|МГц|МГц|MHz\nw|Вт|Вт|W\ngb|ГБ|ГБ|GB\nunsup|Видеокарты Intel пока не поддерживаются: раздел отключён.|Відеокарти Intel поки не підтримуються: розділ вимкнено.|Intel GPUs are not supported yet: section disabled.\n"+
+"t0|Слабый|Слабкий|Mild\nt1|Средний|Середній|Medium\nt2|Сильный|Сильний|Strong\nr_f|Частота|Частота|Speed\nr_t|Тайминги|Таймінги|Timings\nr_v|Напряжение DRAM|Напруга DRAM|DRAM voltage\nr_i|Контроллер памяти|Контролер пам'яті|Memory controller\nr_b|Где в BIOS|Де в BIOS|Where in BIOS\nr_ok|В пределах профиля комплекта|У межах профілю комплекту|Within kit profile\nr_over|Выше рейтинга комплекта, зависит от удачи кристаллов|Вище рейтингу комплекту, залежить від удачі кристалів|Above kit rating, depends on silicon lottery\nr_note|Значения ориентировочные (~). Меняйте в BIOS вручную и проверяйте стабильность (TestMem5, MemTest86). Приложение ничего не применяет.|Значення орієнтовні (~). Змінюйте в BIOS вручну й перевіряйте стабільність (TestMem5, MemTest86). Застосунок нічого не змінює.|Values are approximate (~). Change them in BIOS manually and verify stability (TestMem5, MemTest86). The app applies nothing.\n"+
+"ai_t|ИИ-советник|ШІ-радник|AI advisor\nai_tag|локально, демо|локально, демо|local, demo\nai_pick|Подобрать параметры|Підібрати параметри|Pick settings\nai_ok|Красных параметров нет, конфигурация сбалансирована.|Червоних параметрів немає, конфігурація збалансована.|No red-zone settings; the configuration is balanced.\nai_red|Высокий риск:|Високий ризик:|High risk:\nai_rec|Подходящий профиль для вашего железа|Підходящий профіль для вашого заліза|Best profile for your hardware\nai_ph|Спросите про риски, профиль, ОЗУ…|Запитайте про ризики, профіль, ОЗП…|Ask about risks, profile, RAM…\nai_hi|Я локальный ИИ-советник. В демо ответы строятся по правилам, в версии на C# подключится локальная модель. Напишите, под какую игру оптимизировать (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), или спросите о рисках и ОЗУ.|Я локальний ШІ-радник. У демо відповіді будуються за правилами, у версії на C# підключиться локальна модель. Запитайте про ризики, профіль або таймінги ОЗП.|I'm a local AI advisor. In the demo answers are rule-based; the C# version will plug in a local model. Ask about risks, profile or RAM timings.\nai_ram|Откройте вкладку «Тайминги ОЗУ»: там три уровня разгона для вашего комплекта.|Відкрийте вкладку «Таймінги ОЗП»: там три рівні розгону для вашого комплекту.|Open the “RAM timings” tab: it has three overclock levels for your kit.\nai_def|Назовите игру (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) или спросите про риски, профиль, ОЗУ.|Спробуйте запитати про ризики, профіль або ОЗП.|Try asking about risks, profile or RAM.");
+D.ru.ai_hi='Я локальный ИИ-советник. В демо ответы строятся по правилам, в версии на C# подключится локальная модель. Напишите, под какую игру оптимизировать (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), или спросите о рисках и ОЗУ. Отвечаю на языке вашего вопроса.';
+D.ua.ai_hi='Я локальний ШІ-радник. У демо відповіді будуються за правилами, у версії на C# підключиться локальна модель. Напишіть, під яку гру оптимізувати (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), або запитайте про ризики та ОЗП. Відповідаю мовою вашого запитання.';
+D.en.ai_hi="I'm a local AI advisor. In the demo answers are rule-based; the C# version will plug in a local model. Tell me which game to optimize for (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), or ask about risks and RAM. I reply in the language of your question.";
+D.ua.ai_def='Назвіть гру (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) або запитайте про ризики, профіль, ОЗП.';
+D.en.ai_def='Name a game (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) or ask about risks, profile, RAM.';
+D.ua.ai_ph="Запитайте про ризики, профіль, ОЗП…";D.en.ai_ph='Ask about risks, profile, RAM…';
+/* ---------- hardware ---------- */
+var HWS=[
+{id:'a1',cpu:'AMD Ryzen 5 7600',cv:'amd',core:'6 / 12',base:3800,boost:5100,cache:'38 MB',sock:'AM5',tdp:65,gpu:'NVIDIA GeForce RTX 4070',gv:'nv',vram:'12 GB GDDR6X',gc:1920,gm:1313,ram:{ty:'DDR5',gb:32,st:2,sp:6000,ven:'Kingston Fury Beast',pf:'EXPO'},mb:'ASUS TUF GAMING B650-PLUS',tier:2,disk:'NVMe 1 TB'},
+{id:'i1',cpu:'Intel Core i5-13600K',cv:'intel',core:'14 (6P+8E) / 20',base:3500,boost:5100,cache:'24 MB',sock:'LGA1700',tdp:125,gpu:'NVIDIA GeForce RTX 4070',gv:'nv',vram:'12 GB GDDR6X',gc:1920,gm:1313,ram:{ty:'DDR5',gb:32,st:2,sp:6000,ven:'Corsair Vengeance',pf:'XMP'},mb:'MSI MAG Z790 TOMAHAWK',tier:3,disk:'NVMe 1 TB'},
+{id:'a2',cpu:'AMD Ryzen 7 5800X3D',cv:'amd',core:'8 / 16',base:3400,boost:4500,cache:'96 MB',sock:'AM4',tdp:105,gpu:'AMD Radeon RX 7800 XT',gv:'rx',vram:'16 GB GDDR6',gc:2430,gm:1125,ram:{ty:'DDR4',gb:32,st:2,sp:3600,ven:'G.Skill Ripjaws V',pf:'XMP'},mb:'GIGABYTE B550 AORUS ELITE',tier:3,disk:'NVMe 1 TB'},
+{id:'i2',cpu:'Intel Core i5-12400',cv:'intel',core:'6 / 12',base:2500,boost:4400,cache:'18 MB',sock:'LGA1700',tdp:65,gpu:'Intel Arc A750',gv:'arc',vram:'8 GB GDDR6',gc:2400,gm:1000,ram:{ty:'DDR4',gb:16,st:2,sp:3200,ven:'Crucial Ballistix',pf:'XMP'},mb:'ASRock B660M Pro RS',tier:1,disk:'SATA SSD 500 GB'}];
+HWS.push({id:'l1',lap:1,cpu:'Intel Core i7-13700H',cv:'intel',core:'14 (6P+8E) / 20',base:2400,boost:5000,cache:'24 MB',sock:'BGA1744',tdp:45,gpu:'NVIDIA GeForce RTX 4060 Laptop',gv:'nv',vram:'8 GB GDDR6',gc:2370,gm:2000,ram:{ty:'DDR5',gb:16,st:2,sp:5200,ven:'Samsung SO-DIMM',pf:'JEDEC'},mb:'Lenovo Legion 5 15IAH',tier:2,disk:'NVMe 512 GB'},{id:'l2',lap:1,cpu:'AMD Ryzen 7 7840HS',cv:'amd',core:'8 / 16',base:3800,boost:5100,cache:'24 MB',sock:'FP7',tdp:35,gpu:'NVIDIA GeForce RTX 4060 Laptop',gv:'nv',vram:'8 GB GDDR6',gc:2370,gm:2000,ram:{ty:'DDR5',gb:16,st:2,sp:5600,ven:'Kingston SO-DIMM',pf:'JEDEC'},mb:'ASUS TUF Gaming A16',tier:2,disk:'NVMe 512 GB'});
+var HW=HWS[0];
+function vis(c){if(!HW)return !c.v;if(c.sec==='gpu'&&HW.gv==='arc')return false;return !c.v||c.v===HW.cv||c.v===HW.gv}
+SEC.splice(1,0,{id:'hardware',ic:'<rect x="4" y="4" width="16" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>'});
+SEC.splice(6,0,{id:'ramt',ic:'<path d="M4 6h16M4 12h16M4 18h16M8 3v6M16 9v6M10 15v6"/>'});
+SEC.forEach(function(x){Object.defineProperty(x,'name',{get:function(){return L('n_'+x.id)}});Object.defineProperty(x,'t',{get:function(){return L('d_'+x.id)}})});
+function hwRail(){var m=HW.ram;return '<div class="hw"><b>'+L('hw_pc')+'</b><div><span>CPU</span><span>'+HW.cpu.replace(/^(AMD|Intel) /,'')+'</span></div><div><span>GPU</span><span>'+HW.gpu.replace(/^(NVIDIA GeForce|AMD Radeon|Intel) /,'')+'</span></div><div><span>RAM</span><span>'+m.gb+' '+L('gb')+' '+m.ty+'</span></div></div>'}
+function kv(h,rows){return '<section class="card"><h3>'+h+'</h3><dl class="kv">'+rows.map(function(r){return '<dt>'+L(r[0])+'</dt><dd>'+r[1]+'</dd>'}).join('')+'</dl></section>'}
+function hdr(id){return '<div class="sechead"><div><h2>'+L('n_'+id)+'</h2><p>'+L('d_'+id)+'</p></div></div>'}
+function hwHTML(){var h=HW,m=h.ram,mh=function(v){return v+' '+L('mhz')};
+  var g=h.gv==='nv'?'NVIDIA':h.gv==='rx'?'AMD':'Intel';
+  return hdr('hardware')+'<div class="gt">'+L('h_cfg')+'</div><div class="profs">'+HWS.filter(function(x){return !!x.lap===(PLAT==='laptop')}).map(function(x){return '<button class="prof" type="button" data-hw="'+x.id+'" aria-pressed="'+(x===h)+'"><b>'+x.cpu.replace(/^(AMD|Intel) /,'')+'</b><span>'+x.gpu.replace(/^(NVIDIA GeForce|AMD Radeon) /,'')+'</span></button>'}).join('')+'</div>'+
+  '<p class="cap">'+L('vp')+': <b>'+(h.cv==='amd'?'AMD':'Intel')+' + '+g+'</b>'+(h.gv==='arc'?' — '+L('unsup'):'')+'</p><div class="hwg">'+
+  kv(L('n_cpu')+' · '+h.cpu,[['cores',h.core],['base',mh(h.base)],['boost',mh(h.boost)],['cache',h.cache],['sock',h.sock],['tdp',h.tdp+' '+L('w')]])+
+  kv(L('n_gpu')+' · '+h.gpu,[['vram',h.vram],['gc',mh(h.gc)],['gm',mh(h.gm)],['sup',h.gv==='arc'?L('nosup'):L('sup')]])+
+  kv('RAM · '+m.ven,[['cap',m.gb+' '+L('gb')],['ty',m.ty],['sp',mh(m.sp)+' ('+m.pf+')'],['stk',m.st]])+
+  kv(L('mb')+' / '+L('dk'),[['mb',h.mb],['dk',h.disk]])+'</div>'}
+/* ---------- RAM timings ---------- */
+var RT={DDR5:{amd:[[5600,'CL36-36-36-76','1.25 V','SoC ~1.20 V'],[6000,'CL30-36-36-76','1.35 V','SoC ~1.25 V'],[6400,'CL32-38-38-80','1.40 V','SoC ~1.30 V']],intel:[[5600,'CL36-36-36-76','1.25 V','VCCSA ~1.15 V'],[6400,'CL32-39-39-102','1.35 V','VCCSA ~1.25 V'],[7200,'CL34-45-45-115','1.40 V','VCCSA ~1.30 V']]},
+ DDR4:{amd:[[3200,'CL16-18-18-36','1.35 V','FCLK 1600'],[3600,'CL16-19-19-38','1.38 V','FCLK 1800'],[3800,'CL16-19-19-38','1.42 V','FCLK 1900']],intel:[[3200,'CL16-18-18-36','1.35 V','VCCSA ~1.15 V'],[3600,'CL16-18-18-36','1.38 V','VCCSA ~1.20 V'],[4000,'CL17-19-19-40','1.42 V','VCCSA ~1.25 V']]}};
+function biosPath(mb){if(PLAT==='laptop')return L('lap_bios');return /ASUS/i.test(mb)?'Ai Tweaker → DRAM Frequency':/MSI/i.test(mb)?'OC → DRAM Frequency':/GIGABYTE/i.test(mb)?'Tweaker → Extreme Memory Profile':'OC Tweaker → DRAM Configuration'}
+function ramHTML(){var m=HW.ram,rows=RT[m.ty][HW.cv],bp=biosPath(HW.mb);
+  return hdr('ramt')+'<p class="cap" style="margin-bottom:12px">'+m.ven+' · '+m.gb+' '+L('gb')+' '+m.ty+'-'+m.sp+' · '+HW.cpu+'</p><div class="card tw"><table class="tbl"><thead><tr><th></th><th>'+L('r_f')+'</th><th>'+L('r_t')+'</th><th>'+L('r_v')+'</th><th>'+L('r_i')+'</th><th>'+L('r_b')+'</th></tr></thead><tbody>'+
+  rows.map(function(r,i){var ok=r[0]<=m.sp,z=ok?0:i===1?1:2;return '<tr><td><span class="chip r'+z+'">'+L('t'+i)+'</span><div class="sub">'+L(ok?'r_ok':'r_over')+'</div></td><td class="m">~'+r[0]+' MT/s</td><td class="m">'+r[1]+'</td><td class="m">~'+r[2]+'</td><td class="m">'+r[3]+'</td><td>'+bp+'</td></tr>'}).join('')+'</tbody></table></div><p class="cap" style="margin-top:12px">'+L('r_note')+(PLAT==='laptop'?' '+L('lap_ram'):'')+'</p>'}
+function page(id){if(id==='overview')return ovHTML();if(id==='hardware')return hwHTML();if(id==='ramt')return ramHTML();
+  if(id==='gpu'&&HW.gv==='arc')return hdr('gpu')+'<div class="card">'+L('unsup')+'</div>';return secHTML(id)}
+function setHW(id){HW=HWS.filter(function(x){return x.id===id})[0];CTL.forEach(function(c){if(c.v)S[c.id]=A[c.id]});prof=profOf();buildRail();go(cur)}
+/* ---------- AI advisor (demo, rule based) ---------- */
+function reds(){return scored().filter(function(c){return isActive(c)&&(c.type==='toggle'?c.risk===2:zoneOf(tOf(c,S[c.id]))===2)})}
+function recP(){return HW.tier>=2?'game':'safe'}
+function pName(id){return PROF.filter(function(p){return p.id===id})[0].name}
+function aiLine(){var r=reds();return L('ai_rec')+': <b>'+pName(recP())+'</b>. '+(r.length?L('ai_red')+' '+r.map(function(c){return c.name}).join(', ')+'.':L('ai_ok'))}
+function aiCard(){return '<section class="card span7"><h3>'+L('ai_t')+'<span class="tag">'+L('ai_tag')+'</span></h3><div class="cap" id="aiTxt" style="margin:0 0 12px"></div><button class="btn sm" id="aiPick" type="button">'+L('ai_pick')+'</button></section>'}
+function aiUpd(){var e=$('#aiTxt');if(e)e.innerHTML=aiLine()}
+function aiPick(){var p=recP(),pr=preset(p);Object.keys(pr).forEach(function(k){if(!BY[k].guard)S[k]=pr[k]});prof=p;go(cur);toast(L('ai_rec')+': '+pName(p))}
+function say(t,u){var d=document.createElement('div');if(u)d.className='u';d.innerHTML=t;$('#cl').appendChild(d);$('#cl').scrollTop=1e5}
+var GM=[
+{r:/warzone|варзон/,n:'CoD Warzone',t:1,ig:'Режим: полноэкранный. V-Sync: выкл. NVIDIA Reflex: вкл + Boost. Texture Resolution: Normal/Low. Shadow Map Resolution и Cache Spot Shadows: низкие/выкл. Particle Quality: Low. Tessellation, Ambient Occlusion, Screen Space Reflections: выкл. Depth of Field, Motion Blur (оба), Film Grain: выкл/0. FOV: 105–120. Anisotropic Filtering: High (почти бесплатно).'},
+{r:/call of duty|(^| )cod( |$)|колд/,n:'Call of Duty',t:1,ig:'Режим: полноэкранный. V-Sync: выкл. Reflex: вкл + Boost. Тени, частицы, тесселяция: Low/выкл. Ambient Occlusion и отражения экранного пространства: выкл. Motion Blur, Depth of Field, Film Grain: выкл. FOV: 100–120. Лимит FPS: выше частоты монитора.'},
+{r:/cs2|csgo|cs go|контр|counter|(^| )кс( |$)/,n:'CS2',t:0,ig:'Режим: полноэкранный, разрешение нативное (4:3 растянутое по желанию, даёт больше FPS). Multicore Rendering: вкл. Тени: Low/Medium. Model/Texture Detail: Low/Medium (текстуры по объёму VRAM). Shader Detail и Particle Detail: Low. Ambient Occlusion: выкл. High Dynamic Range: Performance. MSAA: 4x или выкл. V-Sync: выкл. NVIDIA Reflex/Anti-Lag: вкл. Лимит FPS: 0 (без лимита).'},
+{r:/apex|апекс/,n:'Apex Legends',t:1,ig:'Режим: полноэкранный, V-Sync: выкл. Adaptive Resolution FPS Target: 0. Anti-Aliasing: TSAA или None. Texture Streaming Budget: по VRAM (на 8 ГБ — High). Anisotropic: 4x–8x. Ambient Occlusion Quality, Volumetric Lighting, Dynamic Spot Shadows: Disabled. Sun Shadow Coverage и Detail: Low. Spot Shadow Detail: Disabled. Effects Detail, Impact Marks, Ragdolls: Low. Model Detail: High (лучше видны враги). FOV: 100–110. Reflex: Enabled + Boost. Параметр запуска: +fps_max unlimited.'},
+{r:/fortnite|фортнайт/,n:'Fortnite',t:1,ig:'Режим рендера: Performance (режим производительности) — лучший FPS и отклик. 3D Resolution: 100%. View Distance: Far (видно врагов издалека). Shadows, Global Illumination, Reflections: выкл. Anti-Aliasing: выкл или TAA Low. Textures: Medium (по VRAM). Effects и Post Processing: Low. V-Sync: выкл. Reflex: On + Boost. Nanite и Lumen: выкл.'},
+{r:/dota|дота/,n:'Dota 2',t:0,ig:'Графический API: DirectX 11 (Vulkan на слабых CPU). Render Quality: 100%. Shadow Quality: Low/Medium. Texture: Medium. Effects: Low. Ambient Occlusion, Fog, Bloom: выкл. FXAA/MSAA: выкл или 2x. V-Sync: выкл. Лимит FPS: выше частоты монитора.'},
+{r:/league|(^| )lol( |$)|(^| )лол( |$)|лига/,n:'League of Legends',t:0,ig:'Разрешение: нативное. Character и Environment Quality: Low/Medium. Shadows: Off. Effects Quality: Low. Anti-Aliasing: выкл. Frame Rate Cap: Uncapped. Wait for V-Sync: выкл. Hide Eye Candy: вкл. Режим окна: полноэкранный (Fullscreen).'},
+{r:/pubg|пабг|пубг/,n:'PUBG',t:1,ig:'API: DirectX 11. Screen Scale: 100. Anti-Aliasing: Low/Medium. Post-Processing: Very Low. Shadows: Very Low. Textures: Medium/High (по VRAM). Effects: Very Low. Foliage: Very Low (меньше кустов — лучше видны враги). View Distance: Medium/High. Motion Blur и V-Sync: выкл. Лимит FPS: Unlimited.'},
+{r:/valorant|валорант/,n:'Valorant',t:0,ig:'Multithreaded Rendering: вкл. Materials, Textures, Detail, UI Quality: Low. Vignette, Bloom, Distortion, Cast Shadows: выкл. Anti-Aliasing: MSAA 2x или выкл. Anisotropic: 1x–4x. Improve Clarity: выкл. V-Sync: выкл. NVIDIA Reflex: On + Boost. Лимит FPS: выкл.'}];
+var GI={"CoD Warzone": ["Режим: повноекранний. V-Sync: вимк. NVIDIA Reflex: увімк + Boost. Texture Resolution: Normal/Low. Shadow Map Resolution і Cache Spot Shadows: низькі/вимк. Particle Quality: Low. Tessellation, Ambient Occlusion, Screen Space Reflections: вимк. Depth of Field, Motion Blur (обидва), Film Grain: вимк/0. FOV: 105–120. Anisotropic Filtering: High (майже безкоштовно).", "Mode: fullscreen. V-Sync: off. NVIDIA Reflex: on + Boost. Texture Resolution: Normal/Low. Shadow Map Resolution and Cache Spot Shadows: low/off. Particle Quality: Low. Tessellation, Ambient Occlusion, Screen Space Reflections: off. Depth of Field, Motion Blur (both), Film Grain: off/0. FOV: 105–120. Anisotropic Filtering: High (almost free)."], "Call of Duty": ["Режим: повноекранний. V-Sync: вимк. Reflex: увімк + Boost. Тіні, частинки, тесселяція: Low/вимк. Ambient Occlusion і відбиття екранного простору: вимк. Motion Blur, Depth of Field, Film Grain: вимк. FOV: 100–120. Ліміт FPS: вище за частоту монітора.", "Mode: fullscreen. V-Sync: off. Reflex: on + Boost. Shadows, particles, tessellation: Low/off. Ambient Occlusion and screen-space reflections: off. Motion Blur, Depth of Field, Film Grain: off. FOV: 100–120. FPS cap: above your monitor refresh rate."], "CS2": ["Режим: повноекранний, роздільна здатність нативна (4:3 розтягнуте за бажанням, дає більше FPS). Multicore Rendering: увімк. Тіні: Low/Medium. Model/Texture Detail: Low/Medium (текстури за обсягом VRAM). Shader Detail і Particle Detail: Low. Ambient Occlusion: вимк. High Dynamic Range: Performance. MSAA: 4x або вимк. V-Sync: вимк. NVIDIA Reflex/Anti-Lag: увімк. Ліміт FPS: 0 (без ліміту).", "Mode: fullscreen, native resolution (stretched 4:3 optional, gives more FPS). Multicore Rendering: on. Shadows: Low/Medium. Model/Texture Detail: Low/Medium (textures depending on VRAM). Shader Detail and Particle Detail: Low. Ambient Occlusion: off. High Dynamic Range: Performance. MSAA: 4x or off. V-Sync: off. NVIDIA Reflex/Anti-Lag: on. FPS cap: 0 (unlimited)."], "Apex Legends": ["Режим: повноекранний, V-Sync: вимк. Adaptive Resolution FPS Target: 0. Anti-Aliasing: TSAA або None. Texture Streaming Budget: за VRAM (на 8 ГБ — High). Anisotropic: 4x–8x. Ambient Occlusion Quality, Volumetric Lighting, Dynamic Spot Shadows: Disabled. Sun Shadow Coverage і Detail: Low. Spot Shadow Detail: Disabled. Effects Detail, Impact Marks, Ragdolls: Low. Model Detail: High (краще видно ворогів). FOV: 100–110. Reflex: Enabled + Boost. Параметр запуску: +fps_max unlimited.", "Mode: fullscreen, V-Sync: off. Adaptive Resolution FPS Target: 0. Anti-Aliasing: TSAA or None. Texture Streaming Budget: by VRAM (High on 8 GB). Anisotropic: 4x–8x. Ambient Occlusion Quality, Volumetric Lighting, Dynamic Spot Shadows: Disabled. Sun Shadow Coverage and Detail: Low. Spot Shadow Detail: Disabled. Effects Detail, Impact Marks, Ragdolls: Low. Model Detail: High (enemies are easier to see). FOV: 100–110. Reflex: Enabled + Boost. Launch option: +fps_max unlimited."], "Fortnite": ["Режим рендера: Performance (режим продуктивності) — найкращий FPS і відгук. 3D Resolution: 100%. View Distance: Far (видно ворогів здалеку). Shadows, Global Illumination, Reflections: вимк. Anti-Aliasing: вимк або TAA Low. Textures: Medium (за VRAM). Effects і Post Processing: Low. V-Sync: вимк. Reflex: On + Boost. Nanite і Lumen: вимк.", "Rendering mode: Performance — best FPS and response. 3D Resolution: 100%. View Distance: Far (enemies visible from afar). Shadows, Global Illumination, Reflections: off. Anti-Aliasing: off or TAA Low. Textures: Medium (depending on VRAM). Effects and Post Processing: Low. V-Sync: off. Reflex: On + Boost. Nanite and Lumen: off."], "Dota 2": ["Графічний API: DirectX 11 (Vulkan на слабких CPU). Render Quality: 100%. Shadow Quality: Low/Medium. Texture: Medium. Effects: Low. Ambient Occlusion, Fog, Bloom: вимк. FXAA/MSAA: вимк або 2x. V-Sync: вимк. Ліміт FPS: вище за частоту монітора.", "Graphics API: DirectX 11 (Vulkan on weak CPUs). Render Quality: 100%. Shadow Quality: Low/Medium. Texture: Medium. Effects: Low. Ambient Occlusion, Fog, Bloom: off. FXAA/MSAA: off or 2x. V-Sync: off. FPS cap: above your monitor refresh rate."], "League of Legends": ["Роздільна здатність: нативна. Character і Environment Quality: Low/Medium. Shadows: Off. Effects Quality: Low. Anti-Aliasing: вимк. Frame Rate Cap: Uncapped. Wait for V-Sync: вимк. Hide Eye Candy: увімк. Режим вікна: повноекранний (Fullscreen).", "Resolution: native. Character and Environment Quality: Low/Medium. Shadows: Off. Effects Quality: Low. Anti-Aliasing: off. Frame Rate Cap: Uncapped. Wait for V-Sync: off. Hide Eye Candy: on. Window mode: Fullscreen."], "PUBG": ["API: DirectX 11. Screen Scale: 100. Anti-Aliasing: Low/Medium. Post-Processing: Very Low. Shadows: Very Low. Textures: Medium/High (за VRAM). Effects: Very Low. Foliage: Very Low (менше кущів — краще видно ворогів). View Distance: Medium/High. Motion Blur і V-Sync: вимк. Ліміт FPS: Unlimited.", "API: DirectX 11. Screen Scale: 100. Anti-Aliasing: Low/Medium. Post-Processing: Very Low. Shadows: Very Low. Textures: Medium/High (depending on VRAM). Effects: Very Low. Foliage: Very Low (fewer bushes — enemies easier to see). View Distance: Medium/High. Motion Blur and V-Sync: off. FPS cap: Unlimited."], "Valorant": ["Multithreaded Rendering: увімк. Materials, Textures, Detail, UI Quality: Low. Vignette, Bloom, Distortion, Cast Shadows: вимк. Anti-Aliasing: MSAA 2x або вимк. Anisotropic: 1x–4x. Improve Clarity: вимк. V-Sync: вимк. NVIDIA Reflex: On + Boost. Ліміт FPS: вимк.", "Multithreaded Rendering: on. Materials, Textures, Detail, UI Quality: Low. Vignette, Bloom, Distortion, Cast Shadows: off. Anti-Aliasing: MSAA 2x or off. Anisotropic: 1x–4x. Improve Clarity: off. V-Sync: off. NVIDIA Reflex: On + Boost. FPS cap: off."]};
+
+var GL={
+ru:{why1:'тяжёлая игра, нагружает и CPU, и GPU: нужен баланс частот, ровные 1% low и меньше подлагов при подгрузке эффектов',why0:'упор в процессор и отклик: важны стабильный фреймтайм и малая задержка ввода, видеокарта почти не ограничивает',pc:'Ваш ПК',arc:'Видеокарты Intel пока не поддерживаются, GPU-параметры пропущены.',low:'Конфигурация скромная: разгонные параметры не трогаю, только безопасные твики.',lap:'Ноутбук: пределы ужесточены, разгон ограничен охлаждением.',set:'Я выставил параметров: ',green:' (все в зелёной зоне). Они <b>ещё не применены</b>: проверьте и нажмите «Применить».',none:'Все нужные параметры уже стоят как надо.',ig:'Настройки в игре для максимума FPS',hint:'Это ориентир: итоговый FPS зависит от игры, патча и драйвера.'},
+ua:{why1:'важка гра, навантажує і CPU, і GPU: потрібен баланс частот, рівні 1% low і менше підлагів під час підвантаження ефектів',why0:'упор у процесор і відгук: важливі стабільний фреймтайм і мала затримка вводу, відеокарта майже не обмежує',pc:'Ваш ПК',arc:'Відеокарти Intel поки не підтримуються, GPU-параметри пропущено.',low:'Конфігурація скромна: розгінні параметри не чіпаю, лише безпечні твіки.',lap:'Ноутбук: межі посилено, розгін обмежений охолодженням.',set:'Я виставив параметрів: ',green:' (усі в зеленій зоні). Вони <b>ще не застосовані</b>: перевірте й натисніть «Застосувати».',none:'Усі потрібні параметри вже стоять як слід.',ig:'Налаштування в грі для максимуму FPS',hint:'Це орієнтир: підсумковий FPS залежить від гри, патча та драйвера.'},
+en:{why1:'a demanding game that loads both CPU and GPU: it needs balanced clocks, steady 1% lows and fewer stutters when effects load',why0:'CPU-bound and response-sensitive: stable frametime and low input latency matter, the GPU is rarely the limit',pc:'Your PC',arc:'Intel GPUs are not supported yet, GPU settings were skipped.',low:'Modest configuration: I leave overclock settings alone and only apply safe tweaks.',lap:'Laptop: limits are tightened, overclocking is capped by cooling.',set:'Settings I changed: ',green:' (all in the green zone). They are <b>not applied yet</b>: review and press "Apply".',none:'All the needed settings are already in place.',ig:'In-game settings for maximum FPS',hint:'This is a guideline: final FPS depends on the game, patch and driver.'}};
+function detLang(x){if(/[ыэъё]/.test(x))return'ru';if(/[іїєґ]/.test(x)||/привіт|будь ласка|ризик|який|яка|які|налаштув|підбер|пам'ят|ігр|потрібн|допомож|найкращ/.test(x))return'ua';if(/[а-я]/.test(x))return'ru';if(/[a-z]/.test(x))return'en';return LG}
+function withLang(l,fn){var o=LG;LG=l;try{return fn()}finally{LG=o}}
+function gameAsk(x,ql){var g=GM.filter(function(m){return m.r.test(x)})[0];if(!g)return false;
+  var P=['plan','gamemode','dvr','fso','timer','park','nagle','nthr','upd','idx','focus','standby','tmp','lowlat','refl','antil'].concat(g.t?['shader','gpm','kill']:[]);
+  var lp=PLAT==='laptop',hi=HW.tier>=2&&!lp,SL={prio:.5,minst:.45,bgcap:.4,gpow:hi?.3:0,gcore:hi?.2:0,co:hi?.2:0,uvi:.2,pl2:HW.tier>=3&&!lp?.3:0},it=[],G=GL[ql],out=[];
+  withLang(ql,function(){
+    function ch(c,nv){if(!c||!vis(c)||S[c.id]===nv)return;it.push('<br>• <b>'+c.name+'</b>: '+(c.type==='toggle'?R('выкл → вкл'):fmt(c,S[c.id])+' → '+fmt(c,nv))+'<br>'+c.sub);S[c.id]=nv}
+    P.forEach(function(id){ch(BY[id],true)});Object.keys(SL).forEach(function(id){var c=BY[id];if(c)ch(c,valT(c,SL[id]))});
+    var m=HW.ram,ap=ql==='en'?'Apply':ql==='ua'?'Застосувати':'Применить';
+    out.push('<b>'+g.n+'</b>: '+(g.t?G.why1:G.why0)+'.<br>'+G.pc+': '+HW.cpu+' ('+HW.core+'), '+HW.gpu+', '+m.gb+' '+L('gb')+' '+m.ty+'-'+m.sp+'.'+(HW.gv==='arc'?'<br>'+G.arc:'')+(HW.tier<2?'<br>'+G.low:'')+(lp?'<br>'+G.lap:'')+'<br><br>'+(it.length?G.set+it.length+G.green+it.join(''):G.none));
+    out.push('<b>'+G.ig+'</b><br>'+(ql==='ru'?g.ig:GI[g.n][ql==='ua'?0:1])+'<br><br>'+G.hint)});
+  prof='custom';go(cur);out.forEach(function(t){say(t)});return true}
+function ask(q){var x=q.toLowerCase(),ql=detLang(x);say(q.replace(/</g,'&lt;'),1);if(gameAsk(x,ql))return;
+  say(withLang(ql,function(){return /риск|ризик|risk|опас|небезп|danger/.test(x)?aiLine():/проф|prof|подбер|підбер|best|рек/.test(x)?L('ai_rec')+': <b>'+pName(recP())+'</b>':/озу|озп|ram|тайм|tim|памят|пам'ят/.test(x)?L('ai_ram'):L('ai_def')}))}
+$('#aiBtn').addEventListener('click',function(){var c=$('#chat');c.hidden=!c.hidden;if(!c.hidden&&!$('#cl').children.length)say(L('ai_hi'));if(!c.hidden)$('#cq').focus()});
+function sendQ(){var i=$('#cq'),v=i.value.trim();if(v){i.value='';ask(v)}}
+$('#cs').addEventListener('click',sendQ);$('#cq').addEventListener('keydown',function(e){if(e.key==='Enter')sendQ()});
+/* ---------- undo history ---------- */
+var H=[];
+T("undo|Вернуть как было|Повернути як було|Restore previous\nundo_t|Состояние до последнего применения восстановлено. Осталось шагов отката: |Стан до останнього застосування відновлено. Залишилось кроків відкату: |State before the last apply restored. Undo steps left: ");
+$('#btnUndo').addEventListener('click',function(){if(!H.length)return;var p=H.pop();S=Object.assign({},p);A=Object.assign({},p);prof=profOf();go(cur);toast(L('undo_t')+H.length)});
+/* ---------- baseline backup (first launch) ---------- */
+T("bk_t|Резервная копия исходных настроек|Резервна копія вихідних налаштувань|Backup of original settings\nbk_tag|создаётся один раз|створюється один раз|created once\nbk_d|Создана при первом запуске, до любых изменений. Хранится в папке приложения, пока вы сами её не удалите: вернуться к исходным настройкам можно в любой момент, даже после закрытия приложения или перезагрузки ПК.|Створена під час першого запуску, до будь-яких змін. Зберігається в папці застосунку, доки ви самі її не видалите: повернутися до вихідних налаштувань можна будь-коли, навіть після закриття застосунку чи перезавантаження ПК.|Created on first launch, before any change. Stored in the app folder until you delete it yourself: you can return to the original settings at any time, even after closing the app or rebooting the PC.\nbk_when|Создана|Створена|Created\nbk_file|Файл|Файл|File\nbk_rest|Вернуть исходные настройки|Повернути вихідні налаштування|Restore original settings\nbk_open|Открыть папку|Відкрити папку|Open folder\nbk_del|Удалить копию|Видалити копію|Delete backup\nbk_sure|Точно удалить?|Точно видалити?|Really delete?\nbk_new|Создать копию сейчас|Створити копію зараз|Create backup now\nbk_none|Копии нет. В приложении она создастся при следующем запуске из текущего состояния ПК.|Копії немає. У застосунку вона створиться під час наступного запуску з поточного стану ПК.|No backup. The app will create one on next launch from the current PC state.\nbk_un|При удалении приложения установщик предложит сначала вернуть исходные настройки.|Під час видалення застосунку інсталятор запропонує спершу повернути вихідні налаштування.|When uninstalling, the installer offers to restore the original settings first.\nbk_cr|Создана резервная копия исходных настроек|Створено резервну копію вихідних налаштувань|Backup of original settings created\nbk_done|Исходные настройки восстановлены|Вихідні налаштування відновлено|Original settings restored\nbk_opened|В приложении откроется папка с резервной копией (демо)|У застосунку відкриється папка з резервною копією (демо)|The app will open the backup folder (demo)\nbk_deleted|Резервная копия удалена|Резервну копію видалено|Backup deleted");
+var BK=null,bkNew=false,bkArm=0;
+function bkSave(){try{if(BK)localStorage.setItem('corvite_bk',JSON.stringify(BK));else localStorage.removeItem('corvite_bk')}catch(e){}}
+function bkMake(){BK={t:new Date().toISOString(),s:Object.assign({},A)};bkSave()}
+try{var raw=localStorage.getItem('corvite_bk');BK=raw?JSON.parse(raw):null}catch(e){BK=null}
+if(!BK){bkMake();bkNew=true}
+function bkCard(){var h='<section class="card span12"><h3>'+L('bk_t')+'<span class="tag">'+L('bk_tag')+'</span></h3>';
+  if(BK){var d=new Date(BK.t).toLocaleString(LG==='en'?'en-GB':LG==='ua'?'uk-UA':'ru-RU');
+    h+='<p class="cap" style="margin:0 0 10px">'+L('bk_d')+'</p><div class="bkp">'+L('bk_when')+': '+d+'<br>'+L('bk_file')+': Corvite&#92;Backups&#92;baseline.json</div><div class="bkr"><button class="btn primary sm" type="button" data-bk="restore">'+L('bk_rest')+'</button><button class="btn sm" type="button" data-bk="open">'+L('bk_open')+'</button><button class="btn sm" type="button" data-bk="del">'+L('bk_del')+'</button></div><p class="cap" style="margin:12px 0 0">'+L('bk_un')+'</p>'}
+  else h+='<p class="cap" style="margin:0 0 10px">'+L('bk_none')+'</p><button class="btn sm" type="button" data-bk="new">'+L('bk_new')+'</button>';
+  return h+'</section>'}
+$('#main').addEventListener('click',function(e){var b=e.target.closest('[data-bk]');if(!b)return;var a=b.dataset.bk;
+  if(a==='restore'&&BK){H.push(Object.assign({},A));S=Object.assign({},BK.s);A=Object.assign({},BK.s);prof=profOf();go(cur);toast(L('bk_done'))}
+  else if(a==='open')toast(L('bk_opened'));
+  else if(a==='new'){bkMake();go(cur);toast(L('bk_cr'))}
+  else if(a==='del'){if(!bkArm){bkArm=1;b.textContent=L('bk_sure');setTimeout(function(){bkArm=0;if(b.isConnected)b.textContent=L('bk_del')},4000)}else{bkArm=0;BK=null;bkSave();go(cur);toast(L('bk_deleted'))}}});
+if(bkNew)setTimeout(function(){toast(L('bk_cr'))},700);
+/* ---------- platform (PC / laptop) ---------- */
+function T2(x){x.split('\n').forEach(function(l){var a=l.split('|');if(a.length<4)return;D.en[a[0]]=a[1];D.ru[a[0]]=a[2];D.ua[a[0]]=a[3]})}
+T2("pl_t|Select your platform|Выберите тип устройства|Оберіть тип пристрою\npl_d|Corvite adapts its limits and risk scales to your device.|Corvite подстроит пределы и шкалы риска под ваше устройство.|Corvite підлаштує межі та шкали ризику під ваш пристрій.\npl_pc|PC|ПК|ПК\npl_lap|Laptop|Ноутбук|Ноутбук\npl_pcd|Desktop: full limits, depends on your cooling|Настольный: полные пределы, зависят от вашего охлаждения|Настільний: повні межі, залежать від вашого охолодження\npl_lapd|Laptop: stricter limits and its own risk scale|Ноутбук: более строгие пределы и своя шкала риска|Ноутбук: суворіші межі та власна шкала ризику\npl_ok|Confirm|Подтвердить|Підтвердити\npl_back|Back|Назад|Назад\npl_cf|I understand the risks, continue|Я понимаю риски, продолжить|Я розумію ризики, продовжити\nwp_t|Before you continue|Прежде чем продолжить|Перш ніж продовжити\nwp_d|Changing system and hardware settings can cause instability, overheating, crashes, data loss or a shorter component lifespan. Corvite saves a backup of your original settings and can roll everything back, but it cannot guarantee safety on every PC. Overclocking is at your own risk.|Изменение системных настроек и параметров железа может вызвать нестабильность, перегрев, вылеты, потерю данных или сокращение срока службы компонентов. Corvite сохраняет резервную копию исходных настроек и может вернуть всё назад, но не может гарантировать безопасность на любом ПК. Разгон выполняется на ваш риск.|Зміна системних налаштувань і параметрів заліза може спричинити нестабільність, перегрів, збої, втрату даних або скорочення строку служби компонентів. Corvite зберігає резервну копію вихідних налаштувань і може повернути все назад, але не може гарантувати безпеку на будь-якому ПК. Розгін виконується на ваш ризик.\nwl_t|Laptop warning|Предупреждение для ноутбука|Попередження для ноутбука\nwl_d|Laptops have limited cooling and power delivery, and their components are often power-limited by the manufacturer. Heavy overclocking can cause overheating, throttling, battery wear or permanent damage, and may void the warranty. For laptops Corvite narrows the sliders and uses a stricter risk scale. Keep the charger connected, watch temperatures and avoid the red zone.|У ноутбуков ограниченное охлаждение и питание, а компоненты часто урезаны производителем по мощности. Сильный разгон может привести к перегреву, троттлингу, износу батареи или необратимому повреждению и может лишить гарантии. Для ноутбуков Corvite сужает ползунки и использует более строгую шкалу риска. Держите зарядку подключённой, следите за температурой и избегайте красной зоны.|Ноутбуки мають обмежене охолодження та живлення, а компоненти часто урізані виробником за потужністю. Сильний розгін може призвести до перегріву, тротлінгу, зносу батареї або безповоротного пошкодження й може позбавити гарантії. Для ноутбуків Corvite звужує повзунки та використовує суворішу шкалу ризику. Тримайте зарядку підключеною, стежте за температурою й уникайте червоної зони.\nlap_bios|Usually not available in a laptop BIOS|Обычно недоступно в BIOS ноутбука|Зазвичай недоступно в BIOS ноутбука\nlap_ram|Laptops often lock memory settings and use SO-DIMM, so these values may be unavailable. Do not force them.|Ноутбуки часто блокируют настройки памяти и используют SO-DIMM, поэтому эти значения могут быть недоступны. Не форсируйте их.|Ноутбуки часто блокують налаштування пам'яті й використовують SO-DIMM, тому ці значення можуть бути недоступні. Не форсуйте їх.");
+var PLAT='pc',PK=null,PS=0,OC=['ppt','boost','tlim','gpow','gcore','gmem','gtemp','co','pl2','uvi'];
+function inr(v){['.titlebar','.body','.actionbar'].forEach(function(s){var e=$(s);if(v)e.setAttribute('inert','');else e.removeAttribute('inert')})}
+function setPlat(p){PLAT=p;CTL.forEach(function(c){if(OC.indexOf(c.id)<0)return;if(c.max0==null)c.max0=c.max;c.max=p==='laptop'?c.min+Math.max(c.step,Math.floor((c.max0-c.min)*.5/c.step)*c.step):c.max0;[S,A,BK&&BK.s].forEach(function(o){if(o&&o[c.id]>c.max)o[c.id]=c.max})});
+  HW=HWS.filter(function(x){return !!x.lap===(p==='laptop')})[0];prof=profOf();H=[];var b=$('#platBtn');b.hidden=false;b.dataset.i=p==='laptop'?'pl_lap':'pl_pc';buildRail();applyLang();go(cur)}
+function platR(){var d=$('#plat .pdlg'),lap=PK==='laptop',h;
+  if(PS===0){d.className='pdlg';h='<h3 id="plT">'+L('pl_t')+'</h3><p class="cap">'+L('pl_d')+'</p><div class="pchoice">'+['pc','laptop'].map(function(k){return '<button class="prof" type="button" data-pk="'+k+'" aria-pressed="'+(PK===k)+'"><b>'+L(k==='pc'?'pl_pc':'pl_lap')+'</b><span>'+L(k==='pc'?'pl_pcd':'pl_lapd')+'</span></button>'}).join('')+'</div><div class="dact"><button class="btn primary" type="button" id="plOk"'+(PK?'':' disabled')+'>'+L('pl_ok')+'</button></div>'}
+  else{d.className='pdlg'+(lap?' w':'');h='<h3 id="plT">'+L(lap?'wl_t':'wp_t')+'</h3><p class="cap">'+L(lap?'wl_d':'wp_d')+'</p><div class="dact" style="margin-top:16px"><button class="btn" type="button" id="plBk">'+L('pl_back')+'</button><button class="btn primary" type="button" id="plOk">'+L('pl_cf')+'</button></div>'}
+  d.innerHTML=h;var f=$('#plOk',d);if(f&&!f.disabled)f.focus()}
+function platOpen(){PS=0;$('#plat').hidden=false;inr(true);platR()}
+$('#plat').addEventListener('click',function(e){var k=e.target.closest('[data-pk]');if(k){PK=k.dataset.pk;platR();return}
+  if(e.target.id==='plBk'){PS=0;platR();return}
+  if(e.target.id==='plOk'){if(PS===0){PS=1;platR()}else{$('#plat').hidden=true;inr(false);setPlat(PK)}}});
+$('#platBtn').addEventListener('click',function(){PK=PLAT;platOpen()});
+platOpen();
+/* ---------- language ---------- */
+function applyLang(){document.documentElement.lang=LG==='ua'?'uk':LG;
+  document.querySelectorAll('[data-i]').forEach(function(e){e.textContent=L(e.dataset.i)});
+  document.querySelectorAll('[data-l]').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.l===LG))});
+  $('#cq').placeholder=L('ai_ph');$('#rail').setAttribute('aria-label',R('Разделы'));if(!$('#cl').children.length){}}
+document.querySelector('.lg').addEventListener('click',function(e){var b=e.target.closest('[data-l]');if(!b)return;LG=b.dataset.l;buildRail();applyLang();go(cur);var cl=$('#cl');if(cl.children.length){cl.innerHTML='';say(L('ai_hi'))}});
+
+buildRail();applyLang();go('overview');
+})();
+</script>
+
+</body></html>

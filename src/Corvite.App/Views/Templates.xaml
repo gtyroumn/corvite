@@ -1,0 +1,406 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Corvite.App.ViewModels"
+                    xmlns:loc="clr-namespace:Corvite.App.Localization">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Theming/Theme.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- ===== (i) tooltip content (TZ section 6) ===== -->
+    <DataTemplate x:Key="TipTemplate" DataType="{x:Type vm:TweakVm}">
+        <StackPanel>
+            <TextBlock Text="{Binding Title}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="14" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding Desc}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,5,0,0"/>
+            <Border BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Margin="0,11,0,0" Padding="0,10,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="14"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/><RowDefinition/><RowDefinition/><RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="FPS" Foreground="{StaticResource Fg3}" FontSize="10" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,3"/>
+                    <TextBlock Grid.Column="2" Text="{Binding TipFps}" Foreground="{StaticResource Go}" FontFamily="{StaticResource MonoFont}" FontSize="12" TextWrapping="Wrap" Margin="0,3"/>
+                    <TextBlock Grid.Row="1" Text="{loc:T tip.stab}" Foreground="{StaticResource Fg3}" FontSize="10" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,3"/>
+                    <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding TipStab}" FontFamily="{StaticResource MonoFont}" FontSize="12" TextWrapping="Wrap" Margin="0,3"/>
+                    <TextBlock Grid.Row="2" Text="{loc:T tip.lat}" Foreground="{StaticResource Fg3}" FontSize="10" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,3"/>
+                    <TextBlock Grid.Row="2" Grid.Column="2" Text="{Binding TipLat}" FontFamily="{StaticResource MonoFont}" FontSize="12" TextWrapping="Wrap" Margin="0,3"/>
+                    <TextBlock Grid.Row="3" Text="{loc:T tip.temp}" Foreground="{StaticResource Fg3}" FontSize="10" FontWeight="SemiBold" VerticalAlignment="Center" Margin="0,3"/>
+                    <TextBlock Grid.Row="3" Grid.Column="2" Text="{Binding TipTemp}" FontFamily="{StaticResource MonoFont}" FontSize="12" TextWrapping="Wrap" Margin="0,3"/>
+                </Grid>
+            </Border>
+            <Border Visibility="{Binding TipShowToggleChip, Converter={StaticResource B2V}}" HorizontalAlignment="Left" Margin="0,10,0,0"
+                    BorderBrush="{Binding ChipBrush}" BorderThickness="1" CornerRadius="10" Padding="8,2">
+                <TextBlock Text="{Binding ChipText}" Foreground="{Binding ChipBrush}" Style="{StaticResource ChipText}"/>
+            </Border>
+            <TextBlock Visibility="{Binding TipShowSliderWarn, Converter={StaticResource B2V}}" Text="{Binding TipSliderWarn}"
+                       Foreground="{StaticResource Warn}" FontSize="11.5" TextWrapping="Wrap" Margin="0,10,0,0"/>
+            <TextBlock Visibility="{Binding HasNote, Converter={StaticResource B2V}}" Text="{Binding Note}"
+                       Foreground="{StaticResource Warn}" FontSize="11.5" TextWrapping="Wrap" Margin="0,8,0,0"/>
+            <TextBlock Text="{Binding TipFoot}" Foreground="{StaticResource Fg3}" FontSize="11.5" TextWrapping="Wrap" Margin="0,10,0,0"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- (i) badge -->
+    <ControlTemplate x:Key="InfoBadge">
+        <Border Width="16" Height="16" CornerRadius="8" BorderThickness="1.5" BorderBrush="{StaticResource Fg3}"
+                Background="Transparent" Margin="8,0,0,0" Cursor="Help"
+                ToolTipService.InitialShowDelay="120" ToolTipService.ShowDuration="60000" ToolTipService.Placement="Bottom">
+            <Border.ToolTip>
+                <ToolTip Style="{StaticResource TipStyle}" ContentTemplate="{StaticResource TipTemplate}"
+                         Content="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}"/>
+            </Border.ToolTip>
+            <TextBlock Text="i" FontFamily="{StaticResource MonoFont}" FontWeight="Bold" FontSize="10"
+                       Foreground="{StaticResource Fg2}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+    </ControlTemplate>
+
+    <!-- ===== Toggle row ===== -->
+    <DataTemplate x:Key="ToggleRow" DataType="{x:Type vm:TweakVm}">
+        <Border IsEnabled="{Binding IsEnabled}" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="18,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width="7" Height="7" Fill="{StaticResource Go}" Margin="0,0,9,0"
+                                 Visibility="{Binding IsChanged, Converter={StaticResource B2V}}"/>
+                        <TextBlock Text="{Binding Title}" FontWeight="Medium" FontSize="14.5" VerticalAlignment="Center"/>
+                        <Control Template="{StaticResource InfoBadge}" Focusable="False"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding Sub}" Foreground="{StaticResource Fg2}" FontSize="12.5" Margin="0,1,0,0" TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border BorderBrush="{Binding ChipBrush}" BorderThickness="1" CornerRadius="10" Padding="8,2" Margin="0,0,14,0">
+                        <TextBlock Text="{Binding ChipText}" Foreground="{Binding ChipBrush}" Style="{StaticResource ChipText}"/>
+                    </Border>
+                    <CheckBox IsChecked="{Binding IsOn, Mode=TwoWay}" Style="{StaticResource Switch}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <!-- ===== Slider row ===== -->
+    <DataTemplate x:Key="SliderRow" DataType="{x:Type vm:TweakVm}">
+        <Border IsEnabled="{Binding IsEnabled}" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="18,14">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="18"/>
+                    <ColumnDefinition Width="330"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width="7" Height="7" Fill="{StaticResource Go}" Margin="0,0,9,0"
+                                 Visibility="{Binding IsChanged, Converter={StaticResource B2V}}"/>
+                        <TextBlock Text="{Binding Title}" FontWeight="Medium" FontSize="14.5" VerticalAlignment="Center"/>
+                        <Control Template="{StaticResource InfoBadge}" Focusable="False"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding Sub}" Foreground="{StaticResource Fg2}" FontSize="12.5" Margin="0,1,0,0" TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                    <Grid Margin="0,0,0,4">
+                        <TextBlock Text="{Binding ValueText}" FontFamily="{StaticResource MonoFont}" FontWeight="Medium" FontSize="13"/>
+                        <TextBlock Text="{Binding LevelWord}" Foreground="{Binding LevelBrush}" HorizontalAlignment="Right"
+                                   FontFamily="{StaticResource MonoFont}" FontWeight="SemiBold" FontSize="10.5"/>
+                    </Grid>
+                    <Slider Style="{StaticResource RiskSlider}" Tag="{Binding ZoneBrush}"
+                            Minimum="{Binding Minimum, Mode=OneWay}" Maximum="{Binding Maximum, Mode=OneWay}"
+                            TickFrequency="{Binding Step, Mode=OneWay}" IsSnapToTickEnabled="True"
+                            SmallChange="{Binding Step, Mode=OneWay}" LargeChange="{Binding Step, Mode=OneWay}"
+                            Value="{Binding Value, Mode=TwoWay}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </DataTemplate>
+
+    <!-- Implicit template: picks the row by kind -->
+    <DataTemplate DataType="{x:Type vm:TweakVm}">
+        <ContentControl Content="{Binding}" Focusable="False">
+            <ContentControl.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="ContentTemplate" Value="{StaticResource SliderRow}"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsToggle}" Value="True">
+                            <Setter Property="ContentTemplate" Value="{StaticResource ToggleRow}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </DataTemplate>
+
+    <!-- ===== Section header ===== -->
+    <DataTemplate DataType="{x:Type vm:GroupVm}">
+        <StackPanel Margin="0,0,0,0">
+            <TextBlock Text="{Binding Title}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}"
+                       FontWeight="SemiBold" FontSize="11" Margin="2,20,0,8"/>
+            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10">
+                <Border CornerRadius="10" ClipToBounds="True">
+                    <ItemsControl ItemsSource="{Binding Items}" Margin="0,-1,0,0"/>
+                </Border>
+            </Border>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:SectionPage}">
+        <StackPanel>
+            <Grid>
+                <StackPanel>
+                    <TextBlock Text="{Binding Title}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="24"/>
+                    <TextBlock Text="{Binding Description}" Foreground="{StaticResource Fg2}" Margin="0,4,0,0" MaxWidth="560" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+                </StackPanel>
+                <Button Style="{StaticResource SmallBtn}" Command="{Binding ResetCommand}" Content="{loc:T reset}"
+                        HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            </Grid>
+            <ItemsControl ItemsSource="{Binding Groups}"/>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:PlannedPage}">
+        <StackPanel>
+            <TextBlock Text="{Binding Title}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="24"/>
+            <TextBlock Text="{Binding Description}" Foreground="{StaticResource Fg2}" Margin="0,4,0,18" TextWrapping="Wrap"/>
+            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18">
+                <TextBlock Text="{Binding Text}" Foreground="{StaticResource Fg2}" TextWrapping="Wrap"/>
+            </Border>
+        </StackPanel>
+    </DataTemplate>
+
+
+    <!-- ===== Hardware & clocks (stage 2) ===== -->
+    <DataTemplate DataType="{x:Type vm:HwCardVm}">
+        <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10"
+                Padding="18,16" Margin="0,0,14,14">
+            <StackPanel>
+                <TextBlock Text="{Binding Title}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}"
+                           FontWeight="SemiBold" FontSize="11" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                <ItemsControl ItemsSource="{Binding Rows}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type vm:HwRowVm}">
+                            <Grid Margin="0,4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Label}" Foreground="{StaticResource Fg2}" FontSize="12.5"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Value}" FontFamily="{StaticResource MonoFont}" FontSize="12.5" TextWrapping="Wrap"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:HardwarePage}">
+        <StackPanel>
+            <TextBlock Text="{Binding Title}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="24"/>
+            <TextBlock Text="{Binding Description}" Foreground="{StaticResource Fg2}" Margin="0,4,0,14" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding SourceNote}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}"
+                       FontWeight="SemiBold" FontSize="11" Margin="2,0,0,8"/>
+
+            <ItemsControl ItemsSource="{Binding Demos}" Visibility="{Binding ShowDemo, Converter={StaticResource B2V}}" Margin="0,0,0,10">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:DemoItemVm}">
+                        <Button Style="{StaticResource ChoiceBtn}" Tag="{Binding IsSelected}" Margin="0,0,10,10" MinWidth="190"
+                                Command="{Binding DataContext.SelectDemoCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                CommandParameter="{Binding}">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Cpu}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="13"/>
+                                <TextBlock Text="{Binding Gpu}" Foreground="{StaticResource Fg2}" FontSize="12" Margin="0,3,0,0"/>
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock Text="{Binding Caption}" Foreground="{StaticResource Fg2}" Margin="2,0,0,0"/>
+            <TextBlock Text="{Binding UnsupportedText}" Foreground="{StaticResource Warn}" FontSize="12.5" Margin="2,4,0,0"
+                       Visibility="{Binding ShowUnsupported, Converter={StaticResource B2V}}"/>
+
+            <ItemsControl ItemsSource="{Binding Cards}" Margin="0,14,0,0">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate><UniformGrid Columns="2"/></ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+    </DataTemplate>
+
+    <!-- ===== Overview ===== -->
+    <DataTemplate x:Key="MonitorCard" DataType="{x:Type vm:MonitorCardVm}">
+        <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16" Margin="0,0,14,0">
+            <StackPanel>
+                <Grid Margin="0,0,0,12">
+                    <TextBlock Text="{Binding Title}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
+                    <Border HorizontalAlignment="Right" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="7,1"
+                            Visibility="{Binding IsDemo, Converter={StaticResource B2V}}">
+                        <TextBlock Text="{Binding DemoTag}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource MonoFont}" FontSize="10"/>
+                    </Border>
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Value}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="30"/>
+                    <TextBlock Text="{Binding Unit}" Foreground="{StaticResource Fg2}" FontFamily="{StaticResource MonoFont}" FontSize="14" VerticalAlignment="Bottom" Margin="4,0,0,4"/>
+                </StackPanel>
+                <TextBlock Text="{Binding SubText}" Foreground="{StaticResource Fg2}" FontFamily="{StaticResource MonoFont}" FontSize="12" Margin="0,2,0,0"/>
+                <Viewbox Stretch="Fill" Height="38" Margin="0,10,0,0">
+                    <Canvas Width="100" Height="30">
+                        <Polygon Points="{Binding Area}" Fill="#24a259f0"/>
+                        <Polyline Points="{Binding Points}" Stroke="{StaticResource Go}" StrokeThickness="0.9" StrokeLineJoin="Round"/>
+                    </Canvas>
+                </Viewbox>
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ProfileCard" DataType="{x:Type vm:ProfileVm}">
+        <Button Margin="0,0,10,10" Padding="0" HorizontalContentAlignment="Stretch" Cursor="Hand" FocusVisualStyle="{x:Null}"
+                Command="{Binding DataContext.SelectProfileCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                CommandParameter="{Binding}">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Bd" Background="{StaticResource Raise}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="13,12">
+                        <ContentPresenter/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Fg3}"/>
+                        </Trigger>
+                        <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Go}"/>
+                            <Setter TargetName="Bd" Property="Background" Value="#2a1a4a"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+            <StackPanel>
+                <TextBlock Text="{Binding Name}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="14" Foreground="{StaticResource Fg}"/>
+                <TextBlock Text="{Binding Sub}" Foreground="{StaticResource Fg2}" FontSize="12" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                <StackPanel Orientation="Horizontal" Margin="0,7,0,0">
+                    <Border Width="16" Height="4" CornerRadius="2" Margin="0,0,4,0">
+                        <Border.Style><Style TargetType="Border"><Setter Property="Background" Value="{StaticResource Line}"/>
+                            <Style.Triggers><DataTrigger Binding="{Binding Dot1}" Value="True"><Setter Property="Background" Value="{StaticResource Ok}"/></DataTrigger></Style.Triggers></Style></Border.Style></Border>
+                    <Border Width="16" Height="4" CornerRadius="2" Margin="0,0,4,0">
+                        <Border.Style><Style TargetType="Border"><Setter Property="Background" Value="{StaticResource Line}"/>
+                            <Style.Triggers><DataTrigger Binding="{Binding Dot2}" Value="True"><Setter Property="Background" Value="{StaticResource Warn}"/></DataTrigger></Style.Triggers></Style></Border.Style></Border>
+                    <Border Width="16" Height="4" CornerRadius="2" Margin="0,0,4,0">
+                        <Border.Style><Style TargetType="Border"><Setter Property="Background" Value="{StaticResource Line}"/>
+                            <Style.Triggers><DataTrigger Binding="{Binding Dot3}" Value="True"><Setter Property="Background" Value="{StaticResource Hot}"/></DataTrigger></Style.Triggers></Style></Border.Style></Border>
+                    <Border Width="16" Height="4" CornerRadius="2">
+                        <Border.Style><Style TargetType="Border"><Setter Property="Background" Value="{StaticResource Line}"/>
+                            <Style.Triggers><DataTrigger Binding="{Binding Dot4}" Value="True"><Setter Property="Background" Value="{StaticResource Stop}"/></DataTrigger></Style.Triggers></Style></Border.Style></Border>
+                </StackPanel>
+            </StackPanel>
+        </Button>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:OverviewPage}">
+        <StackPanel>
+            <TextBlock Text="{Binding Title}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="24"/>
+            <TextBlock Text="{Binding Intro}" Foreground="{StaticResource Fg2}" Margin="0,4,0,18" MaxWidth="620" HorizontalAlignment="Left" TextWrapping="Wrap"/>
+
+            <!-- live monitoring -->
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition/><ColumnDefinition/></Grid.ColumnDefinitions>
+                <ContentControl Content="{Binding Main.CpuCard}" ContentTemplate="{StaticResource MonitorCard}"/>
+                <ContentControl Grid.Column="1" Content="{Binding Main.GpuCard}" ContentTemplate="{StaticResource MonitorCard}"/>
+                <ContentControl Grid.Column="2" Content="{Binding Main.RamCard}" ContentTemplate="{StaticResource MonitorCard}"/>
+            </Grid>
+
+            <Grid Margin="0,14,0,0">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="7*"/><ColumnDefinition Width="5*"/></Grid.ColumnDefinitions>
+
+                <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16" Margin="0,0,14,0">
+                    <StackPanel>
+                        <TextBlock Text="{loc:T prof}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,0,0,12"/>
+                        <UniformGrid Columns="2">
+                            <ContentControl Content="{Binding Main.Profiles[0]}" ContentTemplate="{StaticResource ProfileCard}"/>
+                            <ContentControl Content="{Binding Main.Profiles[1]}" ContentTemplate="{StaticResource ProfileCard}"/>
+                            <ContentControl Content="{Binding Main.Profiles[2]}" ContentTemplate="{StaticResource ProfileCard}"/>
+                            <ContentControl Content="{Binding Main.Profiles[3]}" ContentTemplate="{StaticResource ProfileCard}"/>
+                        </UniformGrid>
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16">
+                    <StackPanel>
+                        <TextBlock Text="{loc:T eff}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,0,0,12"/>
+                        <TextBlock Text="{Binding Main.GainText}" Foreground="{StaticResource Go}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="36"/>
+                        <TextBlock Text="{Binding Main.GainCaption}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                        <Grid Margin="0,20,0,8" Height="20">
+                            <Border Height="10" CornerRadius="5" Background="{StaticResource Ramp}"/>
+                            <Grid Height="20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{Binding Main.RiskLeft}"/>
+                                    <ColumnDefinition Width="{Binding Main.RiskRight}"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Width="4" Height="20" CornerRadius="2" Background="{StaticResource Fg}" HorizontalAlignment="Right" Margin="0,0,-2,0"/>
+                            </Grid>
+                        </Grid>
+                        <Grid>
+                            <TextBlock Text="{loc:T ov.safe}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource MonoFont}" FontSize="11"/>
+                            <TextBlock Text="{loc:T ov.limit}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource MonoFont}" FontSize="11" HorizontalAlignment="Right"/>
+                        </Grid>
+                        <Grid Margin="0,16,0,0">
+                            <TextBlock Text="{loc:T ov.risk}" Foreground="{StaticResource Fg2}" FontSize="13"/>
+                            <TextBlock Text="{Binding Main.RiskWord}" Foreground="{Binding Main.RiskBrush}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="14" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- protection (TZ 7.1) -->
+            <Border Margin="0,14,0,0" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16">
+                <StackPanel>
+                    <TextBlock Text="{loc:T guard}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,0,0,4"/>
+                    <ItemsControl ItemsSource="{Binding Main.GuardTweaks}"/>
+                </StackPanel>
+            </Border>
+
+            <!-- backup of original settings (TZ 13) -->
+            <Border Margin="0,14,0,0" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                        <TextBlock Text="{loc:T bk_t}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" VerticalAlignment="Center"/>
+                        <Border BorderBrush="{StaticResource Fg3}" BorderThickness="1" CornerRadius="10" Padding="8,2" Margin="12,0,0,0">
+                            <TextBlock Text="{loc:T bk_tag}" Foreground="{StaticResource Fg3}" Style="{StaticResource ChipText}"/>
+                        </Border>
+                    </StackPanel>
+                    <TextBlock Text="{loc:T bk_d}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap"/>
+
+                    <StackPanel Margin="0,12,0,0" Visibility="{Binding Main.BkExists, Converter={StaticResource B2V}}">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{loc:T bk_when}" Foreground="{StaticResource Fg3}" FontSize="12.5" Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Main.BkWhen}" FontFamily="{StaticResource MonoFont}" FontSize="12.5"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                            <TextBlock Text="{loc:T bk_file}" Foreground="{StaticResource Fg3}" FontSize="12.5" Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Main.BkFile}" FontFamily="{StaticResource MonoFont}" FontSize="12" Foreground="{StaticResource Fg2}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Text="{loc:T bk_none}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,12,0,0"
+                               Visibility="{Binding Main.BkMissing, Converter={StaticResource B2V}}"/>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
+                        <Button Style="{StaticResource PrimaryBtn}" Content="{loc:T bk_rest}" Command="{Binding Main.BackupRestoreCommand}" Margin="0,0,10,0"
+                                Visibility="{Binding Main.BkExists, Converter={StaticResource B2V}}" IsEnabled="{Binding Main.NotBusy}"/>
+                        <Button Style="{StaticResource GhostBtn}" Content="{loc:T bk_open}" Command="{Binding Main.BackupOpenCommand}" Margin="0,0,10,0"/>
+                        <Button Style="{StaticResource GhostBtn}" Content="{loc:T bk_new}" Command="{Binding Main.BackupNewCommand}" Margin="0,0,10,0" IsEnabled="{Binding Main.NotBusy}"/>
+                        <Button Style="{StaticResource GhostBtn}" Content="{Binding Main.BkDelText}" Command="{Binding Main.BackupDeleteCommand}"
+                                Visibility="{Binding Main.BkExists, Converter={StaticResource B2V}}"/>
+                    </StackPanel>
+                    <TextBlock Text="{loc:T bk_un}" Foreground="{StaticResource Fg3}" FontSize="12" TextWrapping="Wrap" Margin="0,12,0,0"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

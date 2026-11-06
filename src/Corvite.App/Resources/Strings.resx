@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ack" xml:space="preserve"><value>Я понимаю риск и хочу продолжить</value></data>
+  <data name="ai_def" xml:space="preserve"><value>Назовите игру (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) или спросите про риски, профиль, ОЗУ.</value></data>
+  <data name="ai_hi" xml:space="preserve"><value>Я локальный ИИ-советник. В демо ответы строятся по правилам, в версии на C# подключится локальная модель. Напишите, под какую игру оптимизировать (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), или спросите о рисках и ОЗУ. Отвечаю на языке вашего вопроса.</value></data>
+  <data name="ai_ok" xml:space="preserve"><value>Красных параметров нет, конфигурация сбалансирована.</value></data>
+  <data name="ai_ph" xml:space="preserve"><value>Спросите про риски, профиль, ОЗУ…</value></data>
+  <data name="ai_pick" xml:space="preserve"><value>Подобрать параметры</value></data>
+  <data name="ai_ram" xml:space="preserve"><value>Откройте вкладку «Тайминги ОЗУ»: там три уровня разгона для вашего комплекта.</value></data>
+  <data name="ai_rec" xml:space="preserve"><value>Подходящий профиль для вашего железа</value></data>
+  <data name="ai_red" xml:space="preserve"><value>Высокий риск:</value></data>
+  <data name="ai_t" xml:space="preserve"><value>ИИ-советник</value></data>
+  <data name="ai_tag" xml:space="preserve"><value>локально, демо</value></data>
+  <data name="ap" xml:space="preserve"><value>Применить</value></data>
+  <data name="base" xml:space="preserve"><value>Базовая частота</value></data>
+  <data name="bk_cr" xml:space="preserve"><value>Создана резервная копия исходных настроек</value></data>
+  <data name="bk_d" xml:space="preserve"><value>Создана при первом запуске, до любых изменений. Хранится в папке приложения, пока вы сами её не удалите: вернуться к исходным настройкам можно в любой момент, даже после закрытия приложения или перезагрузки ПК.</value></data>
+  <data name="bk_del" xml:space="preserve"><value>Удалить копию</value></data>
+  <data name="bk_deleted" xml:space="preserve"><value>Резервная копия удалена</value></data>
+  <data name="bk_done" xml:space="preserve"><value>Исходные настройки восстановлены</value></data>
+  <data name="bk_file" xml:space="preserve"><value>Файл</value></data>
+  <data name="bk_new" xml:space="preserve"><value>Создать копию сейчас</value></data>
+  <data name="bk_none" xml:space="preserve"><value>Копии нет. В приложении она создастся при следующем запуске из текущего состояния ПК.</value></data>
+  <data name="bk_open" xml:space="preserve"><value>Открыть папку</value></data>
+  <data name="bk_opened" xml:space="preserve"><value>В приложении откроется папка с резервной копией (демо)</value></data>
+  <data name="bk_rest" xml:space="preserve"><value>Вернуть исходные настройки</value></data>
+  <data name="bk_sure" xml:space="preserve"><value>Точно удалить?</value></data>
+  <data name="bk_t" xml:space="preserve"><value>Резервная копия исходных настроек</value></data>
+  <data name="bk_tag" xml:space="preserve"><value>создаётся один раз</value></data>
+  <data name="bk_un" xml:space="preserve"><value>При удалении приложения установщик предложит сначала вернуть исходные настройки.</value></data>
+  <data name="bk_when" xml:space="preserve"><value>Создана</value></data>
+  <data name="boost" xml:space="preserve"><value>Макс. boost</value></data>
+  <data name="cache" xml:space="preserve"><value>Кэш</value></data>
+  <data name="cancel" xml:space="preserve"><value>Отмена</value></data>
+  <data name="cap" xml:space="preserve"><value>Объём</value></data>
+  <data name="cores" xml:space="preserve"><value>Ядра / потоки</value></data>
+  <data name="d_background" xml:space="preserve"><value>Что работает рядом с игрой и отнимает ресурсы</value></data>
+  <data name="d_cpu" xml:space="preserve"><value>Ядра, лимиты мощности и частоты</value></data>
+  <data name="d_gpu" xml:space="preserve"><value>Разгон, лимиты и задержка кадра</value></data>
+  <data name="d_hardware" xml:space="preserve"><value>Определённое железо, частоты и подбор профиля</value></data>
+  <data name="d_memory" xml:space="preserve"><value>Оперативная память, SSD и временные файлы</value></data>
+  <data name="d_network" xml:space="preserve"><value>Задержка и стабильность соединения в онлайн-играх</value></data>
+  <data name="d_overview" xml:space="preserve"><value>Состояние системы, профили и защита</value></data>
+  <data name="d_ramt" xml:space="preserve"><value>Ориентировочные частоты и тайминги для BIOS: слабый, средний и сильный разгон</value></data>
+  <data name="d_system" xml:space="preserve"><value>Схема питания, игровой режим и приоритеты Windows</value></data>
+  <data name="dk" xml:space="preserve"><value>Диск</value></data>
+  <data name="done" xml:space="preserve"><value>Все изменения применены</value></data>
+  <data name="eff" xml:space="preserve"><value>Оценка эффекта</value></data>
+  <data name="gb" xml:space="preserve"><value>ГБ</value></data>
+  <data name="gc" xml:space="preserve"><value>Частота ядра</value></data>
+  <data name="gm" xml:space="preserve"><value>Частота памяти</value></data>
+  <data name="grp.1" xml:space="preserve"><value>Windows</value></data>
+  <data name="grp.10" xml:space="preserve"><value>Службы</value></data>
+  <data name="grp.11" xml:space="preserve"><value>Нагрузка</value></data>
+  <data name="grp.2" xml:space="preserve"><value>Приоритеты</value></data>
+  <data name="grp.3" xml:space="preserve"><value>Питание и ядра</value></data>
+  <data name="grp.4" xml:space="preserve"><value>Частоты и лимиты</value></data>
+  <data name="grp.5" xml:space="preserve"><value>Разгон</value></data>
+  <data name="grp.6" xml:space="preserve"><value>Драйвер и задержка</value></data>
+  <data name="grp.7" xml:space="preserve"><value>Оперативная память</value></data>
+  <data name="grp.8" xml:space="preserve"><value>Диск</value></data>
+  <data name="grp.9" xml:space="preserve"><value>Сетевой стек</value></data>
+  <data name="guard" xml:space="preserve"><value>Защита</value></data>
+  <data name="h_cfg" xml:space="preserve"><value>Демо-конфигурация ПК (в приложении определяется автоматически)</value></data>
+  <data name="hw_pc" xml:space="preserve"><value>Ваш ПК</value></data>
+  <data name="kit" xml:space="preserve"><value>Комплект</value></data>
+  <data name="lap_bios" xml:space="preserve"><value>Обычно недоступно в BIOS ноутбука</value></data>
+  <data name="lap_ram" xml:space="preserve"><value>Ноутбуки часто блокируют настройки памяти и используют SO-DIMM, поэтому эти значения могут быть недоступны. Не форсируйте их.</value></data>
+  <data name="mb" xml:space="preserve"><value>Плата</value></data>
+  <data name="mhz" xml:space="preserve"><value>МГц</value></data>
+  <data name="n_background" xml:space="preserve"><value>Фон и службы</value></data>
+  <data name="n_cpu" xml:space="preserve"><value>Процессор</value></data>
+  <data name="n_gpu" xml:space="preserve"><value>Видеокарта</value></data>
+  <data name="n_hardware" xml:space="preserve"><value>Железо и частоты</value></data>
+  <data name="n_memory" xml:space="preserve"><value>Память и диск</value></data>
+  <data name="n_network" xml:space="preserve"><value>Сеть</value></data>
+  <data name="n_overview" xml:space="preserve"><value>Обзор</value></data>
+  <data name="n_ramt" xml:space="preserve"><value>Тайминги ОЗУ</value></data>
+  <data name="n_system" xml:space="preserve"><value>Windows</value></data>
+  <data name="nosup" xml:space="preserve"><value>Не поддерживается</value></data>
+  <data name="offon" xml:space="preserve"><value>выкл → вкл</value></data>
+  <data name="on" xml:space="preserve"><value>включено</value></data>
+  <data name="ov.cpu" xml:space="preserve"><value>Температура CPU</value></data>
+  <data name="ov.demo" xml:space="preserve"><value>демо</value></data>
+  <data name="ov.gaincap" xml:space="preserve"><value>Ожидаемый прирост FPS от активных настроек. Эффекты частично перекрываются, поэтому верхняя граница не превышает 20%.</value></data>
+  <data name="ov.gpu" xml:space="preserve"><value>Температура GPU</value></data>
+  <data name="ov.intro" xml:space="preserve"><value>Состояние системы, готовые профили и защита. Профиль задаёт стартовые значения, дальше всё можно подправить вручную в разделах.</value></data>
+  <data name="ov.limit" xml:space="preserve"><value>предел</value></data>
+  <data name="ov.load" xml:space="preserve"><value>Загрузка </value></data>
+  <data name="ov.of32" xml:space="preserve"><value>из 32 ГБ</value></data>
+  <data name="ov.ram" xml:space="preserve"><value>Оперативная память</value></data>
+  <data name="ov.risk" xml:space="preserve"><value>Общий уровень риска</value></data>
+  <data name="ov.safe" xml:space="preserve"><value>безопасно</value></data>
+  <data name="pend" xml:space="preserve"><value>Ожидают применения: </value></data>
+  <data name="pl_back" xml:space="preserve"><value>Назад</value></data>
+  <data name="pl_cf" xml:space="preserve"><value>Я понимаю риски, продолжить</value></data>
+  <data name="pl_d" xml:space="preserve"><value>Corvite подстроит пределы и шкалы риска под ваше устройство.</value></data>
+  <data name="pl_lap" xml:space="preserve"><value>Ноутбук</value></data>
+  <data name="pl_lapd" xml:space="preserve"><value>Ноутбук: более строгие пределы и своя шкала риска</value></data>
+  <data name="pl_ok" xml:space="preserve"><value>Подтвердить</value></data>
+  <data name="pl_pc" xml:space="preserve"><value>ПК</value></data>
+  <data name="pl_pcd" xml:space="preserve"><value>Настольный: полные пределы, зависят от вашего охлаждения</value></data>
+  <data name="pl_t" xml:space="preserve"><value>Выберите тип устройства</value></data>
+  <data name="prof" xml:space="preserve"><value>Профили</value></data>
+  <data name="prof.game.name" xml:space="preserve"><value>Игровой</value></data>
+  <data name="prof.game.sub" xml:space="preserve"><value>Баланс отклика, FPS и температуры</value></data>
+  <data name="prof.max.name" xml:space="preserve"><value>Максимум</value></data>
+  <data name="prof.max.sub" xml:space="preserve"><value>Предел для вашего охлаждения, красная зона</value></data>
+  <data name="prof.safe.name" xml:space="preserve"><value>Безопасный</value></data>
+  <data name="prof.safe.sub" xml:space="preserve"><value>Только проверенные твики, без разгона</value></data>
+  <data name="prof.stock.name" xml:space="preserve"><value>Стандарт</value></data>
+  <data name="prof.stock.sub" xml:space="preserve"><value>Параметры Windows и драйверов по умолчанию</value></data>
+  <data name="proto" xml:space="preserve"><value>ПРОТОТИП: изменения не применяются к вашему ПК</value></data>
+  <data name="r_b" xml:space="preserve"><value>Где в BIOS</value></data>
+  <data name="r_f" xml:space="preserve"><value>Частота</value></data>
+  <data name="r_i" xml:space="preserve"><value>Контроллер памяти</value></data>
+  <data name="r_note" xml:space="preserve"><value>Значения ориентировочные (~). Меняйте в BIOS вручную и проверяйте стабильность (TestMem5, MemTest86). Приложение ничего не применяет.</value></data>
+  <data name="r_ok" xml:space="preserve"><value>В пределах профиля комплекта</value></data>
+  <data name="r_over" xml:space="preserve"><value>Выше рейтинга комплекта, зависит от удачи кристаллов</value></data>
+  <data name="r_t" xml:space="preserve"><value>Тайминги</value></data>
+  <data name="r_v" xml:space="preserve"><value>Напряжение DRAM</value></data>
+  <data name="reset" xml:space="preserve"><value>Сбросить раздел</value></data>
+  <data name="risk.0" xml:space="preserve"><value>Безопасно</value></data>
+  <data name="risk.1" xml:space="preserve"><value>Умеренно</value></data>
+  <data name="risk.2" xml:space="preserve"><value>Высокий риск</value></data>
+  <data name="risk.guard" xml:space="preserve"><value>Защита</value></data>
+  <data name="risk.std" xml:space="preserve"><value>Стандарт</value></data>
+  <data name="rv" xml:space="preserve"><value>Отменить изменения</value></data>
+  <data name="rz1" xml:space="preserve"><value>Эти значения выше безопасного диапазона для большинства систем. Они повышают температуру и нагрузку на питание, возможны сбои и перезагрузки.</value></data>
+  <data name="rz2" xml:space="preserve"><value>Перед применением будет создана точка восстановления. При перегреве параметры откатятся автоматически.</value></data>
+  <data name="rz_t" xml:space="preserve"><value>Параметры в красной зоне</value></data>
+  <data name="sections" xml:space="preserve"><value>Разделы</value></data>
+  <data name="sock" xml:space="preserve"><value>Сокет</value></data>
+  <data name="sp" xml:space="preserve"><value>Частота</value></data>
+  <data name="stk" xml:space="preserve"><value>Планки</value></data>
+  <data name="sub" xml:space="preserve"><value>оптимизатор ПК</value></data>
+  <data name="sup" xml:space="preserve"><value>Поддерживается</value></data>
+  <data name="t0" xml:space="preserve"><value>Слабый</value></data>
+  <data name="t1" xml:space="preserve"><value>Средний</value></data>
+  <data name="t2" xml:space="preserve"><value>Сильный</value></data>
+  <data name="tdp" xml:space="preserve"><value>TDP</value></data>
+  <data name="tip.atmax" xml:space="preserve"><value>на максимуме</value></data>
+  <data name="tip.foot" xml:space="preserve"><value>Оценка для типичной игровой системы. Значения ориентировочные (~).</value></data>
+  <data name="tip.lat" xml:space="preserve"><value>Отклик</value></data>
+  <data name="tip.more" xml:space="preserve"><value>Подробнее: </value></data>
+  <data name="tip.nofps" xml:space="preserve"><value>Без влияния</value></data>
+  <data name="tip.sliderwarn" xml:space="preserve"><value>Зелёная часть шкалы безопасна для большинства систем. Красная требует хорошего охлаждения и может вызывать сбои.</value></data>
+  <data name="tip.stab" xml:space="preserve"><value>Стабильность</value></data>
+  <data name="tip.temp" xml:space="preserve"><value>Температура</value></data>
+  <data name="toast.applied" xml:space="preserve"><value>Применено: </value></data>
+  <data name="toast.discard" xml:space="preserve"><value>Изменения отменены</value></data>
+  <data name="toast.prof1" xml:space="preserve"><value>Профиль «</value></data>
+  <data name="toast.prof2" xml:space="preserve"><value>» выбран. Нажмите «Применить».</value></data>
+  <data name="toast.rp" xml:space="preserve"><value>. Точка восстановления создана (демо).</value></data>
+  <data name="tot.0" xml:space="preserve"><value>Низкий</value></data>
+  <data name="tot.1" xml:space="preserve"><value>Умеренный</value></data>
+  <data name="tot.2" xml:space="preserve"><value>Повышенный</value></data>
+  <data name="tot.3" xml:space="preserve"><value>Высокий</value></data>
+  <data name="tw.aggr.desc" xml:space="preserve"><value>Чем выше значение, тем чаще очищается память. Слишком частая очистка заставляет игру заново читать данные с диска.</value></data>
+  <data name="tw.aggr.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.aggr.name" xml:space="preserve"><value>Агрессивность очистки</value></data>
+  <data name="tw.aggr.stab" xml:space="preserve"><value>Зависит от объёма ОЗУ</value></data>
+  <data name="tw.aggr.sub" xml:space="preserve"><value>Как часто сбрасывать кэш</value></data>
+  <data name="tw.aggr.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.aggr.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.antil.desc" xml:space="preserve"><value>Драйвер синхронизирует работу CPU и GPU, чтобы кадр приходил позже в очереди. Отклик ниже. Совместимость зависит от игры.</value></data>
+  <data name="tw.antil.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.antil.name" xml:space="preserve"><value>Radeon Anti-Lag</value></data>
+  <data name="tw.antil.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.antil.sub" xml:space="preserve"><value>Меньше задержка ввода на AMD</value></data>
+  <data name="tw.antil.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.bgcap.desc" xml:space="preserve"><value>Ограничивает фоновые процессы, пока запущена игра. Слишком жёсткий лимит замедлит антивирус и облачную синхронизацию.</value></data>
+  <data name="tw.bgcap.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.bgcap.name" xml:space="preserve"><value>Лимит фоновой нагрузки на процессор</value></data>
+  <data name="tw.bgcap.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.bgcap.sub" xml:space="preserve"><value>Сколько CPU могут занимать фоновые процессы</value></data>
+  <data name="tw.bgcap.temp" xml:space="preserve"><value>Холоднее</value></data>
+  <data name="tw.bgcap.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.boost.desc" xml:space="preserve"><value>Поднимает потолок частоты в одноядерных нагрузках. Выше определённого значения процессор перестаёт быть стабильным.</value></data>
+  <data name="tw.boost.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.boost.name" xml:space="preserve"><value>Прибавка к boost-частоте</value></data>
+  <data name="tw.boost.stab" xml:space="preserve"><value>Может ухудшиться</value></data>
+  <data name="tw.boost.sub" xml:space="preserve"><value>Смещение максимальной частоты ядер</value></data>
+  <data name="tw.boost.temp" xml:space="preserve"><value>+4…+12 °C</value></data>
+  <data name="tw.boost.unit" xml:space="preserve"><value>МГц</value></data>
+  <data name="tw.co.desc" xml:space="preserve"><value>Снижает напряжение ядер при той же частоте: меньше нагрев, выше boost. Слишком сильное смещение даёт ошибки в простое.</value></data>
+  <data name="tw.co.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.co.name" xml:space="preserve"><value>Curve Optimizer (смещение)</value></data>
+  <data name="tw.co.stab" xml:space="preserve"><value>Зависит от кристалла</value></data>
+  <data name="tw.co.sub" xml:space="preserve"><value>Андервольт ядер Ryzen</value></data>
+  <data name="tw.co.temp" xml:space="preserve"><value>Холоднее на 2–6 °C</value></data>
+  <data name="tw.co.unit" xml:space="preserve"><value>ед.</value></data>
+  <data name="tw.dns.desc" xml:space="preserve"><value>Ускоряет определение адреса игрового сервера при подключении. На задержку внутри матча не влияет.</value></data>
+  <data name="tw.dns.lat" xml:space="preserve"><value>Быстрее подключение к серверу</value></data>
+  <data name="tw.dns.name" xml:space="preserve"><value>Быстрый DNS-сервер</value></data>
+  <data name="tw.dns.stab" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.dns.sub" xml:space="preserve"><value>Публичный DNS вместо DNS провайдера</value></data>
+  <data name="tw.dns.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.dvr.desc" xml:space="preserve"><value>Останавливает постоянную запись видео в фоне. Освобождает часть ресурсов видеокарты и диска.</value></data>
+  <data name="tw.dvr.lat" xml:space="preserve"><value>Немного ниже</value></data>
+  <data name="tw.dvr.name" xml:space="preserve"><value>Отключить фоновую запись (Game DVR)</value></data>
+  <data name="tw.dvr.note" xml:space="preserve"><value>Клипы через Game Bar перестанут записываться.</value></data>
+  <data name="tw.dvr.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.dvr.sub" xml:space="preserve"><value>Меньше нагрузка на GPU и диск</value></data>
+  <data name="tw.dvr.temp" xml:space="preserve"><value>Чуть холоднее</value></data>
+  <data name="tw.fast.desc" xml:space="preserve"><value>Быстрый запуск сохраняет часть состояния системы между включениями, из-за чего накапливаются сбои драйверов.</value></data>
+  <data name="tw.fast.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.fast.name" xml:space="preserve"><value>Отключить быстрый запуск Windows</value></data>
+  <data name="tw.fast.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.fast.sub" xml:space="preserve"><value>Полная перезагрузка вместо гибернации</value></data>
+  <data name="tw.fast.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.focus.desc" xml:space="preserve"><value>Включает режим фокусировки. Окна уведомлений не сворачивают игру и не вызывают подвисания.</value></data>
+  <data name="tw.focus.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.focus.name" xml:space="preserve"><value>Отключить уведомления в игре</value></data>
+  <data name="tw.focus.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.focus.sub" xml:space="preserve"><value>Без всплывающих окон поверх игры</value></data>
+  <data name="tw.focus.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.fso.desc" xml:space="preserve"><value>Отключает оверлейную обработку Windows для игр на весь экран, что снижает задержку вывода кадра.</value></data>
+  <data name="tw.fso.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.fso.name" xml:space="preserve"><value>Оптимизация полноэкранного режима</value></data>
+  <data name="tw.fso.stab" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.fso.sub" xml:space="preserve"><value>Чистый эксклюзивный полноэкранный режим</value></data>
+  <data name="tw.fso.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.g_reg.desc" xml:space="preserve"><value>Приложение запоминает исходные значения каждого параметра. Любой твик можно вернуть к заводскому состоянию в один клик.</value></data>
+  <data name="tw.g_reg.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.g_reg.name" xml:space="preserve"><value>Резервная копия изменяемых параметров</value></data>
+  <data name="tw.g_reg.stab" xml:space="preserve"><value>Защищает от сбоев</value></data>
+  <data name="tw.g_reg.sub" xml:space="preserve"><value>Старые значения хранятся для кнопки «Вернуть всё»</value></data>
+  <data name="tw.g_reg.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.g_rest.desc" xml:space="preserve"><value>Перед каждым применением создаётся точка восстановления Windows, чтобы можно было вернуть систему.</value></data>
+  <data name="tw.g_rest.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.g_rest.name" xml:space="preserve"><value>Точка восстановления перед применением</value></data>
+  <data name="tw.g_rest.stab" xml:space="preserve"><value>Защищает от сбоев</value></data>
+  <data name="tw.g_rest.sub" xml:space="preserve"><value>Создаётся автоматически</value></data>
+  <data name="tw.g_rest.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.g_roll.desc" xml:space="preserve"><value>Если температура процессора или видеокарты превысит порог, приложение вернёт параметры к последнему безопасному состоянию.</value></data>
+  <data name="tw.g_roll.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.g_roll.name" xml:space="preserve"><value>Авто-откат при перегреве</value></data>
+  <data name="tw.g_roll.stab" xml:space="preserve"><value>Защищает от сбоев</value></data>
+  <data name="tw.g_roll.sub" xml:space="preserve"><value>Параметры вернутся, если превышен порог</value></data>
+  <data name="tw.g_roll.temp" xml:space="preserve"><value>Ограничивает нагрев</value></data>
+  <data name="tw.g_temp.desc" xml:space="preserve"><value>Температура, при которой сработает откат. Оставляйте ниже заводского предела троттлинга вашего железа.</value></data>
+  <data name="tw.g_temp.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.g_temp.name" xml:space="preserve"><value>Порог температуры для отката</value></data>
+  <data name="tw.g_temp.stab" xml:space="preserve"><value>Защищает от сбоев</value></data>
+  <data name="tw.g_temp.sub" xml:space="preserve"><value>Выше значение, позже сработает защита</value></data>
+  <data name="tw.g_temp.temp" xml:space="preserve"><value>Ограничивает нагрев</value></data>
+  <data name="tw.g_temp.unit" xml:space="preserve"><value>°C</value></data>
+  <data name="tw.gamemode.desc" xml:space="preserve"><value>Windows отдаёт игре больше процессорного времени и не запускает обновления драйверов во время игры.</value></data>
+  <data name="tw.gamemode.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.gamemode.name" xml:space="preserve"><value>Игровой режим Windows</value></data>
+  <data name="tw.gamemode.stab" xml:space="preserve"><value>Немного выше</value></data>
+  <data name="tw.gamemode.sub" xml:space="preserve"><value>Приоритет игре, меньше фоновых задач</value></data>
+  <data name="tw.gamemode.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.gcore.desc" xml:space="preserve"><value>Добавляет к частоте ядра фиксированное значение. Ближе к максимуму растёт риск артефактов и вылетов драйвера.</value></data>
+  <data name="tw.gcore.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.gcore.name" xml:space="preserve"><value>Смещение частоты ядра</value></data>
+  <data name="tw.gcore.stab" xml:space="preserve"><value>Риск артефактов у максимума</value></data>
+  <data name="tw.gcore.sub" xml:space="preserve"><value>Разгон графического процессора</value></data>
+  <data name="tw.gcore.temp" xml:space="preserve"><value>+2…+8 °C</value></data>
+  <data name="tw.gcore.unit" xml:space="preserve"><value>МГц</value></data>
+  <data name="tw.gmem.desc" xml:space="preserve"><value>Повышает пропускную способность видеопамяти. Помогает в высоких разрешениях. Ошибки памяти могут снижать FPS без явных сбоев.</value></data>
+  <data name="tw.gmem.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.gmem.name" xml:space="preserve"><value>Смещение частоты памяти</value></data>
+  <data name="tw.gmem.stab" xml:space="preserve"><value>Зависит от чипов памяти</value></data>
+  <data name="tw.gmem.sub" xml:space="preserve"><value>Разгон видеопамяти</value></data>
+  <data name="tw.gmem.temp" xml:space="preserve"><value>+2…+6 °C</value></data>
+  <data name="tw.gmem.unit" xml:space="preserve"><value>МГц</value></data>
+  <data name="tw.gpm.desc" xml:space="preserve"><value>Переключает режим питания драйвера. Частота не падает между сценами, поэтому фреймтайм ровнее.</value></data>
+  <data name="tw.gpm.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.gpm.name" xml:space="preserve"><value>Максимальная производительность в драйвере</value></data>
+  <data name="tw.gpm.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.gpm.sub" xml:space="preserve"><value>Видеокарта не снижает частоты в простое</value></data>
+  <data name="tw.gpm.temp" xml:space="preserve"><value>В простое теплее</value></data>
+  <data name="tw.gpow.desc" xml:space="preserve"><value>Видеокарта дольше держит максимальную частоту, пока не упирается в лимит мощности.</value></data>
+  <data name="tw.gpow.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.gpow.name" xml:space="preserve"><value>Лимит мощности видеокарты</value></data>
+  <data name="tw.gpow.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.gpow.sub" xml:space="preserve"><value>Верхняя граница потребления в ваттах</value></data>
+  <data name="tw.gpow.temp" xml:space="preserve"><value>+3…+9 °C</value></data>
+  <data name="tw.gpow.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.gtemp.desc" xml:space="preserve"><value>Определяет, когда видеокарта начнёт сбрасывать частоту из-за нагрева. Высокие значения требуют хорошего обдува корпуса.</value></data>
+  <data name="tw.gtemp.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.gtemp.name" xml:space="preserve"><value>Целевая температура видеокарты</value></data>
+  <data name="tw.gtemp.stab" xml:space="preserve"><value>Выше под нагрузкой</value></data>
+  <data name="tw.gtemp.sub" xml:space="preserve"><value>До какого нагрева разрешён буст</value></data>
+  <data name="tw.gtemp.temp" xml:space="preserve"><value>До +10 °C</value></data>
+  <data name="tw.gtemp.unit" xml:space="preserve"><value>°C</value></data>
+  <data name="tw.hags.desc" xml:space="preserve"><value>Снимает часть работы с процессора. Эффект зависит от игры и драйвера: иногда выигрыш, иногда небольшой минус до −2%.</value></data>
+  <data name="tw.hags.lat" xml:space="preserve"><value>Ниже при генерации кадров</value></data>
+  <data name="tw.hags.name" xml:space="preserve"><value>Аппаратное планирование GPU (HAGS)</value></data>
+  <data name="tw.hags.stab" xml:space="preserve"><value>Зависит от игры</value></data>
+  <data name="tw.hags.sub" xml:space="preserve"><value>Видеокарта сама управляет очередью кадров</value></data>
+  <data name="tw.hags.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.idx.desc" xml:space="preserve"><value>Индексатор поиска во время игры не обращается к диску и не нагружает процессор.</value></data>
+  <data name="tw.idx.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.idx.name" xml:space="preserve"><value>Остановить индексацию на время игры</value></data>
+  <data name="tw.idx.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.idx.sub" xml:space="preserve"><value>Поиск Windows не читает диск</value></data>
+  <data name="tw.idx.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.kill.desc" xml:space="preserve"><value>Закрывает выбранные программы (мессенджеры, браузеры, синхронизацию) и возвращает их после игры.</value></data>
+  <data name="tw.kill.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.kill.name" xml:space="preserve"><value>Закрывать фоновые приложения при запуске игры</value></data>
+  <data name="tw.kill.note" xml:space="preserve"><value>Несохранённые данные в закрываемых программах могут пропасть.</value></data>
+  <data name="tw.kill.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.kill.sub" xml:space="preserve"><value>Список приложений настраивается</value></data>
+  <data name="tw.kill.temp" xml:space="preserve"><value>Холоднее на 1–3 °C</value></data>
+  <data name="tw.lowlat.desc" xml:space="preserve"><value>Драйвер держит очередь кадров минимальной. Ввод с мыши и клавиатуры отзывается быстрее, особенно в играх, где упор идёт в видеокарту.</value></data>
+  <data name="tw.lowlat.lat" xml:space="preserve"><value>Заметно ниже</value></data>
+  <data name="tw.lowlat.name" xml:space="preserve"><value>Режим низкой задержки</value></data>
+  <data name="tw.lowlat.stab" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.lowlat.sub" xml:space="preserve"><value>Короче очередь кадров между CPU и GPU</value></data>
+  <data name="tw.lowlat.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.minst.desc" xml:space="preserve"><value>Чем выше значение, тем выше держится частота даже без нагрузки. Отклик лучше, но в простое греется и потребляет больше.</value></data>
+  <data name="tw.minst.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.minst.name" xml:space="preserve"><value>Минимальное состояние процессора</value></data>
+  <data name="tw.minst.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.minst.sub" xml:space="preserve"><value>Нижняя граница частоты в простое</value></data>
+  <data name="tw.minst.temp" xml:space="preserve"><value>В простое +5…+15 °C</value></data>
+  <data name="tw.minst.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.nagle.desc" xml:space="preserve"><value>Windows перестаёт объединять мелкие пакеты. Для игр на TCP это снижает задержку отклика.</value></data>
+  <data name="tw.nagle.lat" xml:space="preserve"><value>Ниже на 0–10 мс (TCP-игры)</value></data>
+  <data name="tw.nagle.name" xml:space="preserve"><value>Отключить алгоритм Нейгла</value></data>
+  <data name="tw.nagle.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.nagle.sub" xml:space="preserve"><value>Пакеты уходят сразу, без накопления</value></data>
+  <data name="tw.nagle.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.nthr.desc" xml:space="preserve"><value>Windows ограничивает скорость обработки пакетов во время воспроизведения мультимедиа. Параметр снимает это ограничение.</value></data>
+  <data name="tw.nthr.lat" xml:space="preserve"><value>Немного ниже</value></data>
+  <data name="tw.nthr.name" xml:space="preserve"><value>Снять сетевое ограничение мультимедиа</value></data>
+  <data name="tw.nthr.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.nthr.sub" xml:space="preserve"><value>Параметр NetworkThrottlingIndex</value></data>
+  <data name="tw.nthr.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.park.desc" xml:space="preserve"><value>Windows перестаёт «усыплять» неиспользуемые ядра. Игры получают ресурсы без задержки на пробуждение.</value></data>
+  <data name="tw.park.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.park.name" xml:space="preserve"><value>Отключить парковку ядер</value></data>
+  <data name="tw.park.stab" xml:space="preserve"><value>Заметно выше (1% low)</value></data>
+  <data name="tw.park.sub" xml:space="preserve"><value>Все ядра готовы к работе сразу</value></data>
+  <data name="tw.park.temp" xml:space="preserve"><value>+1…+4 °C</value></data>
+  <data name="tw.pbo.desc" xml:space="preserve"><value>Поднимает лимиты питания и тока платы для boost. Нужна плата с хорошим питанием и кулер.</value></data>
+  <data name="tw.pbo.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.pbo.name" xml:space="preserve"><value>Precision Boost Overdrive</value></data>
+  <data name="tw.pbo.stab" xml:space="preserve"><value>Немного ниже</value></data>
+  <data name="tw.pbo.sub" xml:space="preserve"><value>Расширенный авто-разгон Ryzen</value></data>
+  <data name="tw.pbo.temp" xml:space="preserve"><value>Горячее на 4–10 °C</value></data>
+  <data name="tw.pl2.desc" xml:space="preserve"><value>Позволяет процессору дольше держать пиковую частоту. Для K-серий нужен мощный кулер, иначе будет троттлинг.</value></data>
+  <data name="tw.pl2.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.pl2.name" xml:space="preserve"><value>Лимит PL2 (турбо-мощность)</value></data>
+  <data name="tw.pl2.stab" xml:space="preserve"><value>Ниже на максимуме</value></data>
+  <data name="tw.pl2.sub" xml:space="preserve"><value>Кратковременный пик мощности Intel</value></data>
+  <data name="tw.pl2.temp" xml:space="preserve"><value>Горячее на 5–15 °C</value></data>
+  <data name="tw.pl2.unit" xml:space="preserve"><value>Вт</value></data>
+  <data name="tw.plan.desc" xml:space="preserve"><value>Включает скрытую схему питания Ultimate Performance. Процессор и шины не уходят в энергосберегающие состояния, поэтому отклик в играх ровнее.</value></data>
+  <data name="tw.plan.lat" xml:space="preserve"><value>Немного ниже</value></data>
+  <data name="tw.plan.name" xml:space="preserve"><value>Схема «Максимальная производительность»</value></data>
+  <data name="tw.plan.note" xml:space="preserve"><value>На ноутбуке сократит время работы от батареи.</value></data>
+  <data name="tw.plan.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.plan.sub" xml:space="preserve"><value>Процессор не снижает частоту в простое</value></data>
+  <data name="tw.plan.temp" xml:space="preserve"><value>В простое теплее на 2–6 °C</value></data>
+  <data name="tw.ppt.desc" xml:space="preserve"><value>Позволяет процессору дольше держать высокую частоту под нагрузкой. Нужен хороший кулер и плата с мощным питанием.</value></data>
+  <data name="tw.ppt.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.ppt.name" xml:space="preserve"><value>Лимит мощности процессора (PL1/PPT)</value></data>
+  <data name="tw.ppt.stab" xml:space="preserve"><value>Выше при долгой нагрузке</value></data>
+  <data name="tw.ppt.sub" xml:space="preserve"><value>Сколько ватт процессор может держать долго</value></data>
+  <data name="tw.ppt.temp" xml:space="preserve"><value>+5…+15 °C</value></data>
+  <data name="tw.ppt.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.prio.desc" xml:space="preserve"><value>Игра получает ядра раньше фоновых программ. «Реального времени» может заблокировать ввод и диск, поэтому приложение не советует его выше значения «Высокий».</value></data>
+  <data name="tw.prio.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.prio.lbl0" xml:space="preserve"><value>Обычный</value></data>
+  <data name="tw.prio.lbl1" xml:space="preserve"><value>Выше обычного</value></data>
+  <data name="tw.prio.lbl2" xml:space="preserve"><value>Высокий</value></data>
+  <data name="tw.prio.lbl3" xml:space="preserve"><value>Реального времени</value></data>
+  <data name="tw.prio.name" xml:space="preserve"><value>Приоритет игрового процесса</value></data>
+  <data name="tw.prio.stab" xml:space="preserve"><value>Выше при высокой загрузке</value></data>
+  <data name="tw.prio.sub" xml:space="preserve"><value>Кто первым получает процессорное время</value></data>
+  <data name="tw.prio.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.refl.desc" xml:space="preserve"><value>Включает режим Reflex там, где игра его поддерживает. Очередь кадров короче, отклик быстрее.</value></data>
+  <data name="tw.refl.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.refl.name" xml:space="preserve"><value>NVIDIA Reflex (если есть в игре)</value></data>
+  <data name="tw.refl.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.refl.sub" xml:space="preserve"><value>Меньше задержка ввода на NVIDIA</value></data>
+  <data name="tw.refl.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.shader.desc" xml:space="preserve"><value>Увеличивает объём сохранённых шейдеров. Уменьшает «заикания» при первом показе эффектов в игре.</value></data>
+  <data name="tw.shader.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.shader.name" xml:space="preserve"><value>Расширенный кэш шейдеров</value></data>
+  <data name="tw.shader.stab" xml:space="preserve"><value>Меньше подлагов</value></data>
+  <data name="tw.shader.sub" xml:space="preserve"><value>Меньше подлагов при загрузке эффектов</value></data>
+  <data name="tw.shader.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.standby.desc" xml:space="preserve"><value>Когда резервный список памяти разрастается, игры начинают подвисать. Приложение сбрасывает его по порогу.</value></data>
+  <data name="tw.standby.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.standby.name" xml:space="preserve"><value>Автоочистка резервной памяти</value></data>
+  <data name="tw.standby.stab" xml:space="preserve"><value>Меньше фризов при 16 ГБ и меньше</value></data>
+  <data name="tw.standby.sub" xml:space="preserve"><value>Освобождает кэш, который забил ОЗУ</value></data>
+  <data name="tw.standby.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.sysmain.desc" xml:space="preserve"><value>Служба предзагружает программы в память. На SSD пользы мало, а нагрузка на диск остаётся.</value></data>
+  <data name="tw.sysmain.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.sysmain.name" xml:space="preserve"><value>Отключить SysMain (Superfetch)</value></data>
+  <data name="tw.sysmain.note" xml:space="preserve"><value>Рекомендуется только для SSD. На HDD оставьте включённой.</value></data>
+  <data name="tw.sysmain.stab" xml:space="preserve"><value>Немного выше</value></data>
+  <data name="tw.sysmain.sub" xml:space="preserve"><value>Меньше фоновых обращений к диску</value></data>
+  <data name="tw.sysmain.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.tcpauto.desc" xml:space="preserve"><value>Возвращает безопасный режим подбора размера окна TCP. Помогает при странных просадках скорости.</value></data>
+  <data name="tw.tcpauto.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.tcpauto.name" xml:space="preserve"><value>Автонастройка окна TCP: обычная</value></data>
+  <data name="tw.tcpauto.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.tcpauto.sub" xml:space="preserve"><value>Стабильная скорость на любом канале</value></data>
+  <data name="tw.tcpauto.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.telem.desc" xml:space="preserve"><value>Снижает объём диагностических данных, которые Windows отправляет в фоне. Применяется через политики, службы не удаляются.</value></data>
+  <data name="tw.telem.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.telem.name" xml:space="preserve"><value>Ограничить телеметрию Windows</value></data>
+  <data name="tw.telem.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.telem.sub" xml:space="preserve"><value>Меньше фоновых отчётов</value></data>
+  <data name="tw.telem.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.timer.desc" xml:space="preserve"><value>Уменьшает шаг системного таймера. Игры реже «спотыкаются» на ровном месте, но ПК чаще выходит из простоя.</value></data>
+  <data name="tw.timer.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.timer.name" xml:space="preserve"><value>Высокоточный таймер 0,5 мс</value></data>
+  <data name="tw.timer.note" xml:space="preserve"><value>Повышает энергопотребление в простое.</value></data>
+  <data name="tw.timer.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.timer.sub" xml:space="preserve"><value>Точнее планирование потоков</value></data>
+  <data name="tw.timer.temp" xml:space="preserve"><value>Чуть теплее</value></data>
+  <data name="tw.tlim.desc" xml:space="preserve"><value>Чем выше порог, тем позже процессор начинает снижать частоту. Постоянная работа у верхней границы сокращает срок службы.</value></data>
+  <data name="tw.tlim.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.tlim.name" xml:space="preserve"><value>Допустимая температура процессора</value></data>
+  <data name="tw.tlim.stab" xml:space="preserve"><value>Выше под нагрузкой</value></data>
+  <data name="tw.tlim.sub" xml:space="preserve"><value>При каком нагреве начинается сброс частоты</value></data>
+  <data name="tw.tlim.temp" xml:space="preserve"><value>До +10 °C</value></data>
+  <data name="tw.tlim.unit" xml:space="preserve"><value>°C</value></data>
+  <data name="tw.tmp.desc" xml:space="preserve"><value>Перед запуском игры удаляет безопасные временные файлы Windows и браузеров.</value></data>
+  <data name="tw.tmp.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.tmp.name" xml:space="preserve"><value>Очистка временных файлов перед игрой</value></data>
+  <data name="tw.tmp.stab" xml:space="preserve"><value>Немного выше</value></data>
+  <data name="tw.tmp.sub" xml:space="preserve"><value>Освобождает место и ускоряет обращения к диску</value></data>
+  <data name="tw.tmp.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.trim.desc" xml:space="preserve"><value>Регулярно сообщает SSD, какие блоки свободны. Скорость записи не падает со временем.</value></data>
+  <data name="tw.trim.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.trim.name" xml:space="preserve"><value>TRIM по расписанию</value></data>
+  <data name="tw.trim.stab" xml:space="preserve"><value>Стабильнее скорость диска</value></data>
+  <data name="tw.trim.sub" xml:space="preserve"><value>SSD сохраняет скорость записи</value></data>
+  <data name="tw.trim.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.upd.desc" xml:space="preserve"><value>Пока запущена игра, Центр обновления не качает и не устанавливает пакеты.</value></data>
+  <data name="tw.upd.lat" xml:space="preserve"><value>Ниже</value></data>
+  <data name="tw.upd.name" xml:space="preserve"><value>Приостановить обновления на время игры</value></data>
+  <data name="tw.upd.stab" xml:space="preserve"><value>Выше</value></data>
+  <data name="tw.upd.sub" xml:space="preserve"><value>Без загрузок и установки в фоне</value></data>
+  <data name="tw.upd.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.uvi.desc" xml:space="preserve"><value>Уменьшает напряжение: меньше нагрев и больше времени на высоком boost. Слишком большое значение вызывает вылеты.</value></data>
+  <data name="tw.uvi.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.uvi.name" xml:space="preserve"><value>Андервольт ядер (offset)</value></data>
+  <data name="tw.uvi.stab" xml:space="preserve"><value>Зависит от кристалла</value></data>
+  <data name="tw.uvi.sub" xml:space="preserve"><value>Снижение напряжения Intel</value></data>
+  <data name="tw.uvi.temp" xml:space="preserve"><value>Холоднее на 3–8 °C</value></data>
+  <data name="tw.uvi.unit" xml:space="preserve"><value>мВ</value></data>
+  <data name="tw.vfx.desc" xml:space="preserve"><value>Отключает анимации окон и прозрачность. Заметно только на слабых видеокартах и интегрированной графике.</value></data>
+  <data name="tw.vfx.lat" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.vfx.name" xml:space="preserve"><value>Упрощённые визуальные эффекты</value></data>
+  <data name="tw.vfx.stab" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="tw.vfx.sub" xml:space="preserve"><value>Без анимаций и прозрачности интерфейса</value></data>
+  <data name="tw.vfx.temp" xml:space="preserve"><value>Без изменений</value></data>
+  <data name="ty" xml:space="preserve"><value>Тип</value></data>
+  <data name="undo" xml:space="preserve"><value>Вернуть как было</value></data>
+  <data name="undo_t" xml:space="preserve"><value>Состояние до последнего применения восстановлено. Осталось шагов отката: </value></data>
+  <data name="unsup" xml:space="preserve"><value>Видеокарты Intel пока не поддерживаются: раздел отключён.</value></data>
+  <data name="vp" xml:space="preserve"><value>Показан профиль</value></data>
+  <data name="vram" xml:space="preserve"><value>Видеопамять</value></data>
+  <data name="w" xml:space="preserve"><value>Вт</value></data>
+  <data name="wl_d" xml:space="preserve"><value>У ноутбуков ограниченное охлаждение и питание, а компоненты часто урезаны производителем по мощности. Сильный разгон может привести к перегреву, троттлингу, износу батареи или необратимому повреждению и может лишить гарантии. Для ноутбуков Corvite сужает ползунки и использует более строгую шкалу риска. Держите зарядку подключённой, следите за температурой и избегайте красной зоны.</value></data>
+  <data name="wl_t" xml:space="preserve"><value>Предупреждение для ноутбука</value></data>
+  <data name="wp_d" xml:space="preserve"><value>Изменение системных настроек и параметров железа может вызвать нестабильность, перегрев, вылеты, потерю данных или сокращение срока службы компонентов. Corvite сохраняет резервную копию исходных настроек и может вернуть всё назад, но не может гарантировать безопасность на любом ПК. Разгон выполняется на ваш риск.</value></data>
+  <data name="wp_t" xml:space="preserve"><value>Прежде чем продолжить</value></data>
+  <data name="planned" xml:space="preserve"><value>Раздел появится на следующем этапе разработки (см. ТЗ, раздел 15). Каркас и навигация уже готовы.</value></data>
+  <data name="unsup_gpu" xml:space="preserve"><value>Видеокарты Intel пока не поддерживаются: раздел отключён.</value></data>
+  <data name="hw_loading" xml:space="preserve"><value>Определяем железо…</value></data>
+  <data name="h_real" xml:space="preserve"><value>Определено автоматически (WMI и датчики)</value></data>
+  <data name="clk_now" xml:space="preserve"><value>Текущая частота</value></data>
+  <data name="pw_now" xml:space="preserve"><value>Потребление</value></data>
+  <data name="ld_now" xml:space="preserve"><value>Загрузка</value></data>
+  <data name="nosensor" xml:space="preserve"><value>нет датчика</value></data>
+  <data name="pl_auto" xml:space="preserve"><value>Тип определён автоматически. Проверьте и подтвердите.</value></data>
+  <data name="ov.of" xml:space="preserve"><value>из </value></data>
+  <data name="hw_lap" xml:space="preserve"><value>Ваш ноутбук</value></data>
+  <data name="pl_rec" xml:space="preserve"><value>Рекомендуется для вашего типа устройства</value></data>
+  <data name="pl_by" xml:space="preserve"><value>Определено по: </value></data>
+  <data name="sig_chassis" xml:space="preserve"><value>тип корпуса</value></data>
+  <data name="sig_battery" xml:space="preserve"><value>наличие батареи</value></data>
+  <data name="sig_model" xml:space="preserve"><value>название модели</value></data>
+  <data name="sig_cpu" xml:space="preserve"><value>серия процессора</value></data>
+  <data name="pl_mm_risk" xml:space="preserve"><value>Ваше устройство определено как ноутбук, а вы выбрали режим «ПК». Разгон в этом режиме выполняется пользователем на свой страх и риск и подходит только для опытных пользователей: у ноутбука ограничены охлаждение и питание, возможны перегрев, троттлинг и повреждение комплектующих.</value></data>
+  <data name="pl_mm_info" xml:space="preserve"><value>Ваше устройство определено как ПК, а вы выбрали режим «Ноутбук». Это безопасно, но пределы разгонных параметров будут урезаны примерно вдвое.</value></data>
+  <data name="lock.soon" xml:space="preserve"><value>скоро</value></data>
+  <data name="lock.na" xml:space="preserve"><value>недоступно</value></data>
+  <data name="busy" xml:space="preserve"><value>Применяю изменения…</value></data>
+  <data name="toast.fail" xml:space="preserve"><value>Не удалось применить: </value></data>
+  <data name="toast.reboot" xml:space="preserve"><value>часть изменений вступит в силу после перезагрузки</value></data>
+  <data name="toast.rollback" xml:space="preserve"><value>Авто-откат: температура превысила порог</value></data>
+</root>

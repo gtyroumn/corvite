@@ -1,0 +1,92 @@
+[
+ {
+  "id": "CoD Warzone",
+  "regex": "warzone|варзон",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: полноэкранный. V-Sync: выкл. NVIDIA Reflex: вкл + Boost. Texture Resolution: Normal/Low. Shadow Map Resolution и Cache Spot Shadows: низкие/выкл. Particle Quality: Low. Tessellation, Ambient Occlusion, Screen Space Reflections: выкл. Depth of Field, Motion Blur (оба), Film Grain: выкл/0. FOV: 105–120. Anisotropic Filtering: High (почти бесплатно).",
+   "uk": "Режим: повноекранний. V-Sync: вимк. NVIDIA Reflex: увімк + Boost. Texture Resolution: Normal/Low. Shadow Map Resolution і Cache Spot Shadows: низькі/вимк. Particle Quality: Low. Tessellation, Ambient Occlusion, Screen Space Reflections: вимк. Depth of Field, Motion Blur (обидва), Film Grain: вимк/0. FOV: 105–120. Anisotropic Filtering: High (майже безкоштовно).",
+   "en": "Mode: fullscreen. V-Sync: off. NVIDIA Reflex: on + Boost. Texture Resolution: Normal/Low. Shadow Map Resolution and Cache Spot Shadows: low/off. Particle Quality: Low. Tessellation, Ambient Occlusion, Screen Space Reflections: off. Depth of Field, Motion Blur (both), Film Grain: off/0. FOV: 105–120. Anisotropic Filtering: High (almost free)."
+  }
+ },
+ {
+  "id": "Call of Duty",
+  "regex": "call of duty|(^| )cod( |$)|колд",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: полноэкранный. V-Sync: выкл. Reflex: вкл + Boost. Тени, частицы, тесселяция: Low/выкл. Ambient Occlusion и отражения экранного пространства: выкл. Motion Blur, Depth of Field, Film Grain: выкл. FOV: 100–120. Лимит FPS: выше частоты монитора.",
+   "uk": "Режим: повноекранний. V-Sync: вимк. Reflex: увімк + Boost. Тіні, частинки, тесселяція: Low/вимк. Ambient Occlusion і відбиття екранного простору: вимк. Motion Blur, Depth of Field, Film Grain: вимк. FOV: 100–120. Ліміт FPS: вище за частоту монітора.",
+   "en": "Mode: fullscreen. V-Sync: off. Reflex: on + Boost. Shadows, particles, tessellation: Low/off. Ambient Occlusion and screen-space reflections: off. Motion Blur, Depth of Field, Film Grain: off. FOV: 100–120. FPS cap: above your monitor refresh rate."
+  }
+ },
+ {
+  "id": "CS2",
+  "regex": "cs2|csgo|cs go|контр|counter|(^| )кс( |$)",
+  "heavy": false,
+  "ig": {
+   "ru": "Режим: полноэкранный, разрешение нативное (4:3 растянутое по желанию, даёт больше FPS). Multicore Rendering: вкл. Тени: Low/Medium. Model/Texture Detail: Low/Medium (текстуры по объёму VRAM). Shader Detail и Particle Detail: Low. Ambient Occlusion: выкл. High Dynamic Range: Performance. MSAA: 4x или выкл. V-Sync: выкл. NVIDIA Reflex/Anti-Lag: вкл. Лимит FPS: 0 (без лимита).",
+   "uk": "Режим: повноекранний, роздільна здатність нативна (4:3 розтягнуте за бажанням, дає більше FPS). Multicore Rendering: увімк. Тіні: Low/Medium. Model/Texture Detail: Low/Medium (текстури за обсягом VRAM). Shader Detail і Particle Detail: Low. Ambient Occlusion: вимк. High Dynamic Range: Performance. MSAA: 4x або вимк. V-Sync: вимк. NVIDIA Reflex/Anti-Lag: увімк. Ліміт FPS: 0 (без ліміту).",
+   "en": "Mode: fullscreen, native resolution (stretched 4:3 optional, gives more FPS). Multicore Rendering: on. Shadows: Low/Medium. Model/Texture Detail: Low/Medium (textures depending on VRAM). Shader Detail and Particle Detail: Low. Ambient Occlusion: off. High Dynamic Range: Performance. MSAA: 4x or off. V-Sync: off. NVIDIA Reflex/Anti-Lag: on. FPS cap: 0 (unlimited)."
+  }
+ },
+ {
+  "id": "Apex Legends",
+  "regex": "apex|апекс",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: полноэкранный, V-Sync: выкл. Adaptive Resolution FPS Target: 0. Anti-Aliasing: TSAA или None. Texture Streaming Budget: по VRAM (на 8 ГБ — High). Anisotropic: 4x–8x. Ambient Occlusion Quality, Volumetric Lighting, Dynamic Spot Shadows: Disabled. Sun Shadow Coverage и Detail: Low. Spot Shadow Detail: Disabled. Effects Detail, Impact Marks, Ragdolls: Low. Model Detail: High (лучше видны враги). FOV: 100–110. Reflex: Enabled + Boost. Параметр запуска: +fps_max unlimited.",
+   "uk": "Режим: повноекранний, V-Sync: вимк. Adaptive Resolution FPS Target: 0. Anti-Aliasing: TSAA або None. Texture Streaming Budget: за VRAM (на 8 ГБ — High). Anisotropic: 4x–8x. Ambient Occlusion Quality, Volumetric Lighting, Dynamic Spot Shadows: Disabled. Sun Shadow Coverage і Detail: Low. Spot Shadow Detail: Disabled. Effects Detail, Impact Marks, Ragdolls: Low. Model Detail: High (краще видно ворогів). FOV: 100–110. Reflex: Enabled + Boost. Параметр запуску: +fps_max unlimited.",
+   "en": "Mode: fullscreen, V-Sync: off. Adaptive Resolution FPS Target: 0. Anti-Aliasing: TSAA or None. Texture Streaming Budget: by VRAM (High on 8 GB). Anisotropic: 4x–8x. Ambient Occlusion Quality, Volumetric Lighting, Dynamic Spot Shadows: Disabled. Sun Shadow Coverage and Detail: Low. Spot Shadow Detail: Disabled. Effects Detail, Impact Marks, Ragdolls: Low. Model Detail: High (enemies are easier to see). FOV: 100–110. Reflex: Enabled + Boost. Launch option: +fps_max unlimited."
+  }
+ },
+ {
+  "id": "Fortnite",
+  "regex": "fortnite|фортнайт",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим рендера: Performance (режим производительности) — лучший FPS и отклик. 3D Resolution: 100%. View Distance: Far (видно врагов издалека). Shadows, Global Illumination, Reflections: выкл. Anti-Aliasing: выкл или TAA Low. Textures: Medium (по VRAM). Effects и Post Processing: Low. V-Sync: выкл. Reflex: On + Boost. Nanite и Lumen: выкл.",
+   "uk": "Режим рендера: Performance (режим продуктивності) — найкращий FPS і відгук. 3D Resolution: 100%. View Distance: Far (видно ворогів здалеку). Shadows, Global Illumination, Reflections: вимк. Anti-Aliasing: вимк або TAA Low. Textures: Medium (за VRAM). Effects і Post Processing: Low. V-Sync: вимк. Reflex: On + Boost. Nanite і Lumen: вимк.",
+   "en": "Rendering mode: Performance — best FPS and response. 3D Resolution: 100%. View Distance: Far (enemies visible from afar). Shadows, Global Illumination, Reflections: off. Anti-Aliasing: off or TAA Low. Textures: Medium (depending on VRAM). Effects and Post Processing: Low. V-Sync: off. Reflex: On + Boost. Nanite and Lumen: off."
+  }
+ },
+ {
+  "id": "Dota 2",
+  "regex": "dota|дота",
+  "heavy": false,
+  "ig": {
+   "ru": "Графический API: DirectX 11 (Vulkan на слабых CPU). Render Quality: 100%. Shadow Quality: Low/Medium. Texture: Medium. Effects: Low. Ambient Occlusion, Fog, Bloom: выкл. FXAA/MSAA: выкл или 2x. V-Sync: выкл. Лимит FPS: выше частоты монитора.",
+   "uk": "Графічний API: DirectX 11 (Vulkan на слабких CPU). Render Quality: 100%. Shadow Quality: Low/Medium. Texture: Medium. Effects: Low. Ambient Occlusion, Fog, Bloom: вимк. FXAA/MSAA: вимк або 2x. V-Sync: вимк. Ліміт FPS: вище за частоту монітора.",
+   "en": "Graphics API: DirectX 11 (Vulkan on weak CPUs). Render Quality: 100%. Shadow Quality: Low/Medium. Texture: Medium. Effects: Low. Ambient Occlusion, Fog, Bloom: off. FXAA/MSAA: off or 2x. V-Sync: off. FPS cap: above your monitor refresh rate."
+  }
+ },
+ {
+  "id": "League of Legends",
+  "regex": "league|(^| )lol( |$)|(^| )лол( |$)|лига",
+  "heavy": false,
+  "ig": {
+   "ru": "Разрешение: нативное. Character и Environment Quality: Low/Medium. Shadows: Off. Effects Quality: Low. Anti-Aliasing: выкл. Frame Rate Cap: Uncapped. Wait for V-Sync: выкл. Hide Eye Candy: вкл. Режим окна: полноэкранный (Fullscreen).",
+   "uk": "Роздільна здатність: нативна. Character і Environment Quality: Low/Medium. Shadows: Off. Effects Quality: Low. Anti-Aliasing: вимк. Frame Rate Cap: Uncapped. Wait for V-Sync: вимк. Hide Eye Candy: увімк. Режим вікна: повноекранний (Fullscreen).",
+   "en": "Resolution: native. Character and Environment Quality: Low/Medium. Shadows: Off. Effects Quality: Low. Anti-Aliasing: off. Frame Rate Cap: Uncapped. Wait for V-Sync: off. Hide Eye Candy: on. Window mode: Fullscreen."
+  }
+ },
+ {
+  "id": "PUBG",
+  "regex": "pubg|пабг|пубг",
+  "heavy": true,
+  "ig": {
+   "ru": "API: DirectX 11. Screen Scale: 100. Anti-Aliasing: Low/Medium. Post-Processing: Very Low. Shadows: Very Low. Textures: Medium/High (по VRAM). Effects: Very Low. Foliage: Very Low (меньше кустов — лучше видны враги). View Distance: Medium/High. Motion Blur и V-Sync: выкл. Лимит FPS: Unlimited.",
+   "uk": "API: DirectX 11. Screen Scale: 100. Anti-Aliasing: Low/Medium. Post-Processing: Very Low. Shadows: Very Low. Textures: Medium/High (за VRAM). Effects: Very Low. Foliage: Very Low (менше кущів — краще видно ворогів). View Distance: Medium/High. Motion Blur і V-Sync: вимк. Ліміт FPS: Unlimited.",
+   "en": "API: DirectX 11. Screen Scale: 100. Anti-Aliasing: Low/Medium. Post-Processing: Very Low. Shadows: Very Low. Textures: Medium/High (depending on VRAM). Effects: Very Low. Foliage: Very Low (fewer bushes — enemies easier to see). View Distance: Medium/High. Motion Blur and V-Sync: off. FPS cap: Unlimited."
+  }
+ },
+ {
+  "id": "Valorant",
+  "regex": "valorant|валорант",
+  "heavy": false,
+  "ig": {
+   "ru": "Multithreaded Rendering: вкл. Materials, Textures, Detail, UI Quality: Low. Vignette, Bloom, Distortion, Cast Shadows: выкл. Anti-Aliasing: MSAA 2x или выкл. Anisotropic: 1x–4x. Improve Clarity: выкл. V-Sync: выкл. NVIDIA Reflex: On + Boost. Лимит FPS: выкл.",
+   "uk": "Multithreaded Rendering: увімк. Materials, Textures, Detail, UI Quality: Low. Vignette, Bloom, Distortion, Cast Shadows: вимк. Anti-Aliasing: MSAA 2x або вимк. Anisotropic: 1x–4x. Improve Clarity: вимк. V-Sync: вимк. NVIDIA Reflex: On + Boost. Ліміт FPS: вимк.",
+   "en": "Multithreaded Rendering: on. Materials, Textures, Detail, UI Quality: Low. Vignette, Bloom, Distortion, Cast Shadows: off. Anti-Aliasing: MSAA 2x or off. Anisotropic: 1x–4x. Improve Clarity: off. V-Sync: off. NVIDIA Reflex: On + Boost. FPS cap: off."
+  }
+ }
+]

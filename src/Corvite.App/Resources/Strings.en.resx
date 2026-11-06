@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="ack" xml:space="preserve"><value>I understand the risk and want to continue</value></data>
+  <data name="ai_def" xml:space="preserve"><value>Name a game (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) or ask about risks, profile, RAM.</value></data>
+  <data name="ai_hi" xml:space="preserve"><value>I'm a local AI advisor. In the demo answers are rule-based; the C# version will plug in a local model. Tell me which game to optimize for (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), or ask about risks and RAM. I reply in the language of your question.</value></data>
+  <data name="ai_ok" xml:space="preserve"><value>No red-zone settings; the configuration is balanced.</value></data>
+  <data name="ai_ph" xml:space="preserve"><value>Ask about risks, profile, RAM…</value></data>
+  <data name="ai_pick" xml:space="preserve"><value>Pick settings</value></data>
+  <data name="ai_ram" xml:space="preserve"><value>Open the “RAM timings” tab: it has three overclock levels for your kit.</value></data>
+  <data name="ai_rec" xml:space="preserve"><value>Best profile for your hardware</value></data>
+  <data name="ai_red" xml:space="preserve"><value>High risk:</value></data>
+  <data name="ai_t" xml:space="preserve"><value>AI advisor</value></data>
+  <data name="ai_tag" xml:space="preserve"><value>local, demo</value></data>
+  <data name="ap" xml:space="preserve"><value>Apply</value></data>
+  <data name="base" xml:space="preserve"><value>Base clock</value></data>
+  <data name="bk_cr" xml:space="preserve"><value>Backup of original settings created</value></data>
+  <data name="bk_d" xml:space="preserve"><value>Created on first launch, before any change. Stored in the app folder until you delete it yourself: you can return to the original settings at any time, even after closing the app or rebooting the PC.</value></data>
+  <data name="bk_del" xml:space="preserve"><value>Delete backup</value></data>
+  <data name="bk_deleted" xml:space="preserve"><value>Backup deleted</value></data>
+  <data name="bk_done" xml:space="preserve"><value>Original settings restored</value></data>
+  <data name="bk_file" xml:space="preserve"><value>File</value></data>
+  <data name="bk_new" xml:space="preserve"><value>Create backup now</value></data>
+  <data name="bk_none" xml:space="preserve"><value>No backup. The app will create one on next launch from the current PC state.</value></data>
+  <data name="bk_open" xml:space="preserve"><value>Open folder</value></data>
+  <data name="bk_opened" xml:space="preserve"><value>The app will open the backup folder (demo)</value></data>
+  <data name="bk_rest" xml:space="preserve"><value>Restore original settings</value></data>
+  <data name="bk_sure" xml:space="preserve"><value>Really delete?</value></data>
+  <data name="bk_t" xml:space="preserve"><value>Backup of original settings</value></data>
+  <data name="bk_tag" xml:space="preserve"><value>created once</value></data>
+  <data name="bk_un" xml:space="preserve"><value>When uninstalling, the installer offers to restore the original settings first.</value></data>
+  <data name="bk_when" xml:space="preserve"><value>Created</value></data>
+  <data name="boost" xml:space="preserve"><value>Max boost</value></data>
+  <data name="cache" xml:space="preserve"><value>Cache</value></data>
+  <data name="cancel" xml:space="preserve"><value>Cancel</value></data>
+  <data name="cap" xml:space="preserve"><value>Capacity</value></data>
+  <data name="cores" xml:space="preserve"><value>Cores / threads</value></data>
+  <data name="d_background" xml:space="preserve"><value>What runs next to the game and eats resources</value></data>
+  <data name="d_cpu" xml:space="preserve"><value>Cores, power limits and clocks</value></data>
+  <data name="d_gpu" xml:space="preserve"><value>Overclock, limits and frame latency</value></data>
+  <data name="d_hardware" xml:space="preserve"><value>Detected hardware, clocks and profile match</value></data>
+  <data name="d_memory" xml:space="preserve"><value>RAM, SSD and temp files</value></data>
+  <data name="d_network" xml:space="preserve"><value>Latency and connection stability in online games</value></data>
+  <data name="d_overview" xml:space="preserve"><value>System status, profiles and safety</value></data>
+  <data name="d_ramt" xml:space="preserve"><value>Approximate BIOS speeds and timings: mild, medium and strong overclock</value></data>
+  <data name="d_system" xml:space="preserve"><value>Power plan, Game Mode and Windows priorities</value></data>
+  <data name="dk" xml:space="preserve"><value>Drive</value></data>
+  <data name="done" xml:space="preserve"><value>All changes applied</value></data>
+  <data name="eff" xml:space="preserve"><value>Estimated effect</value></data>
+  <data name="gb" xml:space="preserve"><value>GB</value></data>
+  <data name="gc" xml:space="preserve"><value>Core clock</value></data>
+  <data name="gm" xml:space="preserve"><value>Memory clock</value></data>
+  <data name="grp.1" xml:space="preserve"><value>Windows</value></data>
+  <data name="grp.10" xml:space="preserve"><value>Services</value></data>
+  <data name="grp.11" xml:space="preserve"><value>Load</value></data>
+  <data name="grp.2" xml:space="preserve"><value>Priorities</value></data>
+  <data name="grp.3" xml:space="preserve"><value>Power and cores</value></data>
+  <data name="grp.4" xml:space="preserve"><value>Clocks and limits</value></data>
+  <data name="grp.5" xml:space="preserve"><value>Overclocking</value></data>
+  <data name="grp.6" xml:space="preserve"><value>Driver and latency</value></data>
+  <data name="grp.7" xml:space="preserve"><value>Memory (RAM)</value></data>
+  <data name="grp.8" xml:space="preserve"><value>Disk</value></data>
+  <data name="grp.9" xml:space="preserve"><value>Network stack</value></data>
+  <data name="guard" xml:space="preserve"><value>Safety</value></data>
+  <data name="h_cfg" xml:space="preserve"><value>Demo PC configuration (auto-detected in the app)</value></data>
+  <data name="hw_pc" xml:space="preserve"><value>Your PC</value></data>
+  <data name="kit" xml:space="preserve"><value>Kit</value></data>
+  <data name="lap_bios" xml:space="preserve"><value>Usually not available in a laptop BIOS</value></data>
+  <data name="lap_ram" xml:space="preserve"><value>Laptops often lock memory settings and use SO-DIMM, so these values may be unavailable. Do not force them.</value></data>
+  <data name="mb" xml:space="preserve"><value>Board</value></data>
+  <data name="mhz" xml:space="preserve"><value>MHz</value></data>
+  <data name="n_background" xml:space="preserve"><value>Background</value></data>
+  <data name="n_cpu" xml:space="preserve"><value>CPU</value></data>
+  <data name="n_gpu" xml:space="preserve"><value>GPU</value></data>
+  <data name="n_hardware" xml:space="preserve"><value>Hardware &amp; clocks</value></data>
+  <data name="n_memory" xml:space="preserve"><value>Memory &amp; disk</value></data>
+  <data name="n_network" xml:space="preserve"><value>Network</value></data>
+  <data name="n_overview" xml:space="preserve"><value>Overview</value></data>
+  <data name="n_ramt" xml:space="preserve"><value>RAM timings</value></data>
+  <data name="n_system" xml:space="preserve"><value>Windows</value></data>
+  <data name="nosup" xml:space="preserve"><value>Not supported</value></data>
+  <data name="offon" xml:space="preserve"><value>off → on</value></data>
+  <data name="on" xml:space="preserve"><value>enabled</value></data>
+  <data name="ov.cpu" xml:space="preserve"><value>CPU temperature</value></data>
+  <data name="ov.demo" xml:space="preserve"><value>demo</value></data>
+  <data name="ov.gaincap" xml:space="preserve"><value>Expected FPS gain from active settings. Effects partly overlap, so the upper bound does not exceed 20%.</value></data>
+  <data name="ov.gpu" xml:space="preserve"><value>GPU temperature</value></data>
+  <data name="ov.intro" xml:space="preserve"><value>System status, ready-made profiles and safety. A profile sets the starting values; you can then fine-tune everything manually in the sections.</value></data>
+  <data name="ov.limit" xml:space="preserve"><value>limit</value></data>
+  <data name="ov.load" xml:space="preserve"><value>Load</value></data>
+  <data name="ov.of32" xml:space="preserve"><value>of 32 GB</value></data>
+  <data name="ov.ram" xml:space="preserve"><value>Memory (RAM)</value></data>
+  <data name="ov.risk" xml:space="preserve"><value>Overall risk level</value></data>
+  <data name="ov.safe" xml:space="preserve"><value>safe</value></data>
+  <data name="pend" xml:space="preserve"><value>Pending: </value></data>
+  <data name="pl_back" xml:space="preserve"><value>Back</value></data>
+  <data name="pl_cf" xml:space="preserve"><value>I understand the risks, continue</value></data>
+  <data name="pl_d" xml:space="preserve"><value>Corvite adapts its limits and risk scales to your device.</value></data>
+  <data name="pl_lap" xml:space="preserve"><value>Laptop</value></data>
+  <data name="pl_lapd" xml:space="preserve"><value>Laptop: stricter limits and its own risk scale</value></data>
+  <data name="pl_ok" xml:space="preserve"><value>Confirm</value></data>
+  <data name="pl_pc" xml:space="preserve"><value>PC</value></data>
+  <data name="pl_pcd" xml:space="preserve"><value>Desktop: full limits, depends on your cooling</value></data>
+  <data name="pl_t" xml:space="preserve"><value>Select your platform</value></data>
+  <data name="prof" xml:space="preserve"><value>Profiles</value></data>
+  <data name="prof.game.name" xml:space="preserve"><value>Gaming</value></data>
+  <data name="prof.game.sub" xml:space="preserve"><value>Balance of response, FPS and temperature</value></data>
+  <data name="prof.max.name" xml:space="preserve"><value>Maximum</value></data>
+  <data name="prof.max.sub" xml:space="preserve"><value>Limit of your cooling, red zone</value></data>
+  <data name="prof.safe.name" xml:space="preserve"><value>Safe</value></data>
+  <data name="prof.safe.sub" xml:space="preserve"><value>Only proven tweaks, no overclocking</value></data>
+  <data name="prof.stock.name" xml:space="preserve"><value>Default</value></data>
+  <data name="prof.stock.sub" xml:space="preserve"><value>Default Windows and driver settings</value></data>
+  <data name="proto" xml:space="preserve"><value>PROTOTYPE: nothing is applied to your PC</value></data>
+  <data name="r_b" xml:space="preserve"><value>Where in BIOS</value></data>
+  <data name="r_f" xml:space="preserve"><value>Speed</value></data>
+  <data name="r_i" xml:space="preserve"><value>Memory controller</value></data>
+  <data name="r_note" xml:space="preserve"><value>Values are approximate (~). Change them in BIOS manually and verify stability (TestMem5, MemTest86). The app applies nothing.</value></data>
+  <data name="r_ok" xml:space="preserve"><value>Within kit profile</value></data>
+  <data name="r_over" xml:space="preserve"><value>Above kit rating, depends on silicon lottery</value></data>
+  <data name="r_t" xml:space="preserve"><value>Timings</value></data>
+  <data name="r_v" xml:space="preserve"><value>DRAM voltage</value></data>
+  <data name="reset" xml:space="preserve"><value>Reset section</value></data>
+  <data name="risk.0" xml:space="preserve"><value>Safe</value></data>
+  <data name="risk.1" xml:space="preserve"><value>Moderate</value></data>
+  <data name="risk.2" xml:space="preserve"><value>High risk</value></data>
+  <data name="risk.guard" xml:space="preserve"><value>Safety</value></data>
+  <data name="risk.std" xml:space="preserve"><value>Default</value></data>
+  <data name="rv" xml:space="preserve"><value>Discard changes</value></data>
+  <data name="rz1" xml:space="preserve"><value>These values exceed the safe range for most systems. They raise temperature and power load; crashes and reboots are possible.</value></data>
+  <data name="rz2" xml:space="preserve"><value>A restore point is created before applying. Settings roll back automatically on overheating.</value></data>
+  <data name="rz_t" xml:space="preserve"><value>Red-zone settings</value></data>
+  <data name="sections" xml:space="preserve"><value>Sections</value></data>
+  <data name="sock" xml:space="preserve"><value>Socket</value></data>
+  <data name="sp" xml:space="preserve"><value>Speed</value></data>
+  <data name="stk" xml:space="preserve"><value>Modules</value></data>
+  <data name="sub" xml:space="preserve"><value>PC optimizer</value></data>
+  <data name="sup" xml:space="preserve"><value>Supported</value></data>
+  <data name="t0" xml:space="preserve"><value>Mild</value></data>
+  <data name="t1" xml:space="preserve"><value>Medium</value></data>
+  <data name="t2" xml:space="preserve"><value>Strong</value></data>
+  <data name="tdp" xml:space="preserve"><value>TDP</value></data>
+  <data name="tip.atmax" xml:space="preserve"><value>at maximum</value></data>
+  <data name="tip.foot" xml:space="preserve"><value>Estimate for a typical gaming system. Values are approximate (~).</value></data>
+  <data name="tip.lat" xml:space="preserve"><value>Response</value></data>
+  <data name="tip.more" xml:space="preserve"><value>More:</value></data>
+  <data name="tip.nofps" xml:space="preserve"><value>No effect</value></data>
+  <data name="tip.sliderwarn" xml:space="preserve"><value>The green part of the scale is safe for most systems. The red part needs good cooling and can cause crashes.</value></data>
+  <data name="tip.stab" xml:space="preserve"><value>Stability</value></data>
+  <data name="tip.temp" xml:space="preserve"><value>Temperature</value></data>
+  <data name="toast.applied" xml:space="preserve"><value>Applied:</value></data>
+  <data name="toast.discard" xml:space="preserve"><value>Changes discarded</value></data>
+  <data name="toast.prof1" xml:space="preserve"><value>Profile "</value></data>
+  <data name="toast.prof2" xml:space="preserve"><value>" selected. Press "Apply".</value></data>
+  <data name="toast.rp" xml:space="preserve"><value>. Restore point created (demo).</value></data>
+  <data name="tot.0" xml:space="preserve"><value>Low</value></data>
+  <data name="tot.1" xml:space="preserve"><value>Moderate</value></data>
+  <data name="tot.2" xml:space="preserve"><value>Elevated</value></data>
+  <data name="tot.3" xml:space="preserve"><value>High</value></data>
+  <data name="tw.aggr.desc" xml:space="preserve"><value>The higher the value, the more often memory is cleared. Clearing too often forces the game to re-read data from disk.</value></data>
+  <data name="tw.aggr.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.aggr.name" xml:space="preserve"><value>Cleanup aggressiveness</value></data>
+  <data name="tw.aggr.stab" xml:space="preserve"><value>Depends on RAM size</value></data>
+  <data name="tw.aggr.sub" xml:space="preserve"><value>How often to flush the cache</value></data>
+  <data name="tw.aggr.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.aggr.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.antil.desc" xml:space="preserve"><value>The driver synchronizes CPU and GPU so frames are queued later. Latency is lower. Compatibility depends on the game.</value></data>
+  <data name="tw.antil.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.antil.name" xml:space="preserve"><value>Radeon Anti-Lag</value></data>
+  <data name="tw.antil.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.antil.sub" xml:space="preserve"><value>Lower input latency on AMD</value></data>
+  <data name="tw.antil.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.bgcap.desc" xml:space="preserve"><value>Limits background processes while a game runs. Too strict a limit will slow antivirus and cloud sync.</value></data>
+  <data name="tw.bgcap.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.bgcap.name" xml:space="preserve"><value>Background CPU load limit</value></data>
+  <data name="tw.bgcap.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.bgcap.sub" xml:space="preserve"><value>How much CPU background processes may use</value></data>
+  <data name="tw.bgcap.temp" xml:space="preserve"><value>Cooler</value></data>
+  <data name="tw.bgcap.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.boost.desc" xml:space="preserve"><value>Raises the clock ceiling in single-core loads. Above a certain value the CPU stops being stable.</value></data>
+  <data name="tw.boost.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.boost.name" xml:space="preserve"><value>Boost clock offset</value></data>
+  <data name="tw.boost.stab" xml:space="preserve"><value>May get worse</value></data>
+  <data name="tw.boost.sub" xml:space="preserve"><value>Shift of the maximum core clock</value></data>
+  <data name="tw.boost.temp" xml:space="preserve"><value>+4…+12 °C</value></data>
+  <data name="tw.boost.unit" xml:space="preserve"><value>MHz</value></data>
+  <data name="tw.co.desc" xml:space="preserve"><value>Lowers core voltage at the same clock: less heat, higher boost. Too strong an offset causes errors at idle.</value></data>
+  <data name="tw.co.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.co.name" xml:space="preserve"><value>Curve Optimizer (offset)</value></data>
+  <data name="tw.co.stab" xml:space="preserve"><value>Depends on the silicon</value></data>
+  <data name="tw.co.sub" xml:space="preserve"><value>Ryzen core undervolt</value></data>
+  <data name="tw.co.temp" xml:space="preserve"><value>Cooler by 2–6 °C</value></data>
+  <data name="tw.co.unit" xml:space="preserve"><value>units</value></data>
+  <data name="tw.dns.desc" xml:space="preserve"><value>Speeds up resolving the game server address when connecting. Does not affect in-match latency.</value></data>
+  <data name="tw.dns.lat" xml:space="preserve"><value>Faster server connection</value></data>
+  <data name="tw.dns.name" xml:space="preserve"><value>Fast DNS server</value></data>
+  <data name="tw.dns.stab" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.dns.sub" xml:space="preserve"><value>Public DNS instead of your ISP's DNS</value></data>
+  <data name="tw.dns.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.dvr.desc" xml:space="preserve"><value>Stops constant background video recording. Frees some GPU and disk resources.</value></data>
+  <data name="tw.dvr.lat" xml:space="preserve"><value>Slightly lower</value></data>
+  <data name="tw.dvr.name" xml:space="preserve"><value>Disable background recording (Game DVR)</value></data>
+  <data name="tw.dvr.note" xml:space="preserve"><value>Clips through Game Bar will stop being recorded.</value></data>
+  <data name="tw.dvr.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.dvr.sub" xml:space="preserve"><value>Less load on GPU and disk</value></data>
+  <data name="tw.dvr.temp" xml:space="preserve"><value>Slightly cooler</value></data>
+  <data name="tw.fast.desc" xml:space="preserve"><value>Fast Startup keeps part of the system state between boots, which lets driver faults accumulate.</value></data>
+  <data name="tw.fast.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.fast.name" xml:space="preserve"><value>Disable Windows Fast Startup</value></data>
+  <data name="tw.fast.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.fast.sub" xml:space="preserve"><value>Full restart instead of hibernation</value></data>
+  <data name="tw.fast.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.focus.desc" xml:space="preserve"><value>Turns on focus mode. Notification windows do not minimize the game or cause hangs.</value></data>
+  <data name="tw.focus.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.focus.name" xml:space="preserve"><value>Disable notifications in game</value></data>
+  <data name="tw.focus.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.focus.sub" xml:space="preserve"><value>No pop-up windows over the game</value></data>
+  <data name="tw.focus.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.fso.desc" xml:space="preserve"><value>Turns off Windows overlay processing for fullscreen games, which reduces frame output latency.</value></data>
+  <data name="tw.fso.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.fso.name" xml:space="preserve"><value>Fullscreen optimizations</value></data>
+  <data name="tw.fso.stab" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.fso.sub" xml:space="preserve"><value>Clean exclusive fullscreen mode</value></data>
+  <data name="tw.fso.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.g_reg.desc" xml:space="preserve"><value>The app remembers the original value of every setting. Any tweak can be returned to factory state in one click.</value></data>
+  <data name="tw.g_reg.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.g_reg.name" xml:space="preserve"><value>Backup of changed settings</value></data>
+  <data name="tw.g_reg.stab" xml:space="preserve"><value>Protects against crashes</value></data>
+  <data name="tw.g_reg.sub" xml:space="preserve"><value>Old values are kept for the "Restore all" button</value></data>
+  <data name="tw.g_reg.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.g_rest.desc" xml:space="preserve"><value>A Windows restore point is created before every apply so the system can be restored.</value></data>
+  <data name="tw.g_rest.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.g_rest.name" xml:space="preserve"><value>Restore point before applying</value></data>
+  <data name="tw.g_rest.stab" xml:space="preserve"><value>Protects against crashes</value></data>
+  <data name="tw.g_rest.sub" xml:space="preserve"><value>Created automatically</value></data>
+  <data name="tw.g_rest.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.g_roll.desc" xml:space="preserve"><value>If CPU or GPU temperature exceeds the threshold, the app restores the last safe settings.</value></data>
+  <data name="tw.g_roll.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.g_roll.name" xml:space="preserve"><value>Auto-rollback on overheating</value></data>
+  <data name="tw.g_roll.stab" xml:space="preserve"><value>Protects against crashes</value></data>
+  <data name="tw.g_roll.sub" xml:space="preserve"><value>Settings revert if the threshold is exceeded</value></data>
+  <data name="tw.g_roll.temp" xml:space="preserve"><value>Limits heating</value></data>
+  <data name="tw.g_temp.desc" xml:space="preserve"><value>The temperature at which the rollback triggers. Keep it below your hardware's factory throttling limit.</value></data>
+  <data name="tw.g_temp.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.g_temp.name" xml:space="preserve"><value>Rollback temperature threshold</value></data>
+  <data name="tw.g_temp.stab" xml:space="preserve"><value>Protects against crashes</value></data>
+  <data name="tw.g_temp.sub" xml:space="preserve"><value>Higher value, later the protection triggers</value></data>
+  <data name="tw.g_temp.temp" xml:space="preserve"><value>Limits heating</value></data>
+  <data name="tw.g_temp.unit" xml:space="preserve"><value>°C</value></data>
+  <data name="tw.gamemode.desc" xml:space="preserve"><value>Windows gives the game more CPU time and does not start driver updates while you play.</value></data>
+  <data name="tw.gamemode.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.gamemode.name" xml:space="preserve"><value>Windows Game Mode</value></data>
+  <data name="tw.gamemode.stab" xml:space="preserve"><value>Slightly higher</value></data>
+  <data name="tw.gamemode.sub" xml:space="preserve"><value>Priority to the game, fewer background tasks</value></data>
+  <data name="tw.gamemode.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.gcore.desc" xml:space="preserve"><value>Adds a fixed value to the core clock. Near the maximum the risk of artifacts and driver crashes grows.</value></data>
+  <data name="tw.gcore.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.gcore.name" xml:space="preserve"><value>Core clock offset</value></data>
+  <data name="tw.gcore.stab" xml:space="preserve"><value>Artifact risk near the maximum</value></data>
+  <data name="tw.gcore.sub" xml:space="preserve"><value>Graphics processor overclock</value></data>
+  <data name="tw.gcore.temp" xml:space="preserve"><value>+2…+8 °C</value></data>
+  <data name="tw.gcore.unit" xml:space="preserve"><value>MHz</value></data>
+  <data name="tw.gmem.desc" xml:space="preserve"><value>Increases video memory bandwidth. Helps at high resolutions. Memory errors can lower FPS without obvious crashes.</value></data>
+  <data name="tw.gmem.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.gmem.name" xml:space="preserve"><value>Memory clock offset</value></data>
+  <data name="tw.gmem.stab" xml:space="preserve"><value>Depends on memory chips</value></data>
+  <data name="tw.gmem.sub" xml:space="preserve"><value>Video memory overclock</value></data>
+  <data name="tw.gmem.temp" xml:space="preserve"><value>+2…+6 °C</value></data>
+  <data name="tw.gmem.unit" xml:space="preserve"><value>MHz</value></data>
+  <data name="tw.gpm.desc" xml:space="preserve"><value>Switches the driver power mode. The clock does not drop between scenes, so frametime is smoother.</value></data>
+  <data name="tw.gpm.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.gpm.name" xml:space="preserve"><value>Maximum performance in driver</value></data>
+  <data name="tw.gpm.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.gpm.sub" xml:space="preserve"><value>GPU does not lower clocks at idle</value></data>
+  <data name="tw.gpm.temp" xml:space="preserve"><value>Warmer at idle</value></data>
+  <data name="tw.gpow.desc" xml:space="preserve"><value>The GPU holds its maximum clock longer until it hits the power limit.</value></data>
+  <data name="tw.gpow.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.gpow.name" xml:space="preserve"><value>GPU power limit</value></data>
+  <data name="tw.gpow.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.gpow.sub" xml:space="preserve"><value>Upper power draw limit in watts</value></data>
+  <data name="tw.gpow.temp" xml:space="preserve"><value>+3…+9 °C</value></data>
+  <data name="tw.gpow.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.gtemp.desc" xml:space="preserve"><value>Defines when the GPU starts dropping clocks because of heat. High values require good case airflow.</value></data>
+  <data name="tw.gtemp.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.gtemp.name" xml:space="preserve"><value>GPU target temperature</value></data>
+  <data name="tw.gtemp.stab" xml:space="preserve"><value>Higher under load</value></data>
+  <data name="tw.gtemp.sub" xml:space="preserve"><value>Temperature up to which boost is allowed</value></data>
+  <data name="tw.gtemp.temp" xml:space="preserve"><value>Up to +10 °C</value></data>
+  <data name="tw.gtemp.unit" xml:space="preserve"><value>°C</value></data>
+  <data name="tw.hags.desc" xml:space="preserve"><value>Takes some work off the CPU. The effect depends on the game and driver: sometimes a gain, sometimes a small loss of up to −2%.</value></data>
+  <data name="tw.hags.lat" xml:space="preserve"><value>Lower with frame generation</value></data>
+  <data name="tw.hags.name" xml:space="preserve"><value>Hardware-accelerated GPU scheduling (HAGS)</value></data>
+  <data name="tw.hags.stab" xml:space="preserve"><value>Depends on the game</value></data>
+  <data name="tw.hags.sub" xml:space="preserve"><value>The GPU manages its own frame queue</value></data>
+  <data name="tw.hags.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.idx.desc" xml:space="preserve"><value>During a game the search indexer does not touch the disk or load the CPU.</value></data>
+  <data name="tw.idx.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.idx.name" xml:space="preserve"><value>Stop indexing while gaming</value></data>
+  <data name="tw.idx.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.idx.sub" xml:space="preserve"><value>Windows Search does not read the disk</value></data>
+  <data name="tw.idx.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.kill.desc" xml:space="preserve"><value>Closes selected programs (messengers, browsers, sync) and restores them after the game.</value></data>
+  <data name="tw.kill.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.kill.name" xml:space="preserve"><value>Close background apps when a game starts</value></data>
+  <data name="tw.kill.note" xml:space="preserve"><value>Unsaved data in the programs being closed may be lost.</value></data>
+  <data name="tw.kill.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.kill.sub" xml:space="preserve"><value>The app list is configurable</value></data>
+  <data name="tw.kill.temp" xml:space="preserve"><value>Cooler by 1–3 °C</value></data>
+  <data name="tw.lowlat.desc" xml:space="preserve"><value>The driver keeps the frame queue minimal. Mouse and keyboard input responds faster, especially in GPU-bound games.</value></data>
+  <data name="tw.lowlat.lat" xml:space="preserve"><value>Noticeably lower</value></data>
+  <data name="tw.lowlat.name" xml:space="preserve"><value>Low latency mode</value></data>
+  <data name="tw.lowlat.stab" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.lowlat.sub" xml:space="preserve"><value>Shorter frame queue between CPU and GPU</value></data>
+  <data name="tw.lowlat.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.minst.desc" xml:space="preserve"><value>The higher the value, the higher the clock stays even without load. Response is better, but idle temperature and power draw rise.</value></data>
+  <data name="tw.minst.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.minst.name" xml:space="preserve"><value>Minimum processor state</value></data>
+  <data name="tw.minst.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.minst.sub" xml:space="preserve"><value>Lower clock bound at idle</value></data>
+  <data name="tw.minst.temp" xml:space="preserve"><value>At idle +5…+15 °C</value></data>
+  <data name="tw.minst.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.nagle.desc" xml:space="preserve"><value>Windows stops merging small packets. For TCP games this lowers response latency.</value></data>
+  <data name="tw.nagle.lat" xml:space="preserve"><value>Lower by 0–10 ms (TCP games)</value></data>
+  <data name="tw.nagle.name" xml:space="preserve"><value>Disable Nagle's algorithm</value></data>
+  <data name="tw.nagle.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.nagle.sub" xml:space="preserve"><value>Packets are sent immediately, without batching</value></data>
+  <data name="tw.nagle.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.nthr.desc" xml:space="preserve"><value>Windows limits packet processing speed during multimedia playback. This setting removes the limit.</value></data>
+  <data name="tw.nthr.lat" xml:space="preserve"><value>Slightly lower</value></data>
+  <data name="tw.nthr.name" xml:space="preserve"><value>Remove multimedia network throttling</value></data>
+  <data name="tw.nthr.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.nthr.sub" xml:space="preserve"><value>NetworkThrottlingIndex parameter</value></data>
+  <data name="tw.nthr.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.park.desc" xml:space="preserve"><value>Windows stops "sleeping" unused cores. Games get resources without a wake-up delay.</value></data>
+  <data name="tw.park.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.park.name" xml:space="preserve"><value>Disable core parking</value></data>
+  <data name="tw.park.stab" xml:space="preserve"><value>Noticeably higher (1% low)</value></data>
+  <data name="tw.park.sub" xml:space="preserve"><value>All cores are ready immediately</value></data>
+  <data name="tw.park.temp" xml:space="preserve"><value>+1…+4 °C</value></data>
+  <data name="tw.pbo.desc" xml:space="preserve"><value>Raises the board's power and current limits for boost. Needs a board with good power delivery and a cooler.</value></data>
+  <data name="tw.pbo.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.pbo.name" xml:space="preserve"><value>Precision Boost Overdrive</value></data>
+  <data name="tw.pbo.stab" xml:space="preserve"><value>Slightly lower</value></data>
+  <data name="tw.pbo.sub" xml:space="preserve"><value>Extended Ryzen auto-overclock</value></data>
+  <data name="tw.pbo.temp" xml:space="preserve"><value>Hotter by 4–10 °C</value></data>
+  <data name="tw.pl2.desc" xml:space="preserve"><value>Lets the CPU hold its peak clock longer. K-series chips need a strong cooler, otherwise they throttle.</value></data>
+  <data name="tw.pl2.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.pl2.name" xml:space="preserve"><value>PL2 limit (turbo power)</value></data>
+  <data name="tw.pl2.stab" xml:space="preserve"><value>Lower at maximum</value></data>
+  <data name="tw.pl2.sub" xml:space="preserve"><value>Short-term Intel power peak</value></data>
+  <data name="tw.pl2.temp" xml:space="preserve"><value>Hotter by 5–15 °C</value></data>
+  <data name="tw.pl2.unit" xml:space="preserve"><value>W</value></data>
+  <data name="tw.plan.desc" xml:space="preserve"><value>Enables the hidden Ultimate Performance power plan. The CPU and buses never enter power-saving states, so response in games is smoother.</value></data>
+  <data name="tw.plan.lat" xml:space="preserve"><value>Slightly lower</value></data>
+  <data name="tw.plan.name" xml:space="preserve"><value>"Ultimate Performance" power plan</value></data>
+  <data name="tw.plan.note" xml:space="preserve"><value>On a laptop it will shorten battery life.</value></data>
+  <data name="tw.plan.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.plan.sub" xml:space="preserve"><value>CPU does not drop its clock at idle</value></data>
+  <data name="tw.plan.temp" xml:space="preserve"><value>Warmer at idle by 2–6 °C</value></data>
+  <data name="tw.ppt.desc" xml:space="preserve"><value>Lets the CPU hold a high clock longer under load. Needs a good cooler and a board with strong power delivery.</value></data>
+  <data name="tw.ppt.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.ppt.name" xml:space="preserve"><value>CPU power limit (PL1/PPT)</value></data>
+  <data name="tw.ppt.stab" xml:space="preserve"><value>Higher under sustained load</value></data>
+  <data name="tw.ppt.sub" xml:space="preserve"><value>How many watts the CPU can sustain</value></data>
+  <data name="tw.ppt.temp" xml:space="preserve"><value>+5…+15 °C</value></data>
+  <data name="tw.ppt.unit" xml:space="preserve"><value>%</value></data>
+  <data name="tw.prio.desc" xml:space="preserve"><value>The game gets cores before background programs. "Realtime" can block input and disk, so the app does not recommend going above "High".</value></data>
+  <data name="tw.prio.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.prio.lbl0" xml:space="preserve"><value>Normal</value></data>
+  <data name="tw.prio.lbl1" xml:space="preserve"><value>Above normal</value></data>
+  <data name="tw.prio.lbl2" xml:space="preserve"><value>High</value></data>
+  <data name="tw.prio.lbl3" xml:space="preserve"><value>Realtime</value></data>
+  <data name="tw.prio.name" xml:space="preserve"><value>Game process priority</value></data>
+  <data name="tw.prio.stab" xml:space="preserve"><value>Higher under heavy load</value></data>
+  <data name="tw.prio.sub" xml:space="preserve"><value>Who gets CPU time first</value></data>
+  <data name="tw.prio.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.refl.desc" xml:space="preserve"><value>Enables Reflex where the game supports it. The frame queue is shorter, response is faster.</value></data>
+  <data name="tw.refl.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.refl.name" xml:space="preserve"><value>NVIDIA Reflex (if the game supports it)</value></data>
+  <data name="tw.refl.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.refl.sub" xml:space="preserve"><value>Lower input latency on NVIDIA</value></data>
+  <data name="tw.refl.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.shader.desc" xml:space="preserve"><value>Increases the amount of stored shaders. Reduces stutter when effects first appear in a game.</value></data>
+  <data name="tw.shader.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.shader.name" xml:space="preserve"><value>Extended shader cache</value></data>
+  <data name="tw.shader.stab" xml:space="preserve"><value>Fewer stutters</value></data>
+  <data name="tw.shader.sub" xml:space="preserve"><value>Fewer stutters when effects load</value></data>
+  <data name="tw.shader.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.standby.desc" xml:space="preserve"><value>When the standby memory list grows, games start to hang. The app flushes it when a threshold is reached.</value></data>
+  <data name="tw.standby.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.standby.name" xml:space="preserve"><value>Auto-clear standby memory</value></data>
+  <data name="tw.standby.stab" xml:space="preserve"><value>Fewer freezes with 16 GB or less</value></data>
+  <data name="tw.standby.sub" xml:space="preserve"><value>Frees the cache that has filled RAM</value></data>
+  <data name="tw.standby.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.sysmain.desc" xml:space="preserve"><value>The service preloads programs into memory. It helps little on an SSD, while the disk load remains.</value></data>
+  <data name="tw.sysmain.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.sysmain.name" xml:space="preserve"><value>Disable SysMain (Superfetch)</value></data>
+  <data name="tw.sysmain.note" xml:space="preserve"><value>Recommended for SSD only. Leave it on for HDD.</value></data>
+  <data name="tw.sysmain.stab" xml:space="preserve"><value>Slightly higher</value></data>
+  <data name="tw.sysmain.sub" xml:space="preserve"><value>Fewer background disk accesses</value></data>
+  <data name="tw.sysmain.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.tcpauto.desc" xml:space="preserve"><value>Restores the safe TCP window sizing mode. Helps with odd speed drops.</value></data>
+  <data name="tw.tcpauto.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.tcpauto.name" xml:space="preserve"><value>TCP window auto-tuning: normal</value></data>
+  <data name="tw.tcpauto.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.tcpauto.sub" xml:space="preserve"><value>Stable speed on any connection</value></data>
+  <data name="tw.tcpauto.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.telem.desc" xml:space="preserve"><value>Reduces the diagnostic data Windows sends in the background. Applied via policies; services are not removed.</value></data>
+  <data name="tw.telem.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.telem.name" xml:space="preserve"><value>Limit Windows telemetry</value></data>
+  <data name="tw.telem.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.telem.sub" xml:space="preserve"><value>Fewer background reports</value></data>
+  <data name="tw.telem.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.timer.desc" xml:space="preserve"><value>Reduces the system timer step. Games stumble less often for no reason, but the PC wakes from idle more often.</value></data>
+  <data name="tw.timer.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.timer.name" xml:space="preserve"><value>High-precision 0.5 ms timer</value></data>
+  <data name="tw.timer.note" xml:space="preserve"><value>Increases power consumption at idle.</value></data>
+  <data name="tw.timer.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.timer.sub" xml:space="preserve"><value>More precise thread scheduling</value></data>
+  <data name="tw.timer.temp" xml:space="preserve"><value>Slightly warmer</value></data>
+  <data name="tw.tlim.desc" xml:space="preserve"><value>The higher the limit, the later the CPU starts lowering its clock. Constantly running near the upper limit shortens lifespan.</value></data>
+  <data name="tw.tlim.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.tlim.name" xml:space="preserve"><value>CPU temperature limit</value></data>
+  <data name="tw.tlim.stab" xml:space="preserve"><value>Higher under load</value></data>
+  <data name="tw.tlim.sub" xml:space="preserve"><value>Temperature at which clocks start dropping</value></data>
+  <data name="tw.tlim.temp" xml:space="preserve"><value>Up to +10 °C</value></data>
+  <data name="tw.tlim.unit" xml:space="preserve"><value>°C</value></data>
+  <data name="tw.tmp.desc" xml:space="preserve"><value>Before a game starts, removes safe Windows and browser temporary files.</value></data>
+  <data name="tw.tmp.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.tmp.name" xml:space="preserve"><value>Clean temp files before gaming</value></data>
+  <data name="tw.tmp.stab" xml:space="preserve"><value>Slightly higher</value></data>
+  <data name="tw.tmp.sub" xml:space="preserve"><value>Frees space and speeds up disk access</value></data>
+  <data name="tw.tmp.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.trim.desc" xml:space="preserve"><value>Regularly tells the SSD which blocks are free. Write speed does not degrade over time.</value></data>
+  <data name="tw.trim.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.trim.name" xml:space="preserve"><value>Scheduled TRIM</value></data>
+  <data name="tw.trim.stab" xml:space="preserve"><value>More stable disk speed</value></data>
+  <data name="tw.trim.sub" xml:space="preserve"><value>SSD keeps its write speed</value></data>
+  <data name="tw.trim.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.upd.desc" xml:space="preserve"><value>While a game is running, Windows Update does not download or install packages.</value></data>
+  <data name="tw.upd.lat" xml:space="preserve"><value>Lower</value></data>
+  <data name="tw.upd.name" xml:space="preserve"><value>Pause updates while gaming</value></data>
+  <data name="tw.upd.stab" xml:space="preserve"><value>Higher</value></data>
+  <data name="tw.upd.sub" xml:space="preserve"><value>No background downloads or installs</value></data>
+  <data name="tw.upd.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.uvi.desc" xml:space="preserve"><value>Reduces voltage: less heat and more time at high boost. Too large a value causes crashes.</value></data>
+  <data name="tw.uvi.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.uvi.name" xml:space="preserve"><value>Core undervolt (offset)</value></data>
+  <data name="tw.uvi.stab" xml:space="preserve"><value>Depends on the silicon</value></data>
+  <data name="tw.uvi.sub" xml:space="preserve"><value>Intel voltage reduction</value></data>
+  <data name="tw.uvi.temp" xml:space="preserve"><value>Cooler by 3–8 °C</value></data>
+  <data name="tw.uvi.unit" xml:space="preserve"><value>mV</value></data>
+  <data name="tw.vfx.desc" xml:space="preserve"><value>Disables window animations and transparency. Only noticeable on weak GPUs and integrated graphics.</value></data>
+  <data name="tw.vfx.lat" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.vfx.name" xml:space="preserve"><value>Simplified visual effects</value></data>
+  <data name="tw.vfx.stab" xml:space="preserve"><value>No change</value></data>
+  <data name="tw.vfx.sub" xml:space="preserve"><value>No UI animations or transparency</value></data>
+  <data name="tw.vfx.temp" xml:space="preserve"><value>No change</value></data>
+  <data name="ty" xml:space="preserve"><value>Type</value></data>
+  <data name="undo" xml:space="preserve"><value>Restore previous</value></data>
+  <data name="undo_t" xml:space="preserve"><value>State before the last apply restored. Undo steps left: </value></data>
+  <data name="unsup" xml:space="preserve"><value>Intel GPUs are not supported yet: section disabled.</value></data>
+  <data name="vp" xml:space="preserve"><value>Active profile</value></data>
+  <data name="vram" xml:space="preserve"><value>VRAM</value></data>
+  <data name="w" xml:space="preserve"><value>W</value></data>
+  <data name="wl_d" xml:space="preserve"><value>Laptops have limited cooling and power delivery, and their components are often power-limited by the manufacturer. Heavy overclocking can cause overheating, throttling, battery wear or permanent damage, and may void the warranty. For laptops Corvite narrows the sliders and uses a stricter risk scale. Keep the charger connected, watch temperatures and avoid the red zone.</value></data>
+  <data name="wl_t" xml:space="preserve"><value>Laptop warning</value></data>
+  <data name="wp_d" xml:space="preserve"><value>Changing system and hardware settings can cause instability, overheating, crashes, data loss or a shorter component lifespan. Corvite saves a backup of your original settings and can roll everything back, but it cannot guarantee safety on every PC. Overclocking is at your own risk.</value></data>
+  <data name="wp_t" xml:space="preserve"><value>Before you continue</value></data>
+  <data name="planned" xml:space="preserve"><value>This section arrives in a later development stage (see TZ, section 15). The shell and navigation are already in place.</value></data>
+  <data name="unsup_gpu" xml:space="preserve"><value>Intel GPUs are not supported yet: section disabled.</value></data>
+  <data name="hw_loading" xml:space="preserve"><value>Detecting hardware…</value></data>
+  <data name="h_real" xml:space="preserve"><value>Auto-detected (WMI and sensors)</value></data>
+  <data name="clk_now" xml:space="preserve"><value>Current clock</value></data>
+  <data name="pw_now" xml:space="preserve"><value>Power draw</value></data>
+  <data name="ld_now" xml:space="preserve"><value>Load</value></data>
+  <data name="nosensor" xml:space="preserve"><value>no sensor</value></data>
+  <data name="pl_auto" xml:space="preserve"><value>Type detected automatically. Please check and confirm.</value></data>
+  <data name="ov.of" xml:space="preserve"><value>of </value></data>
+  <data name="hw_lap" xml:space="preserve"><value>Your laptop</value></data>
+  <data name="pl_rec" xml:space="preserve"><value>Recommended for your device type</value></data>
+  <data name="pl_by" xml:space="preserve"><value>Detected from: </value></data>
+  <data name="sig_chassis" xml:space="preserve"><value>chassis type</value></data>
+  <data name="sig_battery" xml:space="preserve"><value>battery</value></data>
+  <data name="sig_model" xml:space="preserve"><value>model name</value></data>
+  <data name="sig_cpu" xml:space="preserve"><value>CPU series</value></data>
+  <data name="pl_mm_risk" xml:space="preserve"><value>Your device was detected as a laptop, but you selected PC mode. Overclocking in this mode is done at your own risk and is intended for experienced users only: a laptop has limited cooling and power, so overheating, throttling and hardware damage are possible.</value></data>
+  <data name="pl_mm_info" xml:space="preserve"><value>Your device was detected as a PC, but you selected Laptop mode. This is safe, but the overclocking limits will be cut roughly in half.</value></data>
+  <data name="lock.soon" xml:space="preserve"><value>soon</value></data>
+  <data name="lock.na" xml:space="preserve"><value>unavailable</value></data>
+  <data name="busy" xml:space="preserve"><value>Applying changes…</value></data>
+  <data name="toast.fail" xml:space="preserve"><value>Could not apply: </value></data>
+  <data name="toast.reboot" xml:space="preserve"><value>some changes need a restart</value></data>
+  <data name="toast.rollback" xml:space="preserve"><value>Auto-rollback: temperature exceeded the limit</value></data>
+</root>
