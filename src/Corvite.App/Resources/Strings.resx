@@ -495,4 +495,6 @@
   <data name="toast.fail" xml:space="preserve"><value>Не удалось применить: </value></data>
   <data name="toast.reboot" xml:space="preserve"><value>часть изменений вступит в силу после перезагрузки</value></data>
   <data name="toast.rollback" xml:space="preserve"><value>Авто-откат: температура превысила порог</value></data>
+  <data name="game.on" xml:space="preserve"><value>Игра обнаружена: </value></data>
+  <data name="game.off" xml:space="preserve"><value>Игра закрыта: </value></data>
 </root>

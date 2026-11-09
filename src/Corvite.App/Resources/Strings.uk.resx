@@ -495,4 +495,6 @@
   <data name="toast.fail" xml:space="preserve"><value>Не вдалося застосувати: </value></data>
   <data name="toast.reboot" xml:space="preserve"><value>частина змін набуде чинності після перезавантаження</value></data>
   <data name="toast.rollback" xml:space="preserve"><value>Авто-відкат: температура перевищила поріг</value></data>
+  <data name="game.on" xml:space="preserve"><value>Гру виявлено: </value></data>
+  <data name="game.off" xml:space="preserve"><value>Гру закрито: </value></data>
 </root>

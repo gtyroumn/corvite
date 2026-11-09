@@ -38,6 +38,7 @@ public partial class MainViewModel : ObservableObject
     private bool _rpDone;
     private DateTime _lastApply = DateTime.MinValue;
     private int _hotTicks;
+    private GameSession? _game;
     private readonly Dictionary<string, TweakVm> _vms = new();
     private readonly DispatcherTimer _toastTimer = new() { Interval = TimeSpan.FromMilliseconds(2800) };
     private readonly DispatcherTimer _monTimer = new() { Interval = TimeSpan.FromMilliseconds(1500) };
@@ -193,6 +194,16 @@ public partial class MainViewModel : ObservableObject
         _profile = DetectProfileLocal();
         RefreshAll();
         if (created) Toast(Loc.I["bk_cr"]);
+        StartGameSession();
+    }
+
+    private void StartGameSession()
+    {
+        if (_game != null) return;
+        _game = new GameSession(_engine.DryRun);
+        _game.GameStarted += n => Application.Current?.Dispatcher.InvokeAsync(() => Toast(Loc.I["game.on"] + n));
+        _game.GameEnded += n => Application.Current?.Dispatcher.InvokeAsync(() => Toast(Loc.I["game.off"] + n));
+        _game.Start();
     }
 
     private void SetBoth(string id, double v)
@@ -267,6 +278,7 @@ public partial class MainViewModel : ObservableObject
     public void Shutdown()
     {
         try { _sensors?.Dispose(); } catch { /* ignore */ }
+        try { _game?.Dispose(); } catch { /* ignore */ }
     }
 
     // ---------------------------------------------------------------- left rail summary

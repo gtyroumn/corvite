@@ -129,6 +129,14 @@ internal static class RegTweakFactory
 
         yield return new NagleTweak();
 
+        const string Fx = @"Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects";
+        yield return new RegToggleTweak("vfx", new[]
+        {
+            new RegEntry("HKCU", Fx, "VisualFXSetting", 2, 0),
+            new RegEntry("HKCU", @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "EnableTransparency", 0, 1),
+            new RegEntry("HKCU", @"Control Panel\Desktop\WindowMetrics", "MinAnimate", "0", "1", RegistryValueKind.String),
+        });
+
         yield return new RegToggleTweak("nthr", new[]
         {
             new RegEntry("HKLM", Mm, "NetworkThrottlingIndex", unchecked((int)0xFFFFFFFF), 10),

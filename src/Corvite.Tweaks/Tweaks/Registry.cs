@@ -15,6 +15,9 @@ public static class TweakRegistry
         };
         list.AddRange(RegTweakFactory.Create());
         list.Add(new SysMainTweak());
+        list.Add(new TcpAutoTweak());
+        list.Add(new DnsTweak());
+        foreach (var id in new[] { "prio", "standby", "aggr", "tmp", "upd", "idx" }) list.Add(new SessionSettingTweak(id));
         list.Add(new TrimTweak());
         // Reboot-bound last so everything else is already applied if something goes wrong.
         var late = new[] { "timer", "hags", "fast" };

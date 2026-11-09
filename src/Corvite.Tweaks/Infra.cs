@@ -128,3 +128,13 @@ internal static class Proc
         }
     }
 }
+
+internal static class Ps
+{
+    /// <summary>Runs a PowerShell script (passed as -EncodedCommand so quoting never breaks) and returns its output.</summary>
+    public static ProcResult Run(string script, int timeoutMs = 30000)
+    {
+        var enc = Convert.ToBase64String(Encoding.Unicode.GetBytes("$ProgressPreference='SilentlyContinue';" + script));
+        return Proc.Run("powershell.exe", $"-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand {enc}", timeoutMs);
+    }
+}

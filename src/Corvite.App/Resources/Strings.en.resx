@@ -495,4 +495,6 @@
   <data name="toast.fail" xml:space="preserve"><value>Could not apply: </value></data>
   <data name="toast.reboot" xml:space="preserve"><value>some changes need a restart</value></data>
   <data name="toast.rollback" xml:space="preserve"><value>Auto-rollback: temperature exceeded the limit</value></data>
+  <data name="game.on" xml:space="preserve"><value>Game detected: </value></data>
+  <data name="game.off" xml:space="preserve"><value>Game closed: </value></data>
 </root>
