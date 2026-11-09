@@ -498,4 +498,21 @@
   <data name="game.on" xml:space="preserve"><value>Гру виявлено: </value></data>
   <data name="game.off" xml:space="preserve"><value>Гру закрито: </value></data>
   <data name="lock.drv" xml:space="preserve"><value>потрібен драйвер</value></data>
+  <data name="tool.t" xml:space="preserve"><value>Потрібна програма виробника</value></data>
+  <data name="tool.for" xml:space="preserve"><value>Для параметра:</value></data>
+  <data name="tool.dev" xml:space="preserve"><value>Ваш пристрій:</value></data>
+  <data name="tool.src" xml:space="preserve"><value>Джерело:</value></data>
+  <data name="tool.open" xml:space="preserve"><value>Відкрити офіційний сайт</value></data>
+  <data name="tool.close" xml:space="preserve"><value>Закрити</value></data>
+  <data name="tool.note" xml:space="preserve"><value>Corvite сам нічого не завантажує й не встановлює. Посилання веде на сайт виробника, далі вирішуєте ви. На багатьох ноутбуках виробник блокує такі налаштування в BIOS, тоді вони не запрацюють і з програмою.</value></data>
+  <data name="tool.none" xml:space="preserve"><value>Для цього параметра поки немає офіційної програми або він ще в розробці</value></data>
+  <data name="tool.xtu" xml:space="preserve"><value>Intel Extreme Tuning Utility (XTU)</value></data>
+  <data name="tool.xtu.why" xml:space="preserve"><value>Ліміти потужності й частоти процесора Intel змінюються на низькому рівні, і Corvite поки не вміє робити це сам. Офіційна утиліта Intel дає змогу налаштувати їх вручну. Вона не має інтерфейсу командного рядка, тому вбудувати її в Corvite не можна.</value></data>
+  <data name="tool.rm" xml:space="preserve"><value>AMD Ryzen Master</value></data>
+  <data name="tool.rm.why" xml:space="preserve"><value>Ліміти потужності, Curve Optimizer і PBO процесора AMD змінюються на низькому рівні, і Corvite поки не вміє робити це сам. Офіційна утиліта AMD дає змогу налаштувати їх вручну. Інтерфейсу командного рядка для неї я не знайшов, тому вбудувати її в Corvite не можна.</value></data>
+  <data name="tool.nvdrv" xml:space="preserve"><value>Драйвер NVIDIA</value></data>
+  <data name="tool.nvdrv.why" xml:space="preserve"><value>Corvite керує лімітом потужності та частотами відеокарти через бібліотеку NVML, яка встановлюється разом із драйвером NVIDIA. Якщо драйвер не встановлено або він застарів, параметр недоступний. Встановіть свіжий драйвер із сайту NVIDIA.</value></data>
+  <data name="tool.nvprof.why" xml:space="preserve"><value>Цей параметр зберігається в профілі драйвера NVIDIA, і відкритого інтерфейсу для його зміни немає. Його можна налаштувати вручну в застосунку NVIDIA або в панелі керування NVIDIA, які встановлюються разом із драйвером.</value></data>
+  <data name="tool.amdgpu" xml:space="preserve"><value>Драйвер AMD Radeon (AMD Software)</value></data>
+  <data name="tool.amdgpu.why" xml:space="preserve"><value>Налаштування відеокарти Radeon зберігаються в драйвері AMD, і відкритого інтерфейсу для них Corvite поки не використовує. Їх можна задати вручну в AMD Software: Adrenalin Edition, який встановлюється разом із драйвером.</value></data>
 </root>

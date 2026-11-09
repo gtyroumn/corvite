@@ -161,3 +161,8 @@ internal sealed class NvmlOffsetTweak : ITweak, IConditionalTweak
         return r == 0 ? TweakResult.Success : TweakResult.Fail(Nvml.Err(r));
     }
 }
+
+public static class NvmlProbe
+{
+    public static bool Present() => Nvml.Ready;
+}

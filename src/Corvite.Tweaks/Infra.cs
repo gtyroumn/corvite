@@ -138,3 +138,10 @@ internal static class Ps
         return Proc.Run("powershell.exe", $"-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand {enc}", timeoutMs);
     }
 }
+
+/// <summary>Checks used by the UI to tell the user that a manufacturer's software is missing.</summary>
+public static class Prerequisites
+{
+    /// <summary>True when the NVIDIA driver library (nvml.dll) can be loaded and initialised.</summary>
+    public static bool NvidiaRuntimePresent => Corvite.Tweaks.Tweaks.NvmlProbe.Present();
+}

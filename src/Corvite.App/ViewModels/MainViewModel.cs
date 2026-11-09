@@ -78,6 +78,39 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty] private bool _isBusy;
     [ObservableProperty] private bool _bkDelArmed;
 
+    // "needs a manufacturer program" dialog
+    [ObservableProperty] private bool _toolVisible;
+    private VendorTool? _tool;
+    private TweakDef? _toolFor;
+    public string ToolName => _tool == null ? "" : Loc.I[_tool.NameKey];
+    public string ToolWhy => _tool == null ? "" : Loc.I[_tool.WhyKey];
+    public string ToolSource => _tool == null ? "" : _tool.Host;
+    public string ToolDevice => _toolFor == null ? "" : _toolFor.Section == Section.Gpu
+        ? (Info.GpuName.Length > 0 ? Info.GpuName : "—") : (Info.CpuName.Length > 0 ? Info.CpuName : "—");
+    public string ToolTweak => _toolFor == null ? "" : _vms[_toolFor.Id].Title;
+
+    public void ShowToolInfo(string id)
+    {
+        var def = TweakCatalog.All.FirstOrDefault(d => d.Id == id);
+        if (def == null) return;
+        _tool = VendorTools.Resolve(def.Section, Info, _engine.IsDriverBound(id));
+        _toolFor = def;
+        if (_tool == null || !_tool.IsOfficial) { Toast(Loc.I["tool.none"]); return; }
+        OnPropertyChanged(nameof(ToolName)); OnPropertyChanged(nameof(ToolWhy)); OnPropertyChanged(nameof(ToolSource));
+        OnPropertyChanged(nameof(ToolDevice)); OnPropertyChanged(nameof(ToolTweak));
+        ToolVisible = true;
+    }
+
+    [RelayCommand]
+    private void ToolOpen()
+    {
+        if (_tool is not { IsOfficial: true }) return;
+        try { Process.Start(new ProcessStartInfo(_tool.Url) { UseShellExecute = true }); } catch { /* no browser */ }
+    }
+
+    [RelayCommand]
+    private void ToolClose() => ToolVisible = false;
+
     // red-zone dialog
     [ObservableProperty] private bool _redVisible;
     [ObservableProperty] private bool _redAck;
@@ -195,6 +228,10 @@ public partial class MainViewModel : ObservableObject
         RefreshAll();
         if (created) Toast(Loc.I["bk_cr"]);
         StartGameSession();
+
+        // NVIDIA card but no driver library: tell the user which official driver is needed
+        if (Info.GpuBrand == GpuVendor.Nvidia && !await Task.Run(() => Prerequisites.NvidiaRuntimePresent))
+            ShowToolInfo("gpow");
     }
 
     private void StartGameSession()

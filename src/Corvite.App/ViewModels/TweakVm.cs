@@ -3,7 +3,9 @@ using Corvite.App.Localization;
 using Corvite.App.Theming;
 using Corvite.Core.Catalog;
 using Corvite.Core.Engine;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace Corvite.App.ViewModels;
 
@@ -46,6 +48,11 @@ public sealed class TweakVm : ObservableObject
 
     /// <summary>False for tweaks without a real implementation (or not applicable to this PC): the row is shown locked.</summary>
     public bool IsEnabled => _o.IsSupported(Def.Id);
+    public bool IsLocked => !IsEnabled;
+
+    /// <summary>Clicking the grey "locked" chip explains why and where to get the official program.</summary>
+    public ICommand InfoCommand => new RelayCommand(() => { if (!IsEnabled) _o.ShowToolInfo(Def.Id); });
+    public System.Windows.Input.Cursor ChipCursor => IsEnabled ? System.Windows.Input.Cursors.Arrow : System.Windows.Input.Cursors.Hand;
 
     public string ChipText => !IsEnabled ? Loc.I[_o.LockKey(Def.Id)]
         : Def.IsGuard ? Loc.I["risk.guard"] : Loc.I[$"risk.{Def.Risk}"];

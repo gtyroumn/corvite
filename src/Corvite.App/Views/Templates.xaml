@@ -60,7 +60,7 @@
 
     <!-- ===== Toggle row ===== -->
     <DataTemplate x:Key="ToggleRow" DataType="{x:Type vm:TweakVm}">
-        <Border IsEnabled="{Binding IsEnabled}" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="18,14">
+        <Border BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="18,14">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -76,10 +76,12 @@
                     <TextBlock Text="{Binding Sub}" Foreground="{StaticResource Fg2}" FontSize="12.5" Margin="0,1,0,0" TextWrapping="Wrap"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Border BorderBrush="{Binding ChipBrush}" BorderThickness="1" CornerRadius="10" Padding="8,2" Margin="0,0,14,0">
+                    <Border BorderBrush="{Binding ChipBrush}" BorderThickness="1" CornerRadius="10" Padding="8,2" Margin="0,0,14,0"
+                            Cursor="{Binding ChipCursor}" Background="Transparent">
+                        <Border.InputBindings><MouseBinding MouseAction="LeftClick" Command="{Binding InfoCommand}"/></Border.InputBindings>
                         <TextBlock Text="{Binding ChipText}" Foreground="{Binding ChipBrush}" Style="{StaticResource ChipText}"/>
                     </Border>
-                    <CheckBox IsChecked="{Binding IsOn, Mode=TwoWay}" Style="{StaticResource Switch}"/>
+                    <CheckBox IsChecked="{Binding IsOn, Mode=TwoWay}" Style="{StaticResource Switch}" IsEnabled="{Binding IsEnabled}"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -87,7 +89,7 @@
 
     <!-- ===== Slider row ===== -->
     <DataTemplate x:Key="SliderRow" DataType="{x:Type vm:TweakVm}">
-        <Border IsEnabled="{Binding IsEnabled}" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="18,14">
+        <Border BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="18,14">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -100,6 +102,11 @@
                                  Visibility="{Binding IsChanged, Converter={StaticResource B2V}}"/>
                         <TextBlock Text="{Binding Title}" FontWeight="Medium" FontSize="14.5" VerticalAlignment="Center"/>
                         <Control Template="{StaticResource InfoBadge}" Focusable="False"/>
+                        <Border BorderBrush="{Binding ChipBrush}" BorderThickness="1" CornerRadius="10" Padding="8,2" Margin="12,0,0,0" Background="Transparent"
+                                Cursor="Hand" Visibility="{Binding IsLocked, Converter={StaticResource B2V}}">
+                            <Border.InputBindings><MouseBinding MouseAction="LeftClick" Command="{Binding InfoCommand}"/></Border.InputBindings>
+                            <TextBlock Text="{Binding ChipText}" Foreground="{Binding ChipBrush}" Style="{StaticResource ChipText}"/>
+                        </Border>
                     </StackPanel>
                     <TextBlock Text="{Binding Sub}" Foreground="{StaticResource Fg2}" FontSize="12.5" Margin="0,1,0,0" TextWrapping="Wrap"/>
                 </StackPanel>
@@ -109,7 +116,7 @@
                         <TextBlock Text="{Binding LevelWord}" Foreground="{Binding LevelBrush}" HorizontalAlignment="Right"
                                    FontFamily="{StaticResource MonoFont}" FontWeight="SemiBold" FontSize="10.5"/>
                     </Grid>
-                    <Slider Style="{StaticResource RiskSlider}" Tag="{Binding ZoneBrush}"
+                    <Slider Style="{StaticResource RiskSlider}" Tag="{Binding ZoneBrush}" IsEnabled="{Binding IsEnabled}"
                             Minimum="{Binding Minimum, Mode=OneWay}" Maximum="{Binding Maximum, Mode=OneWay}"
                             TickFrequency="{Binding Step, Mode=OneWay}" IsSnapToTickEnabled="True"
                             SmallChange="{Binding Step, Mode=OneWay}" LargeChange="{Binding Step, Mode=OneWay}"

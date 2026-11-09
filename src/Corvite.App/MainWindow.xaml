@@ -175,6 +175,36 @@
                 </Border>
             </Grid>
 
+            <!-- ===== Manufacturer program dialog ===== -->
+            <Grid Grid.RowSpan="3" Background="{StaticResource Overlay}" Visibility="{Binding ToolVisible, Converter={StaticResource B2V}}">
+                <Border Width="540" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{StaticResource Panel}"
+                        BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="12" Padding="22">
+                    <StackPanel>
+                        <TextBlock Text="{loc:T tool.t}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="18"/>
+                        <TextBlock Margin="0,12,0,0" TextWrapping="Wrap" Foreground="{StaticResource Fg2}">
+                            <Run Text="{loc:T tool.for}"/> <Run Text="{Binding ToolTweak, Mode=OneWay}" Foreground="{StaticResource Fg}" FontWeight="Medium"/>
+                        </TextBlock>
+                        <TextBlock Margin="0,4,0,0" TextWrapping="Wrap" Foreground="{StaticResource Fg2}">
+                            <Run Text="{loc:T tool.dev}"/> <Run Text="{Binding ToolDevice, Mode=OneWay}" Foreground="{StaticResource Fg}" FontFamily="{StaticResource MonoFont}"/>
+                        </TextBlock>
+                        <Border Background="{StaticResource Raise}" CornerRadius="8" Padding="14,12" Margin="0,14,0,0">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ToolName}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="14.5"/>
+                                <TextBlock Text="{Binding ToolWhy}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                                <TextBlock Margin="0,8,0,0" FontSize="12" Foreground="{StaticResource Fg3}">
+                                    <Run Text="{loc:T tool.src}"/> <Run Text="{Binding ToolSource, Mode=OneWay}" FontFamily="{StaticResource MonoFont}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+                        <TextBlock Text="{loc:T tool.note}" Foreground="{StaticResource Fg3}" FontSize="12" TextWrapping="Wrap" Margin="0,12,0,0"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+                            <Button Style="{StaticResource Btn}" Content="{loc:T tool.close}" Command="{Binding ToolCloseCommand}" Margin="0,0,10,0"/>
+                            <Button Style="{StaticResource PrimaryBtn}" Content="{loc:T tool.open}" Command="{Binding ToolOpenCommand}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
             <!-- ===== Platform dialog (TZ 7.4) ===== -->
             <Grid Grid.RowSpan="3" Background="{StaticResource Overlay}" Visibility="{Binding PlatVisible, Converter={StaticResource B2V}}">
                 <Border Width="660" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{StaticResource Panel}"

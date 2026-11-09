@@ -498,4 +498,21 @@
   <data name="game.on" xml:space="preserve"><value>Game detected: </value></data>
   <data name="game.off" xml:space="preserve"><value>Game closed: </value></data>
   <data name="lock.drv" xml:space="preserve"><value>needs driver</value></data>
+  <data name="tool.t" xml:space="preserve"><value>Manufacturer program needed</value></data>
+  <data name="tool.for" xml:space="preserve"><value>For setting:</value></data>
+  <data name="tool.dev" xml:space="preserve"><value>Your device:</value></data>
+  <data name="tool.src" xml:space="preserve"><value>Source:</value></data>
+  <data name="tool.open" xml:space="preserve"><value>Open official website</value></data>
+  <data name="tool.close" xml:space="preserve"><value>Close</value></data>
+  <data name="tool.note" xml:space="preserve"><value>Corvite does not download or install anything by itself. The link opens the manufacturer's site and the rest is up to you. Many laptops lock these settings in the BIOS, in which case they will not work even with the program.</value></data>
+  <data name="tool.none" xml:space="preserve"><value>There is no official program for this setting yet, or it is still in development</value></data>
+  <data name="tool.xtu" xml:space="preserve"><value>Intel Extreme Tuning Utility (XTU)</value></data>
+  <data name="tool.xtu.why" xml:space="preserve"><value>Intel CPU power limits and clocks are changed at a low level, which Corvite cannot do itself yet. Intel's official utility lets you set them manually. It has no command-line interface, so it cannot be built into Corvite.</value></data>
+  <data name="tool.rm" xml:space="preserve"><value>AMD Ryzen Master</value></data>
+  <data name="tool.rm.why" xml:space="preserve"><value>AMD CPU power limits, Curve Optimizer and PBO are changed at a low level, which Corvite cannot do itself yet. AMD's official utility lets you set them manually. I found no command-line interface for it, so it cannot be built into Corvite.</value></data>
+  <data name="tool.nvdrv" xml:space="preserve"><value>NVIDIA driver</value></data>
+  <data name="tool.nvdrv.why" xml:space="preserve"><value>Corvite controls the GPU power limit and clocks through NVML, a library installed with the NVIDIA driver. If the driver is missing or outdated, the setting is unavailable. Install a current driver from NVIDIA's site.</value></data>
+  <data name="tool.nvprof.why" xml:space="preserve"><value>This setting lives in the NVIDIA driver profile and there is no public interface to change it. Set it manually in the NVIDIA app or NVIDIA Control Panel, which come with the driver.</value></data>
+  <data name="tool.amdgpu" xml:space="preserve"><value>AMD Radeon driver (AMD Software)</value></data>
+  <data name="tool.amdgpu.why" xml:space="preserve"><value>Radeon settings live in the AMD driver, and Corvite does not use a public interface for them yet. Set them manually in AMD Software: Adrenalin Edition, installed with the driver.</value></data>
 </root>
