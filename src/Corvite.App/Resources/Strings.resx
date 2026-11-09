@@ -497,4 +497,5 @@
   <data name="toast.rollback" xml:space="preserve"><value>Авто-откат: температура превысила порог</value></data>
   <data name="game.on" xml:space="preserve"><value>Игра обнаружена: </value></data>
   <data name="game.off" xml:space="preserve"><value>Игра закрыта: </value></data>
+  <data name="lock.drv" xml:space="preserve"><value>нужен драйвер</value></data>
 </root>

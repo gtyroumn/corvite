@@ -26,6 +26,17 @@ public sealed class TweakEngine
 
     public bool Has(string id) => _t.ContainsKey(id);
 
+    /// <summary>
+    /// Tweaks that would need a manufacturer driver or private API that cannot be used safely from here (CPU power limits and
+    /// voltage, Curve Optimizer, driver-profile switches). Shown as locked, never faked.
+    /// </summary>
+    private static readonly HashSet<string> DriverBound = new()
+    {
+        "boost", "ppt", "tlim", "co", "pbo", "pl2", "uvi", "gtemp", "lowlat", "shader", "gpm", "antil", "refl"
+    };
+
+    public bool IsDriverBound(string id) => DriverBound.Contains(id);
+
     /// <summary>Implemented and (when conditional) applicable to this machine. Reads the current value on the way.</summary>
     public bool IsAvailable(string id, HardwareInfo hw)
     {

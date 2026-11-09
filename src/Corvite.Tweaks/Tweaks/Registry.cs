@@ -15,6 +15,9 @@ public static class TweakRegistry
         };
         list.AddRange(RegTweakFactory.Create());
         list.Add(new SysMainTweak());
+        list.Add(new NvmlPowerTweak());
+        list.Add(new NvmlOffsetTweak(false));
+        list.Add(new NvmlOffsetTweak(true));
         list.Add(new TcpAutoTweak());
         list.Add(new DnsTweak());
         foreach (var id in new[] { "prio", "standby", "aggr", "tmp", "upd", "idx", "focus", "kill", "bgcap" }) list.Add(new SessionSettingTweak(id));

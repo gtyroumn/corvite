@@ -162,7 +162,7 @@ public partial class MainViewModel : ObservableObject
 
     /// <summary>A tweak is usable when it has a real implementation that fits this machine (guards are app features).</summary>
     public bool IsSupported(string id) => _vms[id].IsGuard || _engine.IsAvailable(id, Info);
-    public string LockKey(string id) => _engine.Has(id) ? "lock.na" : "lock.soon";
+    public string LockKey(string id) => _engine.Has(id) ? "lock.na" : _engine.IsDriverBound(id) ? "lock.drv" : "lock.soon";
 
     private async Task SyncSystemAsync()
     {

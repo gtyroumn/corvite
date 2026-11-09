@@ -497,4 +497,5 @@
   <data name="toast.rollback" xml:space="preserve"><value>Auto-rollback: temperature exceeded the limit</value></data>
   <data name="game.on" xml:space="preserve"><value>Game detected: </value></data>
   <data name="game.off" xml:space="preserve"><value>Game closed: </value></data>
+  <data name="lock.drv" xml:space="preserve"><value>needs driver</value></data>
 </root>
