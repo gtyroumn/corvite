@@ -25,6 +25,23 @@ public sealed class GameSession : IDisposable
     private bool _stoppedUpdate, _stoppedIndex;
     private DateTime _lastPurge = DateTime.MinValue;
     private int _busy;
+    private bool _toastOff;
+    private readonly List<(string Name, string Exe)> _killed = new();
+    private readonly Dictionary<int, ProcessPriorityClass> _lowered = new();
+    private DateTime _lastLower = DateTime.MinValue;
+
+    private const string ToastKey = @"Software\Microsoft\Windows\CurrentVersion\PushNotifications";
+
+    // Never lowered by the background limit: system, drivers, audio, overlays, recorders, our own process.
+    private static readonly HashSet<string> Protected = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "System", "Idle", "Registry", "smss", "csrss", "wininit", "winlogon", "services", "lsass", "svchost", "dwm", "audiodg",
+        "fontdrvhost", "explorer", "sihost", "ctfmon", "MsMpEng", "NisSrv", "SecurityHealthService", "Corvite",
+        "NVDisplay.Container", "nvcontainer", "NVIDIA Web Helper", "RadeonSoftware", "AMDRSServ", "obs64", "obs32", "Discord",
+        "RTSS", "MSIAfterburner", "steam", "EpicGamesLauncher", "GalaxyClient", "Origin", "EADesktop", "Battle.net"
+    };
+
+    public static string KillListFile => Path.Combine(AppPaths.DataDir, "kill-list.txt");
 
     public event Action<string>? GameStarted;
     public event Action<string>? GameEnded;
@@ -37,7 +54,24 @@ public sealed class GameSession : IDisposable
         _timer = new System.Threading.Timer(_ => Tick(), null, Timeout.Infinite, Timeout.Infinite);
     }
 
-    public void Start() => _timer.Change(3000, 3000);
+    public void Start()
+    {
+        RecoverAfterCrash();
+        _timer.Change(3000, 3000);
+    }
+
+    /// <summary>If the app died during a game, put back what it had switched off.</summary>
+    private static void RecoverAfterCrash()
+    {
+        try
+        {
+            if (StateStore.Get("gs.upd") == "1") { Proc.Run("sc", "start wuauserv"); StateStore.Remove("gs.upd"); }
+            if (StateStore.Get("gs.idx") == "1") { Proc.Run("sc", "start WSearch"); StateStore.Remove("gs.idx"); }
+            var t = StateStore.Get("gs.toast");
+            if (t != null) { Reg.Set("HKCU", ToastKey, "ToastEnabled", int.Parse(t), Microsoft.Win32.RegistryValueKind.DWord); StateStore.Remove("gs.toast"); }
+        }
+        catch (Exception ex) { Log.Info("recover: " + ex.Message); }
+    }
 
     private static string SafeName(Process p) { try { return p.ProcessName; } catch { return "game"; } }
 
@@ -85,8 +119,11 @@ public sealed class GameSession : IDisposable
             }
             catch (Exception ex) { Log.Info("priority failed: " + ex.Message); }
 
-            if (SessionSettings.Get("upd") >= 0.5 && StopService("wuauserv")) _stoppedUpdate = true;
-            if (SessionSettings.Get("idx") >= 0.5 && StopService("WSearch")) _stoppedIndex = true;
+            if (SessionSettings.Get("upd") >= 0.5 && StopService("wuauserv")) { _stoppedUpdate = true; StateStore.Set("gs.upd", "1"); }
+            if (SessionSettings.Get("idx") >= 0.5 && StopService("WSearch")) { _stoppedIndex = true; StateStore.Set("gs.idx", "1"); }
+            if (SessionSettings.Get("focus") >= 0.5) SetToasts(false);
+            if (SessionSettings.Get("kill") >= 0.5) KillBackground(pid);
+            if (SessionSettings.Get("bgcap") > 0) LowerBackground(pid);
             if (SessionSettings.Get("tmp") >= 0.5) CleanTemp();
         }
         GameStarted?.Invoke(name);
@@ -99,14 +136,19 @@ public sealed class GameSession : IDisposable
         _game = null; _candPid = 0; _candTicks = 0;
         if (!_dry)
         {
-            if (_stoppedUpdate) { Proc.Run("sc", "start wuauserv"); _stoppedUpdate = false; }
-            if (_stoppedIndex) { Proc.Run("sc", "start WSearch"); _stoppedIndex = false; }
+            if (_stoppedUpdate) { Proc.Run("sc", "start wuauserv"); _stoppedUpdate = false; StateStore.Remove("gs.upd"); }
+            if (_stoppedIndex) { Proc.Run("sc", "start WSearch"); _stoppedIndex = false; StateStore.Remove("gs.idx"); }
+            if (_toastOff) SetToasts(true);
+            RestoreLowered();
+            RestartKilled();
         }
         GameEnded?.Invoke(name);
     }
 
     private void DuringGame()
     {
+        if (!_dry && SessionSettings.Get("bgcap") > 0 && DateTime.Now - _lastLower > TimeSpan.FromSeconds(30) && _game != null)
+            LowerBackground(_game.Id); // programs started after the game
         if (_dry || SessionSettings.Get("standby") < 0.5) return;
         if (DateTime.Now - _lastPurge < TimeSpan.FromSeconds(30)) return;
         var aggr = SessionSettings.Get("aggr");
@@ -121,6 +163,108 @@ public sealed class GameSession : IDisposable
             var ok = Mem.PurgeStandby();
             Log.Info($"standby purge ({m.Value.StandbyBytes / 1048576.0:0} MB): {(ok ? "ok" : "failed")}");
         }
+    }
+
+    // ---------------------------------------------------------------- notifications (focus)
+    private void SetToasts(bool on)
+    {
+        try
+        {
+            if (!on)
+            {
+                Reg.TryGet("HKCU", ToastKey, "ToastEnabled", out var cur, out _);
+                StateStore.Set("gs.toast", cur == null ? "1" : Convert.ToInt32(cur).ToString());
+                Reg.Set("HKCU", ToastKey, "ToastEnabled", 0, Microsoft.Win32.RegistryValueKind.DWord);
+                _toastOff = true;
+            }
+            else
+            {
+                var prev = StateStore.Get("gs.toast") ?? "1";
+                Reg.Set("HKCU", ToastKey, "ToastEnabled", int.Parse(prev), Microsoft.Win32.RegistryValueKind.DWord);
+                StateStore.Remove("gs.toast");
+                _toastOff = false;
+            }
+        }
+        catch (Exception ex) { Log.Info("toasts: " + ex.Message); }
+    }
+
+    // ---------------------------------------------------------------- close background apps (kill)
+    private static List<string> LoadKillList()
+    {
+        try
+        {
+            AppPaths.Ensure(AppPaths.DataDir);
+            if (!File.Exists(KillListFile))
+                File.WriteAllText(KillListFile,
+                    "# Corvite: programs closed when a game starts and started again after it. One process name per line (without .exe).\r\n" +
+                    "# Lines starting with # are ignored. Remove the # to enable a line.\r\n" +
+                    "OneDrive\r\nDropbox\r\nGoogleDriveFS\r\nms-teams\r\nTeams\r\nSkype\r\nSlack\r\nViber\r\n" +
+                    "#Telegram\r\n#Discord\r\n#chrome\r\n#msedge\r\n#firefox\r\n#Spotify\r\n");
+            return File.ReadAllLines(KillListFile).Select(l => l.Trim()).Where(l => l.Length > 0 && !l.StartsWith('#')).ToList();
+        }
+        catch { return new(); }
+    }
+
+    private void KillBackground(int gamePid)
+    {
+        foreach (var name in LoadKillList())
+        {
+            foreach (var p in Process.GetProcessesByName(name))
+            {
+                try
+                {
+                    if (p.Id == gamePid || p.Id == Environment.ProcessId) continue;
+                    var exe = p.MainModule?.FileName ?? "";
+                    var closed = p.CloseMainWindow() && p.WaitForExit(3000);
+                    if (!closed && !p.HasExited) p.Kill(true);
+                    if (exe.Length > 0 && !_killed.Any(k => k.Exe == exe)) _killed.Add((name, exe));
+                    Log.Info($"closed {name} (pid {p.Id})");
+                }
+                catch (Exception ex) { Log.Info($"close {name}: {ex.Message}"); }
+            }
+        }
+    }
+
+    private void RestartKilled()
+    {
+        foreach (var (name, exe) in _killed)
+        {
+            try { Process.Start(new ProcessStartInfo(exe) { UseShellExecute = true }); Log.Info($"restarted {name}"); }
+            catch (Exception ex) { Log.Info($"restart {name}: {ex.Message}"); }
+        }
+        _killed.Clear();
+    }
+
+    // ---------------------------------------------------------------- background load limit (bgcap)
+    /// <summary>1-24 % lowers other user programs to Below normal, 25-50 % to Idle. Restored when the game ends.</summary>
+    private void LowerBackground(int gamePid)
+    {
+        _lastLower = DateTime.Now;
+        var level = SessionSettings.Get("bgcap") >= 25 ? ProcessPriorityClass.Idle : ProcessPriorityClass.BelowNormal;
+        var session = Process.GetCurrentProcess().SessionId;
+        foreach (var p in Process.GetProcesses())
+        {
+            try
+            {
+                if (p.Id <= 4 || p.Id == gamePid || p.Id == Environment.ProcessId || p.SessionId != session) continue;
+                if (Protected.Contains(p.ProcessName) || _lowered.ContainsKey(p.Id)) continue;
+                var cur = p.PriorityClass;
+                if (cur == ProcessPriorityClass.Idle || cur == ProcessPriorityClass.BelowNormal) continue;
+                p.PriorityClass = level;
+                _lowered[p.Id] = cur;
+            }
+            catch { /* protected or already gone */ }
+        }
+        Log.Info($"background limit: {_lowered.Count} processes -> {level}");
+    }
+
+    private void RestoreLowered()
+    {
+        foreach (var (pid, cls) in _lowered)
+        {
+            try { using var p = Process.GetProcessById(pid); p.PriorityClass = cls; } catch { /* exited */ }
+        }
+        _lowered.Clear();
     }
 
     private static bool StopService(string name)
