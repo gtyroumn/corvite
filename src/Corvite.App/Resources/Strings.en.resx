@@ -548,6 +548,7 @@
   <data name="r_conf_low" xml:space="preserve"><value>little data</value></data>
   <data name="r_chip_sel" xml:space="preserve"><value>Showing values for:</value></data>
   <data name="r_tb_t" xml:space="preserve"><value>HOW TO FIND THE EXACT CHIP</value></data>
-  <data name="r_tb_d" xml:space="preserve"><value>Corvite already suggests a chip from the module part number (Samsung, SK hynix, Micron DDR4). If there is no hint, find the part number on the sticker of the stick and check it against the maker's description. Thaiphoon Burner reads the chip revision straight from the module, but it has no confirmed official website, so Corvite gives no link: download it only from sources you trust and scan the file with an antivirus.</value></data>
+  <data name="r_tb_d" xml:space="preserve"><value>Corvite suggests a chip from the module part number (Samsung, SK hynix, Micron DDR4), but Thaiphoon Burner shows the chip revision most accurately: it reads it straight from the module. In the report find the DRAM Manufacturer and Die Revision lines and pick the same chip above. It is a third-party program, not Corvite or the memory maker. The author's site is gone, so the link opens the Softpedia catalogue page. Scan the downloaded file with an antivirus.</value></data>
   <data name="r_src" xml:space="preserve"><value>Data is collected from public overclocker guides (including GitHub ozgk/ddr4-oc-guide and webpcdesigns.com). Sources disagree, so values are approximate and cautious. Do not exceed 1.50 V for DDR4 or 1.40 V for DDR5.</value></data>
+  <data name="r_tb_open" xml:space="preserve"><value>Open Thaiphoon Burner on Softpedia</value></data>
 </root>

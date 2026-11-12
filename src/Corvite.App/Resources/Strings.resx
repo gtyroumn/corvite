@@ -548,6 +548,7 @@
   <data name="r_conf_low" xml:space="preserve"><value>данных мало</value></data>
   <data name="r_chip_sel" xml:space="preserve"><value>Показаны значения для:</value></data>
   <data name="r_tb_t" xml:space="preserve"><value>КАК УЗНАТЬ ТОЧНЫЙ ЧИП</value></data>
-  <data name="r_tb_d" xml:space="preserve"><value>Corvite сам предлагает чип по номеру планки (Samsung, SK hynix, Micron DDR4). Если подсказки нет, найдите номер модели на наклейке планки и сверьтесь с описанием на сайте производителя. Программа Thaiphoon Burner читает ревизию чипа прямо из модуля, но у неё нет подтверждённого официального сайта, поэтому Corvite не даёт ссылку: скачивайте её только из источников, которым доверяете, и проверяйте файл антивирусом.</value></data>
+  <data name="r_tb_d" xml:space="preserve"><value>Corvite сам предлагает чип по номеру планки (Samsung, SK hynix, Micron DDR4), но точнее всего ревизию чипа показывает Thaiphoon Burner: он читает её прямо из модуля. В отчёте найдите строки DRAM Manufacturer и Die Revision и выберите такой же чип выше. Это сторонняя программа, не Corvite и не производитель памяти. Сайт автора больше не работает, поэтому ссылка ведёт на страницу в каталоге Softpedia. Проверьте скачанный файл антивирусом.</value></data>
   <data name="r_src" xml:space="preserve"><value>Данные собраны из открытых руководств оверклокеров (в том числе GitHub ozgk/ddr4-oc-guide и webpcdesigns.com). Источники расходятся, поэтому значения ориентировочные и осторожные. Не превышайте 1.50 В для DDR4 и 1.40 В для DDR5.</value></data>
+  <data name="r_tb_open" xml:space="preserve"><value>Открыть Thaiphoon Burner в каталоге Softpedia</value></data>
 </root>

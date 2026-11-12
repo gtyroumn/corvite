@@ -6,17 +6,20 @@ namespace Corvite.App.Services;
 /// <summary>An official manufacturer program or driver page. Keys are Strings.resx entries; Url is always on the manufacturer's own site.</summary>
 public sealed record VendorTool(string NameKey, string WhyKey, string Url)
 {
-    private static readonly string[] AllowedHosts = { "intel.com", "amd.com", "nvidia.com" };
+    private static readonly string[] AllowedHosts = { "intel.com", "amd.com", "nvidia.com", "softpedia.com" };
 
     public string Host => new Uri(Url).Host;
 
-    /// <summary>Only manufacturer domains may be opened from the app.</summary>
+    /// <summary>Only the listed domains (manufacturers, plus the Softpedia catalogue page for Thaiphoon Burner) may be opened from the app.</summary>
     public bool IsOfficial => Uri.TryCreate(Url, UriKind.Absolute, out var u) && u.Scheme == Uri.UriSchemeHttps
         && AllowedHosts.Any(h => u.Host == h || u.Host.EndsWith("." + h, StringComparison.OrdinalIgnoreCase));
 }
 
 public static class VendorTools
 {
+    /// <summary>Thaiphoon Burner on Softpedia (a third-party software catalogue, chosen by the user): the original author's site is gone.</summary>
+    public const string ThaiphoonUrl = "https://www.softpedia.com/get/Tweak/Memory-Tweak/Thaiphoon-Burner.shtml#download";
+
     private const string Xtu = "https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html";
     private const string RyzenMaster = "https://www.amd.com/en/products/software/ryzen-master.html";
     private const string NvidiaDrivers = "https://www.nvidia.com/Download/index.aspx";
