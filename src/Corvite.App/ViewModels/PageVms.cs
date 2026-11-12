@@ -356,7 +356,6 @@ public sealed class RamTimingsPage : PageVm
     public string SourceNote => Loc.I["r_src"];
     public string ChipTitle => Loc.I["r_chip_t"];
     public string TbTitle => Loc.I["r_tb_t"];
-    public string TbText => Loc.I["r_tb_d"];
     public string HeadF => Loc.I["r_f"];
     public string HeadT => Loc.I["r_t"];
     public string HeadV => Loc.I["r_v"];

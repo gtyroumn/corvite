@@ -548,7 +548,14 @@
   <data name="r_conf_low" xml:space="preserve"><value>little data</value></data>
   <data name="r_chip_sel" xml:space="preserve"><value>Showing values for:</value></data>
   <data name="r_tb_t" xml:space="preserve"><value>HOW TO FIND THE EXACT CHIP</value></data>
-  <data name="r_tb_d" xml:space="preserve"><value>Corvite suggests a chip from the module part number (Samsung, SK hynix, Micron DDR4), but Thaiphoon Burner shows the chip revision most accurately: it reads it straight from the module. In the report find the DRAM Manufacturer and Die Revision lines and pick the same chip above. It is a third-party program, not Corvite or the memory maker. The author's site is gone, so the link opens the Softpedia catalogue page. Scan the downloaded file with an antivirus.</value></data>
   <data name="r_src" xml:space="preserve"><value>Data is collected from public overclocker guides (including GitHub ozgk/ddr4-oc-guide and webpcdesigns.com). Sources disagree, so values are approximate and cautious. Do not exceed 1.50 V for DDR4 or 1.40 V for DDR5.</value></data>
-  <data name="r_tb_open" xml:space="preserve"><value>Open Thaiphoon Burner on Softpedia</value></data>
+  <data name="r_tb_open" xml:space="preserve"><value>Open Thaiphoon Burner (Softpedia)</value></data>
+  <data name="r_tb_1h" xml:space="preserve"><value>1. Corvite hint.</value></data>
+  <data name="r_tb_1" xml:space="preserve"><value>The app reads the module part number and suggests a chip. Works for DDR4: Samsung, SK hynix, Micron. The hint is shown above the chip list.</value></data>
+  <data name="r_tb_2h" xml:space="preserve"><value>2. Part number on the module sticker.</value></data>
+  <data name="r_tb_2" xml:space="preserve"><value>The revision is encoded in the number. Samsung: the letter after a code like 1K43 (M471A1K43CB1 = C-die). SK hynix: AFR, CJR, DJR or MFR in the number. Micron: the letter before the last digit of the suffix (…-3G2J1 = Rev.J).</value></data>
+  <data name="r_tb_3h" xml:space="preserve"><value>3. Thaiphoon Burner.</value></data>
+  <data name="r_tb_3" xml:space="preserve"><value>Reads the chip revision straight from the module. In the report look at the DRAM Manufacturer and Die Revision lines. It is a third-party program: the author's site is gone, the link opens the Softpedia catalogue. Scan the downloaded file with an antivirus.</value></data>
+  <data name="r_tb_4h" xml:space="preserve"><value>4. If the revision is unknown.</value></data>
+  <data name="r_tb_4" xml:space="preserve"><value>Pick “Not sure (averaged)”: the table shows values that are safe for most chips.</value></data>
 </root>

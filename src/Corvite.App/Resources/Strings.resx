@@ -548,7 +548,14 @@
   <data name="r_conf_low" xml:space="preserve"><value>данных мало</value></data>
   <data name="r_chip_sel" xml:space="preserve"><value>Показаны значения для:</value></data>
   <data name="r_tb_t" xml:space="preserve"><value>КАК УЗНАТЬ ТОЧНЫЙ ЧИП</value></data>
-  <data name="r_tb_d" xml:space="preserve"><value>Corvite сам предлагает чип по номеру планки (Samsung, SK hynix, Micron DDR4), но точнее всего ревизию чипа показывает Thaiphoon Burner: он читает её прямо из модуля. В отчёте найдите строки DRAM Manufacturer и Die Revision и выберите такой же чип выше. Это сторонняя программа, не Corvite и не производитель памяти. Сайт автора больше не работает, поэтому ссылка ведёт на страницу в каталоге Softpedia. Проверьте скачанный файл антивирусом.</value></data>
   <data name="r_src" xml:space="preserve"><value>Данные собраны из открытых руководств оверклокеров (в том числе GitHub ozgk/ddr4-oc-guide и webpcdesigns.com). Источники расходятся, поэтому значения ориентировочные и осторожные. Не превышайте 1.50 В для DDR4 и 1.40 В для DDR5.</value></data>
-  <data name="r_tb_open" xml:space="preserve"><value>Открыть Thaiphoon Burner в каталоге Softpedia</value></data>
+  <data name="r_tb_open" xml:space="preserve"><value>Открыть Thaiphoon Burner (Softpedia)</value></data>
+  <data name="r_tb_1h" xml:space="preserve"><value>1. Подсказка Corvite.</value></data>
+  <data name="r_tb_1" xml:space="preserve"><value>Программа читает номер модели планки и сама предлагает чип. Работает для DDR4: Samsung, SK hynix, Micron. Подсказка показана над списком чипов.</value></data>
+  <data name="r_tb_2h" xml:space="preserve"><value>2. Номер на наклейке планки.</value></data>
+  <data name="r_tb_2" xml:space="preserve"><value>Ревизия зашита в номере. Samsung: буква после кода вида 1K43 (M471A1K43CB1 = C-die). SK hynix: AFR, CJR, DJR или MFR в номере. Micron: буква перед последней цифрой суффикса (…-3G2J1 = Rev.J).</value></data>
+  <data name="r_tb_3h" xml:space="preserve"><value>3. Thaiphoon Burner.</value></data>
+  <data name="r_tb_3" xml:space="preserve"><value>Читает ревизию чипа прямо из модуля. В отчёте смотрите строки DRAM Manufacturer и Die Revision. Это сторонняя программа: сайт автора не работает, ссылка ведёт в каталог Softpedia. Проверьте скачанный файл антивирусом.</value></data>
+  <data name="r_tb_4h" xml:space="preserve"><value>4. Если ревизия неизвестна.</value></data>
+  <data name="r_tb_4" xml:space="preserve"><value>Выберите «Не знаю (усреднённо)»: таблица покажет значения, безопасные для большинства чипов.</value></data>
 </root>
