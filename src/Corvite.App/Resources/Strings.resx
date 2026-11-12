@@ -118,7 +118,7 @@
   <data name="r_b" xml:space="preserve"><value>Где в BIOS</value></data>
   <data name="r_f" xml:space="preserve"><value>Частота</value></data>
   <data name="r_i" xml:space="preserve"><value>Контроллер памяти</value></data>
-  <data name="r_note" xml:space="preserve"><value>Значения ориентировочные (~). Меняйте в BIOS вручную и проверяйте стабильность (TestMem5, MemTest86). Приложение ничего не применяет.</value></data>
+  <data name="r_note" xml:space="preserve"><value>Значения ориентировочные (~). Меняйте в BIOS вручную, проверяйте стабильность (TestMem5, MemTest86). Приложение ничего не применяет.</value></data>
   <data name="r_ok" xml:space="preserve"><value>В пределах профиля комплекта</value></data>
   <data name="r_over" xml:space="preserve"><value>Выше рейтинга комплекта, зависит от удачи кристаллов</value></data>
   <data name="r_t" xml:space="preserve"><value>Тайминги</value></data>
@@ -516,39 +516,29 @@
   <data name="tool.amdgpu" xml:space="preserve"><value>Драйвер AMD Radeon (AMD Software)</value></data>
   <data name="tool.amdgpu.why" xml:space="preserve"><value>Настройки видеокарты Radeon хранятся в драйвере AMD, и открытого интерфейса для них Corvite пока не использует. Их можно задать вручную в AMD Software: Adrenalin Edition, который ставится вместе с драйвером.</value></data>
   <data name="r_na" xml:space="preserve"><value>Для этого типа памяти справочных данных нет. Таблица доступна для DDR4 и DDR5.</value></data>
-  <data name="r_chip_t" xml:space="preserve"><value>О ЧИПАХ ПАМЯТИ</value></data>
-  <data name="r_chip_gen" xml:space="preserve"><value>Производитель комплекта не раскрывает, какие чипы стоят в модулях. Определить их можно по маркировке на планке или в программе Thaiphoon Burner. От ревизии чипа зависит, насколько хорошо память разгоняется, поэтому значения в таблице усреднённые.</value></data>
-  <data name="r_chip_sam4" xml:space="preserve"><value>Модули Samsung DDR4: лучшей по разгону считается ревизия B-die, она держит плотные тайминги и хорошо реагирует на напряжение. Остальные ревизии Samsung разгоняются скромнее. Точную ревизию Windows не показывает, она видна по маркировке чипа или в Thaiphoon Burner.</value></data>
-  <data name="r_chip_sam5" xml:space="preserve"><value>Модули Samsung DDR5: разгон зависит от ревизии чипа и обычно скромнее, чем у лучших чипов SK hynix. Точную ревизию Windows не показывает, она видна по маркировке или в Thaiphoon Burner.</value></data>
-  <data name="r_chip_hyn4" xml:space="preserve"><value>Модули SK hynix DDR4: чипы разных ревизий (например CJR, DJR, MFR) обычно хорошо берут частоту при средних таймингах. Точную ревизию Windows не показывает, она видна по маркировке или в Thaiphoon Burner.</value></data>
-  <data name="r_chip_hyn5" xml:space="preserve"><value>Модули SK hynix DDR5: чипы этого производителя чаще всего считаются лучшими для разгона DDR5, но результат зависит от ревизии и платы. Точную ревизию Windows не показывает, она видна по маркировке или в Thaiphoon Burner.</value></data>
-  <data name="r_chip_mic4" xml:space="preserve"><value>Модули Micron (и Crucial) DDR4: у многих ревизий хороший запас по частоте, но тайминги обычно мягче, чем у Samsung B-die. Точную ревизию Windows не показывает, она видна по маркировке или в Thaiphoon Burner.</value></data>
-  <data name="r_chip_mic5" xml:space="preserve"><value>Модули Micron (и Crucial) DDR5: разгон зависит от ревизии чипа и обычно скромнее, чем у лучших чипов SK hynix. Точную ревизию Windows не показывает, она видна по маркировке или в Thaiphoon Burner.</value></data>
-  <data name="chip.ddr4-sam-b" xml:space="preserve"><value>Лучший чип DDR4 для разгона: очень плотные тайминги и хорошее масштабирование с напряжением. Повседневно 1.40–1.45 В, абсолютный максимум по JEDEC 1.50 В.</value></data>
-  <data name="chip.ddr4-sam-c" xml:space="preserve"><value>Потолок частоты ниже, чем у B-die: обычно 3200–3600 МТ/с. Данных о безопасном напряжении мало, держитесь около 1.35 В.</value></data>
-  <data name="chip.ddr4-sam-d" xml:space="preserve"><value>По разным руководствам берёт высокие частоты, повседневно до 1.40–1.45 В. Источники расходятся, значения приблизительные.</value></data>
-  <data name="chip.ddr4-sam-e" xml:space="preserve"><value>Чип на 4 Гбит, обычно младшая линейка. Источники расходятся, данных мало, значения очень приблизительные.</value></data>
-  <data name="chip.ddr4-hyn-afr" xml:space="preserve"><value>Потолок около 3600 МТ/с, повседневно 1.35–1.40 В.</value></data>
-  <data name="chip.ddr4-hyn-cjr" xml:space="preserve"><value>Хорошо берёт 3600–3800 МТ/с при CL16–17, но разные экземпляры заметно отличаются. Повседневно около 1.40 В.</value></data>
-  <data name="chip.ddr4-hyn-djr" xml:space="preserve"><value>Один из лучших вариантов после B-die: 3800–4200 МТ/с при CL16–18. Повседневно до 1.45 В.</value></data>
-  <data name="chip.ddr4-hyn-mfr" xml:space="preserve"><value>В использованных источниках данных нет, значения очень приблизительные. Держитесь около 1.35 В.</value></data>
-  <data name="chip.ddr4-mic-e" xml:space="preserve"><value>Хорошая частота: 3600–3800 МТ/с при CL16–18. Источники расходятся по напряжению (1.35 В у одних, 1.40–1.45 В у других), поэтому в таблице осторожные значения.</value></data>
-  <data name="chip.ddr4-mic-b8" xml:space="preserve"><value>Потолок около 3600 МТ/с. Выше 1.35 В масштабирование по напряжению может стать отрицательным, то есть память станет менее стабильной.</value></data>
-  <data name="chip.ddr4-mic-b16" xml:space="preserve"><value>Один из источников указывает высокие частоты, данных мало. В таблице осторожные значения.</value></data>
-  <data name="chip.ddr4-mic-j" xml:space="preserve"><value>В использованных источниках данных нет, значения очень приблизительные, взяты по осторожному шаблону Micron.</value></data>
-  <data name="chip.ddr4-mic-r" xml:space="preserve"><value>В использованных источниках данных нет, значения очень приблизительные, взяты по осторожному шаблону Micron.</value></data>
-  <data name="chip.ddr5-hyn-a" xml:space="preserve"><value>Лучший чип DDR5 для разгона, особенно на Intel: 7000–8000+ МТ/с. Пример из руководства: 7200 МТ/с, CL34-45-45-90, VDD/VDDQ 1.40 В, SA 1.25 В. Выше 1.40 В только для экстремального разгона.</value></data>
-  <data name="chip.ddr5-hyn-m" xml:space="preserve"><value>Хороший вариант для повседневного разгона: 6400–7200 МТ/с. Тайминги в таблице взяты из общего шаблона.</value></data>
-  <data name="chip.ddr5-sam-b" xml:space="preserve"><value>6000–6800 МТ/с, возможны плотные основные тайминги. Пример из руководства: 6400 МТ/с, CL28-34-34-68, VDD/VDDQ 1.35 В, SA 1.20 В.</value></data>
-  <data name="chip.ddr5-mic-a" xml:space="preserve"><value>6200–7000 МТ/с, хорошо работает на AMD. Пример из руководства: 6000 МТ/с, CL30-36-36-76, VDD/VDDQ 1.30 В, SOC 1.20 В.</value></data>
+  <data name="chip.ddr4-sam-b" xml:space="preserve"><value>Лучший DDR4 для разгона. Daily 1.40–1.45 В, максимум JEDEC 1.50 В.</value></data>
+  <data name="chip.ddr4-sam-c" xml:space="preserve"><value>Потолок ниже, чем у B-die. Держите около 1.35 В.</value></data>
+  <data name="chip.ddr4-sam-d" xml:space="preserve"><value>Источники расходятся. Daily до 1.40–1.45 В.</value></data>
+  <data name="chip.ddr4-sam-e" xml:space="preserve"><value>4 Гбит, младшая линейка. Данных мало.</value></data>
+  <data name="chip.ddr4-hyn-afr" xml:space="preserve"><value>Потолок ~3600 МТ/с. Daily 1.35–1.40 В.</value></data>
+  <data name="chip.ddr4-hyn-cjr" xml:space="preserve"><value>3600–3800 при CL16–17, разброс между экземплярами. Daily ~1.40 В.</value></data>
+  <data name="chip.ddr4-hyn-djr" xml:space="preserve"><value>3800–4200 при CL16–18. Daily до 1.45 В.</value></data>
+  <data name="chip.ddr4-hyn-mfr" xml:space="preserve"><value>Данных нет, значения приблизительные. Около 1.35 В.</value></data>
+  <data name="chip.ddr4-mic-e" xml:space="preserve"><value>3600–3800 при CL16–18. Источники расходятся по напряжению, взято 1.35–1.40 В.</value></data>
+  <data name="chip.ddr4-mic-b8" xml:space="preserve"><value>Потолок ~3600 МТ/с. Выше 1.35 В стабильность падает.</value></data>
+  <data name="chip.ddr4-mic-b16" xml:space="preserve"><value>Данных мало, значения осторожные.</value></data>
+  <data name="chip.ddr4-mic-j" xml:space="preserve"><value>Данных нет, шаблон Micron, значения приблизительные.</value></data>
+  <data name="chip.ddr4-mic-r" xml:space="preserve"><value>Данных нет, шаблон Micron, значения приблизительные.</value></data>
+  <data name="chip.ddr5-hyn-a" xml:space="preserve"><value>7000–8000+ МТ/с, лучший для DDR5. Пример: 7200, CL34-45-45-90, 1.40 В, SA 1.25 В.</value></data>
+  <data name="chip.ddr5-hyn-m" xml:space="preserve"><value>6400–7200 МТ/с. Тайминги из общего шаблона.</value></data>
+  <data name="chip.ddr5-sam-b" xml:space="preserve"><value>6000–6800 МТ/с. Пример: 6400, CL28-34-34-68, 1.35 В, SA 1.20 В.</value></data>
+  <data name="chip.ddr5-mic-a" xml:space="preserve"><value>6200–7000 МТ/с, лучше на AMD. Пример: 6000, CL30-36-36-76, 1.30 В, SOC 1.20 В.</value></data>
   <data name="r_pick_t" xml:space="preserve"><value>ЧИП ПАМЯТИ</value></data>
-  <data name="r_pick_unk" xml:space="preserve"><value>Не знаю (усреднённо)</value></data>
-  <data name="r_pick_d" xml:space="preserve"><value>Выберите чип, и таблица подстроится под него. Если не знаете, оставьте усреднённый вариант.</value></data>
-  <data name="r_hint" xml:space="preserve"><value>По номеру модели {0} вероятно: {1}. Проверьте по маркировке или в Thaiphoon Burner.</value></data>
+  <data name="r_pick_unk" xml:space="preserve"><value>Не знаю</value></data>
+  <data name="r_hint" xml:space="preserve"><value>По номеру {0} вероятно: {1}</value></data>
   <data name="r_conf_low" xml:space="preserve"><value>данных мало</value></data>
-  <data name="r_chip_sel" xml:space="preserve"><value>Показаны значения для:</value></data>
-  <data name="r_tb_t" xml:space="preserve"><value>КАК УЗНАТЬ ТОЧНЫЙ ЧИП</value></data>
-  <data name="r_tb_d" xml:space="preserve"><value>Corvite сам предлагает чип по номеру планки (Samsung, SK hynix, Micron DDR4), но точнее всего ревизию чипа показывает Thaiphoon Burner: он читает её прямо из модуля. В отчёте найдите строки DRAM Manufacturer и Die Revision и выберите такой же чип выше. Это сторонняя программа, не Corvite и не производитель памяти. Сайт автора больше не работает, поэтому ссылка ведёт на страницу в каталоге Softpedia. Проверьте скачанный файл антивирусом.</value></data>
-  <data name="r_src" xml:space="preserve"><value>Данные собраны из открытых руководств оверклокеров (в том числе GitHub ozgk/ddr4-oc-guide и webpcdesigns.com). Источники расходятся, поэтому значения ориентировочные и осторожные. Не превышайте 1.50 В для DDR4 и 1.40 В для DDR5.</value></data>
-  <data name="r_tb_open" xml:space="preserve"><value>Открыть Thaiphoon Burner в каталоге Softpedia</value></data>
+  <data name="r_tb_t" xml:space="preserve"><value>ТОЧНАЯ РЕВИЗИЯ ЧИПА</value></data>
+  <data name="r_tb_d" xml:space="preserve"><value>Читает Thaiphoon Burner: в отчёте строки DRAM Manufacturer и Die Revision. Сторонняя программа, сайт автора не работает, ссылка на Softpedia. Проверьте файл антивирусом.</value></data>
+  <data name="r_src" xml:space="preserve"><value>Источники: открытые руководства оверклокеров (ozgk/ddr4-oc-guide, webpcdesigns.com), местами расходятся. Не превышайте 1.50 В для DDR4 и 1.40 В для DDR5.</value></data>
+  <data name="r_tb_open" xml:space="preserve"><value>Thaiphoon Burner (Softpedia)</value></data>
 </root>
