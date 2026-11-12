@@ -3,6 +3,7 @@ using System.Windows.Media;
 using Corvite.App.Localization;
 using Corvite.App.Theming;
 using Corvite.Core.Catalog;
+using Corvite.Core.Hardware;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Corvite.App.ViewModels;
@@ -253,4 +254,73 @@ public sealed class HardwarePage : PageVm
         if (_vram != null && s.GpuVramMb is double v && v > 0 && !_m.Info.IsDemo)
             _vram.Value = Corvite.Core.Hardware.HardwareClassifier.FormatMemory((int)v, Loc.I["gb"], "MB");
     }
+}
+
+
+// ---------------------------------------------------------------- RAM timings (stage 6, reference only)
+
+public sealed class RamRowVm
+{
+    private readonly RamRow _r;
+    private readonly string _bios;
+    public RamRowVm(RamRow r, string bios) { _r = r; _bios = bios; }
+
+    private int Zone => _r.WithinKit ? 0 : _r.Level == 1 ? 1 : 2;
+    public string Level => Loc.I["t" + _r.Level];
+    public string Sub => Loc.I[_r.WithinKit ? "r_ok" : "r_over"];
+    public System.Windows.Media.Brush Brush => Theming.Palette.Risk(Zone);
+    public string Speed => "~" + _r.Speed + " MT/s";
+    public string Timings => _r.Timings;
+    public string Dram => "~" + _r.Dram;
+    public string Ctrl => _r.Ctrl;
+    public string Bios => _bios;
+}
+
+public sealed class RamTimingsPage : PageVm
+{
+    private readonly MainViewModel _m;
+    public RamTimingsPage(MainViewModel m) { _m = m; }
+
+    public string Title => Loc.I["n_ramt"];
+    public string Description => Loc.I["d_ramt"];
+
+    private RamInfo Ram => _m.Info.Ram;
+    public bool HasData => RamTimings.NormalizeType(Ram.Type) != null;
+    public bool NoData => !HasData;
+    public string NoDataText => Loc.I["r_na"];
+
+    public string Caption
+    {
+        get
+        {
+            const string dash = "—";
+            var parts = new List<string>
+            {
+                Ram.Vendor.Length > 0 ? Ram.Vendor : dash,
+                Ram.Gb > 0 ? Ram.Gb.ToString("0.#") + " " + Loc.I["gb"] : dash,
+                Ram.Type.Length > 0 ? Ram.Type + (Ram.SpeedMts > 0 ? "-" + Ram.SpeedMts : "") : dash,
+                _m.Info.CpuName.Length > 0 ? _m.Info.CpuName : dash
+            };
+            return string.Join(" · ", parts);
+        }
+    }
+
+    public List<RamRowVm> Rows
+    {
+        get
+        {
+            var laptop = _m.Platform == Corvite.Core.Catalog.PlatformKind.Laptop;
+            var bios = RamTimings.BiosPath(_m.Info.Board, laptop) ?? Loc.I["lap_bios"];
+            return RamTimings.For(Ram, _m.Info.CpuBrand).Select(r => new RamRowVm(r, bios)).ToList();
+        }
+    }
+
+    public string Note => Loc.I["r_note"] + (_m.Platform == Corvite.Core.Catalog.PlatformKind.Laptop ? " " + Loc.I["lap_ram"] : "");
+    public string ChipTitle => Loc.I["r_chip_t"];
+    public string ChipNote => Loc.I[RamTimings.ChipNoteKey(Ram)];
+    public string HeadF => Loc.I["r_f"];
+    public string HeadT => Loc.I["r_t"];
+    public string HeadV => Loc.I["r_v"];
+    public string HeadI => Loc.I["r_i"];
+    public string HeadB => Loc.I["r_b"];
 }

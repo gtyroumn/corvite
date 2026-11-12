@@ -354,7 +354,7 @@ public partial class MainViewModel : ObservableObject
         {
             Section.Overview => new OverviewPage(this),
             Section.Hardware => new HardwarePage(this),
-            Section.RamTimings => new PlannedPage(sec, "6"),
+            Section.RamTimings => new RamTimingsPage(this),
             Section.Gpu when Hw.Gpu is GpuVendor.IntelArc or GpuVendor.Unknown => new PlannedPage(sec, "unsup"),
             _ => BuildSectionPage(sec)
         };

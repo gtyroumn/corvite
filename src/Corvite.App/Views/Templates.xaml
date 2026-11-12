@@ -242,6 +242,70 @@
         </StackPanel>
     </DataTemplate>
 
+    <!-- ===== RAM timings (reference) ===== -->
+    <DataTemplate DataType="{x:Type vm:RamTimingsPage}">
+        <StackPanel>
+            <TextBlock Text="{Binding Title}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="24"/>
+            <TextBlock Text="{Binding Description}" Foreground="{StaticResource Fg2}" Margin="0,4,0,14" TextWrapping="Wrap"/>
+            <TextBlock Text="{Binding Caption}" Foreground="{StaticResource Fg2}" Margin="2,0,0,12" TextWrapping="Wrap"/>
+
+            <TextBlock Text="{Binding NoDataText}" Foreground="{StaticResource Warn}" TextWrapping="Wrap"
+                       Visibility="{Binding NoData, Converter={StaticResource B2V}}"/>
+
+            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="6"
+                    Visibility="{Binding HasData, Converter={StaticResource B2V}}">
+                <StackPanel>
+                    <Grid Margin="12,8,12,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="*"/><ColumnDefinition Width="1.2*"/><ColumnDefinition Width="1.5*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" Text="{Binding HeadF}" Foreground="{StaticResource Fg3}" FontSize="11" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="2" Text="{Binding HeadT}" Foreground="{StaticResource Fg3}" FontSize="11" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Column="3" Text="{Binding HeadV}" Foreground="{StaticResource Fg3}" FontSize="11" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="4" Text="{Binding HeadI}" Foreground="{StaticResource Fg3}" FontSize="11" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                        <TextBlock Grid.Column="5" Text="{Binding HeadB}" Foreground="{StaticResource Fg3}" FontSize="11" FontWeight="SemiBold"/>
+                    </Grid>
+                    <ItemsControl ItemsSource="{Binding Rows}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type vm:RamRowVm}">
+                                <Border BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="12,12">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.5*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="1.2*"/>
+                                            <ColumnDefinition Width="*"/><ColumnDefinition Width="1.2*"/><ColumnDefinition Width="1.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Margin="0,0,10,0">
+                                            <Border BorderBrush="{Binding Brush}" BorderThickness="1" CornerRadius="10" Padding="8,2" HorizontalAlignment="Left">
+                                                <TextBlock Text="{Binding Level}" Foreground="{Binding Brush}" Style="{StaticResource ChipText}"/>
+                                            </Border>
+                                            <TextBlock Text="{Binding Sub}" Foreground="{StaticResource Fg3}" FontSize="11.5" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="1" Text="{Binding Speed}" FontFamily="{StaticResource MonoFont}" FontSize="12.5"/>
+                                        <TextBlock Grid.Column="2" Text="{Binding Timings}" FontFamily="{StaticResource MonoFont}" FontSize="12.5"/>
+                                        <TextBlock Grid.Column="3" Text="{Binding Dram}" FontFamily="{StaticResource MonoFont}" FontSize="12.5"/>
+                                        <TextBlock Grid.Column="4" Text="{Binding Ctrl}" FontFamily="{StaticResource MonoFont}" FontSize="12.5" TextWrapping="Wrap" Margin="0,0,8,0"/>
+                                        <TextBlock Grid.Column="5" Text="{Binding Bios}" FontSize="12.5" TextWrapping="Wrap" Foreground="{StaticResource Fg2}"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="{Binding Note}" Foreground="{StaticResource Fg3}" FontSize="12.5" TextWrapping="Wrap" Margin="2,12,0,0"
+                       Visibility="{Binding HasData, Converter={StaticResource B2V}}"/>
+
+            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="16,14" Margin="0,14,0,0">
+                <StackPanel>
+                    <TextBlock Text="{Binding ChipTitle}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
+                    <TextBlock Text="{Binding ChipNote}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </DataTemplate>
+
     <!-- ===== Overview ===== -->
     <DataTemplate x:Key="MonitorCard" DataType="{x:Type vm:MonitorCardVm}">
         <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16" Margin="0,0,14,0">
