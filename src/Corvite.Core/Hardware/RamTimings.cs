@@ -69,4 +69,15 @@ public static class RamTimings
         if (Regex.IsMatch(board, "GIGABYTE", RegexOptions.IgnoreCase)) return "Tweaker → Extreme Memory Profile";
         return "OC Tweaker → DRAM Configuration";
     }
+
+    /// <summary>Resource key of the chip hint for this module maker and memory type.</summary>
+    public static string ChipNoteKey(RamInfo ram)
+    {
+        var ddr5 = NormalizeType(ram.Type) == "DDR5";
+        var v = ram.Vendor;
+        if (Regex.IsMatch(v, "samsung", RegexOptions.IgnoreCase)) return ddr5 ? "r_chip_sam5" : "r_chip_sam4";
+        if (Regex.IsMatch(v, "hynix", RegexOptions.IgnoreCase)) return ddr5 ? "r_chip_hyn5" : "r_chip_hyn4";
+        if (Regex.IsMatch(v, "micron|crucial", RegexOptions.IgnoreCase)) return ddr5 ? "r_chip_mic5" : "r_chip_mic4";
+        return "r_chip_gen";
+    }
 }

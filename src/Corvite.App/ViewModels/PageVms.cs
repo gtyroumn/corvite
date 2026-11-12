@@ -331,14 +331,16 @@ public sealed class RamTimingsPage : PageVm
     }
 
     public string PickTitle => Loc.I["r_pick_t"];
+    public string PickText => Loc.I["r_pick_d"];
 
     public bool HasHint => _m.RamChipChoice == null && Detected != null;
     public string HintText => Detected == null ? "" : string.Format(Loc.I["r_hint"], Ram.PartNumber, Detected.Name);
 
     public bool HasSelection => Selected != null;
+    public string SelectionText => Selected == null ? "" : Loc.I["r_chip_sel"] + " " + Selected.Name;
     public bool LowConfidence => Selected?.Confidence == "low";
     public string LowConfText => Loc.I["r_conf_low"];
-    public string ChipNote => Selected == null ? "" : Loc.I[Selected.NoteKey];
+    public string ChipNote => Selected != null ? Loc.I[Selected.NoteKey] : Loc.I[RamTimings.ChipNoteKey(Ram)];
 
     public List<RamRowVm> Rows
     {
@@ -352,6 +354,7 @@ public sealed class RamTimingsPage : PageVm
 
     public string Note => Loc.I["r_note"] + (_m.Platform == Corvite.Core.Catalog.PlatformKind.Laptop ? " " + Loc.I["lap_ram"] : "");
     public string SourceNote => Loc.I["r_src"];
+    public string ChipTitle => Loc.I["r_chip_t"];
     public string TbTitle => Loc.I["r_tb_t"];
     public string TbText => Loc.I["r_tb_d"];
     public string HeadF => Loc.I["r_f"];
