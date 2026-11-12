@@ -6,7 +6,7 @@
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="ack" xml:space="preserve"><value>Я розумію ризик і хочу продовжити</value></data>
   <data name="ai_def" xml:space="preserve"><value>Назвіть гру (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) або запитайте про ризики, профіль, ОЗП.</value></data>
-  <data name="ai_hi" xml:space="preserve"><value>Я локальний ШІ-радник. У демо відповіді будуються за правилами, у версії на C# підключиться локальна модель. Напишіть, під яку гру оптимізувати (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), або запитайте про ризики та ОЗП. Відповідаю мовою вашого запитання.</value></data>
+  <data name="ai_hi" xml:space="preserve"><value>Я локальний ШІ-радник: працюю на вашому ПК, без інтернету. Напишіть, під яку гру оптимізувати (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), або запитайте про ризики, профіль і ОЗП. Відповідаю мовою вашого запитання. Усе, що я змінюю, лишається незастосованим, доки ви не натиснете «Застосувати».</value></data>
   <data name="ai_ok" xml:space="preserve"><value>Червоних параметрів немає, конфігурація збалансована.</value></data>
   <data name="ai_ph" xml:space="preserve"><value>Запитайте про ризики, профіль, ОЗП…</value></data>
   <data name="ai_pick" xml:space="preserve"><value>Підібрати параметри</value></data>
@@ -14,7 +14,7 @@
   <data name="ai_rec" xml:space="preserve"><value>Підходящий профіль для вашого заліза</value></data>
   <data name="ai_red" xml:space="preserve"><value>Високий ризик:</value></data>
   <data name="ai_t" xml:space="preserve"><value>ШІ-радник</value></data>
-  <data name="ai_tag" xml:space="preserve"><value>локально, демо</value></data>
+  <data name="ai_tag" xml:space="preserve"><value>локально, за правилами</value></data>
   <data name="ap" xml:space="preserve"><value>Застосувати</value></data>
   <data name="base" xml:space="preserve"><value>Базова частота</value></data>
   <data name="bk_cr" xml:space="preserve"><value>Створено резервну копію вихідних налаштувань</value></data>
@@ -558,4 +558,18 @@
   <data name="r_tb_3" xml:space="preserve"><value>Читає ревізію чипа прямо з модуля. У звіті дивіться рядки DRAM Manufacturer і Die Revision. Це стороння програма: сайт автора не працює, посилання веде в каталог Softpedia. Перевірте завантажений файл антивірусом.</value></data>
   <data name="r_tb_4h" xml:space="preserve"><value>4. Якщо ревізія невідома.</value></data>
   <data name="r_tb_4" xml:space="preserve"><value>Оберіть «Не знаю (усереднено)»: таблиця покаже значення, безпечні для більшості чипів.</value></data>
+  <data name="ai_ask" xml:space="preserve"><value>Запитати радника</value></data>
+  <data name="ai_err" xml:space="preserve"><value>Не вдалося підготувати відповідь. Спробуйте ще раз.</value></data>
+  <data name="ai.g.why1" xml:space="preserve"><value>важка гра, навантажує і CPU, і GPU: потрібен баланс частот, рівні 1% low і менше підлагів під час підвантаження ефектів</value></data>
+  <data name="ai.g.why0" xml:space="preserve"><value>упор у процесор і відгук: важливі стабільний фреймтайм і мала затримка вводу, відеокарта майже не обмежує</value></data>
+  <data name="ai.g.pc" xml:space="preserve"><value>Ваш ПК</value></data>
+  <data name="ai.g.arc" xml:space="preserve"><value>Для вашої відеокарти GPU-параметри недоступні, їх пропущено.</value></data>
+  <data name="ai.g.low" xml:space="preserve"><value>Конфігурація скромна: розгінні параметри не чіпаю, лише безпечні твіки.</value></data>
+  <data name="ai.g.lap" xml:space="preserve"><value>Ноутбук: межі посилено, розгін обмежений охолодженням.</value></data>
+  <data name="ai.g.set" xml:space="preserve"><value>Я виставив параметрів: </value></data>
+  <data name="ai.g.after" xml:space="preserve"><value> (жоден не в червоній зоні). Вони ще не застосовані: перевірте й натисніть «Застосувати».</value></data>
+  <data name="ai.g.none" xml:space="preserve"><value>Усі потрібні параметри вже стоять як слід.</value></data>
+  <data name="ai.g.onoff" xml:space="preserve"><value>вимк → увімк</value></data>
+  <data name="ai.g.ig" xml:space="preserve"><value>Налаштування в грі для максимуму FPS</value></data>
+  <data name="ai.g.hint" xml:space="preserve"><value>Це орієнтир: підсумковий FPS залежить від гри, патча та драйвера.</value></data>
 </root>

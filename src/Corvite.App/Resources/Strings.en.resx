@@ -6,7 +6,7 @@
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="ack" xml:space="preserve"><value>I understand the risk and want to continue</value></data>
   <data name="ai_def" xml:space="preserve"><value>Name a game (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) or ask about risks, profile, RAM.</value></data>
-  <data name="ai_hi" xml:space="preserve"><value>I'm a local AI advisor. In the demo answers are rule-based; the C# version will plug in a local model. Tell me which game to optimize for (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), or ask about risks and RAM. I reply in the language of your question.</value></data>
+  <data name="ai_hi" xml:space="preserve"><value>I am a local AI advisor: I run on your PC, no internet needed. Tell me which game to optimize for (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), or ask about risks, profile and RAM. I answer in the language of your question. Everything I change stays unapplied until you press "Apply".</value></data>
   <data name="ai_ok" xml:space="preserve"><value>No red-zone settings; the configuration is balanced.</value></data>
   <data name="ai_ph" xml:space="preserve"><value>Ask about risks, profile, RAM…</value></data>
   <data name="ai_pick" xml:space="preserve"><value>Pick settings</value></data>
@@ -14,7 +14,7 @@
   <data name="ai_rec" xml:space="preserve"><value>Best profile for your hardware</value></data>
   <data name="ai_red" xml:space="preserve"><value>High risk:</value></data>
   <data name="ai_t" xml:space="preserve"><value>AI advisor</value></data>
-  <data name="ai_tag" xml:space="preserve"><value>local, demo</value></data>
+  <data name="ai_tag" xml:space="preserve"><value>local, rule-based</value></data>
   <data name="ap" xml:space="preserve"><value>Apply</value></data>
   <data name="base" xml:space="preserve"><value>Base clock</value></data>
   <data name="bk_cr" xml:space="preserve"><value>Backup of original settings created</value></data>
@@ -558,4 +558,18 @@
   <data name="r_tb_3" xml:space="preserve"><value>Reads the chip revision straight from the module. In the report look at the DRAM Manufacturer and Die Revision lines. It is a third-party program: the author's site is gone, the link opens the Softpedia catalogue. Scan the downloaded file with an antivirus.</value></data>
   <data name="r_tb_4h" xml:space="preserve"><value>4. If the revision is unknown.</value></data>
   <data name="r_tb_4" xml:space="preserve"><value>Pick “Not sure (averaged)”: the table shows values that are safe for most chips.</value></data>
+  <data name="ai_ask" xml:space="preserve"><value>Ask the advisor</value></data>
+  <data name="ai_err" xml:space="preserve"><value>Could not prepare an answer. Please try again.</value></data>
+  <data name="ai.g.why1" xml:space="preserve"><value>a demanding game that loads both CPU and GPU: it needs balanced clocks, steady 1% lows and fewer stutters when effects load</value></data>
+  <data name="ai.g.why0" xml:space="preserve"><value>CPU-bound and response-sensitive: stable frametime and low input latency matter, the GPU is rarely the limit</value></data>
+  <data name="ai.g.pc" xml:space="preserve"><value>Your PC</value></data>
+  <data name="ai.g.arc" xml:space="preserve"><value>GPU settings are not available for your graphics card and were skipped.</value></data>
+  <data name="ai.g.low" xml:space="preserve"><value>Modest configuration: I leave overclock settings alone and only apply safe tweaks.</value></data>
+  <data name="ai.g.lap" xml:space="preserve"><value>Laptop: limits are tightened, overclocking is capped by cooling.</value></data>
+  <data name="ai.g.set" xml:space="preserve"><value>Settings I changed: </value></data>
+  <data name="ai.g.after" xml:space="preserve"><value> (none in the red zone). They are not applied yet: review and press "Apply".</value></data>
+  <data name="ai.g.none" xml:space="preserve"><value>All the needed settings are already in place.</value></data>
+  <data name="ai.g.onoff" xml:space="preserve"><value>off → on</value></data>
+  <data name="ai.g.ig" xml:space="preserve"><value>In-game settings for maximum FPS</value></data>
+  <data name="ai.g.hint" xml:space="preserve"><value>This is a guideline: final FPS depends on the game, patch and driver.</value></data>
 </root>

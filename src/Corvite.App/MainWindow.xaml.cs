@@ -8,7 +8,14 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        DataContext = new MainViewModel();
+        var vm = new MainViewModel();
+        DataContext = vm;
+        vm.AiMessages.CollectionChanged += (_, _) => Dispatcher.BeginInvoke(new Action(() => ChatScroll.ScrollToEnd()));
+        vm.PropertyChanged += (_, e) =>
+        {
+            if (e.PropertyName == nameof(MainViewModel.AiOpen) && vm.AiOpen)
+                Dispatcher.BeginInvoke(new Action(() => ChatInput.Focus()), System.Windows.Threading.DispatcherPriority.Input);
+        };
         Closed += (_, _) => (DataContext as MainViewModel)?.Shutdown();
     }
 
