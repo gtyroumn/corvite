@@ -123,13 +123,6 @@ public partial class MainViewModel : ObservableObject
         (CurrentPage as RamTimingsPage)?.Refresh();
     }
 
-    [RelayCommand]
-    private void ThaiphoonOpen()
-    {
-        var t = new VendorTool("", "", VendorTools.ThaiphoonUrl);
-        if (!t.IsOfficial) return;
-        try { Process.Start(new ProcessStartInfo(t.Url) { UseShellExecute = true }); } catch { /* no browser */ }
-    }
 
     // red-zone dialog
     [ObservableProperty] private bool _redVisible;
@@ -680,12 +673,25 @@ public partial class MainViewModel : ObservableObject
     {
         get
         {
-            var (lo, hi) = ProfileEngine.Gain(_s, Hw, Platform);
+            var (lo, hi) = ProfileEngine.Gain(Scoring(), Hw, Platform);
             return Math.Round(hi) < 1 ? "≈ 0%" : $"~+{Math.Round(lo)}–{Math.Round(hi)}%";
         }
     }
     public string GainCaption => Loc.I["ov.gaincap"];
-    private double Risk => ProfileEngine.RiskScore(_s, Hw, Platform);
+    private double Risk => ProfileEngine.RiskScore(Scoring(), Hw, Platform);
+
+    /// <summary>
+    /// State used for the FPS estimate and the risk level: everything still equal to the saved original (baseline) counts as
+    /// "not changed by Corvite", so the Standard profile on a PC that already has something switched on shows zero gain and low risk.
+    /// </summary>
+    private Dictionary<string, double> Scoring()
+    {
+        var stock = ProfileEngine.Preset("stock", Platform);
+        var r = new Dictionary<string, double>(_s);
+        foreach (var d in TweakCatalog.All.Where(d => !d.IsGuard))
+            if (IsSupported(d.Id) && Math.Abs(_s[d.Id] - BaseVal(d)) < 1e-9) r[d.Id] = stock[d.Id];
+        return r;
+    }
     public string RiskWord => Loc.I[$"tot.{ProfileEngine.RiskLevel(Risk)}"];
     public Brush RiskBrush => Palette.Total(ProfileEngine.RiskLevel(Risk));
     public GridLength RiskLeft => new(Math.Max(Risk, 0.0001), GridUnitType.Star);
@@ -718,7 +724,7 @@ public partial class MainViewModel : ObservableObject
     // ---------------------------------------------------------------- demo monitoring (until real sensors answer)
     private void Tick()
     {
-        var risk = ProfileEngine.RiskScore(_s, Hw, Platform);
+        var risk = ProfileEngine.RiskScore(Scoring(), Hw, Platform);
         _cv = _cv * .82 + (46 + risk * 20 + 4) * .18 + (_rnd.NextDouble() - .5) * 2.4;
         _gv = _gv * .82 + (50 + risk * 16 + 6) * .18 + (_rnd.NextDouble() - .5) * 2.4;
         _rv = Math.Min(30, Math.Max(8, _rv + (_rnd.NextDouble() - .5) * .3));

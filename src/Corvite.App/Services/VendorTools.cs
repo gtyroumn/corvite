@@ -6,7 +6,7 @@ namespace Corvite.App.Services;
 /// <summary>An official manufacturer program or driver page. Keys are Strings.resx entries; Url is always on the manufacturer's own site.</summary>
 public sealed record VendorTool(string NameKey, string WhyKey, string Url)
 {
-    private static readonly string[] AllowedHosts = { "intel.com", "amd.com", "nvidia.com", "softnology.biz" };
+    private static readonly string[] AllowedHosts = { "intel.com", "amd.com", "nvidia.com" };
 
     public string Host => new Uri(Url).Host;
 
@@ -17,9 +17,6 @@ public sealed record VendorTool(string NameKey, string WhyKey, string Url)
 
 public static class VendorTools
 {
-    /// <summary>Thaiphoon Burner (third-party tool by Softnology): reads the exact DRAM die from the module. Address not verified by the app author.</summary>
-    public const string ThaiphoonUrl = "https://www.softnology.biz/files.html";
-
     private const string Xtu = "https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html";
     private const string RyzenMaster = "https://www.amd.com/en/products/software/ryzen-master.html";
     private const string NvidiaDrivers = "https://www.nvidia.com/Download/index.aspx";
