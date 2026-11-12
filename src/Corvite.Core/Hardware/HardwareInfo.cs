@@ -3,7 +3,7 @@ using Corvite.Core.Catalog;
 namespace Corvite.Core.Hardware;
 
 /// <summary>Installed memory. Type: DDR4 / DDR5 / LPDDR5 ...; Profile: JEDEC / XMP / EXPO or empty when unknown.</summary>
-public sealed record RamInfo(string Type, double Gb, int Modules, int SpeedMts, string Vendor, string Profile);
+public sealed record RamInfo(string Type, double Gb, int Modules, int SpeedMts, string Vendor, string Profile, string PartNumber = "");
 
 /// <summary>
 /// Everything the UI needs to know about the machine. Unknown numbers are 0, unknown strings are empty

@@ -524,4 +524,31 @@
   <data name="r_chip_hyn5" xml:space="preserve"><value>SK hynix DDR5 modules: this maker's chips are most often considered the best for DDR5 overclocking, but the result depends on the revision and the board. Windows does not show the exact revision, check the marking or Thaiphoon Burner.</value></data>
   <data name="r_chip_mic4" xml:space="preserve"><value>Micron (and Crucial) DDR4 modules: many revisions have good frequency headroom, but timings are usually looser than Samsung B-die. Windows does not show the exact revision, check the marking or Thaiphoon Burner.</value></data>
   <data name="r_chip_mic5" xml:space="preserve"><value>Micron (and Crucial) DDR5 modules: overclocking depends on the chip revision and is usually more modest than the best SK hynix chips. Windows does not show the exact revision, check the marking or Thaiphoon Burner.</value></data>
+  <data name="chip.ddr4-sam-b" xml:space="preserve"><value>The best DDR4 chip for overclocking: very tight timings and good voltage scaling. Daily 1.40-1.45 V, JEDEC absolute maximum 1.50 V.</value></data>
+  <data name="chip.ddr4-sam-c" xml:space="preserve"><value>Frequency ceiling is lower than B-die: usually 3200-3600 MT/s. There is little data on safe voltage, stay around 1.35 V.</value></data>
+  <data name="chip.ddr4-sam-d" xml:space="preserve"><value>Guides report high frequencies, daily up to 1.40-1.45 V. Sources disagree, values are approximate.</value></data>
+  <data name="chip.ddr4-sam-e" xml:space="preserve"><value>A 4 Gb chip, usually the entry line. Sources disagree and data is scarce, values are very approximate.</value></data>
+  <data name="chip.ddr4-hyn-afr" xml:space="preserve"><value>Ceiling around 3600 MT/s, daily 1.35-1.40 V.</value></data>
+  <data name="chip.ddr4-hyn-cjr" xml:space="preserve"><value>Reaches 3600-3800 MT/s at CL16-17, but individual samples differ a lot. Daily around 1.40 V.</value></data>
+  <data name="chip.ddr4-hyn-djr" xml:space="preserve"><value>One of the best options after B-die: 3800-4200 MT/s at CL16-18. Daily up to 1.45 V.</value></data>
+  <data name="chip.ddr4-hyn-mfr" xml:space="preserve"><value>The sources used had no data, values are very approximate. Stay around 1.35 V.</value></data>
+  <data name="chip.ddr4-mic-e" xml:space="preserve"><value>Good frequency: 3600-3800 MT/s at CL16-18. Sources disagree on voltage (1.35 V in some, 1.40-1.45 V in others), so the table uses cautious values.</value></data>
+  <data name="chip.ddr4-mic-b8" xml:space="preserve"><value>Ceiling around 3600 MT/s. Above 1.35 V voltage scaling can turn negative, meaning the memory becomes less stable.</value></data>
+  <data name="chip.ddr4-mic-b16" xml:space="preserve"><value>One source reports high frequencies, data is scarce. The table uses cautious values.</value></data>
+  <data name="chip.ddr4-mic-j" xml:space="preserve"><value>The sources used had no data, values are very approximate and follow a cautious Micron template.</value></data>
+  <data name="chip.ddr4-mic-r" xml:space="preserve"><value>The sources used had no data, values are very approximate and follow a cautious Micron template.</value></data>
+  <data name="chip.ddr5-hyn-a" xml:space="preserve"><value>The best DDR5 chip for overclocking, especially on Intel: 7000-8000+ MT/s. Guide example: 7200 MT/s, CL34-45-45-90, VDD/VDDQ 1.40 V, SA 1.25 V. Above 1.40 V is for extreme overclocking only.</value></data>
+  <data name="chip.ddr5-hyn-m" xml:space="preserve"><value>A good choice for daily overclocking: 6400-7200 MT/s. Timings in the table come from the generic template.</value></data>
+  <data name="chip.ddr5-sam-b" xml:space="preserve"><value>6000-6800 MT/s, tight primary timings are possible. Guide example: 6400 MT/s, CL28-34-34-68, VDD/VDDQ 1.35 V, SA 1.20 V.</value></data>
+  <data name="chip.ddr5-mic-a" xml:space="preserve"><value>6200-7000 MT/s, works well on AMD. Guide example: 6000 MT/s, CL30-36-36-76, VDD/VDDQ 1.30 V, SOC 1.20 V.</value></data>
+  <data name="r_pick_t" xml:space="preserve"><value>MEMORY CHIP</value></data>
+  <data name="r_pick_unk" xml:space="preserve"><value>Not sure (averaged)</value></data>
+  <data name="r_pick_d" xml:space="preserve"><value>Pick the chip and the table adapts to it. If you do not know, keep the averaged option.</value></data>
+  <data name="r_hint" xml:space="preserve"><value>Based on the module part number {0} it is probably: {1}. Verify by the marking or with Thaiphoon Burner.</value></data>
+  <data name="r_conf_low" xml:space="preserve"><value>little data</value></data>
+  <data name="r_chip_sel" xml:space="preserve"><value>Showing values for:</value></data>
+  <data name="r_tb_t" xml:space="preserve"><value>HOW TO FIND THE EXACT CHIP</value></data>
+  <data name="r_tb_d" xml:space="preserve"><value>Thaiphoon Burner reads data straight from the memory module and shows the chip maker and revision (the DRAM Manufacturer and Die Revision lines in the report). It is a third-party program, not Corvite or the memory maker; terms and price are on the author's site.</value></data>
+  <data name="r_tb_open" xml:space="preserve"><value>Open Thaiphoon Burner website</value></data>
+  <data name="r_src" xml:space="preserve"><value>Data is collected from public overclocker guides (including GitHub ozgk/ddr4-oc-guide and webpcdesigns.com). Sources disagree, so values are approximate and cautious. Do not exceed 1.50 V for DDR4 or 1.40 V for DDR5.</value></data>
 </root>

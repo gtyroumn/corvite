@@ -35,6 +35,23 @@ public static class RamTimings
         return null;
     }
 
+    /// <summary>
+    /// Rows for the chosen chip: frequency, timings and DRAM voltage come from the chip, the memory-controller column and any
+    /// missing timings from the generic table of this type and CPU vendor. DDR4 on AMD shows FCLK = half the data rate.
+    /// </summary>
+    public static IReadOnlyList<RamRow> For(RamInfo ram, CpuVendor cpu, RamChip? chip)
+    {
+        var generic = For(ram, cpu);
+        if (chip == null || generic.Count == 0 || chip.Rows.Count == 0) return generic;
+        var ty = NormalizeType(ram.Type);
+        return chip.Rows.Take(3).Select((r, i) =>
+        {
+            var g = generic[Math.Min(i, generic.Count - 1)];
+            var ctrl = ty == "DDR4" && cpu == CpuVendor.Amd ? "FCLK " + r.Speed / 2 : g.Ctrl;
+            return new RamRow(i, r.Speed, r.Timings ?? g.Timings, r.Dram, ctrl, r.Speed <= ram.SpeedMts);
+        }).ToList();
+    }
+
     public static IReadOnlyList<RamRow> For(RamInfo ram, CpuVendor cpu)
     {
         var ty = NormalizeType(ram.Type);

@@ -115,7 +115,7 @@ public static class HardwareDetector
             }
         }
 
-        return new RamInfo(type, totalGb, mods.Count, speed, RamVendor(S(first, "Manufacturer"), S(first, "PartNumber")), profile);
+        return new RamInfo(type, totalGb, mods.Count, speed, RamVendor(S(first, "Manufacturer"), S(first, "PartNumber")), profile, S(first, "PartNumber").Trim());
     }
 
     private static string RamVendor(string manufacturer, string part)

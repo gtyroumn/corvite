@@ -10,6 +10,9 @@ public sealed class AppSettings
 
     /// <summary>"pc", "laptop" or null until the user has confirmed the device type once.</summary>
     public string? Platform { get; set; }
+
+    /// <summary>Memory chip chosen on the RAM tab (id from ram_chips.json), null = averaged table.</summary>
+    public string? RamChip { get; set; }
 }
 
 public static class SettingsStore

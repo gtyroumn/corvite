@@ -111,6 +111,26 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private void ToolClose() => ToolVisible = false;
 
+    // ---------------------------------------------------------------- RAM tab: chosen chip
+    /// <summary>null = never chosen (the part-number hint may apply), "" = averaged table chosen explicitly.</summary>
+    public string? RamChipChoice => _settings.RamChip;
+
+    [RelayCommand]
+    private void PickRamChip(string? id)
+    {
+        _settings.RamChip = id ?? "";
+        SettingsStore.Save(_settings);
+        (CurrentPage as RamTimingsPage)?.Refresh();
+    }
+
+    [RelayCommand]
+    private void ThaiphoonOpen()
+    {
+        var t = new VendorTool("", "", VendorTools.ThaiphoonUrl);
+        if (!t.IsOfficial) return;
+        try { Process.Start(new ProcessStartInfo(t.Url) { UseShellExecute = true }); } catch { /* no browser */ }
+    }
+
     // red-zone dialog
     [ObservableProperty] private bool _redVisible;
     [ObservableProperty] private bool _redAck;

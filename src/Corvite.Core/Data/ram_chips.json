@@ -1,0 +1,412 @@
+{
+ "chips": [
+  {
+   "id": "ddr4-sam-b",
+   "type": "DDR4",
+   "maker": "Samsung",
+   "name": "Samsung B-die (8 Gb)",
+   "conf": "high",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL14-14-14-34",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL14-14-14-28",
+     "dram": "1.40 V"
+    },
+    {
+     "speed": 4000,
+     "timings": "CL18-19-19-40",
+     "dram": "1.45 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-sam-c",
+   "type": "DDR4",
+   "maker": "Samsung",
+   "name": "Samsung C-die",
+   "conf": "medium",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-36",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3466,
+     "timings": "CL16-18-18-36",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL17-19-19-39",
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-sam-d",
+   "type": "DDR4",
+   "maker": "Samsung",
+   "name": "Samsung D-die",
+   "conf": "medium",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-36",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL16-18-18-38",
+     "dram": "1.40 V"
+    },
+    {
+     "speed": 4000,
+     "timings": "CL18-20-20-40",
+     "dram": "1.45 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-sam-e",
+   "type": "DDR4",
+   "maker": "Samsung",
+   "name": "Samsung E-die (4 Gb)",
+   "conf": "low",
+   "rows": [
+    {
+     "speed": 3000,
+     "timings": "CL16-18-18-38",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-38",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3466,
+     "timings": "CL18-20-20-40",
+     "dram": "1.35 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-hyn-afr",
+   "type": "DDR4",
+   "maker": "SK hynix",
+   "name": "SK hynix AFR (A-die)",
+   "conf": "medium",
+   "rows": [
+    {
+     "speed": 3000,
+     "timings": "CL16-18-18-36",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-36",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL18-20-20-40",
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-hyn-cjr",
+   "type": "DDR4",
+   "maker": "SK hynix",
+   "name": "SK hynix CJR (C-die)",
+   "conf": "high",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL15-17-17-35",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL16-18-18-36",
+     "dram": "1.40 V"
+    },
+    {
+     "speed": 3800,
+     "timings": "CL16-19-19-38",
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-hyn-djr",
+   "type": "DDR4",
+   "maker": "SK hynix",
+   "name": "SK hynix DJR (D-die)",
+   "conf": "high",
+   "rows": [
+    {
+     "speed": 3600,
+     "timings": "CL16-17-17-36",
+     "dram": "1.40 V"
+    },
+    {
+     "speed": 4000,
+     "timings": "CL17-19-19-40",
+     "dram": "1.45 V"
+    },
+    {
+     "speed": 4200,
+     "timings": "CL18-20-20-42",
+     "dram": "1.45 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-hyn-mfr",
+   "type": "DDR4",
+   "maker": "SK hynix",
+   "name": "SK hynix MFR (M-die)",
+   "conf": "low",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-38",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3466,
+     "timings": "CL16-19-19-39",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL18-20-20-40",
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-mic-e",
+   "type": "DDR4",
+   "maker": "Micron",
+   "name": "Micron Rev.E (8 Gb)",
+   "conf": "high",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL15-17-17-36",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL16-18-18-38",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3800,
+     "timings": "CL16-19-19-40",
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-mic-b8",
+   "type": "DDR4",
+   "maker": "Micron",
+   "name": "Micron Rev.B (8 Gb)",
+   "conf": "medium",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-38",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3466,
+     "timings": "CL17-19-19-39",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL18-20-20-42",
+     "dram": "1.35 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-mic-b16",
+   "type": "DDR4",
+   "maker": "Micron",
+   "name": "Micron Rev.B (16 Gb)",
+   "conf": "low",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-36",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL16-19-19-38",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3800,
+     "timings": "CL18-20-20-40",
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-mic-j",
+   "type": "DDR4",
+   "maker": "Micron",
+   "name": "Micron Rev.J",
+   "conf": "low",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-38",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3466,
+     "timings": "CL17-19-19-39",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL18-20-20-42",
+     "dram": "1.35 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr4-mic-r",
+   "type": "DDR4",
+   "maker": "Micron",
+   "name": "Micron Rev.R",
+   "conf": "low",
+   "rows": [
+    {
+     "speed": 3200,
+     "timings": "CL16-18-18-38",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3466,
+     "timings": "CL17-19-19-39",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 3600,
+     "timings": "CL18-20-20-42",
+     "dram": "1.35 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr5-hyn-a",
+   "type": "DDR5",
+   "maker": "SK hynix",
+   "name": "SK hynix A-die",
+   "conf": "high",
+   "rows": [
+    {
+     "speed": 6800,
+     "timings": null,
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 7200,
+     "timings": "CL34-45-45-90",
+     "dram": "1.40 V"
+    },
+    {
+     "speed": 7600,
+     "timings": null,
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr5-hyn-m",
+   "type": "DDR5",
+   "maker": "SK hynix",
+   "name": "SK hynix M-die",
+   "conf": "medium",
+   "rows": [
+    {
+     "speed": 6000,
+     "timings": null,
+     "dram": "1.30 V"
+    },
+    {
+     "speed": 6400,
+     "timings": null,
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 7200,
+     "timings": null,
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr5-sam-b",
+   "type": "DDR5",
+   "maker": "Samsung",
+   "name": "Samsung B-die (DDR5)",
+   "conf": "medium",
+   "rows": [
+    {
+     "speed": 6000,
+     "timings": null,
+     "dram": "1.30 V"
+    },
+    {
+     "speed": 6400,
+     "timings": "CL28-34-34-68",
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 6800,
+     "timings": null,
+     "dram": "1.40 V"
+    }
+   ]
+  },
+  {
+   "id": "ddr5-mic-a",
+   "type": "DDR5",
+   "maker": "Micron",
+   "name": "Micron A-die (DDR5)",
+   "conf": "medium",
+   "rows": [
+    {
+     "speed": 6000,
+     "timings": "CL30-36-36-76",
+     "dram": "1.30 V"
+    },
+    {
+     "speed": 6400,
+     "timings": null,
+     "dram": "1.35 V"
+    },
+    {
+     "speed": 7000,
+     "timings": null,
+     "dram": "1.40 V"
+    }
+   ]
+  }
+ ]
+}

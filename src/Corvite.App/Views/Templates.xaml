@@ -252,6 +252,38 @@
             <TextBlock Text="{Binding NoDataText}" Foreground="{StaticResource Warn}" TextWrapping="Wrap"
                        Visibility="{Binding NoData, Converter={StaticResource B2V}}"/>
 
+            <!-- chip picker -->
+            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="16,14" Margin="0,0,0,14"
+                    Visibility="{Binding HasData, Converter={StaticResource B2V}}">
+                <StackPanel>
+                    <TextBlock Text="{Binding PickTitle}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
+                    <TextBlock Text="{Binding PickText}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                    <TextBlock Text="{Binding HintText}" Foreground="{StaticResource Go}" FontSize="12.5" TextWrapping="Wrap" Margin="0,8,0,0"
+                               Visibility="{Binding HasHint, Converter={StaticResource B2V}}"/>
+                    <ItemsControl ItemsSource="{Binding Chips}" Margin="0,10,0,0">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type vm:ChipChoiceVm}">
+                                <Button Style="{StaticResource ChoiceBtn}" Tag="{Binding IsSelected}" Margin="0,0,8,8" Padding="12,6"
+                                        Command="{Binding DataContext.Main.PickRamChipCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding Id}">
+                                    <TextBlock Text="{Binding Name}" FontSize="12.5"/>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <StackPanel Orientation="Horizontal" Margin="0,2,0,0" Visibility="{Binding HasSelection, Converter={StaticResource B2V}}">
+                        <TextBlock Text="{Binding SelectionText}" Foreground="{StaticResource Fg2}" FontSize="12.5"/>
+                        <Border BorderBrush="{StaticResource Warn}" BorderThickness="1" CornerRadius="10" Padding="8,1" Margin="10,0,0,0"
+                                Visibility="{Binding LowConfidence, Converter={StaticResource B2V}}">
+                            <TextBlock Text="{Binding LowConfText}" Foreground="{StaticResource Warn}" Style="{StaticResource ChipText}"/>
+                        </Border>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
             <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="6"
                     Visibility="{Binding HasData, Converter={StaticResource B2V}}">
                 <StackPanel>
@@ -303,6 +335,14 @@
                     <TextBlock Text="{Binding ChipNote}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,6,0,0"/>
                 </StackPanel>
             </Border>
+            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="16,14" Margin="0,14,0,0">
+                <StackPanel>
+                    <TextBlock Text="{Binding TbTitle}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
+                    <TextBlock Text="{Binding TbText}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,6,0,0"/>
+                    <Button Style="{StaticResource Btn}" Content="{loc:T r_tb_open}" Command="{Binding Main.ThaiphoonOpenCommand}" HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                </StackPanel>
+            </Border>
+            <TextBlock Text="{Binding SourceNote}" Foreground="{StaticResource Fg3}" FontSize="12" TextWrapping="Wrap" Margin="2,12,0,0"/>
         </StackPanel>
     </DataTemplate>
 

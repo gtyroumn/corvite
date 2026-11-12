@@ -276,18 +276,32 @@ public sealed class RamRowVm
     public string Bios => _bios;
 }
 
+public sealed class ChipChoiceVm
+{
+    public string Id { get; }
+    public string Name { get; }
+    public bool IsSelected { get; }
+    public ChipChoiceVm(string id, string name, bool selected) { Id = id; Name = name; IsSelected = selected; }
+}
+
 public sealed class RamTimingsPage : PageVm
 {
     private readonly MainViewModel _m;
     public RamTimingsPage(MainViewModel m) { _m = m; }
 
+    public MainViewModel Main => _m;
     public string Title => Loc.I["n_ramt"];
     public string Description => Loc.I["d_ramt"];
 
     private RamInfo Ram => _m.Info.Ram;
-    public bool HasData => RamTimings.NormalizeType(Ram.Type) != null;
+    private string? Type => RamTimings.NormalizeType(Ram.Type);
+    public bool HasData => Type != null;
     public bool NoData => !HasData;
     public string NoDataText => Loc.I["r_na"];
+
+    // chip: saved choice wins, otherwise the part-number guess, otherwise the averaged table
+    private RamChip? Detected => RamChips.DetectFromPartNumber(Ram);
+    private RamChip? Selected => _m.RamChipChoice == null ? Detected : RamChips.Find(_m.RamChipChoice);
 
     public string Caption
     {
@@ -305,19 +319,44 @@ public sealed class RamTimingsPage : PageVm
         }
     }
 
+    public List<ChipChoiceVm> Chips
+    {
+        get
+        {
+            var sel = Selected;
+            var list = new List<ChipChoiceVm> { new("", Loc.I["r_pick_unk"], sel == null) };
+            list.AddRange(RamChips.ForType(Type).Select(c => new ChipChoiceVm(c.Id, c.Name, sel?.Id == c.Id)));
+            return list;
+        }
+    }
+
+    public string PickTitle => Loc.I["r_pick_t"];
+    public string PickText => Loc.I["r_pick_d"];
+
+    public bool HasHint => _m.RamChipChoice == null && Detected != null;
+    public string HintText => Detected == null ? "" : string.Format(Loc.I["r_hint"], Ram.PartNumber, Detected.Name);
+
+    public bool HasSelection => Selected != null;
+    public string SelectionText => Selected == null ? "" : Loc.I["r_chip_sel"] + " " + Selected.Name;
+    public bool LowConfidence => Selected?.Confidence == "low";
+    public string LowConfText => Loc.I["r_conf_low"];
+    public string ChipNote => Selected != null ? Loc.I[Selected.NoteKey] : Loc.I[RamTimings.ChipNoteKey(Ram)];
+
     public List<RamRowVm> Rows
     {
         get
         {
             var laptop = _m.Platform == Corvite.Core.Catalog.PlatformKind.Laptop;
             var bios = RamTimings.BiosPath(_m.Info.Board, laptop) ?? Loc.I["lap_bios"];
-            return RamTimings.For(Ram, _m.Info.CpuBrand).Select(r => new RamRowVm(r, bios)).ToList();
+            return RamTimings.For(Ram, _m.Info.CpuBrand, Selected).Select(r => new RamRowVm(r, bios)).ToList();
         }
     }
 
     public string Note => Loc.I["r_note"] + (_m.Platform == Corvite.Core.Catalog.PlatformKind.Laptop ? " " + Loc.I["lap_ram"] : "");
+    public string SourceNote => Loc.I["r_src"];
     public string ChipTitle => Loc.I["r_chip_t"];
-    public string ChipNote => Loc.I[RamTimings.ChipNoteKey(Ram)];
+    public string TbTitle => Loc.I["r_tb_t"];
+    public string TbText => Loc.I["r_tb_d"];
     public string HeadF => Loc.I["r_f"];
     public string HeadT => Loc.I["r_t"];
     public string HeadV => Loc.I["r_v"];
