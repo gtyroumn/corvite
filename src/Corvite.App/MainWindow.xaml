@@ -200,9 +200,7 @@
                     </ScrollViewer>
                     <Grid Grid.Row="2" Margin="14,8,14,14">
                         <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                        <TextBox x:Name="ChatInput" Text="{Binding AiInput, UpdateSourceTrigger=PropertyChanged}" Background="{StaticResource Raise}"
-                                 Foreground="{StaticResource Fg}" CaretBrush="{StaticResource Fg}" BorderBrush="{StaticResource Line}" Padding="10,8" FontSize="13"
-                                 VerticalContentAlignment="Center">
+                        <TextBox x:Name="ChatInput" Style="{StaticResource RoundInput}" Text="{Binding AiInput, UpdateSourceTrigger=PropertyChanged}" FontSize="13" VerticalContentAlignment="Center">
                             <TextBox.InputBindings>
                                 <KeyBinding Key="Return" Command="{Binding AiSendCommand}"/>
                             </TextBox.InputBindings>
