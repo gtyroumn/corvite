@@ -167,13 +167,20 @@
                         <ItemsControl ItemsSource="{Binding AiMessages}">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:ChatMsg}">
-                                    <Border Margin="0,0,0,8" Padding="11,8" CornerRadius="9" MaxWidth="320" HorizontalAlignment="Left" Background="{StaticResource Raise}">
+                                    <Border Padding="12,9">
                                         <Border.Style>
                                             <Style TargetType="Border">
+                                                <Setter Property="MaxWidth" Value="300"/>
+                                                <Setter Property="HorizontalAlignment" Value="Left"/>
+                                                <Setter Property="Background" Value="{StaticResource Raise}"/>
+                                                <Setter Property="CornerRadius" Value="14,14,14,4"/>
+                                                <Setter Property="Margin" Value="0,0,36,8"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding IsUser}" Value="True">
                                                         <Setter Property="HorizontalAlignment" Value="Right"/>
-                                                        <Setter Property="Background" Value="{StaticResource Accent}"/>
+                                                        <Setter Property="Background" Value="{StaticResource Go}"/>
+                                                        <Setter Property="CornerRadius" Value="14,14,4,14"/>
+                                                        <Setter Property="Margin" Value="36,0,0,8"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -200,7 +207,20 @@
                     </ScrollViewer>
                     <Grid Grid.Row="2" Margin="14,8,14,14">
                         <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
-                        <TextBox x:Name="ChatInput" Style="{StaticResource RoundInput}" Text="{Binding AiInput, UpdateSourceTrigger=PropertyChanged}" FontSize="13" VerticalContentAlignment="Center">
+                        <TextBox x:Name="ChatInput" Text="{Binding AiInput, UpdateSourceTrigger=PropertyChanged}"
+                                 Foreground="{StaticResource Fg}" CaretBrush="{StaticResource Fg}" FontSize="13" VerticalContentAlignment="Center">
+                            <TextBox.Template>
+                                <ControlTemplate TargetType="TextBox">
+                                    <Border x:Name="Bd" Background="{StaticResource Raise}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="19" Padding="16,9">
+                                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsKeyboardFocused" Value="True">
+                                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Go}"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </TextBox.Template>
                             <TextBox.InputBindings>
                                 <KeyBinding Key="Return" Command="{Binding AiSendCommand}"/>
                             </TextBox.InputBindings>
