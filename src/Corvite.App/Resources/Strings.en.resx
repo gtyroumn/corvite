@@ -5,15 +5,22 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="ack" xml:space="preserve"><value>I understand the risk and want to continue</value></data>
-  <data name="ai_def" xml:space="preserve"><value>Name a game (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) or ask about risks, profile, RAM.</value></data>
-  <data name="ai_hi" xml:space="preserve"><value>I am a local AI advisor: I run on your PC, no internet needed. Tell me which game to optimize for (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), or ask about risks, profile and RAM. I answer in the language of your question. Everything I change stays unapplied until you press "Apply".</value></data>
+  <data name="ai_def" xml:space="preserve"><value>Not sure I got that. Name a game (CS2, Apex, Dota 2…) or a genre (FPS, MOBA, TPS), ask about a parameter ("what is HAGS?"), where something is in the app ("where are RAM timings?") or about risks. Write "what can you do" for details.</value></data>
+  <data name="ai_hi" xml:space="preserve"><value>Hi, I am Corvi, your performance advisor. I run on your PC, no internet needed.
+
+I can:
+• optimize your PC for a game or genre (FPS, MOBA, TPS): name the game, I set the parameters, you only accept or adjust;
+• explain any parameter and show where it is;
+• assess risks and pick a profile.
+
+Nothing is applied on its own: changes wait for your "Apply". I answer in the language of your question.</value></data>
   <data name="ai_ok" xml:space="preserve"><value>No red-zone settings; the configuration is balanced.</value></data>
   <data name="ai_ph" xml:space="preserve"><value>Ask about risks, profile, RAM…</value></data>
   <data name="ai_pick" xml:space="preserve"><value>Pick settings</value></data>
   <data name="ai_ram" xml:space="preserve"><value>Open the “RAM timings” tab: it has three overclock levels for your kit.</value></data>
   <data name="ai_rec" xml:space="preserve"><value>Best profile for your hardware</value></data>
   <data name="ai_red" xml:space="preserve"><value>High risk:</value></data>
-  <data name="ai_t" xml:space="preserve"><value>AI advisor</value></data>
+  <data name="ai_t" xml:space="preserve"><value>Corvi: AI advisor</value></data>
   <data name="ai_tag" xml:space="preserve"><value>local, rule-based</value></data>
   <data name="ap" xml:space="preserve"><value>Apply</value></data>
   <data name="base" xml:space="preserve"><value>Base clock</value></data>
@@ -558,7 +565,7 @@
   <data name="r_tb_3" xml:space="preserve"><value>Reads the chip revision straight from the module. In the report look at the DRAM Manufacturer and Die Revision lines. It is a third-party program: the author's site is gone, the link opens the Softpedia catalogue. Scan the downloaded file with an antivirus.</value></data>
   <data name="r_tb_4h" xml:space="preserve"><value>4. If the revision is unknown.</value></data>
   <data name="r_tb_4" xml:space="preserve"><value>Pick “Not sure (averaged)”: the table shows values that are safe for most chips.</value></data>
-  <data name="ai_ask" xml:space="preserve"><value>Ask the advisor</value></data>
+  <data name="ai_ask" xml:space="preserve"><value>Ask Corvi</value></data>
   <data name="ai_err" xml:space="preserve"><value>Could not prepare an answer. Please try again.</value></data>
   <data name="ai.g.why1" xml:space="preserve"><value>a demanding game that loads both CPU and GPU: it needs balanced clocks, steady 1% lows and fewer stutters when effects load</value></data>
   <data name="ai.g.why0" xml:space="preserve"><value>CPU-bound and response-sensitive: stable frametime and low input latency matter, the GPU is rarely the limit</value></data>
@@ -566,10 +573,51 @@
   <data name="ai.g.arc" xml:space="preserve"><value>GPU settings are not available for your graphics card and were skipped.</value></data>
   <data name="ai.g.low" xml:space="preserve"><value>Modest configuration: I leave overclock settings alone and only apply safe tweaks.</value></data>
   <data name="ai.g.lap" xml:space="preserve"><value>Laptop: limits are tightened, overclocking is capped by cooling.</value></data>
-  <data name="ai.g.set" xml:space="preserve"><value>Settings I changed: </value></data>
-  <data name="ai.g.after" xml:space="preserve"><value> (none in the red zone). They are not applied yet: review and press "Apply".</value></data>
+  <data name="ai.g.set" xml:space="preserve"><value>What I set ({0}):</value></data>
+  <data name="ai.g.after" xml:space="preserve"><value>No parameter is in the red zone. Changes are not applied yet: review them and press "Apply" at the bottom, or adjust the values by hand.</value></data>
   <data name="ai.g.none" xml:space="preserve"><value>All the needed settings are already in place.</value></data>
   <data name="ai.g.onoff" xml:space="preserve"><value>off → on</value></data>
   <data name="ai.g.ig" xml:space="preserve"><value>In-game settings for maximum FPS</value></data>
   <data name="ai.g.hint" xml:space="preserve"><value>This is a guideline: final FPS depends on the game, patch and driver.</value></data>
+  <data name="ai_name" xml:space="preserve"><value>Corvi</value></data>
+  <data name="ai.greet" xml:space="preserve"><value>Hi! I am Corvi, your performance advisor.</value></data>
+  <data name="ai.help" xml:space="preserve"><value>I am Corvi. What I can do:
+• Optimize for a game or genre (FPS, MOBA, TPS): name the game, I set the parameters, you only accept or adjust.
+• Explain parameters: "what is HAGS?"
+• Navigate: "where are RAM timings?", "how do I enable game mode?"
+• Risks and profile choice.
+• Backup, undo, locked parameters.
+
+Name a game, e.g. CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, Tarkov.</value></data>
+  <data name="ai.askgame" xml:space="preserve"><value>Want me to optimize your PC for a specific game or genre (FPS, MOBA, TPS)? Name it: I will set the parameters, you only accept or adjust.</value></data>
+  <data name="ai.p.nofps" xml:space="preserve"><value>no direct FPS gain, but it improves stability and response</value></data>
+  <data name="ai.p.set.s" xml:space="preserve"><value>I set it to {0}: that gives {1}.</value></data>
+  <data name="ai.p.set.t" xml:space="preserve"><value>I turned it on: that gives {0}.</value></data>
+  <data name="ai.p.free" xml:space="preserve"><value>You can safely raise it by hand to {0}: I left that headroom, it is up to you.</value></data>
+  <data name="ai.p.risk" xml:space="preserve"><value>If you want more, raise it by hand up to {0}, but that is less safe: {1}.</value></data>
+  <data name="ai.p.cons.gen" xml:space="preserve"><value>less margin for temperature and stability</value></data>
+  <data name="ai.p.cons.temp" xml:space="preserve"><value>temperature {0}</value></data>
+  <data name="ai.g.total" xml:space="preserve"><value>Estimated total: {0}, overall risk: {1}.</value></data>
+  <data name="ai.e.fps" xml:space="preserve"><value>FPS impact</value></data>
+  <data name="ai.e.temp" xml:space="preserve"><value>Temperature</value></data>
+  <data name="ai.e.stab" xml:space="preserve"><value>Stability</value></data>
+  <data name="ai.e.lat" xml:space="preserve"><value>Latency</value></data>
+  <data name="ai.e.risk" xml:space="preserve"><value>Risk</value></data>
+  <data name="ai.e.risk.s" xml:space="preserve"><value>depends on the slider: green is safe, yellow needs care, red asks for confirmation</value></data>
+  <data name="ai.e.where" xml:space="preserve"><value>Where to find it</value></data>
+  <data name="ai.e.where.fmt" xml:space="preserve"><value>section "{0}", group "{1}"</value></data>
+  <data name="ai.e.lock" xml:space="preserve"><value>The parameter is locked now:</value></data>
+  <data name="ai.e.how.t" xml:space="preserve"><value>To enable: flip the switch, then press "Apply" at the bottom.</value></data>
+  <data name="ai.e.how.s" xml:space="preserve"><value>To change: move the slider (the zone is colour-coded), then press "Apply" at the bottom.</value></data>
+  <data name="ai.e.how.g" xml:space="preserve"><value>This is a protection feature: switch it on in the "Protection" block on the Overview.</value></data>
+  <data name="ai.n.open" xml:space="preserve"><value>Open: {0}</value></data>
+  <data name="ai.n.sec" xml:space="preserve"><value>Section "{0}": {1}. It is in the menu on the left.</value></data>
+  <data name="ai.n.backup" xml:space="preserve"><value>The backup of your original settings is created on first launch, before any change. It is at the bottom of the Overview: "Restore original settings" rolls everything back. You can also create a new backup, open its folder or delete it there.</value></data>
+  <data name="ai.n.undo" xml:space="preserve"><value>There are two ways to roll back. "Discard changes" (bottom right) resets what you have not applied yet. "Undo" reverts the last apply. Full return: Overview, "Restore original settings".</value></data>
+  <data name="ai.n.apply" xml:space="preserve"><value>Changes are only marked first, nothing is written to the system. The bottom bar shows how many parameters wait. "Apply" writes them; red-zone values ask for confirmation. With protection on, a Windows restore point is created first.</value></data>
+  <data name="ai.n.platform" xml:space="preserve"><value>PC or laptop is chosen with the button at the top right, next to the language. Laptop limits are tighter: risk zones start earlier and overclock sliders top out at half, because cooling is weaker.</value></data>
+  <data name="ai.n.lock" xml:space="preserve"><value>A grey label instead of the risk level means the parameter is unavailable: "driver needed" requires the vendor program (Intel XTU, Ryzen Master, NVIDIA driver), "unavailable" does not fit your PC, "soon" is still in development. Click the label: a window explains why and links the official site.</value></data>
+  <data name="ai.n.session" xml:space="preserve"><value>Corvite game mode is automatic: the app notices a fullscreen game, turns on session parameters (process priority, memory cleanup, stopping extra services, closing background apps) and restores everything when the game closes. These parameters are in "Windows", "Memory and disk" and "Background and services".</value></data>
+  <data name="ai.n.profiles" xml:space="preserve"><value>"Standard" is the original values; "Safe" is proven tweaks only, no overclock; "Gaming" balances response, FPS and temperature; "Maximum" is the limit of your cooling, including the red zone. "Pick settings" chooses a profile for your hardware.</value></data>
+  <data name="ai.same" xml:space="preserve"><value>No change</value></data>
 </root>

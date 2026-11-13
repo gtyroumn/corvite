@@ -64,3 +64,28 @@ public static class Advisor
         return res;
     }
 }
+
+/// <summary>Helpers for the advisor's explanations: expected gain and the safe headroom of a slider.</summary>
+public static class AdvisorMath
+{
+    /// <summary>Expected FPS gain range (percent) of one tweak at the given value; sliders scale with their position.</summary>
+    public static (double Lo, double Hi) GainOf(TweakDef d, double value, PlatformKind p)
+    {
+        var k = d.IsToggle ? 1 : ProfileEngine.PositionOf(d, value, p);
+        return (d.FpsMin * k, d.FpsMax * k);
+    }
+
+    /// <summary>Highest slider value that still lies in a zone not above maxZone (0 green, 1 yellow).</summary>
+    public static double TopOfZone(TweakDef d, PlatformKind p, int maxZone)
+    {
+        var max = ProfileEngine.EffectiveMax(d, p);
+        var n = (int)Math.Round((max - d.Min) / d.Step);
+        var best = d.Min;
+        for (var i = 0; i <= n; i++)
+        {
+            var v = d.Min + i * d.Step;
+            if (ProfileEngine.ZoneOf(ProfileEngine.PositionOf(d, v, p), p) <= maxZone) best = v;
+        }
+        return best;
+    }
+}

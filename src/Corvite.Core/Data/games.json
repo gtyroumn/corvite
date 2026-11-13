@@ -88,5 +88,95 @@
    "uk": "Multithreaded Rendering: увімк. Materials, Textures, Detail, UI Quality: Low. Vignette, Bloom, Distortion, Cast Shadows: вимк. Anti-Aliasing: MSAA 2x або вимк. Anisotropic: 1x–4x. Improve Clarity: вимк. V-Sync: вимк. NVIDIA Reflex: On + Boost. Ліміт FPS: вимк.",
    "en": "Multithreaded Rendering: on. Materials, Textures, Detail, UI Quality: Low. Vignette, Bloom, Distortion, Cast Shadows: off. Anti-Aliasing: MSAA 2x or off. Anisotropic: 1x–4x. Improve Clarity: off. V-Sync: off. NVIDIA Reflex: On + Boost. FPS cap: off."
   }
+ },
+ {
+  "id": "Rainbow Six Siege",
+  "regex": "rainbow|siege|радуг|осад|(^| )r6( |$)",
+  "heavy": false,
+  "ig": {
+   "ru": "Режим: полноэкранный. V-Sync: выкл. Render Scaling: 100%. Shadows: Medium/Low. Reflection, Lens Effects, Motion Blur, Depth of Field: выкл/Low. Ambient Occlusion: выкл. Texture Quality: по объёму VRAM. NVIDIA Reflex: вкл. Лимит FPS: без лимита.",
+   "uk": "Режим: повноекранний. V-Sync: вимк. Render Scaling: 100%. Shadows: Medium/Low. Reflection, Lens Effects, Motion Blur, Depth of Field: вимк/Low. Ambient Occlusion: вимк. Texture Quality: за обсягом VRAM. NVIDIA Reflex: увімк. Ліміт FPS: без ліміту.",
+   "en": "Mode: fullscreen. V-Sync: off. Render Scaling: 100%. Shadows: Medium/Low. Reflection, Lens Effects, Motion Blur, Depth of Field: off/Low. Ambient Occlusion: off. Texture Quality: by VRAM size. NVIDIA Reflex: on. FPS cap: unlimited."
+  }
+ },
+ {
+  "id": "Overwatch 2",
+  "regex": "overwatch|овервотч|овервоч|(^| )ow2?( |$)",
+  "heavy": false,
+  "ig": {
+   "ru": "Режим: полноэкранный. V-Sync: выкл. Лимит FPS: без лимита или в 1,5–2 раза выше частоты монитора. Масштаб рендера: 100% (при нехватке FPS 75–85%). Shadow, Model, Effects, Lighting, Refraction Quality: Low. Local Fog Detail: Low. Dynamic Reflections и Ambient Occlusion: выкл. Texture Quality: по объёму VRAM. Reduce Buffering: вкл. NVIDIA Reflex: вкл.",
+   "uk": "Режим: повноекранний. V-Sync: вимк. Ліміт FPS: без ліміту або в 1,5–2 рази вище за частоту монітора. Масштаб рендера: 100% (за нестачі FPS 75–85%). Shadow, Model, Effects, Lighting, Refraction Quality: Low. Local Fog Detail: Low. Dynamic Reflections і Ambient Occlusion: вимк. Texture Quality: за обсягом VRAM. Reduce Buffering: увімк. NVIDIA Reflex: увімк.",
+   "en": "Mode: fullscreen. V-Sync: off. FPS cap: unlimited or 1.5–2x your monitor refresh rate. Render scale: 100% (75–85% if FPS is short). Shadow, Model, Effects, Lighting, Refraction Quality: Low. Local Fog Detail: Low. Dynamic Reflections and Ambient Occlusion: off. Texture Quality: by VRAM size. Reduce Buffering: on. NVIDIA Reflex: on."
+  }
+ },
+ {
+  "id": "Battlefield",
+  "regex": "battlefield|батлфилд|батлфілд|(^| )bf ?(2042|6|5|4|1)( |$)",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: полноэкранный. V-Sync: выкл. Лимит FPS: без лимита. Shadow, Effects, Lighting, Terrain, Mesh, Undergrowth: Low/Medium. Texture Quality: по объёму VRAM. Ambient Occlusion: выкл. Motion Blur, Chromatic Aberration, Film Grain, Vignette: выкл. DLSS/FSR в режиме Quality при нехватке FPS. NVIDIA Reflex: вкл.",
+   "uk": "Режим: повноекранний. V-Sync: вимк. Ліміт FPS: без ліміту. Shadow, Effects, Lighting, Terrain, Mesh, Undergrowth: Low/Medium. Texture Quality: за обсягом VRAM. Ambient Occlusion: вимк. Motion Blur, Chromatic Aberration, Film Grain, Vignette: вимк. DLSS/FSR у режимі Quality за нестачі FPS. NVIDIA Reflex: увімк.",
+   "en": "Mode: fullscreen. V-Sync: off. FPS cap: unlimited. Shadow, Effects, Lighting, Terrain, Mesh, Undergrowth: Low/Medium. Texture Quality: by VRAM size. Ambient Occlusion: off. Motion Blur, Chromatic Aberration, Film Grain, Vignette: off. DLSS/FSR in Quality mode if FPS is short. NVIDIA Reflex: on."
+  }
+ },
+ {
+  "id": "Escape from Tarkov",
+  "regex": "tarkov|тарков|(^| )eft( |$)",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: Fullscreen. V-Sync: выкл. Texture Quality: High/Medium по объёму VRAM. Shadows Quality и Shadows Visibility: низкие. Overall Visibility и Object LOD Quality: снизить. Anti-Aliasing: TAA Low/Medium. SSAO, SSR, Z-Blur, Chromatic Aberration, Noise: выкл. Mip Streaming: вкл. Лимит FPS: без лимита.",
+   "uk": "Режим: Fullscreen. V-Sync: вимк. Texture Quality: High/Medium за обсягом VRAM. Shadows Quality і Shadows Visibility: низькі. Overall Visibility і Object LOD Quality: знизити. Anti-Aliasing: TAA Low/Medium. SSAO, SSR, Z-Blur, Chromatic Aberration, Noise: вимк. Mip Streaming: увімк. Ліміт FPS: без ліміту.",
+   "en": "Mode: Fullscreen. V-Sync: off. Texture Quality: High/Medium by VRAM size. Shadows Quality and Shadows Visibility: low. Overall Visibility and Object LOD Quality: lower them. Anti-Aliasing: TAA Low/Medium. SSAO, SSR, Z-Blur, Chromatic Aberration, Noise: off. Mip Streaming: on. FPS cap: unlimited."
+  }
+ },
+ {
+  "id": "Marvel Rivals",
+  "regex": "marvel|ривалс|рівалс|rivals",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: полноэкранный. V-Sync: выкл. Общий пресет: Low/Medium. Global Illumination: Low/выкл (самая тяжёлая настройка). Reflections, Shadows, Post-Processing, Effects: Low. Motion Blur: выкл. DLSS/FSR в режиме Quality при нехватке FPS. NVIDIA Reflex: вкл. Frame Generation: выкл, если важен отклик.",
+   "uk": "Режим: повноекранний. V-Sync: вимк. Загальний пресет: Low/Medium. Global Illumination: Low/вимк (найважча настройка). Reflections, Shadows, Post-Processing, Effects: Low. Motion Blur: вимк. DLSS/FSR у режимі Quality за нестачі FPS. NVIDIA Reflex: увімк. Frame Generation: вимк, якщо важливий відгук.",
+   "en": "Mode: fullscreen. V-Sync: off. Overall preset: Low/Medium. Global Illumination: Low/off (the heaviest setting). Reflections, Shadows, Post-Processing, Effects: Low. Motion Blur: off. DLSS/FSR in Quality mode if FPS is short. NVIDIA Reflex: on. Frame Generation: off if response matters."
+  }
+ },
+ {
+  "id": "Helldivers 2",
+  "regex": "helldivers|helldiver|хеллдайверс|хелдайверс",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: полноэкранный. V-Sync: выкл. Texture, Shadow, Lighting, Effects Quality: Low/Medium (текстуры по VRAM). Ambient Occlusion: выкл. Motion Blur и Depth of Field: выкл. FSR/DLSS в режиме Quality при нехватке FPS. NVIDIA Reflex: вкл.",
+   "uk": "Режим: повноекранний. V-Sync: вимк. Texture, Shadow, Lighting, Effects Quality: Low/Medium (текстури за VRAM). Ambient Occlusion: вимк. Motion Blur і Depth of Field: вимк. FSR/DLSS у режимі Quality за нестачі FPS. NVIDIA Reflex: увімк.",
+   "en": "Mode: fullscreen. V-Sync: off. Texture, Shadow, Lighting, Effects Quality: Low/Medium (textures by VRAM). Ambient Occlusion: off. Motion Blur and Depth of Field: off. FSR/DLSS in Quality mode if FPS is short. NVIDIA Reflex: on."
+  }
+ },
+ {
+  "id": "FPS",
+  "regex": "шутер|шутан|стрелялк|shooter|fps[- ]?(game|игр|ігр)",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: полноэкранный, нативное разрешение. V-Sync: выкл. Лимит FPS: выше частоты монитора. Тени, частицы, эффекты: Low/Medium. Ambient Occlusion, отражения экранного пространства, Motion Blur, Depth of Field, Film Grain: выкл. Текстуры: по объёму VRAM. Reflex/Anti-Lag: вкл, если есть в игре.",
+   "uk": "Режим: повноекранний, нативна роздільна здатність. V-Sync: вимк. Ліміт FPS: вище за частоту монітора. Тіні, частинки, ефекти: Low/Medium. Ambient Occlusion, відбиття екранного простору, Motion Blur, Depth of Field, Film Grain: вимк. Текстури: за обсягом VRAM. Reflex/Anti-Lag: увімк, якщо є в грі.",
+   "en": "Mode: fullscreen, native resolution. V-Sync: off. FPS cap: above your monitor refresh rate. Shadows, particles, effects: Low/Medium. Ambient Occlusion, screen-space reflections, Motion Blur, Depth of Field, Film Grain: off. Textures: by VRAM size. Reflex/Anti-Lag: on if the game has it."
+  }
+ },
+ {
+  "id": "MOBA",
+  "regex": "(^| )moba( |$)|моба|мова( |$)",
+  "heavy": false,
+  "ig": {
+   "ru": "Режим: полноэкранный или безрамочный. V-Sync: выкл. Лимит FPS: по частоте монитора (стабильность важнее максимума). Тени и эффекты: Low/Medium. Сглаживание: низкое. Текстуры: по объёму VRAM. На слабом ПК снижайте разрешение рендера, а не качество текстур.",
+   "uk": "Режим: повноекранний або безрамковий. V-Sync: вимк. Ліміт FPS: за частотою монітора (стабільність важливіша за максимум). Тіні та ефекти: Low/Medium. Згладжування: низьке. Текстури: за обсягом VRAM. На слабкому ПК знижуйте роздільну здатність рендера, а не якість текстур.",
+   "en": "Mode: fullscreen or borderless. V-Sync: off. FPS cap: your monitor refresh rate (stability matters more than the maximum). Shadows and effects: Low/Medium. Anti-aliasing: low. Textures: by VRAM size. On a weak PC lower the render resolution, not the texture quality."
+  }
+ },
+ {
+  "id": "TPS",
+  "regex": "(^| )tps( |$)|третьего лица|третього обличчя|third[- ]person",
+  "heavy": true,
+  "ig": {
+   "ru": "Режим: полноэкранный. V-Sync: выкл. Тени, объёмный туман, частицы: Low/Medium. Ambient Occlusion, отражения, Motion Blur, Depth of Field: выкл/Low. Дальность прорисовки: средняя. DLSS/FSR в режиме Quality при нехватке FPS.",
+   "uk": "Режим: повноекранний. V-Sync: вимк. Тіні, об'ємний туман, частинки: Low/Medium. Ambient Occlusion, відбиття, Motion Blur, Depth of Field: вимк/Low. Дальність промальовування: середня. DLSS/FSR у режимі Quality за нестачі FPS.",
+   "en": "Mode: fullscreen. V-Sync: off. Shadows, volumetric fog, particles: Low/Medium. Ambient Occlusion, reflections, Motion Blur, Depth of Field: off/Low. Draw distance: medium. DLSS/FSR in Quality mode if FPS is short."
+  }
  }
 ]

@@ -5,15 +5,22 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="ack" xml:space="preserve"><value>Я розумію ризик і хочу продовжити</value></data>
-  <data name="ai_def" xml:space="preserve"><value>Назвіть гру (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant) або запитайте про ризики, профіль, ОЗП.</value></data>
-  <data name="ai_hi" xml:space="preserve"><value>Я локальний ШІ-радник: працюю на вашому ПК, без інтернету. Напишіть, під яку гру оптимізувати (CS2, Apex, Fortnite, Dota 2, Warzone, CoD, LoL, PUBG, Valorant), або запитайте про ризики, профіль і ОЗП. Відповідаю мовою вашого запитання. Усе, що я змінюю, лишається незастосованим, доки ви не натиснете «Застосувати».</value></data>
+  <data name="ai_def" xml:space="preserve"><value>Не зовсім зрозумів. Назвіть гру (CS2, Apex, Dota 2…) або жанр (FPS, MOBA, TPS), запитайте про параметр («що таке HAGS?»), про місце в застосунку («де тайминги ОЗП?») або про ризики. Напишіть «що ти вмієш», і я розповім докладніше.</value></data>
+  <data name="ai_hi" xml:space="preserve"><value>Привіт, я Corvi, радник із продуктивності. Працюю на вашому ПК, без інтернету.
+
+Я можу:
+• оптимізувати ПК під гру або жанр (FPS, MOBA, TPS): назвіть гру, я виставлю параметри, вам лишиться прийняти або поправити;
+• пояснити будь-який параметр і показати, де він розташований;
+• оцінити ризики та підібрати профіль.
+
+Нічого не застосовується саме: зміни чекають на ваше «Застосувати». Відповідаю мовою вашого запитання.</value></data>
   <data name="ai_ok" xml:space="preserve"><value>Червоних параметрів немає, конфігурація збалансована.</value></data>
   <data name="ai_ph" xml:space="preserve"><value>Запитайте про ризики, профіль, ОЗП…</value></data>
   <data name="ai_pick" xml:space="preserve"><value>Підібрати параметри</value></data>
   <data name="ai_ram" xml:space="preserve"><value>Відкрийте вкладку «Таймінги ОЗП»: там три рівні розгону для вашого комплекту.</value></data>
   <data name="ai_rec" xml:space="preserve"><value>Підходящий профіль для вашого заліза</value></data>
   <data name="ai_red" xml:space="preserve"><value>Високий ризик:</value></data>
-  <data name="ai_t" xml:space="preserve"><value>ШІ-радник</value></data>
+  <data name="ai_t" xml:space="preserve"><value>Corvi: ШІ-радник</value></data>
   <data name="ai_tag" xml:space="preserve"><value>локально, за правилами</value></data>
   <data name="ap" xml:space="preserve"><value>Застосувати</value></data>
   <data name="base" xml:space="preserve"><value>Базова частота</value></data>
@@ -558,7 +565,7 @@
   <data name="r_tb_3" xml:space="preserve"><value>Читає ревізію чипа прямо з модуля. У звіті дивіться рядки DRAM Manufacturer і Die Revision. Це стороння програма: сайт автора не працює, посилання веде в каталог Softpedia. Перевірте завантажений файл антивірусом.</value></data>
   <data name="r_tb_4h" xml:space="preserve"><value>4. Якщо ревізія невідома.</value></data>
   <data name="r_tb_4" xml:space="preserve"><value>Оберіть «Не знаю (усереднено)»: таблиця покаже значення, безпечні для більшості чипів.</value></data>
-  <data name="ai_ask" xml:space="preserve"><value>Запитати радника</value></data>
+  <data name="ai_ask" xml:space="preserve"><value>Запитати Corvi</value></data>
   <data name="ai_err" xml:space="preserve"><value>Не вдалося підготувати відповідь. Спробуйте ще раз.</value></data>
   <data name="ai.g.why1" xml:space="preserve"><value>важка гра, навантажує і CPU, і GPU: потрібен баланс частот, рівні 1% low і менше підлагів під час підвантаження ефектів</value></data>
   <data name="ai.g.why0" xml:space="preserve"><value>упор у процесор і відгук: важливі стабільний фреймтайм і мала затримка вводу, відеокарта майже не обмежує</value></data>
@@ -566,10 +573,51 @@
   <data name="ai.g.arc" xml:space="preserve"><value>Для вашої відеокарти GPU-параметри недоступні, їх пропущено.</value></data>
   <data name="ai.g.low" xml:space="preserve"><value>Конфігурація скромна: розгінні параметри не чіпаю, лише безпечні твіки.</value></data>
   <data name="ai.g.lap" xml:space="preserve"><value>Ноутбук: межі посилено, розгін обмежений охолодженням.</value></data>
-  <data name="ai.g.set" xml:space="preserve"><value>Я виставив параметрів: </value></data>
-  <data name="ai.g.after" xml:space="preserve"><value> (жоден не в червоній зоні). Вони ще не застосовані: перевірте й натисніть «Застосувати».</value></data>
+  <data name="ai.g.set" xml:space="preserve"><value>Що я налаштував ({0}):</value></data>
+  <data name="ai.g.after" xml:space="preserve"><value>Жоден параметр не в червоній зоні. Зміни ще не застосовані: перевірте й натисніть «Застосувати» внизу або поправте значення вручну.</value></data>
   <data name="ai.g.none" xml:space="preserve"><value>Усі потрібні параметри вже стоять як слід.</value></data>
   <data name="ai.g.onoff" xml:space="preserve"><value>вимк → увімк</value></data>
   <data name="ai.g.ig" xml:space="preserve"><value>Налаштування в грі для максимуму FPS</value></data>
   <data name="ai.g.hint" xml:space="preserve"><value>Це орієнтир: підсумковий FPS залежить від гри, патча та драйвера.</value></data>
+  <data name="ai_name" xml:space="preserve"><value>Corvi</value></data>
+  <data name="ai.greet" xml:space="preserve"><value>Привіт! Я Corvi, ваш радник із продуктивності.</value></data>
+  <data name="ai.help" xml:space="preserve"><value>Я Corvi. Що вмію:
+• Оптимізація під гру або жанр (FPS, MOBA, TPS): назвіть гру, я виставлю параметри, вам лишиться прийняти або поправити.
+• Пояснення параметрів: «що таке HAGS?»
+• Навігація: «де тайминги ОЗП?», «як увімкнути ігровий режим?»
+• Ризики та підбір профілю.
+• Резервна копія, відкат, блокування параметрів.
+
+Назвіть гру, наприклад CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, Tarkov.</value></data>
+  <data name="ai.askgame" xml:space="preserve"><value>Оптимізувати ПК під конкретну гру або жанр (FPS, MOBA, TPS)? Назвіть її: я сам виставлю параметри, вам лишиться прийняти або поправити.</value></data>
+  <data name="ai.p.nofps" xml:space="preserve"><value>прямого приросту FPS немає, але параметр покращує стабільність і відгук</value></data>
+  <data name="ai.p.set.s" xml:space="preserve"><value>Я налаштував до {0}: це дасть {1}.</value></data>
+  <data name="ai.p.set.t" xml:space="preserve"><value>Я увімкнув: це дасть {0}.</value></data>
+  <data name="ai.p.free" xml:space="preserve"><value>Без наслідків можна підняти вручну до {0}: я залишив цей запас, вирішувати вам.</value></data>
+  <data name="ai.p.risk" xml:space="preserve"><value>Якщо потрібно більше, можна вручну до {0}, але це менш безпечно: {1}.</value></data>
+  <data name="ai.p.cons.gen" xml:space="preserve"><value>менший запас за температурою і стабільністю</value></data>
+  <data name="ai.p.cons.temp" xml:space="preserve"><value>температура {0}</value></data>
+  <data name="ai.g.total" xml:space="preserve"><value>Разом за оцінкою: {0}, загальний ризик: {1}.</value></data>
+  <data name="ai.e.fps" xml:space="preserve"><value>Вплив на FPS</value></data>
+  <data name="ai.e.temp" xml:space="preserve"><value>Температура</value></data>
+  <data name="ai.e.stab" xml:space="preserve"><value>Стабільність</value></data>
+  <data name="ai.e.lat" xml:space="preserve"><value>Затримка</value></data>
+  <data name="ai.e.risk" xml:space="preserve"><value>Ризик</value></data>
+  <data name="ai.e.risk.s" xml:space="preserve"><value>залежить від положення повзунка: зелена зона безпечна, жовта вимагає обережності, червона просить підтвердження</value></data>
+  <data name="ai.e.where" xml:space="preserve"><value>Де знайти</value></data>
+  <data name="ai.e.where.fmt" xml:space="preserve"><value>розділ «{0}», група «{1}»</value></data>
+  <data name="ai.e.lock" xml:space="preserve"><value>Зараз параметр заблоковано:</value></data>
+  <data name="ai.e.how.t" xml:space="preserve"><value>Як увімкнути: переведіть перемикач, потім натисніть «Застосувати» внизу.</value></data>
+  <data name="ai.e.how.s" xml:space="preserve"><value>Як змінити: рухайте повзунок (зона підсвічується кольором), потім натисніть «Застосувати» внизу.</value></data>
+  <data name="ai.e.how.g" xml:space="preserve"><value>Це функція захисту: вмикається перемикачем у блоці «Захист» на «Огляді».</value></data>
+  <data name="ai.n.open" xml:space="preserve"><value>Відкрити: {0}</value></data>
+  <data name="ai.n.sec" xml:space="preserve"><value>Розділ «{0}»: {1}. Він у меню ліворуч.</value></data>
+  <data name="ai.n.backup" xml:space="preserve"><value>Резервна копія вихідних налаштувань створюється при першому запуску, до будь-яких змін. Вона на «Огляді», внизу: кнопка «Повернути вихідні налаштування» відкочує все до того, що було. Там же можна створити нову копію, відкрити теку або видалити копію.</value></data>
+  <data name="ai.n.undo" xml:space="preserve"><value>Відкотитися можна двома способами. «Скасувати зміни» (внизу праворуч) скидає те, що ви ще не застосували. «Повернути як було» скасовує останнє застосування. Повне повернення: «Огляд», «Повернути вихідні налаштування».</value></data>
+  <data name="ai.n.apply" xml:space="preserve"><value>Зміни спочатку лише позначаються, у систему нічого не пишеться. Внизу видно, скільки параметрів чекає застосування. «Застосувати» записує їх; для червоної зони попросить підтвердження. За ввімкненого захисту перед цим створюється точка відновлення Windows.</value></data>
+  <data name="ai.n.platform" xml:space="preserve"><value>ПК або ноутбук обирається кнопкою вгорі праворуч, поруч із мовою. Для ноутбука межі посилено: зони ризику настають раніше, а максимум розгінних повзунків удвічі нижчий, бо охолодження слабше.</value></data>
+  <data name="ai.n.lock" xml:space="preserve"><value>Сірий ярлик замість рівня ризику означає, що параметр зараз недоступний: «потрібен драйвер» — потрібна програма виробника (Intel XTU, Ryzen Master, драйвер NVIDIA), «недоступно» — не підходить вашому ПК, «скоро» — ще в розробці. Натисніть на ярлик: відкриється вікно з поясненням і посиланням на офіційний сайт.</value></data>
+  <data name="ai.n.session" xml:space="preserve"><value>Ігровий режим Corvite працює автоматично: застосунок помічає повноекранну гру, вмикає параметри сесії (пріоритет процесу, очищення пам’яті, зупинка зайвих служб, закриття фонових програм) і після виходу з гри все повертає. Ці параметри в розділах «Windows», «Пам’ять і диск» та «Фон і служби».</value></data>
+  <data name="ai.n.profiles" xml:space="preserve"><value>«Стандарт» — вихідні значення; «Безпечний» — лише перевірені твіки без розгону; «Ігровий» — баланс відгуку, FPS і температури; «Максимум» — межа вашого охолодження, включно з червоною зоною. «Підібрати параметри» обирає профіль під ваше залізо.</value></data>
+  <data name="ai.same" xml:space="preserve"><value>Без змін</value></data>
 </root>

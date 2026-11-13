@@ -17,6 +17,7 @@ public sealed class SectionVm : ObservableObject
     private bool _selected;
 
     public SectionVm(Section id, string key, string icon) { Id = id; _key = key; IconData = icon; }
+    public string Key => _key;
 
     public string Name => Loc.I[$"n_{_key}"];
     public string Description => Loc.I[$"d_{_key}"];
