@@ -37,8 +37,6 @@ Nothing is applied on its own: changes wait for your "Apply". I answer in the la
   <data name="bk_rest" xml:space="preserve"><value>Restore original settings</value></data>
   <data name="bk_sure" xml:space="preserve"><value>Really delete?</value></data>
   <data name="bk_t" xml:space="preserve"><value>Backup of original settings</value></data>
-  <data name="bk_tag" xml:space="preserve"><value>created once</value></data>
-  <data name="bk_un" xml:space="preserve"><value>When uninstalling, the installer offers to restore the original settings first.</value></data>
   <data name="bk_when" xml:space="preserve"><value>Created</value></data>
   <data name="boost" xml:space="preserve"><value>Max boost</value></data>
   <data name="cache" xml:space="preserve"><value>Cache</value></data>
@@ -82,7 +80,7 @@ Nothing is applied on its own: changes wait for your "Apply". I answer in the la
   <data name="n_background" xml:space="preserve"><value>Background</value></data>
   <data name="n_cpu" xml:space="preserve"><value>CPU</value></data>
   <data name="n_gpu" xml:space="preserve"><value>GPU</value></data>
-  <data name="n_hardware" xml:space="preserve"><value>Hardware &amp; clocks</value></data>
+  <data name="n_hardware" xml:space="preserve"><value>Specs &amp; clocks</value></data>
   <data name="n_memory" xml:space="preserve"><value>Memory &amp; disk</value></data>
   <data name="n_network" xml:space="preserve"><value>Network</value></data>
   <data name="n_overview" xml:space="preserve"><value>Overview</value></data>
@@ -613,7 +611,7 @@ Name a game, e.g. CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, T
   <data name="ai.n.open" xml:space="preserve"><value>Open: {0}</value></data>
   <data name="ai.n.sec" xml:space="preserve"><value>Section "{0}": {1}. It is in the menu on the left.</value></data>
   <data name="ai.n.backup" xml:space="preserve"><value>The backup of your original settings is created on first launch, before any change. It is at the bottom of the Overview: "Restore original settings" rolls everything back. You can also create a new backup, open its folder or delete it there.</value></data>
-  <data name="ai.n.undo" xml:space="preserve"><value>There are two ways to roll back. "Discard changes" (bottom right) resets what you have not applied yet. "Undo" reverts the last apply. Full return: Overview, "Restore original settings".</value></data>
+  <data name="ai.n.undo" xml:space="preserve"><value>There are two ways to roll back. "Discard changes" (bottom right) resets what you have not applied yet. "Restore previous" reverts the last apply. Full return: Overview, "Restore original settings".</value></data>
   <data name="ai.n.apply" xml:space="preserve"><value>Changes are only marked first, nothing is written to the system. The bottom bar shows how many parameters wait. "Apply" writes them; red-zone values ask for confirmation. With protection on, a Windows restore point is created first.</value></data>
   <data name="ai.n.platform" xml:space="preserve"><value>PC or laptop is chosen with the button at the top right, next to the language. Laptop limits are tighter: risk zones start earlier and overclock sliders top out at half, because cooling is weaker.</value></data>
   <data name="ai.n.lock" xml:space="preserve"><value>A grey label instead of the risk level means the parameter is unavailable: "driver needed" requires the vendor program (Intel XTU, Ryzen Master, NVIDIA driver), "unavailable" does not fit your PC, "soon" is still in development. Click the label: a window explains why and links the official site.</value></data>

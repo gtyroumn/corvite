@@ -28,8 +28,8 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Viewbox Width="26" Height="26">
                             <Canvas Width="100" Height="100">
-                                <Path Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="{StaticResource Go}" StrokeThickness="9"/>
-                                <Path Data="M66,28 L96,46 L70,40 Z" Fill="{StaticResource Go}"/>
+                                <Path Data="M72.98,35.08 A27.4,27.4 0 1 0 72.98,64.92" Stroke="{StaticResource Go}" StrokeThickness="9.6"/>
+                                <Path Data="M77,32.46 L99,45.4 L71.6,39.2 L70.4,36.2 L68.96,37.68 Z" Fill="{StaticResource Go}" Stroke="{StaticResource Go}" StrokeThickness="0.4" StrokeLineJoin="Round"/>
                             </Canvas>
                         </Viewbox>
                         <TextBlock Text="C O R V I T E" Margin="10,0,0,0" VerticalAlignment="Center"
@@ -414,16 +414,16 @@
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-30,0,0">
                     <Viewbox Width="130" Height="130" HorizontalAlignment="Center">
                         <Canvas Width="100" Height="100">
-                            <Path x:Name="SplashArc" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
-                                  StrokeDashArray="17.1 100" StrokeDashOffset="17.1">
+                            <Path x:Name="SplashArc" Data="M72.98,35.08 A27.4,27.4 0 1 0 72.98,64.92" Stroke="#b583ff" StrokeThickness="9.6"
+                                  StrokeDashArray="14.7 100" StrokeDashOffset="14.7">
                                 <!-- the glow sits on each shape, not on the canvas: an effect on the canvas would cover the far-away starting point of the arrowhead and make every frame huge -->
                                 <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
                             </Path>
-                            <Path x:Name="SplashHead" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
+                            <Path x:Name="SplashHead" Data="M77,32.46 L99,45.4 L71.6,39.2 L70.4,36.2 L68.96,37.68 Z" Fill="#b583ff" Stroke="#b583ff" StrokeThickness="0.4" StrokeLineJoin="Round" Opacity="0">
                                 <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
                                 <Path.RenderTransform>
                                     <TransformGroup>
-                                        <RotateTransform x:Name="SplashRot" CenterX="77" CenterY="38" Angle="720"/>
+                                        <RotateTransform x:Name="SplashRot" CenterX="80" CenterY="39" Angle="720"/>
                                         <TranslateTransform x:Name="SplashMove" X="1000" Y="870"/>
                                     </TransformGroup>
                                 </Path.RenderTransform>
@@ -449,7 +449,7 @@
                         <BeginStoryboard>
                             <Storyboard Timeline.DesiredFrameRate="60" BeginTime="0:0:0.3">
                                 <!-- arc is drawn along its outline -->
-                                <DoubleAnimation Storyboard.TargetName="SplashArc" Storyboard.TargetProperty="StrokeDashOffset" From="17.1" To="0" Duration="0:0:1.5">
+                                <DoubleAnimation Storyboard.TargetName="SplashArc" Storyboard.TargetProperty="StrokeDashOffset" From="14.7" To="0" Duration="0:0:1.5">
                                     <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseInOut"/></DoubleAnimation.EasingFunction>
                                 </DoubleAnimation>
                                 <!-- arrowhead: appears off-screen at the bottom right, spins and flies diagonally into place -->

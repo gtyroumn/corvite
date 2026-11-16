@@ -37,8 +37,6 @@
   <data name="bk_rest" xml:space="preserve"><value>Повернути вихідні налаштування</value></data>
   <data name="bk_sure" xml:space="preserve"><value>Точно видалити?</value></data>
   <data name="bk_t" xml:space="preserve"><value>Резервна копія вихідних налаштувань</value></data>
-  <data name="bk_tag" xml:space="preserve"><value>створюється один раз</value></data>
-  <data name="bk_un" xml:space="preserve"><value>Під час видалення застосунку інсталятор запропонує спершу повернути вихідні налаштування.</value></data>
   <data name="bk_when" xml:space="preserve"><value>Створена</value></data>
   <data name="boost" xml:space="preserve"><value>Макс. boost</value></data>
   <data name="cache" xml:space="preserve"><value>Кеш</value></data>
@@ -48,7 +46,7 @@
   <data name="d_background" xml:space="preserve"><value>Що працює поруч із грою й забирає ресурси</value></data>
   <data name="d_cpu" xml:space="preserve"><value>Ядра, ліміти потужності та частоти</value></data>
   <data name="d_gpu" xml:space="preserve"><value>Розгін, ліміти та затримка кадру</value></data>
-  <data name="d_hardware" xml:space="preserve"><value>Визначене залізо, частоти та добір профілю</value></data>
+  <data name="d_hardware" xml:space="preserve"><value>Характеристики комп’ютера, частоти та добір профілю</value></data>
   <data name="d_memory" xml:space="preserve"><value>Оперативна пам'ять, SSD і тимчасові файли</value></data>
   <data name="d_network" xml:space="preserve"><value>Затримка й стабільність з'єднання в онлайн-іграх</value></data>
   <data name="d_overview" xml:space="preserve"><value>Стан системи, профілі та захист</value></data>
@@ -82,7 +80,7 @@
   <data name="n_background" xml:space="preserve"><value>Фон і служби</value></data>
   <data name="n_cpu" xml:space="preserve"><value>Процесор</value></data>
   <data name="n_gpu" xml:space="preserve"><value>Відеокарта</value></data>
-  <data name="n_hardware" xml:space="preserve"><value>Залізо та частоти</value></data>
+  <data name="n_hardware" xml:space="preserve"><value>Характеристики та частоти</value></data>
   <data name="n_memory" xml:space="preserve"><value>Пам'ять і диск</value></data>
   <data name="n_network" xml:space="preserve"><value>Мережа</value></data>
   <data name="n_overview" xml:space="preserve"><value>Огляд</value></data>
@@ -467,7 +465,7 @@
   <data name="tw.vfx.sub" xml:space="preserve"><value>Без анімацій і прозорості інтерфейсу</value></data>
   <data name="tw.vfx.temp" xml:space="preserve"><value>Без змін</value></data>
   <data name="ty" xml:space="preserve"><value>Тип</value></data>
-  <data name="undo" xml:space="preserve"><value>Повернути як було</value></data>
+  <data name="undo" xml:space="preserve"><value>Повернути попередні налаштування</value></data>
   <data name="undo_t" xml:space="preserve"><value>Стан до останнього застосування відновлено. Залишилось кроків відкату: </value></data>
   <data name="unsup" xml:space="preserve"><value>Відеокарти Intel поки не підтримуються: розділ вимкнено.</value></data>
   <data name="vp" xml:space="preserve"><value>Показано профіль</value></data>
@@ -479,7 +477,7 @@
   <data name="wp_t" xml:space="preserve"><value>Перш ніж продовжити</value></data>
   <data name="planned" xml:space="preserve"><value>Розділ з'явиться на наступному етапі розробки (див. ТЗ, розділ 15). Каркас і навігація вже готові.</value></data>
   <data name="unsup_gpu" xml:space="preserve"><value>Відеокарти Intel поки не підтримуються: розділ вимкнено.</value></data>
-  <data name="hw_loading" xml:space="preserve"><value>Визначаємо залізо…</value></data>
+  <data name="hw_loading" xml:space="preserve"><value>Визначаємо характеристики…</value></data>
   <data name="h_real" xml:space="preserve"><value>Визначено автоматично (WMI та датчики)</value></data>
   <data name="clk_now" xml:space="preserve"><value>Поточна частота</value></data>
   <data name="pw_now" xml:space="preserve"><value>Споживання</value></data>
@@ -613,7 +611,7 @@
   <data name="ai.n.open" xml:space="preserve"><value>Відкрити: {0}</value></data>
   <data name="ai.n.sec" xml:space="preserve"><value>Розділ «{0}»: {1}. Він у меню ліворуч.</value></data>
   <data name="ai.n.backup" xml:space="preserve"><value>Резервна копія вихідних налаштувань створюється при першому запуску, до будь-яких змін. Вона на «Огляді», внизу: кнопка «Повернути вихідні налаштування» відкочує все до того, що було. Там же можна створити нову копію, відкрити теку або видалити копію.</value></data>
-  <data name="ai.n.undo" xml:space="preserve"><value>Відкотитися можна двома способами. «Скасувати зміни» (внизу праворуч) скидає те, що ви ще не застосували. «Повернути як було» скасовує останнє застосування. Повне повернення: «Огляд», «Повернути вихідні налаштування».</value></data>
+  <data name="ai.n.undo" xml:space="preserve"><value>Відкотитися можна двома способами. «Скасувати зміни» (внизу праворуч) скидає те, що ви ще не застосували. «Повернути попередні налаштування» скасовує останнє застосування. Повне повернення: «Огляд», «Повернути вихідні налаштування».</value></data>
   <data name="ai.n.apply" xml:space="preserve"><value>Зміни спочатку лише позначаються, у систему нічого не пишеться. Внизу видно, скільки параметрів чекає застосування. «Застосувати» записує їх; для червоної зони попросить підтвердження. За ввімкненого захисту перед цим створюється точка відновлення Windows.</value></data>
   <data name="ai.n.platform" xml:space="preserve"><value>ПК або ноутбук обирається кнопкою вгорі праворуч, поруч із мовою. Для ноутбука межі посилено: зони ризику настають раніше, а максимум розгінних повзунків удвічі нижчий, бо охолодження слабше.</value></data>
   <data name="ai.n.lock" xml:space="preserve"><value>Сірий ярлик замість рівня ризику означає, що параметр зараз недоступний: «потрібен драйвер» — потрібна програма виробника (Intel XTU, Ryzen Master, драйвер NVIDIA), «недоступно» — не підходить вашому ПК, «скоро» — ще в розробці. Натисніть на ярлик: відкриється вікно з поясненням і посиланням на офіційний сайт.</value></data>

@@ -37,8 +37,6 @@
   <data name="bk_rest" xml:space="preserve"><value>Вернуть исходные настройки</value></data>
   <data name="bk_sure" xml:space="preserve"><value>Точно удалить?</value></data>
   <data name="bk_t" xml:space="preserve"><value>Резервная копия исходных настроек</value></data>
-  <data name="bk_tag" xml:space="preserve"><value>создаётся один раз</value></data>
-  <data name="bk_un" xml:space="preserve"><value>При удалении приложения установщик предложит сначала вернуть исходные настройки.</value></data>
   <data name="bk_when" xml:space="preserve"><value>Создана</value></data>
   <data name="boost" xml:space="preserve"><value>Макс. boost</value></data>
   <data name="cache" xml:space="preserve"><value>Кэш</value></data>
@@ -48,7 +46,7 @@
   <data name="d_background" xml:space="preserve"><value>Что работает рядом с игрой и отнимает ресурсы</value></data>
   <data name="d_cpu" xml:space="preserve"><value>Ядра, лимиты мощности и частоты</value></data>
   <data name="d_gpu" xml:space="preserve"><value>Разгон, лимиты и задержка кадра</value></data>
-  <data name="d_hardware" xml:space="preserve"><value>Определённое железо, частоты и подбор профиля</value></data>
+  <data name="d_hardware" xml:space="preserve"><value>Характеристики компьютера, частоты и подбор профиля</value></data>
   <data name="d_memory" xml:space="preserve"><value>Оперативная память, SSD и временные файлы</value></data>
   <data name="d_network" xml:space="preserve"><value>Задержка и стабильность соединения в онлайн-играх</value></data>
   <data name="d_overview" xml:space="preserve"><value>Состояние системы, профили и защита</value></data>
@@ -82,7 +80,7 @@
   <data name="n_background" xml:space="preserve"><value>Фон и службы</value></data>
   <data name="n_cpu" xml:space="preserve"><value>Процессор</value></data>
   <data name="n_gpu" xml:space="preserve"><value>Видеокарта</value></data>
-  <data name="n_hardware" xml:space="preserve"><value>Железо и частоты</value></data>
+  <data name="n_hardware" xml:space="preserve"><value>Характеристики и частоты</value></data>
   <data name="n_memory" xml:space="preserve"><value>Память и диск</value></data>
   <data name="n_network" xml:space="preserve"><value>Сеть</value></data>
   <data name="n_overview" xml:space="preserve"><value>Обзор</value></data>
@@ -467,7 +465,7 @@
   <data name="tw.vfx.sub" xml:space="preserve"><value>Без анимаций и прозрачности интерфейса</value></data>
   <data name="tw.vfx.temp" xml:space="preserve"><value>Без изменений</value></data>
   <data name="ty" xml:space="preserve"><value>Тип</value></data>
-  <data name="undo" xml:space="preserve"><value>Вернуть как было</value></data>
+  <data name="undo" xml:space="preserve"><value>Вернуть предыдущие настройки</value></data>
   <data name="undo_t" xml:space="preserve"><value>Состояние до последнего применения восстановлено. Осталось шагов отката: </value></data>
   <data name="unsup" xml:space="preserve"><value>Видеокарты Intel пока не поддерживаются: раздел отключён.</value></data>
   <data name="vp" xml:space="preserve"><value>Показан профиль</value></data>
@@ -479,7 +477,7 @@
   <data name="wp_t" xml:space="preserve"><value>Прежде чем продолжить</value></data>
   <data name="planned" xml:space="preserve"><value>Раздел появится на следующем этапе разработки (см. ТЗ, раздел 15). Каркас и навигация уже готовы.</value></data>
   <data name="unsup_gpu" xml:space="preserve"><value>Видеокарты Intel пока не поддерживаются: раздел отключён.</value></data>
-  <data name="hw_loading" xml:space="preserve"><value>Определяем железо…</value></data>
+  <data name="hw_loading" xml:space="preserve"><value>Определяем характеристики…</value></data>
   <data name="h_real" xml:space="preserve"><value>Определено автоматически (WMI и датчики)</value></data>
   <data name="clk_now" xml:space="preserve"><value>Текущая частота</value></data>
   <data name="pw_now" xml:space="preserve"><value>Потребление</value></data>
@@ -613,7 +611,7 @@
   <data name="ai.n.open" xml:space="preserve"><value>Открыть: {0}</value></data>
   <data name="ai.n.sec" xml:space="preserve"><value>Раздел «{0}»: {1}. Он в меню слева.</value></data>
   <data name="ai.n.backup" xml:space="preserve"><value>Резервная копия исходных настроек создаётся при первом запуске, до любых изменений. Она на «Обзоре», внизу: кнопка «Вернуть исходные настройки» откатывает всё к тому, что было. Там же можно создать новую копию, открыть папку или удалить копию.</value></data>
-  <data name="ai.n.undo" xml:space="preserve"><value>Откатиться можно двумя способами. «Отменить изменения» (внизу справа) сбрасывает то, что вы ещё не применили. «Вернуть как было» отменяет последнее применение. Полный возврат: «Обзор», «Вернуть исходные настройки».</value></data>
+  <data name="ai.n.undo" xml:space="preserve"><value>Откатиться можно двумя способами. «Отменить изменения» (внизу справа) сбрасывает то, что вы ещё не применили. «Вернуть предыдущие настройки» отменяет последнее применение. Полный возврат: «Обзор», «Вернуть исходные настройки».</value></data>
   <data name="ai.n.apply" xml:space="preserve"><value>Изменения сначала только отмечаются, в систему ничего не пишется. Внизу видно, сколько параметров ждёт применения. «Применить» записывает их; для красной зоны попросит подтверждение. При включённой защите перед этим создаётся точка восстановления Windows.</value></data>
   <data name="ai.n.platform" xml:space="preserve"><value>ПК или ноутбук выбирается кнопкой вверху справа, рядом с языком. Для ноутбука пределы ужесточены: зоны риска наступают раньше, а максимум разгонных ползунков вдвое ниже, потому что охлаждение слабее.</value></data>
   <data name="ai.n.lock" xml:space="preserve"><value>Серый ярлык вместо уровня риска значит, что параметр сейчас недоступен: «нужен драйвер» — нужна программа производителя (Intel XTU, Ryzen Master, драйвер NVIDIA), «недоступно» — не подходит вашему ПК, «скоро» — ещё в разработке. Нажмите на ярлык: откроется окно с пояснением и ссылкой на официальный сайт.</value></data>

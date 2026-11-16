@@ -15,6 +15,6 @@ A Windows 11 optimizer for games: safe tweaks for the system, network, memory an
 - The app does not install drivers or bypass system protection. Parameters that need a vendor program (Intel XTU, Ryzen Master, NVIDIA driver) are locked and point to the official site.
 
 ## Rollback and uninstall
-- "Discard changes" (bottom bar) resets what is not applied, "Undo" reverts the last apply.
+- "Discard changes" (bottom bar) resets what is not applied, "Restore previous" reverts the last apply.
 - Overview, "Restore original settings" returns everything to the first-launch state. The backup is in `%ProgramData%\Corvite\Backups`.
 - Uninstall via Settings, Apps: the uninstall window offers to restore the original settings. The `%ProgramData%\Corvite` folder (backup, log, settings) stays: delete it by hand if you do not need it.
