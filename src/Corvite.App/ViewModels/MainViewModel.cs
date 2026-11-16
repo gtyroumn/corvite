@@ -194,9 +194,10 @@ public partial class MainViewModel : ObservableObject
         try { info = await Task.Run(HardwareDetector.Detect); }
         catch { info = HardwareInfo.Placeholder; }
 
+        await WaitSplashAsync();
         HwLoading = false;
         ApplyHardware(info);
-        _ = HideSplashAsync();
+        SplashVisible = false;
 
         if (info.Id == "detected" && info.DeviceHint.Length > 0)
         {

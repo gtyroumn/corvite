@@ -410,12 +410,13 @@
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-30,0,0">
                     <Viewbox Width="130" Height="130" HorizontalAlignment="Center">
                         <Canvas Width="100" Height="100">
-                            <Canvas.Effect>
-                                <DropShadowEffect Color="#a259f0" BlurRadius="22" ShadowDepth="0" Opacity="0.75"/>
-                            </Canvas.Effect>
                             <Path x:Name="SplashArc" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
-                                  StrokeDashArray="17.1 100" StrokeDashOffset="17.1"/>
+                                  StrokeDashArray="17.1 100" StrokeDashOffset="17.1">
+                                <!-- the glow sits on each shape, not on the canvas: an effect on the canvas would cover the far-away starting point of the arrowhead and make every frame huge -->
+                                <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
+                            </Path>
                             <Path x:Name="SplashHead" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
+                                <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
                                 <Path.RenderTransform>
                                     <TransformGroup>
                                         <RotateTransform x:Name="SplashRot" CenterX="77" CenterY="38" Angle="720"/>
@@ -442,7 +443,7 @@
                 <Grid.Triggers>
                     <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                         <BeginStoryboard>
-                            <Storyboard>
+                            <Storyboard Timeline.DesiredFrameRate="60" BeginTime="0:0:0.3">
                                 <!-- arc is drawn along its outline -->
                                 <DoubleAnimation Storyboard.TargetName="SplashArc" Storyboard.TargetProperty="StrokeDashOffset" From="17.1" To="0" Duration="0:0:1.5">
                                     <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseInOut"/></DoubleAnimation.EasingFunction>
