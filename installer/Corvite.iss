@@ -27,16 +27,10 @@ WizardStyle=modern
 CloseApplications=yes
 
 [Languages]
-Name: "ru"; MessagesFile: "compiler:Languages\Russian.isl"
-Name: "uk"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "en"; MessagesFile: "compiler:Default.isl"
 
 [CustomMessages]
-ru.RestoreAsk=Вернуть настройки Windows к исходным значениям (из резервной копии Corvite) перед удалением?
-uk.RestoreAsk=Повернути налаштування Windows до вихідних значень (з резервної копії Corvite) перед видаленням?
 en.RestoreAsk=Restore Windows settings to their original values (from the Corvite backup) before uninstalling?
-ru.RestoreFail=Не удалось вернуть часть настроек. Их можно вернуть вручную в приложении, пока оно установлено.
-uk.RestoreFail=Не вдалося повернути частину налаштувань. Їх можна повернути вручну в застосунку, поки він встановлений.
 en.RestoreFail=Some settings could not be restored. You can restore them in the app while it is still installed.
 
 [Tasks]
@@ -55,6 +49,62 @@ Name: "{autodesktop}\Corvite"; Filename: "{app}\Corvite.exe"; Tasks: desktopicon
 Filename: "{app}\Corvite.exe"; Description: "{cm:LaunchProgram,Corvite}"; Flags: nowait postinstall skipifsilent
 
 [Code]
+var
+  LangPage: TInputOptionWizardPage;
+
+// The installer itself is English only; this page chooses the language of the Corvite interface.
+procedure InitializeWizard;
+var
+  Sys: Integer;
+begin
+  LangPage := CreateInputOptionPage(wpSelectTasks,
+    'Program language', 'Choose the language of the Corvite interface',
+    'You can change it later in the app with the RU / UA / EN buttons at the top.', True, False);
+  LangPage.Add('Русский');
+  LangPage.Add('Українська');
+  LangPage.Add('English');
+  Sys := GetUILanguage and $3FF;
+  if Sys = $19 then LangPage.SelectedValueIndex := 0
+  else if Sys = $22 then LangPage.SelectedValueIndex := 1
+  else LangPage.SelectedValueIndex := 2;
+end;
+
+// Writes the chosen language to %ProgramData%\Corvite\config.json (keeps other settings if the file already exists).
+procedure SaveLanguage;
+var
+  Lang, Dir, Path: string;
+  Raw: AnsiString;
+  Json: string;
+begin
+  case LangPage.SelectedValueIndex of
+    0: Lang := 'ru';
+    1: Lang := 'uk';
+  else
+    Lang := 'en';
+  end;
+  Dir := ExpandConstant('{commonappdata}\Corvite');
+  ForceDirectories(Dir);
+  Path := Dir + '\config.json';
+  if FileExists(Path) and LoadStringFromFile(Path, Raw) then
+  begin
+    Json := String(Raw);
+    StringChangeEx(Json, '"Language": "ru"', '"Language": "' + Lang + '"', True);
+    StringChangeEx(Json, '"Language": "uk"', '"Language": "' + Lang + '"', True);
+    StringChangeEx(Json, '"Language": "en"', '"Language": "' + Lang + '"', True);
+    StringChangeEx(Json, '"Language":"ru"', '"Language":"' + Lang + '"', True);
+    StringChangeEx(Json, '"Language":"uk"', '"Language":"' + Lang + '"', True);
+    StringChangeEx(Json, '"Language":"en"', '"Language":"' + Lang + '"', True);
+    SaveStringToFile(Path, Json, False);
+  end
+  else
+    SaveStringToFile(Path, '{"Language": "' + Lang + '"}', False);
+end;
+
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+  if CurStep = ssPostInstall then SaveLanguage;
+end;
+
 // On uninstall offer to roll Windows back to the settings saved on first launch.
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 var
