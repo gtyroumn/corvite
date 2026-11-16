@@ -197,6 +197,8 @@ public partial class MainViewModel : ObservableObject
         await WaitSplashAsync();
         HwLoading = false;
         ApplyHardware(info);
+        // let the new page finish layout and its first render behind the opaque splash, only then fade it out
+        await Application.Current.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ContextIdle);
         SplashVisible = false;
 
         if (info.Id == "detected" && info.DeviceHint.Length > 0)
@@ -212,6 +214,7 @@ public partial class MainViewModel : ObservableObject
             PlatAutoHint = true;
         }
 
+        await Task.Delay(700);   // keep the heavy start-up refresh out of the fade-out
         await SyncSystemAsync();
     }
 
