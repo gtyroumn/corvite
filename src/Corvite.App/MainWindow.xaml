@@ -28,7 +28,7 @@
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Viewbox Width="26" Height="26">
                             <Canvas Width="100" Height="100">
-                                <Path Data="M77.99,39.3 A30,30 0 1 0 75,66.6" Stroke="{StaticResource Go}" StrokeThickness="9"/>
+                                <Path Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="{StaticResource Go}" StrokeThickness="9"/>
                                 <Path Data="M66,28 L96,46 L70,40 Z" Fill="{StaticResource Go}"/>
                             </Canvas>
                         </Viewbox>
@@ -414,13 +414,24 @@
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-30,0,0">
                     <Viewbox Width="130" Height="130" HorizontalAlignment="Center">
                         <Canvas Width="100" Height="100">
-                            <Path x:Name="SplashArc" Data="M77.99,39.3 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
-                                  StrokeDashArray="17.8 100" StrokeDashOffset="17.8">
-                                <!-- the glow sits on each shape, not on the canvas: an effect on the canvas would cover the far-away starting point of the arrowhead and make every frame huge -->
+                            <!-- glow layer: blurred copies UNDER the crisp shapes, so the arrowhead's shadow never falls on the arc (that was the visible seam) -->
+                            <Path x:Name="SplashArcGlow" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
+                                  StrokeDashArray="17.1 100" StrokeDashOffset="17.1">
                                 <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
                             </Path>
-                            <Path x:Name="SplashHead" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
+                            <Path x:Name="SplashHeadGlow" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
                                 <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform x:Name="SplashRotG" CenterX="77" CenterY="38" Angle="720"/>
+                                        <TranslateTransform x:Name="SplashMoveG" X="1000" Y="870"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <!-- crisp layer: same colour, no effects, the arrowhead overlaps the arc, so there is nothing to show a join -->
+                            <Path x:Name="SplashArc" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
+                                  StrokeDashArray="17.1 100" StrokeDashOffset="17.1"/>
+                            <Path x:Name="SplashHead" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
                                 <Path.RenderTransform>
                                     <TransformGroup>
                                         <RotateTransform x:Name="SplashRot" CenterX="77" CenterY="38" Angle="720"/>
@@ -449,20 +460,35 @@
                         <BeginStoryboard>
                             <Storyboard Timeline.DesiredFrameRate="60" BeginTime="0:0:0.3">
                                 <!-- arc is drawn along its outline -->
-                                <DoubleAnimation Storyboard.TargetName="SplashArc" Storyboard.TargetProperty="StrokeDashOffset" From="17.8" To="0" Duration="0:0:1.5">
+                                <DoubleAnimation Storyboard.TargetName="SplashArc" Storyboard.TargetProperty="StrokeDashOffset" From="17.1" To="0" Duration="0:0:1.5">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseInOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+<DoubleAnimation Storyboard.TargetName="SplashArcGlow" Storyboard.TargetProperty="StrokeDashOffset" From="17.1" To="0" Duration="0:0:1.5">
                                     <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseInOut"/></DoubleAnimation.EasingFunction>
                                 </DoubleAnimation>
                                 <!-- arrowhead: appears off-screen at the bottom right, spins and flies diagonally into place -->
                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SplashHead" Storyboard.TargetProperty="Opacity">
                                     <DiscreteDoubleKeyFrame KeyTime="0:0:1.4" Value="1"/>
                                 </DoubleAnimationUsingKeyFrames>
+<DoubleAnimationUsingKeyFrames Storyboard.TargetName="SplashHeadGlow" Storyboard.TargetProperty="Opacity">
+                                    <DiscreteDoubleKeyFrame KeyTime="0:0:1.4" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
                                 <DoubleAnimation Storyboard.TargetName="SplashMove" Storyboard.TargetProperty="X" From="1000" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+<DoubleAnimation Storyboard.TargetName="SplashMoveG" Storyboard.TargetProperty="X" From="1000" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
                                     <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
                                 </DoubleAnimation>
                                 <DoubleAnimation Storyboard.TargetName="SplashMove" Storyboard.TargetProperty="Y" From="870" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
                                     <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
                                 </DoubleAnimation>
+<DoubleAnimation Storyboard.TargetName="SplashMoveG" Storyboard.TargetProperty="Y" From="870" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                                 <DoubleAnimation Storyboard.TargetName="SplashRot" Storyboard.TargetProperty="Angle" From="720" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+<DoubleAnimation Storyboard.TargetName="SplashRotG" Storyboard.TargetProperty="Angle" From="720" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
                                     <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
                                 </DoubleAnimation>
                                 <!-- progress: creeps towards the end while loading -->

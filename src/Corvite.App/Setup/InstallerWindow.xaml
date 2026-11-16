@@ -14,19 +14,34 @@
 
         <!-- same animation as the app's loading screen: the arc is drawn, the arrowhead spins in from the bottom right -->
         <Storyboard x:Key="LogoSb" Timeline.DesiredFrameRate="60" BeginTime="0:0:0.3">
-            <DoubleAnimation Storyboard.TargetName="SetupArc" Storyboard.TargetProperty="StrokeDashOffset" From="17.8" To="0" Duration="0:0:1.5">
+            <DoubleAnimation Storyboard.TargetName="SetupArc" Storyboard.TargetProperty="StrokeDashOffset" From="17.1" To="0" Duration="0:0:1.5">
+                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseInOut"/></DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+<DoubleAnimation Storyboard.TargetName="SetupArcGlow" Storyboard.TargetProperty="StrokeDashOffset" From="17.1" To="0" Duration="0:0:1.5">
                 <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseInOut"/></DoubleAnimation.EasingFunction>
             </DoubleAnimation>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SetupHead" Storyboard.TargetProperty="Opacity">
                 <DiscreteDoubleKeyFrame KeyTime="0:0:1.4" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
+<DoubleAnimationUsingKeyFrames Storyboard.TargetName="SetupHeadGlow" Storyboard.TargetProperty="Opacity">
+                <DiscreteDoubleKeyFrame KeyTime="0:0:1.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
             <DoubleAnimation Storyboard.TargetName="SetupMove" Storyboard.TargetProperty="X" From="1000" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+<DoubleAnimation Storyboard.TargetName="SetupMoveG" Storyboard.TargetProperty="X" From="1000" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
                 <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
             </DoubleAnimation>
             <DoubleAnimation Storyboard.TargetName="SetupMove" Storyboard.TargetProperty="Y" From="870" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
                 <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
             </DoubleAnimation>
+<DoubleAnimation Storyboard.TargetName="SetupMoveG" Storyboard.TargetProperty="Y" From="870" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
             <DoubleAnimation Storyboard.TargetName="SetupRot" Storyboard.TargetProperty="Angle" From="720" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+            </DoubleAnimation>
+<DoubleAnimation Storyboard.TargetName="SetupRotG" Storyboard.TargetProperty="Angle" From="720" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
                 <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
             </DoubleAnimation>
         </Storyboard>
@@ -58,12 +73,14 @@
                         Visibility="{Binding IsOptions, Converter={StaticResource B2V}}">
                 <Viewbox Width="64" Height="64">
                     <Canvas Width="100" Height="100">
-                        <Path Data="M77.99,39.3 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9">
+                        <Path Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9">
                             <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
                         </Path>
                         <Path Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff">
                             <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
                         </Path>
+                        <Path Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"/>
+                        <Path Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff"/>
                     </Canvas>
                 </Viewbox>
                 <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" Margin="0,14,0,0" FontFamily="{StaticResource DisplayFont}" FontWeight="Bold" FontSize="24"/>
@@ -134,12 +151,24 @@
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-30,0,0">
                     <Viewbox Width="130" Height="130" HorizontalAlignment="Center">
                         <Canvas Width="100" Height="100">
-                            <Path x:Name="SetupArc" Data="M77.99,39.3 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
-                                  StrokeDashArray="17.8 100" StrokeDashOffset="17.8">
+                            <!-- glow layer: blurred copies UNDER the crisp shapes, so the arrowhead's shadow never falls on the arc (that was the visible seam) -->
+                            <Path x:Name="SetupArcGlow" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
+                                  StrokeDashArray="17.1 100" StrokeDashOffset="17.1">
                                 <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
                             </Path>
-                            <Path x:Name="SetupHead" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
+                            <Path x:Name="SetupHeadGlow" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
                                 <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform x:Name="SetupRotG" CenterX="77" CenterY="38" Angle="720"/>
+                                        <TranslateTransform x:Name="SetupMoveG" X="1000" Y="870"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <!-- crisp layer: same colour, no effects, the arrowhead overlaps the arc, so there is nothing to show a join -->
+                            <Path x:Name="SetupArc" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
+                                  StrokeDashArray="17.1 100" StrokeDashOffset="17.1"/>
+                            <Path x:Name="SetupHead" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
                                 <Path.RenderTransform>
                                     <TransformGroup>
                                         <RotateTransform x:Name="SetupRot" CenterX="77" CenterY="38" Angle="720"/>
