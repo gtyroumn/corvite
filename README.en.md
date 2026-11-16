@@ -17,4 +17,4 @@ A Windows 11 optimizer for games: safe tweaks for the system, network, memory an
 ## Rollback and uninstall
 - "Discard changes" (bottom bar) resets what is not applied, "Undo" reverts the last apply.
 - Overview, "Restore original settings" returns everything to the first-launch state. The backup is in `%ProgramData%\Corvite\Backups`.
-- On uninstall the installer offers to restore the original settings. Uninstall via Settings, Apps. The `%ProgramData%\Corvite` folder (backup, log, settings) stays: delete it by hand if you do not need it.
+- Uninstall via Settings, Apps: the uninstall window offers to restore the original settings. The `%ProgramData%\Corvite` folder (backup, log, settings) stays: delete it by hand if you do not need it.

@@ -26,6 +26,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- written next to the installed exe by the installer -->
+    <EmbeddedResource Include="..\..\LICENSE" LogicalName="LICENSE.txt"/>
+    <EmbeddedResource Include="..\..\THIRD-PARTY-NOTICES.md" LogicalName="THIRD-PARTY-NOTICES.md"/>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Assets\**\*" Exclude="Assets\corvite.ico" />
     <Resource Include="Assets\corvite.ico" />
   </ItemGroup>
