@@ -476,9 +476,6 @@
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
                         <TextBlock Text="{loc:T ai_t}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" VerticalAlignment="Center"/>
-                        <Border BorderBrush="{StaticResource Fg3}" BorderThickness="1" CornerRadius="10" Padding="8,2" Margin="12,0,0,0">
-                            <TextBlock Text="{loc:T ai_tag}" Foreground="{StaticResource Fg3}" Style="{StaticResource ChipText}"/>
-                        </Border>
                     </StackPanel>
                     <TextBlock Text="{Binding Main.AiLine}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,0,0,12"/>
                     <StackPanel Orientation="Horizontal">

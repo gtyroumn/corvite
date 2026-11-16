@@ -159,7 +159,6 @@
                     <Grid Margin="16,12,10,8">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{loc:T ai_t}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="14"/>
-                            <TextBlock Text="{loc:T ai_tag}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource MonoFont}" FontSize="11" Margin="10,2,0,0"/>
                         </StackPanel>
                         <Button Style="{StaticResource GhostBtn}" Content="✕" Padding="8,2" HorizontalAlignment="Right" Command="{Binding AiCloseCommand}"/>
                     </Grid>

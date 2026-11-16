@@ -178,6 +178,7 @@ public partial class MainViewModel : ObservableObject
         _toastTimer.Tick += (_, _) => { _toastTimer.Stop(); ToastVisible = false; };
 
         Loc.I.LanguageChanged += RefreshAll;
+        Loc.I.LanguageChanged += AiRelocalize;
         Navigate(Section.Overview);
         PlatStep = _settings.Platform == null ? 1 : 0; // first launch: choose PC / laptop (TZ 7.4)
 

@@ -13,7 +13,7 @@ using CommunityToolkit.Mvvm.Input;
 namespace Corvite.App.ViewModels;
 
 /// <summary>One chat bubble. An optional action button lets the advisor take the user somewhere in the app.</summary>
-public sealed record ChatMsg(string Text, bool IsUser, string? ActionText = null, Action? Run = null)
+public sealed record ChatMsg(string Text, bool IsUser, string? ActionText = null, Action? Run = null, bool Greeting = false)
 {
     public bool HasAction => ActionText != null && Run != null;
     public ICommand? ActionCommand => Run == null ? null : new RelayCommand(Run);
@@ -69,7 +69,14 @@ public partial class MainViewModel
     private void AiToggle()
     {
         AiOpen = !AiOpen;
-        if (AiOpen && AiMessages.Count == 0) AiMessages.Add(new ChatMsg(Loc.I["ai_hi"], false));
+        if (AiOpen && AiMessages.Count == 0) AiMessages.Add(new ChatMsg(Loc.I["ai_hi"], false, Greeting: true));
+    }
+
+    /// <summary>The opening message follows the interface language; answers keep the language of the question.</summary>
+    private void AiRelocalize()
+    {
+        if (AiMessages.Count > 0 && AiMessages[0].Greeting)
+            AiMessages[0] = new ChatMsg(Loc.I["ai_hi"], false, Greeting: true);
     }
 
     [RelayCommand]
