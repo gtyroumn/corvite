@@ -624,4 +624,5 @@ Name a game, e.g. CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, T
   <data name="upn.d" xml:space="preserve"><value>Download the installer from the release page and run it over the current version: your settings and backup are kept.</value></data>
   <data name="upn.open" xml:space="preserve"><value>Open page</value></data>
   <data name="upn.x" xml:space="preserve"><value>Later</value></data>
+  <data name="splash_t" xml:space="preserve"><value>Loading…</value></data>
 </root>

@@ -624,4 +624,5 @@
   <data name="upn.d" xml:space="preserve"><value>Скачайте установщик со страницы релиза и запустите его поверх текущей версии: настройки и резервная копия сохранятся.</value></data>
   <data name="upn.open" xml:space="preserve"><value>Открыть страницу</value></data>
   <data name="upn.x" xml:space="preserve"><value>Позже</value></data>
+  <data name="splash_t" xml:space="preserve"><value>Загрузка…</value></data>
 </root>

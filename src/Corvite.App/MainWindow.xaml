@@ -377,6 +377,98 @@
                     </Grid>
                 </Border>
             </Grid>
+            <!-- ===== Loading screen: light centre, dark edges; the arc draws, the arrowhead flies in from the bottom right ===== -->
+            <Grid x:Name="Splash" Grid.RowSpan="3" Panel.ZIndex="100" IsHitTestVisible="{Binding SplashVisible}">
+                <Grid.Background>
+                    <RadialGradientBrush Center="0.5,0.46" GradientOrigin="0.5,0.46" RadiusX="0.6" RadiusY="0.7">
+                        <GradientStop Color="#4a2a82" Offset="0"/>
+                        <GradientStop Color="#2a1850" Offset="0.38"/>
+                        <GradientStop Color="#150f24" Offset="0.72"/>
+                        <GradientStop Color="#0a0710" Offset="1"/>
+                    </RadialGradientBrush>
+                </Grid.Background>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SplashVisible}" Value="False">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" To="0" Duration="0:0:0.4"/>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility" BeginTime="0:0:0.4" Duration="0">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-30,0,0">
+                    <Viewbox Width="130" Height="130" HorizontalAlignment="Center">
+                        <Canvas Width="100" Height="100">
+                            <Canvas.Effect>
+                                <DropShadowEffect Color="#a259f0" BlurRadius="22" ShadowDepth="0" Opacity="0.75"/>
+                            </Canvas.Effect>
+                            <Path x:Name="SplashArc" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
+                                  StrokeDashArray="17.1 100" StrokeDashOffset="17.1"/>
+                            <Path x:Name="SplashHead" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform x:Name="SplashRot" CenterX="77" CenterY="38" Angle="720"/>
+                                        <TranslateTransform x:Name="SplashMove" X="1000" Y="870"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Canvas>
+                    </Viewbox>
+                    <TextBlock Text="C O R V I T E" Margin="0,18,0,0" HorizontalAlignment="Center" Foreground="#f3eefc"
+                               FontFamily="{StaticResource DisplayFont}" FontWeight="Bold" FontSize="17"/>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,56">
+                    <Border Width="260" Height="4" CornerRadius="2" Background="#22ffffff" ClipToBounds="True">
+                        <Border x:Name="SplashBar" CornerRadius="2" Background="#c9a2ff" HorizontalAlignment="Stretch" RenderTransformOrigin="0,0.5">
+                            <Border.RenderTransform><ScaleTransform x:Name="SplashBarScale" ScaleX="0"/></Border.RenderTransform>
+                        </Border>
+                    </Border>
+                    <TextBlock Text="{loc:T splash_t}" Margin="0,10,0,0" HorizontalAlignment="Center" Foreground="#c9bfe0"
+                               FontFamily="{StaticResource MonoFont}" FontSize="11.5"/>
+                </StackPanel>
+
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <!-- arc is drawn along its outline -->
+                                <DoubleAnimation Storyboard.TargetName="SplashArc" Storyboard.TargetProperty="StrokeDashOffset" From="17.1" To="0" Duration="0:0:1.5">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseInOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <!-- arrowhead: appears off-screen at the bottom right, spins and flies diagonally into place -->
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="SplashHead" Storyboard.TargetProperty="Opacity">
+                                    <DiscreteDoubleKeyFrame KeyTime="0:0:1.4" Value="1"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimation Storyboard.TargetName="SplashMove" Storyboard.TargetProperty="X" From="1000" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Storyboard.TargetName="SplashMove" Storyboard.TargetProperty="Y" From="870" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Storyboard.TargetName="SplashRot" Storyboard.TargetProperty="Angle" From="720" To="0" BeginTime="0:0:1.4" Duration="0:0:1.1">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <!-- progress: creeps towards the end while loading -->
+                                <DoubleAnimation Storyboard.TargetName="SplashBarScale" Storyboard.TargetProperty="ScaleX" From="0" To="0.94" Duration="0:0:7">
+                                    <DoubleAnimation.EasingFunction><CubicEase EasingMode="EaseOut"/></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+            </Grid>
         </Grid>
     </Border>
 </Window>

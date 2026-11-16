@@ -196,6 +196,7 @@ public partial class MainViewModel : ObservableObject
 
         HwLoading = false;
         ApplyHardware(info);
+        _ = HideSplashAsync();
 
         if (info.Id == "detected" && info.DeviceHint.Length > 0)
         {
