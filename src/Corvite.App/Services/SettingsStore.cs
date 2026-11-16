@@ -13,6 +13,9 @@ public sealed class AppSettings
 
     /// <summary>Memory chip chosen on the RAM tab (id from ram_chips.json), null = averaged table.</summary>
     public string? RamChip { get; set; }
+
+    /// <summary>Ask GitHub once at start whether a newer release exists. Set to false in config.json to switch it off.</summary>
+    public bool CheckUpdates { get; set; } = true;
 }
 
 public static class SettingsStore

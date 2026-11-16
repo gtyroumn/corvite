@@ -620,4 +620,8 @@
   <data name="ai.n.session" xml:space="preserve"><value>Ігровий режим Corvite працює автоматично: застосунок помічає повноекранну гру, вмикає параметри сесії (пріоритет процесу, очищення пам’яті, зупинка зайвих служб, закриття фонових програм) і після виходу з гри все повертає. Ці параметри в розділах «Windows», «Пам’ять і диск» та «Фон і служби».</value></data>
   <data name="ai.n.profiles" xml:space="preserve"><value>«Стандарт» — вихідні значення; «Безпечний» — лише перевірені твіки без розгону; «Ігровий» — баланс відгуку, FPS і температури; «Максимум» — межа вашого охолодження, включно з червоною зоною. «Підібрати параметри» обирає профіль під ваше залізо.</value></data>
   <data name="ai.same" xml:space="preserve"><value>Без змін</value></data>
+  <data name="upn.t" xml:space="preserve"><value>Доступна нова версія {0}</value></data>
+  <data name="upn.d" xml:space="preserve"><value>Завантажте інсталятор зі сторінки релізу й запустіть його поверх поточної версії: налаштування та резервна копія збережуться.</value></data>
+  <data name="upn.open" xml:space="preserve"><value>Відкрити сторінку</value></data>
+  <data name="upn.x" xml:space="preserve"><value>Пізніше</value></data>
 </root>

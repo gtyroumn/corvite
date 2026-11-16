@@ -179,6 +179,7 @@ public partial class MainViewModel : ObservableObject
 
         Loc.I.LanguageChanged += RefreshAll;
         Loc.I.LanguageChanged += AiRelocalize;
+        _ = CheckUpdateAsync();
         Navigate(Section.Overview);
         PlatStep = _settings.Platform == null ? 1 : 0; // first launch: choose PC / laptop (TZ 7.4)
 

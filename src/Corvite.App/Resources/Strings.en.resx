@@ -620,4 +620,8 @@ Name a game, e.g. CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, T
   <data name="ai.n.session" xml:space="preserve"><value>Corvite game mode is automatic: the app notices a fullscreen game, turns on session parameters (process priority, memory cleanup, stopping extra services, closing background apps) and restores everything when the game closes. These parameters are in "Windows", "Memory and disk" and "Background and services".</value></data>
   <data name="ai.n.profiles" xml:space="preserve"><value>"Standard" is the original values; "Safe" is proven tweaks only, no overclock; "Gaming" balances response, FPS and temperature; "Maximum" is the limit of your cooling, including the red zone. "Pick settings" chooses a profile for your hardware.</value></data>
   <data name="ai.same" xml:space="preserve"><value>No change</value></data>
+  <data name="upn.t" xml:space="preserve"><value>Version {0} is available</value></data>
+  <data name="upn.d" xml:space="preserve"><value>Download the installer from the release page and run it over the current version: your settings and backup are kept.</value></data>
+  <data name="upn.open" xml:space="preserve"><value>Open page</value></data>
+  <data name="upn.x" xml:space="preserve"><value>Later</value></data>
 </root>

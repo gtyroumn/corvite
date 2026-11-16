@@ -1,0 +1,52 @@
+name: release
+
+# Push a tag like v0.1.0 to build the installer and the portable zip and attach them to a GitHub Release.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Version from tag
+        id: v
+        shell: pwsh
+        run: |
+          $v = '${{ github.ref_name }}'.TrimStart('v')
+          "version=$v" >> $env:GITHUB_OUTPUT
+
+      - name: Publish (self-contained, single file)
+        run: >
+          dotnet publish src/Corvite.App/Corvite.App.csproj -c Release -r win-x64 --self-contained true
+          -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true
+          -p:DebugType=none -p:Version=${{ steps.v.outputs.version }} -o publish
+
+      - name: Portable zip
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Compress-Archive -Path publish\Corvite.exe, LICENSE, THIRD-PARTY-NOTICES.md -DestinationPath dist\Corvite-portable-win-x64.zip
+
+      - name: Installer (Inno Setup)
+        shell: pwsh
+        run: |
+          choco install innosetup -y --no-progress
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" "/DMyAppVersion=${{ steps.v.outputs.version }}" installer\Corvite.iss
+          if ($LASTEXITCODE -ne 0) { throw "ISCC failed" }
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/Corvite-Setup.exe
+            dist/Corvite-portable-win-x64.zip
+          generate_release_notes: true
