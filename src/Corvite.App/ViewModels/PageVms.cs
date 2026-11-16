@@ -266,7 +266,8 @@ public sealed class RamRowVm
     private readonly string _bios;
     public RamRowVm(RamRow r, string bios) { _r = r; _bios = bios; }
 
-    private int Zone => _r.WithinKit ? 0 : _r.Level == 1 ? 1 : 2;
+    // colour follows the level (weak green, medium yellow, strong red) on every kit; the caption says whether it is above the kit rating
+    private int Zone => Math.Clamp(_r.Level, 0, 2);
     public string Level => Loc.I["t" + _r.Level];
     public string Sub => Loc.I[_r.WithinKit ? "r_ok" : "r_over"];
     public System.Windows.Media.Brush Brush => Theming.Palette.Risk(Zone);
