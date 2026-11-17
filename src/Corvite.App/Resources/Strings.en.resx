@@ -73,7 +73,7 @@
   <data name="n_background" xml:space="preserve"><value>Background</value></data>
   <data name="n_cpu" xml:space="preserve"><value>CPU</value></data>
   <data name="n_gpu" xml:space="preserve"><value>GPU</value></data>
-  <data name="n_hardware" xml:space="preserve"><value>Specs &amp; clocks</value></data>
+  <data name="n_hardware" xml:space="preserve"><value>Clocks</value></data>
   <data name="n_memory" xml:space="preserve"><value>Memory &amp; disk</value></data>
   <data name="n_network" xml:space="preserve"><value>Network</value></data>
   <data name="n_overview" xml:space="preserve"><value>Overview</value></data>

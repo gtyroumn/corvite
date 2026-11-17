@@ -73,7 +73,7 @@
   <data name="n_background" xml:space="preserve"><value>Фон и службы</value></data>
   <data name="n_cpu" xml:space="preserve"><value>Процессор</value></data>
   <data name="n_gpu" xml:space="preserve"><value>Видеокарта</value></data>
-  <data name="n_hardware" xml:space="preserve"><value>Характеристики и частоты</value></data>
+  <data name="n_hardware" xml:space="preserve"><value>Частоты</value></data>
   <data name="n_memory" xml:space="preserve"><value>Память и диск</value></data>
   <data name="n_network" xml:space="preserve"><value>Сеть</value></data>
   <data name="n_overview" xml:space="preserve"><value>Обзор</value></data>
