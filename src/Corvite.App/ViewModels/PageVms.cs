@@ -104,7 +104,8 @@ public abstract class PageVm : ObservableObject
 public sealed class OverviewPage : PageVm
 {
     public MainViewModel Main { get; }
-    public OverviewPage(MainViewModel main) { Main = main; }
+    public System.Collections.ObjectModel.ObservableCollection<HintVm> Hints { get; }
+    public OverviewPage(MainViewModel main) { Main = main; Hints = main.BuildHints(); }
     public string Title => Loc.I["n_overview"];
     public string Intro => Loc.I["ov.intro"];
 }

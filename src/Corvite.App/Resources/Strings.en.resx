@@ -5,15 +5,8 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="ack" xml:space="preserve"><value>I understand the risk and want to continue</value></data>
-  <data name="ai_def" xml:space="preserve"><value>Not sure I got that. Name a game (CS2, Apex, Dota 2…) or a genre (FPS, MOBA, TPS), ask about a parameter ("what is HAGS?"), where something is in the app ("where are RAM timings?") or about risks. Write "what can you do" for details.</value></data>
-  <data name="ai_hi" xml:space="preserve"><value>Hi, I am Corvi, your performance advisor. I run on your PC, no internet needed.
-
-I can:
-• optimize your PC for a game or genre (FPS, MOBA, TPS): name the game, I set the parameters, you only accept or adjust;
-• explain any parameter and show where it is;
-• assess risks and pick a profile.
-
-Nothing is applied on its own: changes wait for your "Apply". I answer in the language of your question.</value></data>
+  <data name="ai_def" xml:space="preserve"><value>Not sure I got that. Pick where to start, or ask about a parameter, a game or a section.</value></data>
+  <data name="ai_hi" xml:space="preserve"><value>Hi, I am Corvi, your performance advisor. I run on your PC. Nothing is applied on its own: changes wait for your "Apply".</value></data>
   <data name="ai_ok" xml:space="preserve"><value>No red-zone settings; the configuration is balanced.</value></data>
   <data name="ai_ph" xml:space="preserve"><value>Ask about risks, profile, RAM…</value></data>
   <data name="ai_pick" xml:space="preserve"><value>Pick settings</value></data>
@@ -571,7 +564,7 @@ Nothing is applied on its own: changes wait for your "Apply". I answer in the la
   <data name="ai.g.arc" xml:space="preserve"><value>GPU settings are not available for your graphics card and were skipped.</value></data>
   <data name="ai.g.low" xml:space="preserve"><value>Modest configuration: I leave overclock settings alone and only apply safe tweaks.</value></data>
   <data name="ai.g.lap" xml:space="preserve"><value>Laptop: limits are tightened, overclocking is capped by cooling.</value></data>
-  <data name="ai.g.set" xml:space="preserve"><value>What I set ({0}):</value></data>
+  <data name="ai.g.set" xml:space="preserve"><value>Proposed changes ({0}). Untick what you do not want changed:</value></data>
   <data name="ai.g.after" xml:space="preserve"><value>No parameter is in the red zone. Changes are not applied yet: review them and press "Apply" at the bottom, or adjust the values by hand.</value></data>
   <data name="ai.g.none" xml:space="preserve"><value>All the needed settings are already in place.</value></data>
   <data name="ai.g.onoff" xml:space="preserve"><value>off → on</value></data>
@@ -580,14 +573,13 @@ Nothing is applied on its own: changes wait for your "Apply". I answer in the la
   <data name="ai_name" xml:space="preserve"><value>Corvi</value></data>
   <data name="ai.greet" xml:space="preserve"><value>Hi! I am Corvi, your performance advisor.</value></data>
   <data name="ai.help" xml:space="preserve"><value>I am Corvi. What I can do:
-• Optimize for a game or genre (FPS, MOBA, TPS): name the game, I set the parameters, you only accept or adjust.
+• Optimise for a game or genre (FPS, MOBA, TPS): a checklist of changes.
 • Explain parameters: "what is HAGS?"
-• Navigate: "where are RAM timings?", "how do I enable game mode?"
-• Risks and profile choice.
-• Backup, undo, locked parameters.
-
-Name a game, e.g. CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, Tarkov.</value></data>
-  <data name="ai.askgame" xml:space="preserve"><value>Want me to optimize your PC for a specific game or genre (FPS, MOBA, TPS)? Name it: I will set the parameters, you only accept or adjust.</value></data>
+• Diagnose: "why does it lag?"
+• Navigate: "where are RAM timings?", "open CPU"
+• Commands: "apply", "undo", "what did I change", "add game …"
+• Risks, profiles, backup.</value></data>
+  <data name="ai.askgame" xml:space="preserve"><value>Optimise your PC for a game or genre (FPS, MOBA, TPS)?</value></data>
   <data name="ai.p.nofps" xml:space="preserve"><value>no direct FPS gain, but it improves stability and response</value></data>
   <data name="ai.p.set.s" xml:space="preserve"><value>I set it to {0}: that gives {1}.</value></data>
   <data name="ai.p.set.t" xml:space="preserve"><value>I turned it on: that gives {0}.</value></data>
@@ -611,8 +603,8 @@ Name a game, e.g. CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, T
   <data name="ai.n.open" xml:space="preserve"><value>Open: {0}</value></data>
   <data name="ai.n.sec" xml:space="preserve"><value>Section "{0}": {1}. It is in the menu on the left.</value></data>
   <data name="ai.n.backup" xml:space="preserve"><value>The backup of your original settings is created on first launch, before any change. It is at the bottom of the Overview: "Restore original settings" rolls everything back. You can also create a new backup, open its folder or delete it there.</value></data>
-  <data name="ai.n.undo" xml:space="preserve"><value>There are two ways to roll back. "Discard changes" (bottom right) resets what you have not applied yet. "Restore previous" reverts the last apply. Full return: Overview, "Restore original settings".</value></data>
-  <data name="ai.n.apply" xml:space="preserve"><value>Changes are only marked first, nothing is written to the system. The bottom bar shows how many parameters wait. "Apply" writes them; red-zone values ask for confirmation. With protection on, a Windows restore point is created first.</value></data>
+  <data name="ai.n.undo" xml:space="preserve"><value>Two ways. Prepared but not applied changes are dropped with "Discard". Already applied ones are rolled back with "Restore previous settings". A full return to the originals: Overview, "Restore original settings".</value></data>
+  <data name="ai.n.apply" xml:space="preserve"><value>Changes are only marked first, nothing is written to the system. "Apply" at the bottom writes them; the red zone asks for confirmation. A Windows restore point is created before that.</value></data>
   <data name="ai.n.platform" xml:space="preserve"><value>PC or laptop is chosen with the button at the top right, next to the language. Laptop limits are tighter: risk zones start earlier and overclock sliders top out at half, because cooling is weaker.</value></data>
   <data name="ai.n.lock" xml:space="preserve"><value>A grey label instead of the risk level means the parameter is unavailable: "driver needed" requires the vendor program (Intel XTU, Ryzen Master, NVIDIA driver), "unavailable" does not fit your PC, "soon" is still in development. Click the label: a window explains why and links the official site.</value></data>
   <data name="ai.n.session" xml:space="preserve"><value>Corvite game mode is automatic: the app notices a fullscreen game, turns on session parameters (process priority, memory cleanup, stopping extra services, closing background apps) and restores everything when the game closes. These parameters are in "Windows", "Memory and disk" and "Background and services".</value></data>
@@ -623,4 +615,63 @@ Name a game, e.g. CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, T
   <data name="upn.open" xml:space="preserve"><value>Open page</value></data>
   <data name="upn.x" xml:space="preserve"><value>Later</value></data>
   <data name="splash_t" xml:space="preserve"><value>Loading…</value></data>
+  <data name="ai.c.game" xml:space="preserve"><value>Optimise for a game</value></data>
+  <data name="ai.c.lag" xml:space="preserve"><value>Why does it lag?</value></data>
+  <data name="ai.c.help" xml:space="preserve"><value>What can you do?</value></data>
+  <data name="ai.c.explain" xml:space="preserve"><value>Explain</value></data>
+  <data name="ai.c.more" xml:space="preserve"><value>More</value></data>
+  <data name="ai.c.params" xml:space="preserve"><value>Parameter details</value></data>
+  <data name="ai.c.ingame" xml:space="preserve"><value>In-game settings</value></data>
+  <data name="ai.c.list" xml:space="preserve"><value>Show the list</value></data>
+  <data name="ai.g.ask" xml:space="preserve"><value>Which game or genre? Pick one or type the name.</value></data>
+  <data name="ai.s.btn" xml:space="preserve"><value>Prepare selected</value></data>
+  <data name="ai.s.none" xml:space="preserve"><value>Nothing is selected.</value></data>
+  <data name="ai.s.done" xml:space="preserve"><value>Changes prepared: {0}. Nothing is written to the system yet.</value></data>
+  <data name="ai.p.nofps.s" xml:space="preserve"><value>stability and response</value></data>
+  <data name="ai.a.btn" xml:space="preserve"><value>Apply</value></data>
+  <data name="ai.a.none" xml:space="preserve"><value>There are no prepared changes right now.</value></data>
+  <data name="ai.a.pending" xml:space="preserve"><value>Waiting to be applied: {0}. Overall risk: {1}. The red zone needs a separate confirmation.</value></data>
+  <data name="ai.r.btn" xml:space="preserve"><value>Discard prepared</value></data>
+  <data name="ai.r.done" xml:space="preserve"><value>Prepared changes discarded.</value></data>
+  <data name="ai.r.none" xml:space="preserve"><value>There are no prepared changes to discard.</value></data>
+  <data name="ai.r.ask" xml:space="preserve"><value>Prepared changes: {0}. Discard them back to the applied values?</value></data>
+  <data name="ai.u.btn" xml:space="preserve"><value>Undo the last apply</value></data>
+  <data name="ai.u.started" xml:space="preserve"><value>Undoing the last apply…</value></data>
+  <data name="ai.u.genre" xml:space="preserve"><value>Adding the game "{0}". What type is it? Parameters and in-game settings depend on it.</value></data>
+  <data name="ai.u.g.FPS" xml:space="preserve"><value>Shooter (FPS)</value></data>
+  <data name="ai.u.g.MOBA" xml:space="preserve"><value>MOBA</value></data>
+  <data name="ai.u.g.TPS" xml:space="preserve"><value>Third person (TPS)</value></data>
+  <data name="ai.u.x" xml:space="preserve"><value>Cancel</value></data>
+  <data name="ai.u.cancel" xml:space="preserve"><value>Okay, not adding it.</value></data>
+  <data name="ai.u.fail" xml:space="preserve"><value>Could not add it: the name must be 2 to 40 characters.</value></data>
+  <data name="ai.u.added" xml:space="preserve"><value>The game "{0}" is added (type {1}). From now on just name it.</value></data>
+  <data name="ai.v.off" xml:space="preserve"><value>off</value></data>
+  <data name="ai.o.done" xml:space="preserve"><value>Opened "{0}".</value></data>
+  <data name="ai.l.pend" xml:space="preserve"><value>Waiting to be applied ({0}):</value></data>
+  <data name="ai.l.diff" xml:space="preserve"><value>Different from the original settings ({0}):</value></data>
+  <data name="ai.l.none" xml:space="preserve"><value>Everything is still as in the original settings, nothing was changed.</value></data>
+  <data name="ai.l.more" xml:space="preserve"><value>…and {0} more.</value></data>
+  <data name="ai.z.game" xml:space="preserve"><value>Did you mean the game "{0}"?</value></data>
+  <data name="ai.z.tweak" xml:space="preserve"><value>You may mean the parameter "{0}". Right?</value></data>
+  <data name="ai.z.many" xml:space="preserve"><value>Not sure I got that. Maybe you meant:</value></data>
+  <data name="ai.d.head" xml:space="preserve"><value>What may be in the way:</value></data>
+  <data name="ai.d.none" xml:space="preserve"><value>No obvious cause: temperatures, memory and power are fine, key parameters are on.</value></data>
+  <data name="ai.d.nolive" xml:space="preserve"><value>Sensors are not answering, so I only look at the configuration.</value></data>
+  <data name="ai.d.note" xml:space="preserve"><value>Measured right now. For accuracy run the check while playing.</value></data>
+  <data name="ai.d.cpu_hot" xml:space="preserve"><value>The CPU is hot ({0} °C): it may slow down from overheating. Check cooling and dust.</value></data>
+  <data name="ai.d.gpu_hot" xml:space="preserve"><value>The GPU is hot ({0} °C): it may slow down. Check cooling and case airflow.</value></data>
+  <data name="ai.d.ram_full" xml:space="preserve"><value>Memory is {0}% full: the system runs short and starts swapping. Close unneeded programs.</value></data>
+  <data name="ai.d.cpu_bound" xml:space="preserve"><value>The CPU is at {0}% while the GPU idles: the CPU limits FPS.</value></data>
+  <data name="ai.d.battery" xml:space="preserve"><value>The laptop runs on battery: performance is cut. Plug in the charger.</value></data>
+  <data name="ai.d.hdd" xml:space="preserve"><value>The system or game is on a hard disk (HDD): long loads and stutter while streaming assets. Move the game to an SSD.</value></data>
+  <data name="ai.d.ram_slow" xml:space="preserve"><value>Memory runs at the base speed (JEDEC). If the modules support XMP or EXPO, enable the profile in BIOS.</value></data>
+  <data name="ai.d.tier_low" xml:space="preserve"><value>The hardware is modest: lower resolution and shadows in the game, it helps more than any system parameter.</value></data>
+  <data name="ai.d.tweaks_off" xml:space="preserve"><value>Safe game parameters are not switched on ({0}). I can pick them for your game.</value></data>
+  <data name="ai.h.t" xml:space="preserve"><value>CORVI NOTICED</value></data>
+  <data name="ai.h.open" xml:space="preserve"><value>Open</value></data>
+  <data name="ai.h.optimise" xml:space="preserve"><value>Pick</value></data>
+  <data name="ai.h.ram_slow" xml:space="preserve"><value>Memory runs at the base speed (JEDEC). If the modules support XMP or EXPO, enable the profile in BIOS.</value></data>
+  <data name="ai.h.hdd" xml:space="preserve"><value>The disk is not an SSD: games on it load slower and may stutter.</value></data>
+  <data name="ai.h.battery" xml:space="preserve"><value>The laptop is on battery: plug it in for games.</value></data>
+  <data name="ai.h.tweaks_off" xml:space="preserve"><value>Safe game parameters not switched on: {0}.</value></data>
 </root>

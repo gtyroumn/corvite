@@ -5,15 +5,8 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="ack" xml:space="preserve"><value>Я понимаю риск и хочу продолжить</value></data>
-  <data name="ai_def" xml:space="preserve"><value>Не совсем понял. Назовите игру (CS2, Apex, Dota 2…) или жанр (FPS, MOBA, TPS), спросите про параметр («что такое HAGS?»), про место в приложении («где тайминги ОЗУ?») или про риски. Напишите «что ты умеешь», и я расскажу подробнее.</value></data>
-  <data name="ai_hi" xml:space="preserve"><value>Привет, я Corvi, советник по производительности. Работаю на вашем ПК, без интернета.
-
-Я могу:
-• оптимизировать ПК под игру или жанр (FPS, MOBA, TPS): назовите игру, я выставлю параметры, вам останется принять или поправить;
-• объяснить любой параметр и показать, где он находится;
-• оценить риски и подобрать профиль.
-
-Ничего не применяется само: изменения ждут вашего «Применить». Отвечаю на языке вашего вопроса.</value></data>
+  <data name="ai_def" xml:space="preserve"><value>Не совсем понял. Выберите, с чего начать, или спросите про параметр, игру или раздел.</value></data>
+  <data name="ai_hi" xml:space="preserve"><value>Привет, я Corvi, советник по производительности. Работаю на вашем ПК. Ничего не применяется само: изменения ждут вашего «Применить».</value></data>
   <data name="ai_ok" xml:space="preserve"><value>Красных параметров нет, конфигурация сбалансирована.</value></data>
   <data name="ai_ph" xml:space="preserve"><value>Спросите про риски, профиль, ОЗУ…</value></data>
   <data name="ai_pick" xml:space="preserve"><value>Подобрать параметры</value></data>
@@ -571,7 +564,7 @@
   <data name="ai.g.arc" xml:space="preserve"><value>Для вашей видеокарты GPU-параметры недоступны, они пропущены.</value></data>
   <data name="ai.g.low" xml:space="preserve"><value>Конфигурация скромная: разгонные параметры не трогаю, только безопасные твики.</value></data>
   <data name="ai.g.lap" xml:space="preserve"><value>Ноутбук: пределы ужесточены, разгон ограничен охлаждением.</value></data>
-  <data name="ai.g.set" xml:space="preserve"><value>Что я настроил ({0}):</value></data>
+  <data name="ai.g.set" xml:space="preserve"><value>Предлагаю изменить ({0}). Уберите галочку у того, что менять не нужно:</value></data>
   <data name="ai.g.after" xml:space="preserve"><value>Ни один параметр не в красной зоне. Изменения ещё не применены: проверьте и нажмите «Применить» внизу или поправьте значения вручную.</value></data>
   <data name="ai.g.none" xml:space="preserve"><value>Все нужные параметры уже стоят как надо.</value></data>
   <data name="ai.g.onoff" xml:space="preserve"><value>выкл → вкл</value></data>
@@ -580,14 +573,13 @@
   <data name="ai_name" xml:space="preserve"><value>Corvi</value></data>
   <data name="ai.greet" xml:space="preserve"><value>Привет! Я Corvi, ваш советник по производительности.</value></data>
   <data name="ai.help" xml:space="preserve"><value>Я Corvi. Что умею:
-• Оптимизация под игру или жанр (FPS, MOBA, TPS): назовите игру, я выставлю параметры, вам останется принять или поправить.
+• Оптимизация под игру или жанр (FPS, MOBA, TPS): список изменений с галочками.
 • Объяснение параметров: «что такое HAGS?»
-• Навигация: «где тайминги ОЗУ?», «как включить игровой режим?»
-• Риски и подбор профиля.
-• Резервная копия, откат, блокировки параметров.
-
-Назовите игру, например CS2, Apex, Fortnite, Dota 2, Warzone, Valorant, Overwatch 2, Tarkov.</value></data>
-  <data name="ai.askgame" xml:space="preserve"><value>Оптимизировать ПК под конкретную игру или жанр (FPS, MOBA, TPS)? Назовите её: я сам выставлю параметры, вам останется принять или поправить.</value></data>
+• Диагностика: «почему лагает?»
+• Навигация: «где тайминги ОЗУ?», «открой Процессор»
+• Команды: «примени», «откати», «что я менял», «добавь игру …»
+• Риски, профили, резервная копия.</value></data>
+  <data name="ai.askgame" xml:space="preserve"><value>Оптимизировать ПК под игру или жанр (FPS, MOBA, TPS)?</value></data>
   <data name="ai.p.nofps" xml:space="preserve"><value>прямого прироста FPS нет, но параметр улучшает стабильность и отклик</value></data>
   <data name="ai.p.set.s" xml:space="preserve"><value>Я настроил до {0}: это даст {1}.</value></data>
   <data name="ai.p.set.t" xml:space="preserve"><value>Я включил: это даст {0}.</value></data>
@@ -611,8 +603,8 @@
   <data name="ai.n.open" xml:space="preserve"><value>Открыть: {0}</value></data>
   <data name="ai.n.sec" xml:space="preserve"><value>Раздел «{0}»: {1}. Он в меню слева.</value></data>
   <data name="ai.n.backup" xml:space="preserve"><value>Резервная копия исходных настроек создаётся при первом запуске, до любых изменений. Она на «Обзоре», внизу: кнопка «Вернуть исходные настройки» откатывает всё к тому, что было. Там же можно создать новую копию, открыть папку или удалить копию.</value></data>
-  <data name="ai.n.undo" xml:space="preserve"><value>Откатиться можно двумя способами. «Отменить изменения» (внизу справа) сбрасывает то, что вы ещё не применили. «Вернуть предыдущие настройки» отменяет последнее применение. Полный возврат: «Обзор», «Вернуть исходные настройки».</value></data>
-  <data name="ai.n.apply" xml:space="preserve"><value>Изменения сначала только отмечаются, в систему ничего не пишется. Внизу видно, сколько параметров ждёт применения. «Применить» записывает их; для красной зоны попросит подтверждение. При включённой защите перед этим создаётся точка восстановления Windows.</value></data>
+  <data name="ai.n.undo" xml:space="preserve"><value>Два способа. Подготовленное, но не применённое сбрасывает «Сбросить». Уже применённое откатывает «Вернуть предыдущие настройки». Полный возврат к исходным: «Обзор», «Вернуть исходные настройки».</value></data>
+  <data name="ai.n.apply" xml:space="preserve"><value>Изменения сначала только отмечаются, в систему ничего не пишется. «Применить» внизу записывает их; для красной зоны попросит подтверждение. Перед этим создаётся точка восстановления Windows.</value></data>
   <data name="ai.n.platform" xml:space="preserve"><value>ПК или ноутбук выбирается кнопкой вверху справа, рядом с языком. Для ноутбука пределы ужесточены: зоны риска наступают раньше, а максимум разгонных ползунков вдвое ниже, потому что охлаждение слабее.</value></data>
   <data name="ai.n.lock" xml:space="preserve"><value>Серый ярлык вместо уровня риска значит, что параметр сейчас недоступен: «нужен драйвер» — нужна программа производителя (Intel XTU, Ryzen Master, драйвер NVIDIA), «недоступно» — не подходит вашему ПК, «скоро» — ещё в разработке. Нажмите на ярлык: откроется окно с пояснением и ссылкой на официальный сайт.</value></data>
   <data name="ai.n.session" xml:space="preserve"><value>Игровой режим Corvite работает автоматически: приложение замечает полноэкранную игру, включает параметры сессии (приоритет процесса, очистка памяти, остановка лишних служб, закрытие фоновых программ) и после выхода из игры всё возвращает. Эти параметры в разделах «Windows», «Память и диск» и «Фон и службы».</value></data>
@@ -623,4 +615,63 @@
   <data name="upn.open" xml:space="preserve"><value>Открыть страницу</value></data>
   <data name="upn.x" xml:space="preserve"><value>Позже</value></data>
   <data name="splash_t" xml:space="preserve"><value>Загрузка…</value></data>
+  <data name="ai.c.game" xml:space="preserve"><value>Оптимизировать под игру</value></data>
+  <data name="ai.c.lag" xml:space="preserve"><value>Почему лагает?</value></data>
+  <data name="ai.c.help" xml:space="preserve"><value>Что ты умеешь?</value></data>
+  <data name="ai.c.explain" xml:space="preserve"><value>Объяснить</value></data>
+  <data name="ai.c.more" xml:space="preserve"><value>Подробнее</value></data>
+  <data name="ai.c.params" xml:space="preserve"><value>Подробно о параметрах</value></data>
+  <data name="ai.c.ingame" xml:space="preserve"><value>Настройки в игре</value></data>
+  <data name="ai.c.list" xml:space="preserve"><value>Показать список</value></data>
+  <data name="ai.g.ask" xml:space="preserve"><value>Какую игру или жанр? Выберите или напишите название.</value></data>
+  <data name="ai.s.btn" xml:space="preserve"><value>Подготовить выбранное</value></data>
+  <data name="ai.s.none" xml:space="preserve"><value>Ничего не выбрано.</value></data>
+  <data name="ai.s.done" xml:space="preserve"><value>Подготовлено изменений: {0}. В систему они пока не записаны.</value></data>
+  <data name="ai.p.nofps.s" xml:space="preserve"><value>стабильность и отклик</value></data>
+  <data name="ai.a.btn" xml:space="preserve"><value>Применить</value></data>
+  <data name="ai.a.none" xml:space="preserve"><value>Сейчас нет подготовленных изменений.</value></data>
+  <data name="ai.a.pending" xml:space="preserve"><value>Ждут применения: {0}. Общий риск: {1}. Красная зона потребует отдельного подтверждения.</value></data>
+  <data name="ai.r.btn" xml:space="preserve"><value>Сбросить подготовленное</value></data>
+  <data name="ai.r.done" xml:space="preserve"><value>Подготовленные изменения сброшены.</value></data>
+  <data name="ai.r.none" xml:space="preserve"><value>Подготовленных изменений нет, сбрасывать нечего.</value></data>
+  <data name="ai.r.ask" xml:space="preserve"><value>Подготовлено изменений: {0}. Сбросить их до применённых значений?</value></data>
+  <data name="ai.u.btn" xml:space="preserve"><value>Откатить последнее применение</value></data>
+  <data name="ai.u.started" xml:space="preserve"><value>Откатываю последнее применение…</value></data>
+  <data name="ai.u.genre" xml:space="preserve"><value>Добавляю игру «{0}». Какого она типа? От этого зависят параметры и настройки в игре.</value></data>
+  <data name="ai.u.g.FPS" xml:space="preserve"><value>Шутер (FPS)</value></data>
+  <data name="ai.u.g.MOBA" xml:space="preserve"><value>MOBA</value></data>
+  <data name="ai.u.g.TPS" xml:space="preserve"><value>От 3-го лица (TPS)</value></data>
+  <data name="ai.u.x" xml:space="preserve"><value>Отмена</value></data>
+  <data name="ai.u.cancel" xml:space="preserve"><value>Хорошо, не добавляю.</value></data>
+  <data name="ai.u.fail" xml:space="preserve"><value>Не получилось добавить: название должно быть от 2 до 40 символов.</value></data>
+  <data name="ai.u.added" xml:space="preserve"><value>Игра «{0}» добавлена (тип {1}). Теперь можно просто назвать её.</value></data>
+  <data name="ai.v.off" xml:space="preserve"><value>выключено</value></data>
+  <data name="ai.o.done" xml:space="preserve"><value>Открыл раздел «{0}».</value></data>
+  <data name="ai.l.pend" xml:space="preserve"><value>Ждут применения ({0}):</value></data>
+  <data name="ai.l.diff" xml:space="preserve"><value>Отличаются от исходных настроек ({0}):</value></data>
+  <data name="ai.l.none" xml:space="preserve"><value>Пока всё как в исходных настройках, ничего не менялось.</value></data>
+  <data name="ai.l.more" xml:space="preserve"><value>…и ещё {0}.</value></data>
+  <data name="ai.z.game" xml:space="preserve"><value>Вы имели в виду игру «{0}»?</value></data>
+  <data name="ai.z.tweak" xml:space="preserve"><value>Похоже, вы про параметр «{0}». Верно?</value></data>
+  <data name="ai.z.many" xml:space="preserve"><value>Не уверен, что понял. Возможно, вы имели в виду:</value></data>
+  <data name="ai.d.head" xml:space="preserve"><value>Что может мешать:</value></data>
+  <data name="ai.d.none" xml:space="preserve"><value>Явных причин не вижу: температуры, память и питание в норме, ключевые параметры включены.</value></data>
+  <data name="ai.d.nolive" xml:space="preserve"><value>Датчики сейчас не отвечают, поэтому смотрю только на конфигурацию.</value></data>
+  <data name="ai.d.note" xml:space="preserve"><value>Замер сделан сейчас. Для точности запустите проверку во время игры.</value></data>
+  <data name="ai.d.cpu_hot" xml:space="preserve"><value>Процессор горячий ({0} °C): возможно снижение частоты из-за перегрева. Проверьте охлаждение и пыль.</value></data>
+  <data name="ai.d.gpu_hot" xml:space="preserve"><value>Видеокарта горячая ({0} °C): возможно снижение частоты. Проверьте охлаждение и потоки воздуха в корпусе.</value></data>
+  <data name="ai.d.ram_full" xml:space="preserve"><value>Память занята на {0}%: системе не хватает места, начинается подкачка. Закройте лишние программы.</value></data>
+  <data name="ai.d.cpu_bound" xml:space="preserve"><value>Процессор загружен на {0}%, видеокарта простаивает: FPS ограничивает процессор.</value></data>
+  <data name="ai.d.battery" xml:space="preserve"><value>Ноутбук работает от батареи: производительность урезана. Подключите зарядку.</value></data>
+  <data name="ai.d.hdd" xml:space="preserve"><value>Система или игра на жёстком диске (HDD): отсюда долгие загрузки и подлагивания при подгрузке. Лучше перенести игру на SSD.</value></data>
+  <data name="ai.d.ram_slow" xml:space="preserve"><value>Память работает на базовой частоте (JEDEC). Если модули поддерживают XMP или EXPO, включите профиль в BIOS.</value></data>
+  <data name="ai.d.tier_low" xml:space="preserve"><value>Железо скромное: в игре снизьте разрешение и тени, это даст больше, чем любые параметры системы.</value></data>
+  <data name="ai.d.tweaks_off" xml:space="preserve"><value>Не включены безопасные параметры для игр ({0}). Я могу подобрать их под вашу игру.</value></data>
+  <data name="ai.h.t" xml:space="preserve"><value>CORVI ЗАМЕТИЛ</value></data>
+  <data name="ai.h.open" xml:space="preserve"><value>Открыть</value></data>
+  <data name="ai.h.optimise" xml:space="preserve"><value>Подобрать</value></data>
+  <data name="ai.h.ram_slow" xml:space="preserve"><value>Память работает на базовой частоте (JEDEC). Если модули поддерживают XMP или EXPO, включите профиль в BIOS.</value></data>
+  <data name="ai.h.hdd" xml:space="preserve"><value>Диск не SSD: игры на нём загружаются дольше и могут подлагивать.</value></data>
+  <data name="ai.h.battery" xml:space="preserve"><value>Ноутбук работает от батареи: для игр подключите зарядку.</value></data>
+  <data name="ai.h.tweaks_off" xml:space="preserve"><value>Не включено безопасных игровых параметров: {0}.</value></data>
 </root>

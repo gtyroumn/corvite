@@ -146,6 +146,7 @@ public partial class MainViewModel : ObservableObject
     public MainViewModel()
     {
         // persisted choices
+        GameListUpdater.Configure();
         Loc.I.Set(_settings.Language);
         if (_settings.Platform != null) Platform = _settings.Platform == "laptop" ? PlatformKind.Laptop : PlatformKind.Pc;
 
@@ -180,6 +181,7 @@ public partial class MainViewModel : ObservableObject
         Loc.I.LanguageChanged += RefreshAll;
         Loc.I.LanguageChanged += AiRelocalize;
         _ = CheckUpdateAsync();
+        _ = UpdateGameListAsync();
         Navigate(Section.Overview);
         PlatStep = _settings.Platform == null ? 1 : 0; // first launch: choose PC / laptop (TZ 7.4)
 

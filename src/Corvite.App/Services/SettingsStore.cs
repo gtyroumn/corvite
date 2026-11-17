@@ -16,6 +16,12 @@ public sealed class AppSettings
 
     /// <summary>Ask GitHub once at start whether a newer release exists. Set to false in config.json to switch it off.</summary>
     public bool CheckUpdates { get; set; } = true;
+
+    /// <summary>Download the newest game list for the advisor from GitHub at start (a few KB, no data sent). Set to false to switch it off.</summary>
+    public bool UpdateGameList { get; set; } = true;
+
+    /// <summary>Ids of Overview hints the player has closed.</summary>
+    public List<string> HiddenHints { get; set; } = new();
 }
 
 public static class SettingsStore

@@ -198,6 +198,38 @@
                                             </TextBlock>
                                             <Button Style="{StaticResource PrimaryBtn}" Content="{Binding ActionText}" Command="{Binding ActionCommand}" Padding="10,5" FontSize="12"
                                                     HorizontalAlignment="Left" Margin="0,8,0,0" Visibility="{Binding HasAction, Converter={StaticResource B2V}}"/>
+                                            <!-- checklist of proposed changes: untick what you do not want -->
+                                            <ItemsControl ItemsSource="{Binding Changes.Items}" Margin="0,8,0,0"
+                                                          Visibility="{Binding HasChanges, Converter={StaticResource B2V}}">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid Margin="0,0,0,7">
+                                                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                                                            <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding IsChecked, Mode=TwoWay}" VerticalAlignment="Top" Margin="0,2,10,0"/>
+                                                            <StackPanel Grid.Column="1">
+                                                                <TextBlock Text="{Binding Title}" TextWrapping="Wrap" FontSize="12.5"/>
+                                                                <TextBlock Text="{Binding Gain}" TextWrapping="Wrap" FontSize="11.5" Foreground="{StaticResource Fg3}"/>
+                                                            </StackPanel>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                            <!-- suggested next steps -->
+                                            <ItemsControl ItemsSource="{Binding Chips}" Margin="0,8,0,0" Visibility="{Binding HasChips, Converter={StaticResource B2V}}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate><WrapPanel/></ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate DataType="{x:Type vm:ChatBtn}">
+                                                        <Grid Margin="0,0,6,6">
+                                                            <Button Style="{StaticResource PrimaryBtn}" Content="{Binding Text}" Command="{Binding Command}" Padding="10,5" FontSize="12"
+                                                                    Visibility="{Binding PrimaryVisibility}"/>
+                                                            <Button Style="{StaticResource GhostBtn}" Content="{Binding Text}" Command="{Binding Command}" Padding="10,5" FontSize="12"
+                                                                    Visibility="{Binding GhostVisibility}"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>
