@@ -439,11 +439,6 @@
             <!-- ===== Loading screen: light centre, dark edges; the arc draws, the arrowhead flies in from the bottom right ===== -->
             <Grid x:Name="Splash" Grid.RowSpan="3" Panel.ZIndex="100" IsHitTestVisible="{Binding SplashVisible}">
                 <Grid.Background><SolidColorBrush Color="#090b16"/></Grid.Background>
-                <Grid IsHitTestVisible="False" CacheMode="BitmapCache">
-                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.85,-0.08" GradientOrigin="0.85,-0.08" RadiusX="0.46" RadiusY="0.55"><GradientStop Color="#996E6EFF" Offset="0"/><GradientStop Color="#006E6EFF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
-                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0,1.05" GradientOrigin="0,1.05" RadiusX="0.42" RadiusY="0.55"><GradientStop Color="#6B32AAFF" Offset="0"/><GradientStop Color="#0032AAFF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
-                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="0.3" RadiusY="0.38"><GradientStop Color="#29AA78FF" Offset="0"/><GradientStop Color="#00AA78FF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
-                </Grid>
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Setter Property="Visibility" Value="Visible"/>
@@ -467,6 +462,11 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Style>
+                <Grid IsHitTestVisible="False" CacheMode="BitmapCache">
+                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.85,-0.08" GradientOrigin="0.85,-0.08" RadiusX="0.46" RadiusY="0.55"><GradientStop Color="#996E6EFF" Offset="0"/><GradientStop Color="#006E6EFF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0,1.05" GradientOrigin="0,1.05" RadiusX="0.42" RadiusY="0.55"><GradientStop Color="#6B32AAFF" Offset="0"/><GradientStop Color="#0032AAFF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="0.3" RadiusY="0.38"><GradientStop Color="#29AA78FF" Offset="0"/><GradientStop Color="#00AA78FF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                </Grid>
 
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-30,0,0">
                     <Viewbox Width="130" Height="130" HorizontalAlignment="Center">

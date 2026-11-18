@@ -491,9 +491,9 @@
             </Grid>
 
             <!-- quiet hints from Corvi: shown only when there is something worth saying -->
-            <Border Margin="0,14,0,0" Style="{StaticResource GlassCard}" Padding="18,16">
+            <Border Margin="0,14,0,0" Padding="18,16">
                 <Border.Style>
-                    <Style TargetType="Border">
+                    <Style TargetType="Border" BasedOn="{StaticResource GlassCard}">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Hints.Count}" Value="0"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>
                         </Style.Triggers>
