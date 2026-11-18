@@ -59,6 +59,10 @@ public sealed class MonitorCardVm : ObservableObject
     public bool IsDemo { get; private set; } = true;
     public PointCollection Points { get; private set; } = new();
     public PointCollection Area { get; private set; } = new();
+    // progress ring (Liquid Ice): dash length in stroke-thickness units, circumference of the 64 px circle / 6 px stroke = 33.5
+    public DoubleCollection RingDash { get; private set; } = new() { 0, 100 };
+    public Brush RingBrush => (Brush)new BrushConverter().ConvertFromString(
+        _titleKey == "ov.gpu" ? "#52e49a" : _titleKey == "ov.ram" ? "#f2a05a" : "#c39bff")!;
 
     public MonitorCardVm(string titleKey, string unit, double lo, double hi, bool unitIsKey = false)
     { _titleKey = titleKey; _unit = unit; _unitIsKey = unitIsKey; _lo = lo; _hi = hi; }
@@ -90,6 +94,8 @@ public sealed class MonitorCardVm : ObservableObject
             foreach (var pt in pts) area.Add(pt);
             area.Add(new System.Windows.Point(100, 30));
             Points = pts; Area = area;
+            var frac = Math.Clamp((d - _lo) / (_hi - _lo), 0, 1);
+            RingDash = new DoubleCollection { frac * 33.5, 100 };
         }
         OnPropertyChanged(string.Empty);
     }

@@ -147,8 +147,8 @@
         <StackPanel Margin="0,0,0,0">
             <TextBlock Text="{Binding Title}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}"
                        FontWeight="SemiBold" FontSize="11" Margin="2,20,0,8"/>
-            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10">
-                <Border CornerRadius="10" ClipToBounds="True">
+            <Border Style="{StaticResource GlassCard}">
+                <Border CornerRadius="27" ClipToBounds="True">
                     <ItemsControl ItemsSource="{Binding Items}" Margin="0,-1,0,0"/>
                 </Border>
             </Border>
@@ -173,7 +173,7 @@
         <StackPanel>
             <TextBlock Text="{Binding Title}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="24"/>
             <TextBlock Text="{Binding Description}" Foreground="{StaticResource Fg2}" Margin="0,4,0,18" TextWrapping="Wrap"/>
-            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18">
+            <Border Style="{StaticResource GlassCard}" Padding="18">
                 <TextBlock Text="{Binding Text}" Foreground="{StaticResource Fg2}" TextWrapping="Wrap"/>
             </Border>
         </StackPanel>
@@ -182,7 +182,7 @@
 
     <!-- ===== Hardware & clocks (stage 2) ===== -->
     <DataTemplate DataType="{x:Type vm:HwCardVm}">
-        <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10"
+        <Border Style="{StaticResource GlassCard}"
                 Padding="18,16" Margin="0,0,14,14">
             <StackPanel>
                 <TextBlock Text="{Binding Title}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}"
@@ -252,7 +252,7 @@
                        Visibility="{Binding NoData, Converter={StaticResource B2V}}"/>
 
             <!-- chip picker -->
-            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="16,14" Margin="0,0,0,14"
+            <Border Style="{StaticResource GlassCard}" Padding="16,14" Margin="0,0,0,14"
                     Visibility="{Binding HasData, Converter={StaticResource B2V}}">
                 <StackPanel>
                     <TextBlock Text="{Binding PickTitle}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
@@ -283,7 +283,7 @@
                 </StackPanel>
             </Border>
 
-            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="6"
+            <Border Style="{StaticResource GlassCard}" Padding="6"
                     Visibility="{Binding HasData, Converter={StaticResource B2V}}">
                 <StackPanel>
                     <Grid Margin="12,8,12,8">
@@ -328,7 +328,7 @@
             <TextBlock Text="{Binding Note}" Foreground="{StaticResource Fg3}" FontSize="12.5" TextWrapping="Wrap" Margin="2,12,0,0"
                        Visibility="{Binding HasData, Converter={StaticResource B2V}}"/>
 
-            <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="16,14" Margin="0,14,0,0">
+            <Border Style="{StaticResource GlassCard}" Padding="16,14" Margin="0,14,0,0">
                 <StackPanel>
                     <TextBlock Text="{Binding TbTitle}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
                     <TextBlock FontSize="12.5" TextWrapping="Wrap" Foreground="{StaticResource Fg2}" Margin="0,8,0,0"><Run Text="{loc:T r_tb_1h}" Foreground="{StaticResource Fg}" FontWeight="SemiBold"/> <Run Text="{loc:T r_tb_1}"/></TextBlock>
@@ -344,7 +344,7 @@
 
     <!-- ===== Overview ===== -->
     <DataTemplate x:Key="MonitorCard" DataType="{x:Type vm:MonitorCardVm}">
-        <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16" Margin="0,0,14,0">
+        <Border Style="{StaticResource GlassCard}" Padding="18,16" Margin="0,0,14,0">
             <StackPanel>
                 <Grid Margin="0,0,0,12">
                     <TextBlock Text="{Binding Title}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
@@ -353,14 +353,26 @@
                         <TextBlock Text="{Binding DemoTag}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource MonoFont}" FontSize="10"/>
                     </Border>
                 </Grid>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding Value}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="30"/>
-                    <TextBlock Text="{Binding Unit}" Foreground="{StaticResource Fg2}" FontFamily="{StaticResource MonoFont}" FontSize="14" VerticalAlignment="Bottom" Margin="4,0,0,4"/>
-                </StackPanel>
-                <TextBlock Text="{Binding SubText}" Foreground="{StaticResource Fg2}" FontFamily="{StaticResource MonoFont}" FontSize="12" Margin="0,2,0,0"/>
+                <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                    <StackPanel VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Value}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="30"/>
+                            <TextBlock Text="{Binding Unit}" Foreground="{StaticResource Fg2}" FontFamily="{StaticResource MonoFont}" FontSize="14" VerticalAlignment="Bottom" Margin="4,0,0,4"/>
+                        </StackPanel>
+                        <TextBlock Text="{Binding SubText}" Foreground="{StaticResource Fg2}" FontFamily="{StaticResource MonoFont}" FontSize="12" Margin="0,2,0,0"/>
+                    </StackPanel>
+                    <Grid Grid.Column="1" Width="70" Height="70" Margin="8,0,0,0">
+                        <Ellipse Width="70" Height="70" Stroke="#1FFFFFFF" StrokeThickness="6"/>
+                        <Ellipse Width="70" Height="70" Stroke="{Binding RingBrush}" StrokeThickness="6" StrokeDashArray="{Binding RingDash}"
+                                 StrokeStartLineCap="Round" StrokeEndLineCap="Round" RenderTransformOrigin="0.5,0.5">
+                            <Ellipse.RenderTransform><RotateTransform Angle="-90"/></Ellipse.RenderTransform>
+                        </Ellipse>
+                    </Grid>
+                </Grid>
                 <Viewbox Stretch="Fill" Height="38" Margin="0,10,0,0">
                     <Canvas Width="100" Height="30">
-                        <Polygon Points="{Binding Area}" Fill="#24a259f0"/>
+                        <Polygon Points="{Binding Area}" Fill="#24b79cff"/>
                         <Polyline Points="{Binding Points}" Stroke="{StaticResource Go}" StrokeThickness="0.9" StrokeLineJoin="Round"/>
                     </Canvas>
                 </Viewbox>
@@ -374,16 +386,16 @@
                 CommandParameter="{Binding}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
-                    <Border x:Name="Bd" Background="{StaticResource Raise}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="13,12">
+                    <Border x:Name="Bd" Background="{StaticResource GlassChip}" BorderBrush="{StaticResource GlassEdge}" BorderThickness="1" CornerRadius="22" Padding="16,13">
                         <ContentPresenter/>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Fg3}"/>
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource GlassSel}"/>
                         </Trigger>
                         <DataTrigger Binding="{Binding IsSelected}" Value="True">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Go}"/>
-                            <Setter TargetName="Bd" Property="Background" Value="#2a1a4a"/>
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="#BFC8CDFF"/>
+                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource GlassSelProf}"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -411,7 +423,7 @@
 
     <DataTemplate DataType="{x:Type vm:OverviewPage}">
         <StackPanel>
-            <Border Margin="0,0,0,16" Padding="16,12" CornerRadius="10" Background="{StaticResource Raise}" BorderBrush="{StaticResource Go}" BorderThickness="1"
+            <Border Margin="0,0,0,16" Padding="16,12" CornerRadius="24" Background="{StaticResource GlassSelProf}" BorderBrush="#BFC8CDFF" BorderThickness="1"
                     Visibility="{Binding Main.UpdVisible, Converter={StaticResource B2V}}">
                 <Grid>
                     <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
@@ -439,7 +451,7 @@
             <Grid Margin="0,14,0,0">
                 <Grid.ColumnDefinitions><ColumnDefinition Width="7*"/><ColumnDefinition Width="5*"/></Grid.ColumnDefinitions>
 
-                <Border Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16" Margin="0,0,14,0">
+                <Border Style="{StaticResource GlassCard}" Padding="18,16" Margin="0,0,14,0">
                     <StackPanel>
                         <TextBlock Text="{loc:T prof}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,0,0,12"/>
                         <UniformGrid Columns="2">
@@ -451,7 +463,7 @@
                     </StackPanel>
                 </Border>
 
-                <Border Grid.Column="1" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16">
+                <Border Grid.Column="1" Style="{StaticResource GlassCard}" Padding="18,16">
                     <StackPanel>
                         <TextBlock Text="{loc:T eff}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,0,0,12"/>
                         <TextBlock Text="{Binding Main.GainText}" Foreground="{StaticResource Go}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="36"/>
@@ -479,7 +491,7 @@
             </Grid>
 
             <!-- quiet hints from Corvi: shown only when there is something worth saying -->
-            <Border Margin="0,14,0,0" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16">
+            <Border Margin="0,14,0,0" Style="{StaticResource GlassCard}" Padding="18,16">
                 <Border.Style>
                     <Style TargetType="Border">
                         <Style.Triggers>
@@ -506,7 +518,7 @@
             </Border>
 
             <!-- AI advisor (stage 7) -->
-            <Border Margin="0,14,0,0" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16">
+            <Border Margin="0,14,0,0" Style="{StaticResource GlassCard}" Padding="18,16">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
                         <TextBlock Text="{loc:T ai_t}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" VerticalAlignment="Center"/>
@@ -520,7 +532,7 @@
             </Border>
 
             <!-- protection (TZ 7.1) -->
-            <Border Margin="0,14,0,0" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16">
+            <Border Margin="0,14,0,0" Style="{StaticResource GlassCard}" Padding="18,16">
                 <StackPanel>
                     <TextBlock Text="{loc:T guard}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,0,0,4"/>
                     <ItemsControl ItemsSource="{Binding Main.GuardTweaks}"/>
@@ -528,7 +540,7 @@
             </Border>
 
             <!-- backup of original settings (TZ 13) -->
-            <Border Margin="0,14,0,0" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="10" Padding="18,16">
+            <Border Margin="0,14,0,0" Style="{StaticResource GlassCard}" Padding="18,16">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
                         <TextBlock Text="{loc:T bk_t}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" VerticalAlignment="Center"/>

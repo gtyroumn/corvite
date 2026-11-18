@@ -49,14 +49,12 @@
 
     <Border BorderBrush="{StaticResource Line}" BorderThickness="1">
         <Grid>
-            <Grid.Background>
-                <RadialGradientBrush Center="0.5,0.46" GradientOrigin="0.5,0.46" RadiusX="0.6" RadiusY="0.7">
-                    <GradientStop Color="#4a2a82" Offset="0"/>
-                    <GradientStop Color="#2a1850" Offset="0.38"/>
-                    <GradientStop Color="#150f24" Offset="0.72"/>
-                    <GradientStop Color="#0a0710" Offset="1"/>
-                </RadialGradientBrush>
-            </Grid.Background>
+            <Grid.Background><SolidColorBrush Color="#090b16"/></Grid.Background>
+            <Grid IsHitTestVisible="False" CacheMode="BitmapCache">
+                <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.85,-0.08" GradientOrigin="0.85,-0.08" RadiusX="0.46" RadiusY="0.55"><GradientStop Color="#996E6EFF" Offset="0"/><GradientStop Color="#006E6EFF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0,1.05" GradientOrigin="0,1.05" RadiusX="0.42" RadiusY="0.55"><GradientStop Color="#6B32AAFF" Offset="0"/><GradientStop Color="#0032AAFF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.5,0.5" GradientOrigin="0.5,0.5" RadiusX="0.3" RadiusY="0.38"><GradientStop Color="#29AA78FF" Offset="0"/><GradientStop Color="#00AA78FF" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+            </Grid>
 
             <!-- window buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,9,10,0" Panel.ZIndex="10">
@@ -73,21 +71,21 @@
                         Visibility="{Binding IsOptions, Converter={StaticResource B2V}}">
                 <Viewbox Width="64" Height="64">
                     <Canvas Width="100" Height="100">
-                        <Path Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9">
-                            <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
+                        <Path Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#a9b6ff" StrokeThickness="9">
+                            <Path.Effect><DropShadowEffect Color="#6E82FF" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
                         </Path>
-                        <Path Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff">
-                            <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
+                        <Path Data="M66,28 L96,46 L70,40 Z" Fill="#a9b6ff">
+                            <Path.Effect><DropShadowEffect Color="#6E82FF" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
                         </Path>
-                        <Path Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"/>
-                        <Path Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff"/>
+                        <Path Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#a9b6ff" StrokeThickness="9"/>
+                        <Path Data="M66,28 L96,46 L70,40 Z" Fill="#a9b6ff"/>
                     </Canvas>
                 </Viewbox>
                 <TextBlock Text="{Binding Title}" HorizontalAlignment="Center" Margin="0,14,0,0" FontFamily="{StaticResource DisplayFont}" FontWeight="Bold" FontSize="24"/>
                 <TextBlock Text="{Binding Subtitle}" HorizontalAlignment="Center" Margin="0,4,0,18" Foreground="{StaticResource Fg2}" FontSize="13"/>
 
                 <!-- install -->
-                <Border Padding="20" CornerRadius="14" Background="#D91b1825" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                <Border Padding="22" Style="{StaticResource GlassCard}"
                         Visibility="{Binding IsInstall, Converter={StaticResource B2V}}">
                     <StackPanel>
                         <TextBlock Text="INSTALL LOCATION" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
@@ -120,7 +118,7 @@
                 </Border>
 
                 <!-- uninstall -->
-                <Border Padding="20" CornerRadius="14" Background="#D91b1825" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                <Border Padding="22" Style="{StaticResource GlassCard}"
                         Visibility="{Binding IsUninstall, Converter={StaticResource B2V}}">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -152,12 +150,12 @@
                     <Viewbox Width="130" Height="130" HorizontalAlignment="Center">
                         <Canvas Width="100" Height="100">
                             <!-- glow layer: blurred copies UNDER the crisp shapes, so the arrowhead's shadow never falls on the arc (that was the visible seam) -->
-                            <Path x:Name="SetupArcGlow" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
+                            <Path x:Name="SetupArcGlow" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#a9b6ff" StrokeThickness="9"
                                   StrokeDashArray="17.1 100" StrokeDashOffset="17.1">
-                                <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
+                                <Path.Effect><DropShadowEffect Color="#6E82FF" BlurRadius="16" ShadowDepth="0" Opacity="0.75"/></Path.Effect>
                             </Path>
-                            <Path x:Name="SetupHeadGlow" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
-                                <Path.Effect><DropShadowEffect Color="#a259f0" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
+                            <Path x:Name="SetupHeadGlow" Data="M66,28 L96,46 L70,40 Z" Fill="#a9b6ff" Opacity="0">
+                                <Path.Effect><DropShadowEffect Color="#6E82FF" BlurRadius="12" ShadowDepth="0" Opacity="0.8"/></Path.Effect>
                                 <Path.RenderTransform>
                                     <TransformGroup>
                                         <RotateTransform x:Name="SetupRotG" CenterX="77" CenterY="38" Angle="720"/>
@@ -166,9 +164,9 @@
                                 </Path.RenderTransform>
                             </Path>
                             <!-- crisp layer: same colour, no effects, the arrowhead overlaps the arc, so there is nothing to show a join -->
-                            <Path x:Name="SetupArc" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#b583ff" StrokeThickness="9"
+                            <Path x:Name="SetupArc" Data="M75,33.4 A30,30 0 1 0 75,66.6" Stroke="#a9b6ff" StrokeThickness="9"
                                   StrokeDashArray="17.1 100" StrokeDashOffset="17.1"/>
-                            <Path x:Name="SetupHead" Data="M66,28 L96,46 L70,40 Z" Fill="#b583ff" Opacity="0">
+                            <Path x:Name="SetupHead" Data="M66,28 L96,46 L70,40 Z" Fill="#a9b6ff" Opacity="0">
                                 <Path.RenderTransform>
                                     <TransformGroup>
                                         <RotateTransform x:Name="SetupRot" CenterX="77" CenterY="38" Angle="720"/>
@@ -184,8 +182,8 @@
 
                 <!-- installing: progress -->
                 <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,56" Visibility="{Binding IsWorking, Converter={StaticResource B2V}}">
-                    <Border Width="300" Height="4" CornerRadius="2" Background="#22ffffff" ClipToBounds="True">
-                        <Border CornerRadius="2" Background="#c9a2ff" HorizontalAlignment="Stretch" RenderTransformOrigin="0,0.5">
+                    <Border Width="300" Height="4" CornerRadius="2" Background="#1AFFFFFF" ClipToBounds="True">
+                        <Border CornerRadius="2" Background="{StaticResource AccentGrad}" HorizontalAlignment="Stretch" RenderTransformOrigin="0,0.5">
                             <Border.RenderTransform><ScaleTransform ScaleX="{Binding ProgressScale}"/></Border.RenderTransform>
                         </Border>
                     </Border>

@@ -17,8 +17,8 @@ public static class Palette
     public static readonly Brush Warn = B("#e9c93f");
     public static readonly Brush Hot = B("#f2873a");
     public static readonly Brush Stop = B("#f04b4b");
-    public static readonly Brush AccentLight = B("#a259f0");
-    public static readonly Brush Dim = B("#6f6985");
+    public static readonly Brush AccentLight = B("#b79cff");
+    public static readonly Brush Dim = B("#7d7595");
 
     /// <summary>0 green, 1 yellow, 2 red.</summary>
     public static Brush Risk(int zone) => zone <= 0 ? Ok : zone == 1 ? Warn : Stop;
