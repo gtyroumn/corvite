@@ -55,9 +55,9 @@
     <!-- glass card: used on every content card -->
     <!-- violet glow rim for the main panels -->
     <LinearGradientBrush x:Key="GlowEdge" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="#66B49BEA" Offset="0"/>
-        <GradientStop Color="#268A6FD0" Offset="0.5"/>
-        <GradientStop Color="#4D7A5CC8" Offset="1"/>
+        <GradientStop Color="#B3C4A8FF" Offset="0"/>
+        <GradientStop Color="#66A07CF0" Offset="0.5"/>
+        <GradientStop Color="#99A07CF0" Offset="1"/>
     </LinearGradientBrush>
     <Style x:Key="GlassCard" TargetType="Border">
         <Setter Property="CornerRadius" Value="20"/>
