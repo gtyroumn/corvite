@@ -99,7 +99,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Border Margin="14,2,0,14" CornerRadius="22" Background="#14A259F0" BorderBrush="#A259F0" BorderThickness="1.5" IsHitTestVisible="False"><Border.Effect><DropShadowEffect Color="#a259f0" Opacity="0.5" BlurRadius="22" ShadowDepth="0"/></Border.Effect></Border>
+                <Border Margin="14,2,0,14" CornerRadius="22" Background="#0A8040D0" BorderBrush="#996B3FD0" BorderThickness="1" IsHitTestVisible="False"><Border.Effect><DropShadowEffect Color="#7a3fd0" Opacity="0.34" BlurRadius="22" ShadowDepth="0"/></Border.Effect></Border>
                 <Border Style="{StaticResource GlassCard}" BorderBrush="{StaticResource GlowEdge}" CornerRadius="22" Margin="14,2,0,14" Padding="12,16">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -129,7 +129,7 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <Border Grid.Row="1" Margin="0,10,0,0" CornerRadius="14" Background="#14A259F0" BorderBrush="#A259F0" BorderThickness="1.5" IsHitTestVisible="False"><Border.Effect><DropShadowEffect Color="#a259f0" Opacity="0.4" BlurRadius="14" ShadowDepth="0"/></Border.Effect></Border>
+                    <Border Grid.Row="1" Margin="0,10,0,0" CornerRadius="14" Background="#0A8040D0" BorderBrush="#996B3FD0" BorderThickness="1" IsHitTestVisible="False"><Border.Effect><DropShadowEffect Color="#7a3fd0" Opacity="0.26" BlurRadius="14" ShadowDepth="0"/></Border.Effect></Border>
                 <Border Grid.Row="1" Background="{StaticResource GlassChip}" BorderBrush="{StaticResource GlowEdge}" BorderThickness="1"
                             CornerRadius="14" Padding="14,10" Margin="0,10,0,0">
                         <StackPanel>
@@ -156,7 +156,7 @@
             </Grid>
 
             <!-- ===== Action bar ===== -->
-            <Border Grid.Row="2" Margin="14,0,14,14" CornerRadius="26" Background="#14A259F0" BorderBrush="#A259F0" BorderThickness="1.5" IsHitTestVisible="False"><Border.Effect><DropShadowEffect Color="#a259f0" Opacity="0.5" BlurRadius="22" ShadowDepth="0"/></Border.Effect></Border>
+            <Border Grid.Row="2" Margin="14,0,14,14" CornerRadius="26" Background="#0A8040D0" BorderBrush="#996B3FD0" BorderThickness="1" IsHitTestVisible="False"><Border.Effect><DropShadowEffect Color="#7a3fd0" Opacity="0.34" BlurRadius="22" ShadowDepth="0"/></Border.Effect></Border>
                 <Border Grid.Row="2" Style="{StaticResource GlassCard}" BorderBrush="{StaticResource GlowEdge}" CornerRadius="26" Margin="14,0,14,14" Padding="24,9,12,9">
                 <Grid>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
