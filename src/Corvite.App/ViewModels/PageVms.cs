@@ -169,7 +169,8 @@ public sealed class HardwarePage : PageVm
 {
     private const string Dash = "—";
     private readonly MainViewModel _m;
-    private HwRowVm? _cpuClk, _cpuPw, _gpuClk, _gpuMem, _vram;
+    private HwRowVm? _cpuClk, _cpuPw, _gpuClk, _gpuMem, _vram, _boost;
+    private double _peakMhz;   // highest CPU clock seen this session, shown when the system does not report a boost frequency
 
     public List<HwCardVm> Cards { get; private set; } = new();
     public List<DemoItemVm> Demos { get; private set; } = new();
@@ -223,7 +224,7 @@ public sealed class HardwarePage : PageVm
         {
             new() { Title = $"{L["n_cpu"]} · {Txt(i.CpuName)}", Rows = new()
             {
-                new("cores", Txt(i.Cores)), new("base", Mhz(i.BaseMhz)), new("boost", Mhz(i.BoostMhz)),
+                new("cores", Txt(i.Cores)), new("base", Mhz(i.BaseMhz)), (_boost = new HwRowVm("boost", Mhz(i.BoostMhz))),
                 new("cache", Txt(i.Cache)), new("sock", Txt(i.Socket)),
                 new("tdp", i.TdpW > 0 ? $"{i.TdpW} {L["w"]}" : Dash), _cpuClk, _cpuPw
             } },
@@ -256,6 +257,11 @@ public sealed class HardwarePage : PageVm
     private void ApplyLive(Corvite.Hardware.SensorSample s)
     {
         if (_cpuClk != null) _cpuClk.Value = Mhz(s.CpuClockMhz);
+        if (_boost != null && _m.Info.BoostMhz <= 0 && s.CpuClockMhz is double peak && peak > 0)
+        {
+            _peakMhz = Math.Max(_peakMhz, peak);
+            _boost.Value = "≈ " + Mhz(_peakMhz);
+        }
         if (_cpuPw != null) _cpuPw.Value = s.CpuPowerW is double w && w > 0 ? $"{w:0.#} {Loc.I["w"]}" : Dash;
         if (_gpuClk != null && s.GpuCoreMhz is double gc && gc > 0) _gpuClk.Value = Mhz(gc);
         if (_gpuMem != null && s.GpuMemMhz is double gm && gm > 0) _gpuMem.Value = Mhz(gm);
