@@ -9,6 +9,7 @@ public partial class InstallerWindow : Window
     public InstallerWindow(InstallerViewModel vm)
     {
         InitializeComponent();
+        SourceInitialized += (_, _) => Corvite.App.Theming.WindowCorners.Round(this);
         DataContext = vm;
         vm.PropertyChanged += OnVmChanged;
     }

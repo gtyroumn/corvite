@@ -8,6 +8,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        SourceInitialized += (_, _) => Corvite.App.Theming.WindowCorners.Round(this);
         var vm = new MainViewModel();
         DataContext = vm;
         // paste: take plain text from the clipboard and flatten line breaks (the field is single-line)

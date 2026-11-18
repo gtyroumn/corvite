@@ -12,7 +12,7 @@ namespace Corvite.App.Setup;
 
 public enum SetupPage { Options, Working, Done, Error }
 
-/// <summary>View model of the setup window; the same window serves "install" and "uninstall". Installer texts are English only.</summary>
+/// <summary>View model of the setup window; the same window serves "install" and "uninstall". Installer texts follow the language chosen in the window.</summary>
 public partial class InstallerViewModel : ObservableObject
 {
     private const int MinAnimationMs = 3600;      // the logo animation needs this long to finish
@@ -40,11 +40,12 @@ public partial class InstallerViewModel : ObservableObject
     public bool IsUninstall { get; }
     public bool IsInstall => !IsUninstall;
     public bool HasExisting { get; }
-    public string Title => IsUninstall ? "Uninstall Corvite" : "Install Corvite";
-    public string Subtitle => IsUninstall ? "Corvite will be removed from this computer." : $"Version {Installer.Version}. A few seconds and you are ready to play.";
-    public string PrimaryText => IsUninstall ? "Uninstall" : "Install";
-    public string DoneTitle => IsUninstall ? "Corvite was removed" : "Corvite is installed";
-    public string DoneHint => IsUninstall ? "Your settings and backup are kept unless you chose to delete them." : "Everything is in place. Press Finish to start.";
+    public string this[string key] => SetupText.Get(key, Lang);
+    public string Title => this[IsUninstall ? "t.uninst" : "t.inst"];
+    public string Subtitle => IsUninstall ? this["s.uninst"] : string.Format(this["s.inst"], Installer.Version);
+    public string PrimaryText => this[IsUninstall ? "b.uninst" : "b.inst"];
+    public string DoneTitle => this[IsUninstall ? "d.uninst" : "d.inst"];
+    public string DoneHint => this[IsUninstall ? "h.uninst" : "h.inst"];
 
     [ObservableProperty, NotifyPropertyChangedFor(nameof(IsOptions), nameof(IsWorking), nameof(IsDone), nameof(IsError), nameof(ShowAnim), nameof(CanClose))]
     private SetupPage _page = SetupPage.Options;
@@ -57,6 +58,8 @@ public partial class InstallerViewModel : ObservableObject
 
     [ObservableProperty] private string _dir = "";
     [ObservableProperty, NotifyPropertyChangedFor(nameof(IsRu), nameof(IsUk), nameof(IsEn))] private string _lang = "en";
+    partial void OnLangChanged(string value) { OnPropertyChanged(string.Empty); if (!string.IsNullOrEmpty(_lastStatus)) Status = SetupText.Tr(_lastStatus, value); }
+    private string _lastStatus = "";
     public bool IsRu => Lang == "ru";
     public bool IsUk => Lang == "uk";
     public bool IsEn => Lang == "en";
@@ -74,7 +77,7 @@ public partial class InstallerViewModel : ObservableObject
     [RelayCommand]
     private void Browse()
     {
-        var dlg = new OpenFolderDialog { Title = "Choose where to install Corvite" };
+        var dlg = new OpenFolderDialog { Title = SetupText.Get("dlg", Lang) };
         try { if (Directory.Exists(Dir)) dlg.InitialDirectory = Dir; } catch { }
         if (dlg.ShowDialog() == true) Dir = dlg.FolderName;
     }
@@ -86,7 +89,7 @@ public partial class InstallerViewModel : ObservableObject
         Page = SetupPage.Working;
         Progress = 0; _target = 0; _ease.Start();
         var started = Stopwatch.StartNew();
-        var pr = new Progress<(double Pct, string Text)>(t => { _target = t.Pct; Status = t.Text; });
+        var pr = new Progress<(double Pct, string Text)>(t => { _target = t.Pct; _lastStatus = t.Text; Status = SetupText.Tr(t.Text, Lang); });
         try
         {
             if (IsUninstall) await Installer.UninstallAsync(new UninstallOptions(RestoreSettings, DeleteData, _dry), pr);

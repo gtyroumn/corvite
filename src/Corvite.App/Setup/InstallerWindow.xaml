@@ -88,16 +88,16 @@
                 <Border Padding="22" Style="{StaticResource GlassCard}"
                         Visibility="{Binding IsInstall, Converter={StaticResource B2V}}">
                     <StackPanel>
-                        <TextBlock Text="INSTALL LOCATION" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
+                        <TextBlock Text="{Binding [loc]}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
                         <Grid Margin="0,8,0,0">
                             <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
                             <TextBox Style="{StaticResource RoundInput}" Text="{Binding Dir, UpdateSourceTrigger=PropertyChanged}" FontSize="13"/>
-                            <Button Grid.Column="1" Style="{StaticResource Btn}" Content="Browse…" Margin="8,0,0,0" Command="{Binding BrowseCommand}"/>
+                            <Button Grid.Column="1" Style="{StaticResource Btn}" Content="{Binding [browse]}" Margin="8,0,0,0" Command="{Binding BrowseCommand}"/>
                         </Grid>
-                        <TextBlock Text="An existing installation is updated in place; your settings and backup are kept." Foreground="{StaticResource Fg3}" FontSize="11.5" Margin="0,6,0,0" TextWrapping="Wrap"
+                        <TextBlock Text="{Binding [existing]}" Foreground="{StaticResource Fg3}" FontSize="11.5" Margin="0,6,0,0" TextWrapping="Wrap"
                                    Visibility="{Binding HasExisting, Converter={StaticResource B2V}}"/>
 
-                        <TextBlock Text="PROGRAM LANGUAGE" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,18,0,0"/>
+                        <TextBlock Text="{Binding [lang]}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,18,0,0"/>
                         <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
                             <Button Style="{StaticResource ChoiceBtn}" Tag="{Binding IsRu}" Command="{Binding SetLangCommand}" CommandParameter="ru" Margin="0,0,8,0">
                                 <TextBlock Text="Русский" HorizontalAlignment="Center" FontSize="13"/>
@@ -112,7 +112,7 @@
 
                         <StackPanel Orientation="Horizontal" Margin="0,18,0,0">
                             <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding Desktop}" VerticalAlignment="Center"/>
-                            <TextBlock Text="Create a desktop shortcut" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding [desktop]}" Margin="12,0,0,0" VerticalAlignment="Center"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -124,22 +124,22 @@
                         <StackPanel Orientation="Horizontal">
                             <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding RestoreSettings}" VerticalAlignment="Center"/>
                             <StackPanel Margin="12,0,0,0">
-                                <TextBlock Text="Restore Windows settings to the original values"/>
-                                <TextBlock Text="Uses the backup Corvite saved on first launch." Foreground="{StaticResource Fg3}" FontSize="11.5"/>
+                                <TextBlock Text="{Binding [rest]}"/>
+                                <TextBlock Text="{Binding [rest2]}" Foreground="{StaticResource Fg3}" FontSize="11.5"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Margin="0,16,0,0">
                             <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding DeleteData}" VerticalAlignment="Center"/>
                             <StackPanel Margin="12,0,0,0">
-                                <TextBlock Text="Also delete my settings, log and backup"/>
-                                <TextBlock Text="Not recommended: the backup is what restores your settings." Foreground="{StaticResource Fg3}" FontSize="11.5"/>
+                                <TextBlock Text="{Binding [del]}"/>
+                                <TextBlock Text="{Binding [del2]}" Foreground="{StaticResource Fg3}" FontSize="11.5"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </Border>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,18,0,0">
-                    <Button Style="{StaticResource GhostBtn}" Content="Cancel" Command="{Binding CancelCommand}" Margin="0,0,10,0" Padding="18,9"/>
+                    <Button Style="{StaticResource GhostBtn}" Content="{Binding [cancel]}" Command="{Binding CancelCommand}" Margin="0,0,10,0" Padding="18,9"/>
                     <Button Style="{StaticResource PrimaryBtn}" Content="{Binding PrimaryText}" Command="{Binding RunCommand}" Padding="26,9"/>
                 </StackPanel>
             </StackPanel>
@@ -196,18 +196,18 @@
                     <TextBlock Text="{Binding DoneHint}" HorizontalAlignment="Center" Foreground="{StaticResource Fg2}" FontSize="12.5" Margin="0,4,0,14"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,14" Visibility="{Binding IsInstall, Converter={StaticResource B2V}}">
                         <CheckBox Style="{StaticResource Switch}" IsChecked="{Binding LaunchAfter}" VerticalAlignment="Center"/>
-                        <TextBlock Text="Launch Corvite" Margin="12,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding [launch]}" Margin="12,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
-                    <Button Style="{StaticResource PrimaryBtn}" Content="Finish" Command="{Binding FinishCommand}" Padding="40,9" HorizontalAlignment="Center"/>
+                    <Button Style="{StaticResource PrimaryBtn}" Content="{Binding [finish]}" Command="{Binding FinishCommand}" Padding="40,9" HorizontalAlignment="Center"/>
                 </StackPanel>
             </Grid>
 
             <!-- ===== error ===== -->
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="460" Visibility="{Binding IsError, Converter={StaticResource B2V}}">
-                <TextBlock Text="Something went wrong" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding [wrong]}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="20" HorizontalAlignment="Center"/>
                 <TextBlock Text="{Binding ErrorText}" Foreground="{StaticResource Fg2}" TextWrapping="Wrap" Margin="0,12,0,6" HorizontalAlignment="Center" TextAlignment="Center"/>
-                <TextBlock Text="Details are in %ProgramData%\Corvite\Logs\corvite.log" Foreground="{StaticResource Fg3}" FontSize="11.5" HorizontalAlignment="Center"/>
-                <Button Style="{StaticResource PrimaryBtn}" Content="Close" Command="{Binding CancelCommand}" Padding="40,9" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+                <TextBlock Text="{Binding [details]}" Foreground="{StaticResource Fg3}" FontSize="11.5" HorizontalAlignment="Center"/>
+                <Button Style="{StaticResource PrimaryBtn}" Content="{Binding [close]}" Command="{Binding CancelCommand}" Padding="40,9" Margin="0,20,0,0" HorizontalAlignment="Center"/>
             </StackPanel>
         </Grid>
     </Border>

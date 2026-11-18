@@ -53,6 +53,12 @@
     <LinearGradientBrush x:Key="AccentGrad" StartPoint="0,0" EndPoint="1,1"><GradientStop Color="#b583ff" Offset="0"/><GradientStop Color="#7a0dd4" Offset="1"/></LinearGradientBrush>
 
     <!-- glass card: used on every content card -->
+    <!-- violet glow rim for the main panels -->
+    <LinearGradientBrush x:Key="GlowEdge" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#99C9A2FF" Offset="0"/>
+        <GradientStop Color="#40B583FF" Offset="0.5"/>
+        <GradientStop Color="#80A259F0" Offset="1"/>
+    </LinearGradientBrush>
     <Style x:Key="GlassCard" TargetType="Border">
         <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="Background" Value="{StaticResource GlassBody}"/>
@@ -512,7 +518,8 @@
                         </Trigger>
                         <Trigger Property="Tag" Value="True">
                             <Setter TargetName="Bd" Property="BorderBrush" Value="#C9A2FF"/>
-                            <Setter TargetName="Bd" Property="Background" Value="{StaticResource GlassSelProf}"/>
+                            <Setter TargetName="Bd" Property="BorderThickness" Value="2"/>
+                            <Setter TargetName="Bd" Property="Background" Value="#66B583FF"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

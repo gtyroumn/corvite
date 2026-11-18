@@ -99,8 +99,8 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Border Style="{StaticResource GlassCard}" CornerRadius="22" Margin="14,2,0,14" Padding="12,16">
-                    <Border.Effect><DropShadowEffect Color="Black" Opacity="0.35" BlurRadius="30" ShadowDepth="8" Direction="270"/></Border.Effect>
+                <Border Style="{StaticResource GlassCard}" BorderBrush="{StaticResource GlowEdge}" CornerRadius="22" Margin="14,2,0,14" Padding="12,16">
+                    <Border.Effect><DropShadowEffect Color="#a259f0" Opacity="0.45" BlurRadius="22" ShadowDepth="0"/></Border.Effect>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -129,8 +129,9 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <Border Grid.Row="1" Background="{StaticResource GlassChip}" BorderBrush="{StaticResource GlassEdge}" BorderThickness="1"
+                    <Border Grid.Row="1" Background="{StaticResource GlassChip}" BorderBrush="{StaticResource GlowEdge}" BorderThickness="1"
                             CornerRadius="14" Padding="14,10" Margin="0,10,0,0">
+                        <Border.Effect><DropShadowEffect Color="#a259f0" Opacity="0.35" BlurRadius="14" ShadowDepth="0"/></Border.Effect>
                         <StackPanel>
                             <TextBlock Text="{Binding RailTitle}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}"
                                        FontWeight="SemiBold" FontSize="11" Margin="0,0,0,6"/>
@@ -155,8 +156,8 @@
             </Grid>
 
             <!-- ===== Action bar ===== -->
-            <Border Grid.Row="2" Style="{StaticResource GlassCard}" CornerRadius="26" Margin="14,0,14,14" Padding="24,9,12,9">
-                <Border.Effect><DropShadowEffect Color="Black" Opacity="0.35" BlurRadius="30" ShadowDepth="8" Direction="270"/></Border.Effect>
+            <Border Grid.Row="2" Style="{StaticResource GlassCard}" BorderBrush="{StaticResource GlowEdge}" CornerRadius="26" Margin="14,0,14,14" Padding="24,9,12,9">
+                <Border.Effect><DropShadowEffect Color="#a259f0" Opacity="0.45" BlurRadius="22" ShadowDepth="0"/></Border.Effect>
                 <Grid>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Ellipse Width="8" Height="8" Margin="0,0,10,0" Fill="{StaticResource Fg3}"/>
@@ -185,7 +186,7 @@
                     <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
                     <Grid Margin="16,12,10,8">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{loc:T ai_t}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="14"/>
+                            <TextBlock Text="{loc:T ai_t}" FontFamily="{StaticResource BodyFont}" FontWeight="SemiBold" FontSize="14.5"/>
                         </StackPanel>
                         <Button Style="{StaticResource GhostBtn}" Content="✕" Padding="8,2" HorizontalAlignment="Right" Command="{Binding AiCloseCommand}"/>
                     </Grid>
