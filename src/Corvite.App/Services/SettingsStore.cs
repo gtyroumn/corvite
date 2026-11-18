@@ -22,6 +22,9 @@ public sealed class AppSettings
 
     /// <summary>Ids of Overview hints the player has closed.</summary>
     public List<string> HiddenHints { get; set; } = new();
+
+    /// <summary>Values of the protection settings (rollback on overheat, threshold, restore point, backup) by tweak id.</summary>
+    public Dictionary<string, double> Guard { get; set; } = new();
 }
 
 public static class SettingsStore

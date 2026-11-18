@@ -674,4 +674,17 @@
   <data name="ai.h.hdd" xml:space="preserve"><value>Диск не SSD: игры на нём загружаются дольше и могут подлагивать.</value></data>
   <data name="ai.h.battery" xml:space="preserve"><value>Ноутбук работает от батареи: для игр подключите зарядку.</value></data>
   <data name="ai.h.tweaks_off" xml:space="preserve"><value>Не включено безопасных игровых параметров: {0}.</value></data>
+  <data name="hist.t" xml:space="preserve"><value>История применений</value></data>
+  <data name="hist.back" xml:space="preserve"><value>Вернуть до этого</value></data>
+  <data name="hist.done" xml:space="preserve"><value>Откат выполнен · осталось шагов: </value></data>
+  <data name="hist.n" xml:space="preserve"><value>параметров: {0}</value></data>
+  <data name="pf.exp" xml:space="preserve"><value>Экспорт</value></data>
+  <data name="pf.imp" xml:space="preserve"><value>Импорт</value></data>
+  <data name="pf.exp.tip" xml:space="preserve"><value>Сохранить текущие значения в файл, чтобы перенести на другой ПК</value></data>
+  <data name="pf.imp.tip" xml:space="preserve"><value>Загрузить значения из файла. Они появятся как неприменённые, ничего не записывается, пока вы не нажмёте «Применить»</value></data>
+  <data name="pf.exp.t" xml:space="preserve"><value>Сохранить профиль</value></data>
+  <data name="pf.imp.t" xml:space="preserve"><value>Открыть профиль</value></data>
+  <data name="pf.saved" xml:space="preserve"><value>Профиль сохранён</value></data>
+  <data name="pf.loaded" xml:space="preserve"><value>Профиль загружен, параметров: {0}. Нажмите «Применить»</value></data>
+  <data name="pf.bad" xml:space="preserve"><value>Файл не подходит или в нём нет подходящих параметров</value></data>
 </root>

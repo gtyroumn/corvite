@@ -30,7 +30,7 @@ public partial class MainViewModel : ObservableObject
     private readonly AppSettings _settings = SettingsStore.Load();
     private Dictionary<string, double> _s;
     private Dictionary<string, double> _a;
-    private sealed record HistEntry(Dictionary<string, string> Snaps, Dictionary<string, double> Prior);
+    private sealed record HistEntry(Dictionary<string, string> Snaps, Dictionary<string, double> Prior, DateTime When, List<string> Ids);
     private readonly Stack<HistEntry> _hist = new();
     private readonly TweakEngine _engine = new(Environment.GetCommandLineArgs().Contains("--dry-run"));
     private BaselineData? _baseline;
@@ -151,6 +151,12 @@ public partial class MainViewModel : ObservableObject
         if (_settings.Platform != null) Platform = _settings.Platform == "laptop" ? PlatformKind.Laptop : PlatformKind.Pc;
 
         _s = ProfileEngine.Preset("stock", Platform);
+        foreach (var kv in _settings.Guard)   // protection settings survive restarts
+        {
+            var gd = TweakCatalog.All.FirstOrDefault(x => x.IsGuard && x.Id == kv.Key);
+            if (gd == null || double.IsNaN(kv.Value)) continue;
+            _s[gd.Id] = gd.IsToggle ? (kv.Value >= 0.5 ? 1 : 0) : Math.Clamp(kv.Value, gd.Min, gd.Max);
+        }
         _a = new Dictionary<string, double>(_s);
 
         foreach (var d in TweakCatalog.All) _vms[d.Id] = new TweakVm(d, this);
@@ -456,7 +462,8 @@ public partial class MainViewModel : ObservableObject
         if (IsBusy) return;
         var changed = Changed();
         var req = changed.Where(d => !d.IsGuard).ToDictionary(d => d.Id, d => _s[d.Id]);
-        foreach (var d in changed.Where(d => d.IsGuard)) _a[d.Id] = _s[d.Id]; // app settings: nothing to write to Windows
+        foreach (var d in changed.Where(d => d.IsGuard)) { _a[d.Id] = _s[d.Id]; _settings.Guard[d.Id] = _s[d.Id]; }   // app settings: nothing to write to Windows
+        if (changed.Any(d => d.IsGuard)) SettingsStore.Save(_settings);
         if (req.Count == 0) { RefreshAll(); Toast(Loc.I["toast.applied"] + changed.Count + Loc.I["toast.rp"]); return; }
 
         IsBusy = true;
@@ -484,7 +491,7 @@ public partial class MainViewModel : ObservableObject
         foreach (var id in rep.Failed.Keys) _s[id] = _a[id]; // show the truth: it did not change
         if (rep.Done.Count > 0)
         {
-            _hist.Push(new HistEntry(rep.Before.Where(kv => rep.Done.Contains(kv.Key)).ToDictionary(kv => kv.Key, kv => kv.Value), prior));
+            _hist.Push(new HistEntry(rep.Before.Where(kv => rep.Done.Contains(kv.Key)).ToDictionary(kv => kv.Key, kv => kv.Value), prior, DateTime.Now, rep.Done.ToList()));
             _lastApply = DateTime.Now;
             _hotTicks = 0;
         }
@@ -510,22 +517,7 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private async Task Undo() => await UndoCore(Loc.I["undo_t"]);
 
-    private async Task UndoCore(string toastPrefix)
-    {
-        if (_hist.Count == 0 || IsBusy) return;
-        var h = _hist.Pop();
-        IsBusy = true;
-        Dictionary<string, string> failed;
-        try { failed = await Task.Run(() => _engine.Restore(h.Snaps)); }
-        catch (Exception ex) { failed = h.Snaps.Keys.ToDictionary(k => k, _ => ex.Message); }
-
-        foreach (var kv in h.Prior)
-            if (!failed.ContainsKey(kv.Key)) SetBoth(kv.Key, kv.Value);
-        _profile = DetectProfileLocal();
-        IsBusy = false;
-        Toast(failed.Count > 0 ? Loc.I["toast.fail"] + string.Join(", ", failed.Keys.Select(k => _vms[k].Title))
-                               : toastPrefix + _hist.Count);
-    }
+    private Task UndoCore(string toastPrefix) => UndoSteps(1, toastPrefix);
 
     /// <summary>Overheat watchdog (TZ 7.1): two consecutive hot samples soon after an apply roll the last change back.</summary>
     private void Watchdog(SensorSample s)
@@ -681,6 +673,7 @@ public partial class MainViewModel : ObservableObject
             if (_a[d.Id] > max) _a[d.Id] = max;
         }
         _hist.Clear(); // changing the device type resets the undo history
+        RebuildHist();
         _profile = DetectProfileLocal();
         Navigate(_cur);
     }
@@ -717,6 +710,7 @@ public partial class MainViewModel : ObservableObject
     // ---------------------------------------------------------------- refresh
     private void RefreshAll()
     {
+        RebuildHist();
         foreach (var v in _vms.Values) v.Refresh();
         foreach (var s in Sections)
         {

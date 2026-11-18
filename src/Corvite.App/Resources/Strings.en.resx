@@ -674,4 +674,17 @@
   <data name="ai.h.hdd" xml:space="preserve"><value>The disk is not an SSD: games on it load slower and may stutter.</value></data>
   <data name="ai.h.battery" xml:space="preserve"><value>The laptop is on battery: plug it in for games.</value></data>
   <data name="ai.h.tweaks_off" xml:space="preserve"><value>Safe game parameters not switched on: {0}.</value></data>
+  <data name="hist.t" xml:space="preserve"><value>Apply history</value></data>
+  <data name="hist.back" xml:space="preserve"><value>Go back to this</value></data>
+  <data name="hist.done" xml:space="preserve"><value>Rolled back · steps left: </value></data>
+  <data name="hist.n" xml:space="preserve"><value>{0} settings</value></data>
+  <data name="pf.exp" xml:space="preserve"><value>Export</value></data>
+  <data name="pf.imp" xml:space="preserve"><value>Import</value></data>
+  <data name="pf.exp.tip" xml:space="preserve"><value>Save the current values to a file to move them to another PC</value></data>
+  <data name="pf.imp.tip" xml:space="preserve"><value>Load values from a file. They appear as pending, nothing is written until you press Apply</value></data>
+  <data name="pf.exp.t" xml:space="preserve"><value>Save profile</value></data>
+  <data name="pf.imp.t" xml:space="preserve"><value>Open profile</value></data>
+  <data name="pf.saved" xml:space="preserve"><value>Profile saved</value></data>
+  <data name="pf.loaded" xml:space="preserve"><value>Profile loaded, settings: {0}. Press Apply</value></data>
+  <data name="pf.bad" xml:space="preserve"><value>The file is not valid or has no matching settings</value></data>
 </root>

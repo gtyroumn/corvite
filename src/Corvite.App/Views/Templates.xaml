@@ -453,7 +453,13 @@
 
                 <Border Style="{StaticResource GlassCard}" Padding="18,16" Margin="0,0,14,0">
                     <StackPanel>
-                        <TextBlock Text="{loc:T prof}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" Margin="0,0,0,12"/>
+                        <Grid Margin="0,0,0,12">
+                            <TextBlock Text="{loc:T prof}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                <Button Style="{StaticResource SmallBtn}" Content="{loc:T pf.imp}" ToolTip="{loc:T pf.imp.tip}" Command="{Binding Main.ImportProfileCommand}" Margin="0,0,8,0"/>
+                                <Button Style="{StaticResource SmallBtn}" Content="{loc:T pf.exp}" ToolTip="{loc:T pf.exp.tip}" Command="{Binding Main.ExportProfileCommand}"/>
+                            </StackPanel>
+                        </Grid>
                         <UniformGrid Columns="2">
                             <ContentControl Content="{Binding Main.Profiles[0]}" ContentTemplate="{StaticResource ProfileCard}"/>
                             <ContentControl Content="{Binding Main.Profiles[1]}" ContentTemplate="{StaticResource ProfileCard}"/>
