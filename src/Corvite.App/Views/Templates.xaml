@@ -479,8 +479,8 @@
                             </Grid>
                         </Grid>
                         <Grid>
-                            <TextBlock Text="{loc:T ov.safe}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource BodyFont}" FontSize="11"/>
-                            <TextBlock Text="{loc:T ov.limit}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource BodyFont}" FontSize="11" HorizontalAlignment="Right"/>
+                            <TextBlock Text="{loc:T ov.safe}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource BodyFont}" FontSize="12" FontWeight="Medium"/>
+                            <TextBlock Text="{loc:T ov.limit}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource BodyFont}" FontSize="12" FontWeight="Medium" HorizontalAlignment="Right"/>
                         </Grid>
                         <Grid Margin="0,16,0,0">
                             <TextBlock Text="{loc:T ov.risk}" Foreground="{StaticResource Fg2}" FontSize="13"/>

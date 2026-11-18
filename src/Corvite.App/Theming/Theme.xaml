@@ -179,11 +179,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
+                        <!-- glow lives on its own layer: an effect on the button itself would blur the text -->
+                        <Border x:Name="Glow" CornerRadius="12" Background="#7a0dd4" Margin="2,4,2,0" IsHitTestVisible="False">
+                            <Border.Effect><DropShadowEffect Color="#7a0dd4" Opacity="0.55" BlurRadius="18" ShadowDepth="3" Direction="270"/></Border.Effect>
+                        </Border>
                         <Border x:Name="Bd" Background="{StaticResource GlassBtnPrimary}" BorderBrush="Transparent"
                                 BorderThickness="1" CornerRadius="12" Padding="{TemplateBinding Padding}">
-                            <Border.Effect>
-                                <DropShadowEffect x:Name="Glow" Color="#7a0dd4" Opacity="0.5" BlurRadius="20" ShadowDepth="5" Direction="270"/>
-                            </Border.Effect>
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
@@ -198,7 +199,7 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.45"/>
-                            <Setter TargetName="Bd" Property="Effect" Value="{x:Null}"/>
+                            <Setter TargetName="Glow" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -490,9 +491,6 @@
                 <ControlTemplate TargetType="ToolTip">
                     <Border Background="{StaticResource DialogBg}" BorderBrush="{StaticResource GlassEdge}" BorderThickness="1" CornerRadius="16"
                             Padding="15,14" Width="330" Margin="0,0,8,8">
-                        <Border.Effect>
-                            <DropShadowEffect Color="Black" Opacity="0.6" BlurRadius="30" ShadowDepth="8"/>
-                        </Border.Effect>
                         <ContentPresenter/>
                     </Border>
                 </ControlTemplate>
@@ -540,8 +538,8 @@
     <!-- Chip (risk capsule) -->
     <Style x:Key="ChipText" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource BodyFont}"/>
-        <Setter Property="FontSize" Value="11"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Medium"/>
     </Style>
 
 </ResourceDictionary>
