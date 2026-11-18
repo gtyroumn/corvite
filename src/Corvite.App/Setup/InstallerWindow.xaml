@@ -49,14 +49,12 @@
 
     <Border BorderBrush="{StaticResource Line}" BorderThickness="1">
         <Grid>
-            <Grid.Background>
-                <RadialGradientBrush Center="0.5,0.46" GradientOrigin="0.5,0.46" RadiusX="0.6" RadiusY="0.7">
-                    <GradientStop Color="#4a2a82" Offset="0"/>
-                    <GradientStop Color="#2a1850" Offset="0.38"/>
-                    <GradientStop Color="#150f24" Offset="0.72"/>
-                    <GradientStop Color="#0a0710" Offset="1"/>
-                </RadialGradientBrush>
-            </Grid.Background>
+            <Grid.Background><SolidColorBrush Color="#0d0b15"/></Grid.Background>
+            <Grid IsHitTestVisible="False" CacheMode="BitmapCache">
+                <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.0,-0.05" GradientOrigin="0.0,-0.05" RadiusX="0.42" RadiusY="0.6"><GradientStop Color="#8C7A0DD4" Offset="0"/><GradientStop Color="#007A0DD4" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                <Rectangle><Rectangle.Fill><RadialGradientBrush Center="1.05,0.5" GradientOrigin="1.05,0.5" RadiusX="0.42" RadiusY="0.6"><GradientStop Color="#804B2A9A" Offset="0"/><GradientStop Color="#004B2A9A" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.5,1.1" GradientOrigin="0.5,1.1" RadiusX="0.4" RadiusY="0.45"><GradientStop Color="#47A259F0" Offset="0"/><GradientStop Color="#00A259F0" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+            </Grid>
 
             <!-- window buttons -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,9,10,0" Panel.ZIndex="10">
@@ -87,7 +85,7 @@
                 <TextBlock Text="{Binding Subtitle}" HorizontalAlignment="Center" Margin="0,4,0,18" Foreground="{StaticResource Fg2}" FontSize="13"/>
 
                 <!-- install -->
-                <Border Padding="20" CornerRadius="14" Background="#D91b1825" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                <Border Padding="22" Style="{StaticResource GlassCard}"
                         Visibility="{Binding IsInstall, Converter={StaticResource B2V}}">
                     <StackPanel>
                         <TextBlock Text="INSTALL LOCATION" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="11"/>
@@ -120,7 +118,7 @@
                 </Border>
 
                 <!-- uninstall -->
-                <Border Padding="20" CornerRadius="14" Background="#D91b1825" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                <Border Padding="22" Style="{StaticResource GlassCard}"
                         Visibility="{Binding IsUninstall, Converter={StaticResource B2V}}">
                     <StackPanel>
                         <StackPanel Orientation="Horizontal">
@@ -184,8 +182,8 @@
 
                 <!-- installing: progress -->
                 <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,56" Visibility="{Binding IsWorking, Converter={StaticResource B2V}}">
-                    <Border Width="300" Height="4" CornerRadius="2" Background="#22ffffff" ClipToBounds="True">
-                        <Border CornerRadius="2" Background="#c9a2ff" HorizontalAlignment="Stretch" RenderTransformOrigin="0,0.5">
+                    <Border Width="300" Height="4" CornerRadius="2" Background="#1AFFFFFF" ClipToBounds="True">
+                        <Border CornerRadius="2" Background="{StaticResource AccentGrad}" HorizontalAlignment="Stretch" RenderTransformOrigin="0,0.5">
                             <Border.RenderTransform><ScaleTransform ScaleX="{Binding ProgressScale}"/></Border.RenderTransform>
                         </Border>
                     </Border>

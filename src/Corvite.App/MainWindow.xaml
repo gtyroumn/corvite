@@ -22,8 +22,33 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
+            <!-- ===== Liquid Ice backdrop: static colour blobs under the glass panels (cached once) ===== -->
+            <Grid Grid.RowSpan="3" IsHitTestVisible="False" CacheMode="BitmapCache">
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <RadialGradientBrush Center="0.0,-0.05" GradientOrigin="0.0,-0.05" RadiusX="0.42" RadiusY="0.6">
+                            <GradientStop Color="#8C7A0DD4" Offset="0"/><GradientStop Color="#007A0DD4" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <RadialGradientBrush Center="1.05,0.5" GradientOrigin="1.05,0.5" RadiusX="0.42" RadiusY="0.6">
+                            <GradientStop Color="#804B2A9A" Offset="0"/><GradientStop Color="#004B2A9A" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Rectangle>
+                    <Rectangle.Fill>
+                        <RadialGradientBrush Center="0.5,1.1" GradientOrigin="0.5,1.1" RadiusX="0.4" RadiusY="0.45">
+                            <GradientStop Color="#47A259F0" Offset="0"/><GradientStop Color="#00A259F0" Offset="1"/>
+                        </RadialGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Grid>
+
             <!-- ===== Title bar ===== -->
-            <Border Background="{StaticResource TitleBg}" BorderBrush="{StaticResource Line}" BorderThickness="0,0,0,1">
+            <Border Background="{StaticResource TitleBg}">
                 <Grid Margin="16,0,14,0">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Viewbox Width="26" Height="26">
@@ -70,11 +95,12 @@
             <!-- ===== Body ===== -->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="224"/>
+                    <ColumnDefinition Width="246"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Border Background="{StaticResource RailBg}" BorderBrush="{StaticResource Line}" BorderThickness="0,0,1,0" Padding="10,14">
+                <Border Style="{StaticResource GlassCard}" CornerRadius="22" Margin="14,2,0,14" Padding="12,16">
+                    <Border.Effect><DropShadowEffect Color="Black" Opacity="0.35" BlurRadius="30" ShadowDepth="8" Direction="270"/></Border.Effect>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -103,8 +129,8 @@
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
-                    <Border Grid.Row="1" Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1"
-                            CornerRadius="9" Padding="12,10" Margin="0,10,0,0">
+                    <Border Grid.Row="1" Background="{StaticResource GlassChip}" BorderBrush="{StaticResource GlassEdge}" BorderThickness="1"
+                            CornerRadius="14" Padding="14,10" Margin="0,10,0,0">
                         <StackPanel>
                             <TextBlock Text="{Binding RailTitle}" Foreground="{StaticResource Fg3}" FontFamily="{StaticResource DisplayFont}"
                                        FontWeight="SemiBold" FontSize="11" Margin="0,0,0,6"/>
@@ -124,12 +150,13 @@
                 </Border>
 
                 <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-                    <ContentControl Content="{Binding CurrentPage}" Margin="26,22,26,28" MaxWidth="1100" HorizontalAlignment="Stretch"/>
+                    <ContentControl Content="{Binding CurrentPage}" Margin="22,12,26,20" MaxWidth="1100" HorizontalAlignment="Stretch"/>
                 </ScrollViewer>
             </Grid>
 
             <!-- ===== Action bar ===== -->
-            <Border Grid.Row="2" Background="#17121f" BorderBrush="{StaticResource Line}" BorderThickness="0,1,0,0" Padding="20,12">
+            <Border Grid.Row="2" Style="{StaticResource GlassCard}" CornerRadius="26" Margin="14,0,14,14" Padding="24,9,12,9">
+                <Border.Effect><DropShadowEffect Color="Black" Opacity="0.35" BlurRadius="30" ShadowDepth="8" Direction="270"/></Border.Effect>
                 <Grid>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                         <Ellipse Width="8" Height="8" Margin="0,0,10,0" Fill="{StaticResource Fg3}"/>
@@ -144,15 +171,15 @@
             </Border>
 
             <!-- ===== Toast ===== -->
-            <Border Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,82"
-                    Background="{StaticResource Raise}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="9" Padding="16,10"
+            <Border Grid.Row="1" Grid.RowSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,90"
+                    Background="{StaticResource DialogBg}" BorderBrush="{StaticResource GlassEdge}" BorderThickness="1" CornerRadius="14" Padding="18,10"
                     Visibility="{Binding ToastVisible, Converter={StaticResource B2V}}" IsHitTestVisible="False">
                 <TextBlock Text="{Binding ToastText}" FontSize="13"/>
             </Border>
 
             <!-- ===== AI advisor chat (stage 7) ===== -->
-            <Border Grid.Row="1" Grid.RowSpan="2" Width="390" Height="470" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,22,76"
-                    Background="{StaticResource Panel}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="12"
+            <Border Grid.Row="1" Grid.RowSpan="2" Width="390" Height="470" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,22,84"
+                    Background="{StaticResource DialogBg}" BorderBrush="{StaticResource GlassEdge}" BorderThickness="1" CornerRadius="22"
                     Visibility="{Binding AiOpen, Converter={StaticResource B2V}}">
                 <Grid>
                     <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
@@ -171,14 +198,14 @@
                                             <Style TargetType="Border">
                                                 <Setter Property="MaxWidth" Value="300"/>
                                                 <Setter Property="HorizontalAlignment" Value="Left"/>
-                                                <Setter Property="Background" Value="{StaticResource Raise}"/>
-                                                <Setter Property="CornerRadius" Value="14,14,14,4"/>
+                                                <Setter Property="Background" Value="{StaticResource RaiseSolid}"/>
+                                                <Setter Property="CornerRadius" Value="18,18,18,6"/>
                                                 <Setter Property="Margin" Value="0,0,36,8"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding IsUser}" Value="True">
                                                         <Setter Property="HorizontalAlignment" Value="Right"/>
-                                                        <Setter Property="Background" Value="{StaticResource Go}"/>
-                                                        <Setter Property="CornerRadius" Value="14,14,4,14"/>
+                                                        <Setter Property="Background" Value="#7a4fe0"/>
+                                                        <Setter Property="CornerRadius" Value="18,18,6,18"/>
                                                         <Setter Property="Margin" Value="36,0,0,8"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
@@ -242,7 +269,7 @@
                                  Foreground="{StaticResource Fg}" CaretBrush="{StaticResource Fg}" FontSize="13" VerticalContentAlignment="Center">
                             <TextBox.Template>
                                 <ControlTemplate TargetType="TextBox">
-                                    <Border x:Name="Bd" Background="{StaticResource Raise}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="19" Padding="16,9">
+                                    <Border x:Name="Bd" Background="{StaticResource GlassChip}" BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="12" Padding="16,9">
                                         <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
                                     </Border>
                                     <ControlTemplate.Triggers>
@@ -256,22 +283,24 @@
                                 <KeyBinding Key="Return" Command="{Binding AiSendCommand}"/>
                             </TextBox.InputBindings>
                         </TextBox>
-                        <Button Grid.Column="1" Style="{StaticResource PrimaryBtn}" Content="➤" Padding="12,8" Margin="8,0,0,0" Command="{Binding AiSendCommand}"/>
+                        <Button Grid.Column="1" Style="{StaticResource PrimaryBtn}" Width="38" Height="38" Padding="0" Margin="8,0,0,0" Command="{Binding AiSendCommand}">
+                            <Path Data="M3,12 L19,12 M12,5 L19,12 L12,19" Stroke="White" StrokeThickness="2" StrokeStartLineCap="Round" StrokeEndLineCap="Round" StrokeLineJoin="Round" Width="16" Height="16" Stretch="Uniform"/>
+                        </Button>
                     </Grid>
                 </Grid>
             </Border>
 
             <!-- ===== Red-zone dialog (TZ 7.2) ===== -->
             <Grid Grid.RowSpan="3" Background="{StaticResource Overlay}" Visibility="{Binding RedVisible, Converter={StaticResource B2V}}">
-                <Border Width="500" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{StaticResource Panel}"
-                        BorderBrush="#7a3a3f" BorderThickness="1" CornerRadius="12" Padding="20">
+                <Border Width="500" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{StaticResource DialogBg}"
+                        BorderBrush="#99f04b4b" BorderThickness="1" CornerRadius="20" Padding="20">
                     <StackPanel>
                         <TextBlock Text="{loc:T rz_t}" Foreground="{StaticResource Stop}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="17"/>
                         <TextBlock Text="{loc:T rz1}" Foreground="{StaticResource Fg2}" TextWrapping="Wrap" Margin="0,8,0,0"/>
                         <ItemsControl ItemsSource="{Binding RedItems}" Margin="0,12">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate DataType="{x:Type vm:RedItem}">
-                                    <Border Background="{StaticResource Raise}" CornerRadius="7" Padding="10,7" Margin="0,0,0,6">
+                                    <Border Background="{StaticResource GlassChip}" CornerRadius="12" Padding="12,7" Margin="0,0,0,6">
                                         <Grid>
                                             <TextBlock Text="{Binding Name}" FontSize="13"/>
                                             <TextBlock Text="{Binding Value}" HorizontalAlignment="Right" Foreground="{StaticResource Stop}" FontFamily="{StaticResource MonoFont}"/>
@@ -294,8 +323,8 @@
 
             <!-- ===== Manufacturer program dialog ===== -->
             <Grid Grid.RowSpan="3" Background="{StaticResource Overlay}" Visibility="{Binding ToolVisible, Converter={StaticResource B2V}}">
-                <Border Width="540" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{StaticResource Panel}"
-                        BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="12" Padding="22">
+                <Border Width="540" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{StaticResource DialogBg}"
+                        BorderBrush="{StaticResource GlassEdge}" BorderThickness="1" CornerRadius="20" Padding="24">
                     <StackPanel>
                         <TextBlock Text="{loc:T tool.t}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="18"/>
                         <TextBlock Margin="0,12,0,0" TextWrapping="Wrap" Foreground="{StaticResource Fg2}">
@@ -304,7 +333,7 @@
                         <TextBlock Margin="0,4,0,0" TextWrapping="Wrap" Foreground="{StaticResource Fg2}">
                             <Run Text="{loc:T tool.dev}"/> <Run Text="{Binding ToolDevice, Mode=OneWay}" Foreground="{StaticResource Fg}" FontFamily="{StaticResource MonoFont}"/>
                         </TextBlock>
-                        <Border Background="{StaticResource Raise}" CornerRadius="8" Padding="14,12" Margin="0,14,0,0">
+                        <Border Background="{StaticResource GlassChip}" CornerRadius="12" Padding="16,12" Margin="0,14,0,0">
                             <StackPanel>
                                 <TextBlock Text="{Binding ToolName}" FontFamily="{StaticResource DisplayFont}" FontWeight="SemiBold" FontSize="14.5"/>
                                 <TextBlock Text="{Binding ToolWhy}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,6,0,0"/>
@@ -324,8 +353,8 @@
 
             <!-- ===== Platform dialog (TZ 7.4) ===== -->
             <Grid Grid.RowSpan="3" Background="{StaticResource Overlay}" Visibility="{Binding PlatVisible, Converter={StaticResource B2V}}">
-                <Border Width="660" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{StaticResource Panel}"
-                        BorderBrush="{StaticResource Line}" BorderThickness="1" CornerRadius="12" Padding="22">
+                <Border Width="660" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{StaticResource DialogBg}"
+                        BorderBrush="{StaticResource GlassEdge}" BorderThickness="1" CornerRadius="20" Padding="24">
                     <Grid>
                         <!-- step 1: choose -->
                         <StackPanel Visibility="{Binding PlatShowChoose, Converter={StaticResource B2V}}">
@@ -367,11 +396,11 @@
                                     </Border>
                                 </Grid>
                             </UniformGrid>
-                            <Border Margin="0,4,0,0" Padding="12,10" CornerRadius="8" Background="#26f2873a" BorderBrush="{StaticResource Hot}" BorderThickness="1"
+                            <Border Margin="0,4,0,0" Padding="12,10" CornerRadius="12" Background="#26f2873a" BorderBrush="{StaticResource Hot}" BorderThickness="1"
                                     Visibility="{Binding PlatMismatchRisk, Converter={StaticResource B2V}}">
                                 <TextBlock Text="{loc:T pl_mm_risk}" Foreground="{StaticResource Hot}" FontSize="12.5" TextWrapping="Wrap"/>
                             </Border>
-                            <Border Margin="0,4,0,0" Padding="12,10" CornerRadius="8" Background="{StaticResource Raise}" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                            <Border Margin="0,4,0,0" Padding="12,10" CornerRadius="12" Background="{StaticResource GlassChip}" BorderBrush="{StaticResource Line}" BorderThickness="1"
                                     Visibility="{Binding PlatMismatchInfo, Converter={StaticResource B2V}}">
                                 <TextBlock Text="{loc:T pl_mm_info}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap"/>
                             </Border>
@@ -393,11 +422,11 @@
                                 </TextBlock.Style>
                             </TextBlock>
                             <TextBlock Text="{Binding PlatWarnText}" Foreground="{StaticResource Fg2}" TextWrapping="Wrap" Margin="0,8,0,0"/>
-                            <Border Margin="0,12,0,0" Padding="12,10" CornerRadius="8" Background="#26f2873a" BorderBrush="{StaticResource Hot}" BorderThickness="1"
+                            <Border Margin="0,12,0,0" Padding="12,10" CornerRadius="12" Background="#26f2873a" BorderBrush="{StaticResource Hot}" BorderThickness="1"
                                     Visibility="{Binding PlatMismatchRisk, Converter={StaticResource B2V}}">
                                 <TextBlock Text="{loc:T pl_mm_risk}" Foreground="{StaticResource Hot}" FontSize="12.5" TextWrapping="Wrap"/>
                             </Border>
-                            <Border Margin="0,12,0,0" Padding="12,10" CornerRadius="8" Background="{StaticResource Raise}" BorderBrush="{StaticResource Line}" BorderThickness="1"
+                            <Border Margin="0,12,0,0" Padding="12,10" CornerRadius="12" Background="{StaticResource GlassChip}" BorderBrush="{StaticResource Line}" BorderThickness="1"
                                     Visibility="{Binding PlatMismatchInfo, Converter={StaticResource B2V}}">
                                 <TextBlock Text="{loc:T pl_mm_info}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap"/>
                             </Border>
@@ -411,14 +440,7 @@
             </Grid>
             <!-- ===== Loading screen: light centre, dark edges; the arc draws, the arrowhead flies in from the bottom right ===== -->
             <Grid x:Name="Splash" Grid.RowSpan="3" Panel.ZIndex="100" IsHitTestVisible="{Binding SplashVisible}">
-                <Grid.Background>
-                    <RadialGradientBrush Center="0.5,0.46" GradientOrigin="0.5,0.46" RadiusX="0.6" RadiusY="0.7">
-                        <GradientStop Color="#4a2a82" Offset="0"/>
-                        <GradientStop Color="#2a1850" Offset="0.38"/>
-                        <GradientStop Color="#150f24" Offset="0.72"/>
-                        <GradientStop Color="#0a0710" Offset="1"/>
-                    </RadialGradientBrush>
-                </Grid.Background>
+                <Grid.Background><SolidColorBrush Color="#0d0b15"/></Grid.Background>
                 <Grid.Style>
                     <Style TargetType="Grid">
                         <Setter Property="Visibility" Value="Visible"/>
@@ -442,6 +464,11 @@
                         </Style.Triggers>
                     </Style>
                 </Grid.Style>
+                <Grid IsHitTestVisible="False" CacheMode="BitmapCache">
+                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.0,-0.05" GradientOrigin="0.0,-0.05" RadiusX="0.42" RadiusY="0.6"><GradientStop Color="#8C7A0DD4" Offset="0"/><GradientStop Color="#007A0DD4" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="1.05,0.5" GradientOrigin="1.05,0.5" RadiusX="0.42" RadiusY="0.6"><GradientStop Color="#804B2A9A" Offset="0"/><GradientStop Color="#004B2A9A" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                    <Rectangle><Rectangle.Fill><RadialGradientBrush Center="0.5,1.1" GradientOrigin="0.5,1.1" RadiusX="0.4" RadiusY="0.45"><GradientStop Color="#47A259F0" Offset="0"/><GradientStop Color="#00A259F0" Offset="1"/></RadialGradientBrush></Rectangle.Fill></Rectangle>
+                </Grid>
 
                 <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,-30,0,0">
                     <Viewbox Width="130" Height="130" HorizontalAlignment="Center">
@@ -478,8 +505,8 @@
                 </StackPanel>
 
                 <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,56">
-                    <Border Width="260" Height="4" CornerRadius="2" Background="#22ffffff" ClipToBounds="True">
-                        <Border x:Name="SplashBar" CornerRadius="2" Background="#c9a2ff" HorizontalAlignment="Stretch" RenderTransformOrigin="0,0.5">
+                    <Border Width="260" Height="4" CornerRadius="2" Background="#1AFFFFFF" ClipToBounds="True">
+                        <Border x:Name="SplashBar" CornerRadius="2" Background="{StaticResource AccentGrad}" HorizontalAlignment="Stretch" RenderTransformOrigin="0,0.5">
                             <Border.RenderTransform><ScaleTransform x:Name="SplashBarScale" ScaleX="0"/></Border.RenderTransform>
                         </Border>
                     </Border>
