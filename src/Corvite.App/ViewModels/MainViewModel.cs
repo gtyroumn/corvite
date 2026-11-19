@@ -33,6 +33,7 @@ public partial class MainViewModel : ObservableObject
     private sealed record HistEntry(Dictionary<string, string> Snaps, Dictionary<string, double> Prior, DateTime When, List<string> Ids);
     private readonly Stack<HistEntry> _hist = new();
     private CpuGuideVm? _cpuGuide;
+    private GpuGuideVm? _gpuGuide;
     private readonly TweakEngine _engine = new(Environment.GetCommandLineArgs().Contains("--dry-run"));
     private BaselineData? _baseline;
     private Dictionary<string, double> _base = new();
@@ -309,6 +310,7 @@ public partial class MainViewModel : ObservableObject
         Info = info;
         Hw = info.ToProfile();
         _cpuGuide?.Reload();
+        _gpuGuide?.Reload();
         // vendor-specific tweaks of the previous hardware must not leave pending changes behind
         foreach (var d in TweakCatalog.All.Where(d => d.Vendor != Vendor.Any)) _s[d.Id] = _a[d.Id];
         _profile = DetectProfileLocal();
@@ -407,7 +409,11 @@ public partial class MainViewModel : ObservableObject
             groups.Add(new GroupVm(g, defs.Where(d => d.GroupKey == g).Select(d => _vms[d.Id]).ToList()));
         _cpuGuide ??= new CpuGuideVm(() => Platform == PlatformKind.Laptop, () => Info.CpuName, _settings.CpuGuide,
             id => { _settings.CpuGuide = id; SettingsStore.Save(_settings); });
-        return new SectionPage(sec, groups, ResetSectionCommand, sec.Id == Section.Cpu ? _cpuGuide : null);
+        _gpuGuide ??= new GpuGuideVm(() => Info.GpuName, _settings.GpuGuide,
+            id => { _settings.GpuGuide = id; SettingsStore.Save(_settings); });
+        // the graphics guide lists desktop cards only
+        TuningGuideVm? guide = sec.Id == Section.Cpu ? _cpuGuide : sec.Id == Section.Gpu && Platform != PlatformKind.Laptop ? _gpuGuide : null;
+        return new SectionPage(sec, groups, ResetSectionCommand, guide);
     }
 
     [RelayCommand]
@@ -678,6 +684,7 @@ public partial class MainViewModel : ObservableObject
         }
         _hist.Clear(); // changing the device type resets the undo history
         _cpuGuide?.Reload();
+        _gpuGuide?.Reload();
         RebuildHist();
         _profile = DetectProfileLocal();
         Navigate(_cur);

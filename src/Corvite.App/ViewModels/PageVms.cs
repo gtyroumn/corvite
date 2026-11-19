@@ -121,9 +121,9 @@ public sealed class SectionPage : PageVm
     private readonly SectionVm _sec;
     public List<GroupVm> Groups { get; }
     public ICommand ResetCommand { get; }
-    /// <summary>Tuning guide card, only on the Processor page.</summary>
-    public CpuGuideVm? Guide { get; }
-    public SectionPage(SectionVm sec, List<GroupVm> groups, ICommand reset, CpuGuideVm? guide = null) { _sec = sec; Groups = groups; ResetCommand = reset; Guide = guide; }
+    /// <summary>Tuning guide card, only on the Processor and Graphics pages.</summary>
+    public TuningGuideVm? Guide { get; }
+    public SectionPage(SectionVm sec, List<GroupVm> groups, ICommand reset, TuningGuideVm? guide = null) { _sec = sec; Groups = groups; ResetCommand = reset; Guide = guide; }
     public string Title => _sec.Name;
     public string Description => _sec.Description;
     public override void Refresh() { base.Refresh(); Guide?.Refresh(); foreach (var g in Groups) { g.Refresh(); foreach (var t in g.Items) t.Refresh(); } }

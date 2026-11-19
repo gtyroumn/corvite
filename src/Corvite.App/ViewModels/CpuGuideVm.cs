@@ -1,25 +1,15 @@
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
 using Corvite.App.Localization;
 using Corvite.Core.Hardware;
 
 namespace Corvite.App.ViewModels;
 
-public sealed record SocketItem(string Id, string Label);
-public sealed record CpuItem(string Id, string Label);
-public sealed record GuideRowVm(string Param, string Safe, string Game, string Max);
-
-/// <summary>
-/// "Processor tuning guide" card on the Processor page: socket and processor drop-downs (filtered by the device type)
-/// and a table of values to enter in BIOS or the manufacturer's program. Nothing is written to the machine.
-/// </summary>
-public sealed partial class CpuGuideVm : ObservableObject
+/// <summary>"Processor tuning guide" card on the Processor page: socket and processor drop-downs filtered by the device type.</summary>
+public sealed class CpuGuideVm : TuningGuideVm
 {
     private readonly Func<bool> _laptop;
     private readonly Func<string> _cpuName;
     private readonly Action<string> _save;
     private string? _saved;
-    private bool _busy;
 
     public CpuGuideVm(Func<bool> laptop, Func<string> cpuName, string? saved, Action<string> save)
     {
@@ -27,44 +17,27 @@ public sealed partial class CpuGuideVm : ObservableObject
         Reload();
     }
 
-    public List<SocketItem> Sockets { get; private set; } = new();
-    public List<CpuItem> Cpus { get; private set; } = new();
-    public List<GuideRowVm> Rows { get; private set; } = new();
-    public List<string> Notes { get; private set; } = new();
+    public override string Title => Loc.I["cg.t"];
+    public override string Subtitle => Loc.I["cg.sub"];
+    public override string GroupLabel => Loc.I["cg.sock"];
+    public override string ItemLabel => Loc.I["cg.cpu"];
+    public override string EmptyText => Loc.I["cg.empty"];
 
-    [ObservableProperty] private bool _isOpen;
-    [ObservableProperty] private string? _socketId;
-    [ObservableProperty] private string? _cpuId;
-
-    [RelayCommand] private void Toggle() => IsOpen = !IsOpen;
-
-    public string Specs { get; private set; } = "";
-    public string Where { get; private set; } = "";
-    public string Detected { get; private set; } = "";
-    public bool HasDetected => Detected.Length > 0;
-    public bool HasCpu => Rows.Count > 0;
-    public bool NoCpu => !HasCpu;
-
-    /// <summary>Rebuilds the lists for the current device type; keeps the saved choice, otherwise picks the installed processor.</summary>
-    public void Reload()
+    public override void Reload()
     {
-        _busy = true;
+        Busy = true;
         var laptop = _laptop();
-        Sockets = CpuDb.Sockets(laptop).Select(s => new SocketItem(s, SocketLabel(s))).ToList();
+        Groups = CpuDb.Sockets(laptop).Select(s => new GuideChoice(s, SocketLabel(s))).ToList();
 
-        var cur = (CpuId != null ? CpuDb.Find(CpuId) : null) ?? (_saved != null ? CpuDb.Find(_saved) : null);
+        var cur = (ItemId != null ? CpuDb.Find(ItemId) : null) ?? (_saved != null ? CpuDb.Find(_saved) : null);
         if (cur == null || cur.IsLaptop != laptop) cur = CpuDb.Detect(_cpuName(), laptop);
-        var detected = CpuDb.Detect(_cpuName(), laptop);
-        Detected = detected != null && cur?.Id == detected.Id ? detected.N : "";
 
-        SocketId = cur?.S ?? (SocketId != null && Sockets.Any(x => x.Id == SocketId) ? SocketId : null);
-        Cpus = SocketId == null ? new() : CpuDb.ForSocket(SocketId, laptop).Select(c => new CpuItem(c.Id, c.N)).ToList();
-        CpuId = cur?.Id;
-        _busy = false;
+        GroupId = cur?.S ?? (GroupId != null && Groups.Any(x => x.Id == GroupId) ? GroupId : null);
+        Items = GroupId == null ? new() : CpuDb.ForSocket(GroupId, laptop).Select(c => new GuideChoice(c.Id, c.N)).ToList();
+        ItemId = cur?.Id;
+        Busy = false;
         Build();
     }
-
-    public void Refresh() => Build();
 
     private static string SocketLabel(string s) => s switch
     {
@@ -78,29 +51,26 @@ public sealed partial class CpuGuideVm : ObservableObject
         _ => s
     };
 
-    partial void OnSocketIdChanged(string? value)
+    protected override void GroupPicked(string? id)
     {
-        if (_busy) return;
-        _busy = true;
-        Cpus = value == null ? new() : CpuDb.ForSocket(value, _laptop()).Select(c => new CpuItem(c.Id, c.N)).ToList();
-        CpuId = null;
-        Detected = "";
-        _busy = false;
+        Busy = true;
+        Items = id == null ? new() : CpuDb.ForSocket(id, _laptop()).Select(c => new GuideChoice(c.Id, c.N)).ToList();
+        ItemId = null;
+        Busy = false;
         Build();
     }
 
-    partial void OnCpuIdChanged(string? value)
+    protected override void ItemPicked(string? id)
     {
-        if (_busy) return;
-        if (value != null) { _saved = value; _save(value); }
-        var d = CpuDb.Detect(_cpuName(), _laptop());
-        Detected = d != null && d.Id == value ? d.N : "";
+        if (id != null) { _saved = id; _save(id); }
         Build();
     }
 
-    private void Build()
+    protected override void Build()
     {
-        var c = CpuId == null ? null : CpuDb.Find(CpuId);
+        var c = ItemId == null ? null : CpuDb.Find(ItemId);
+        var det = CpuDb.Detect(_cpuName(), _laptop());
+        Detected = c != null && det?.Id == c.Id ? string.Format(Loc.I["cg.det"], det.N) : "";
         if (c == null)
         {
             Rows = new(); Notes = new(); Specs = ""; Where = "";
@@ -113,6 +83,6 @@ public sealed partial class CpuGuideVm : ObservableObject
             Where = Loc.I[g.WhereKey];
             Specs = string.Format(Loc.I["cg.spec"], c.C, c.T, c.B.ToString("0.0#"), c.X.ToString("0.0#"), c.D, c.R);
         }
-        OnPropertyChanged(string.Empty);
+        Changed();
     }
 }

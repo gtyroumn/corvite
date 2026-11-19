@@ -724,4 +724,42 @@
   <data name="cg.n.x3d" xml:space="preserve"><value>Processors with 3D V-Cache have limited voltage and multiplier: do not raise SoC voltage or limits without need. The most useful setting here is Curve Optimizer.</value></data>
   <data name="cg.n.locked" xml:space="preserve"><value>Processors without the K suffix have a locked multiplier and usually no voltage offset. PL1 / PL2 can be changed only on boards whose BIOS allows it.</value></data>
   <data name="cg.n.i1314" xml:space="preserve"><value>Intel Core 13th and 14th gen: update the BIOS to a version with microcode 0x12B or newer and do not raise limits above stock until you are sure it is stable. Crashes on these processors are tied to high voltage and power.</value></data>
+  <data name="gg.t" xml:space="preserve"><value>Graphics card tuning guide</value></data>
+  <data name="gg.sub" xml:space="preserve"><value>Reference: what to change in the driver, and how far</value></data>
+  <data name="gg.grp" xml:space="preserve"><value>Series</value></data>
+  <data name="gg.card" xml:space="preserve"><value>Graphics card</value></data>
+  <data name="gg.empty" xml:space="preserve"><value>Choose a series and a graphics card to see the values.</value></data>
+  <data name="gg.det" xml:space="preserve"><value>Detected your graphics card: {0}</value></data>
+  <data name="gg.spec" xml:space="preserve"><value>{0} GB {1} · {2} W · up to {3} MHz · {4}</value></data>
+  <data name="gg.gb" xml:space="preserve"><value>GB</value></data>
+  <data name="gg.p.pow" xml:space="preserve"><value>Power limit</value></data>
+  <data name="gg.p.core" xml:space="preserve"><value>Core clock offset</value></data>
+  <data name="gg.p.coreA" xml:space="preserve"><value>Maximum core clock (over stock)</value></data>
+  <data name="gg.p.mem" xml:space="preserve"><value>Memory clock</value></data>
+  <data name="gg.p.temp" xml:space="preserve"><value>Temperature limit</value></data>
+  <data name="gg.p.fan" xml:space="preserve"><value>Fan curve (temperature → speed)</value></data>
+  <data name="gg.p.pm" xml:space="preserve"><value>Power management mode</value></data>
+  <data name="gg.p.ll" xml:space="preserve"><value>Low Latency Mode</value></data>
+  <data name="gg.p.sc" xml:space="preserve"><value>Shader cache size</value></data>
+  <data name="gg.p.volt" xml:space="preserve"><value>Core voltage (undervolt)</value></data>
+  <data name="gg.p.ft" xml:space="preserve"><value>Memory timing</value></data>
+  <data name="gg.p.al" xml:space="preserve"><value>Radeon Anti-Lag</value></data>
+  <data name="gg.p.scA" xml:space="preserve"><value>AMD shader cache</value></data>
+  <data name="gg.p.sam" xml:space="preserve"><value>Smart Access Memory (Resizable BAR)</value></data>
+  <data name="gg.v.auto" xml:space="preserve"><value>Auto</value></data>
+  <data name="gg.v.def" xml:space="preserve"><value>Default</value></data>
+  <data name="gg.v.stock" xml:space="preserve"><value>Stock</value></data>
+  <data name="gg.v.opt" xml:space="preserve"><value>Optimal power</value></data>
+  <data name="gg.v.maxperf" xml:space="preserve"><value>Prefer maximum performance</value></data>
+  <data name="gg.v.off" xml:space="preserve"><value>Off</value></data>
+  <data name="gg.v.on" xml:space="preserve"><value>On</value></data>
+  <data name="gg.v.amdopt" xml:space="preserve"><value>AMD optimized</value></data>
+  <data name="gg.v.always" xml:space="preserve"><value>Always on</value></data>
+  <data name="gg.w.nv" xml:space="preserve"><value>Corvite applies the power limit and clock offsets itself: use the sliders below on this page. Everything else: NVIDIA Control Panel → Manage 3D settings → Global settings. Temperature limit and fan curve: MSI Afterburner.</value></data>
+  <data name="gg.w.amd" xml:space="preserve"><value>AMD Software: Adrenalin Edition → Performance → Tuning → Manual tuning. Anti-Lag and shader cache: Gaming → Graphics. Smart Access Memory is enabled in BIOS (Above 4G Decoding and Resizable BAR).</value></data>
+  <data name="gg.n.nv" xml:space="preserve"><value>The power and clock sliders work through the NVIDIA driver without third-party tools. Enter the values from the table; Corvite tells you if the card refuses a value. Clocks are entered the same way as in MSI Afterburner.</value></data>
+  <data name="gg.n.g6x" xml:space="preserve"><value>GDDR6X corrects errors itself: at too high a clock the picture does not break, but FPS drops. After each step compare FPS in the same test and stop when it no longer rises.</value></data>
+  <data name="gg.n.reflex" xml:space="preserve"><value>If a game has NVIDIA Reflex, turn it on in the game and do not set Ultra at the same time. Low Latency Mode is useful in games without Reflex.</value></data>
+  <data name="gg.n.amd" xml:space="preserve"><value>For AMD cards Corvite writes nothing: you enter the values yourself in AMD Software. Voltage and clock values in the table are offsets from stock; headroom differs between individual cards.</value></data>
+  <data name="gg.n.warn" xml:space="preserve"><value>Raising limits and clocks increases the card's heat and power draw. Do it at your own risk and with working cooling. The guide is shown for desktop cards only: laptop GPUs have their limits locked by the manufacturer.</value></data>
 </root>

@@ -724,4 +724,42 @@
   <data name="cg.n.x3d" xml:space="preserve"><value>У процесорів із 3D V-Cache напруга й множник обмежені: не підвищуйте напругу SoC і ліміти без потреби. Найкорисніший параметр тут Curve Optimizer.</value></data>
   <data name="cg.n.locked" xml:space="preserve"><value>У процесорів без літери K множник закритий, зміщення напруги зазвичай недоступне. Ліміти PL1 / PL2 змінюються лише на платах, де BIOS це дозволяє.</value></data>
   <data name="cg.n.i1314" xml:space="preserve"><value>Intel Core 13 і 14 покоління: оновіть BIOS до версії з мікрокодом 0x12B або новішою і не піднімайте ліміти вище заводських, поки не переконаєтесь у стабільності. Збої цих процесорів пов’язані з підвищеними напругою і потужністю.</value></data>
+  <data name="gg.t" xml:space="preserve"><value>Підбір значень для відеокарти</value></data>
+  <data name="gg.sub" xml:space="preserve"><value>Довідник: що змінювати в драйвері і до яких значень</value></data>
+  <data name="gg.grp" xml:space="preserve"><value>Серія</value></data>
+  <data name="gg.card" xml:space="preserve"><value>Відеокарта</value></data>
+  <data name="gg.empty" xml:space="preserve"><value>Оберіть серію і відеокарту, щоб побачити значення.</value></data>
+  <data name="gg.det" xml:space="preserve"><value>Визначено вашу відеокарту: {0}</value></data>
+  <data name="gg.spec" xml:space="preserve"><value>{0} ГБ {1} · {2} Вт · до {3} МГц · {4}</value></data>
+  <data name="gg.gb" xml:space="preserve"><value>ГБ</value></data>
+  <data name="gg.p.pow" xml:space="preserve"><value>Ліміт потужності (Power Limit)</value></data>
+  <data name="gg.p.core" xml:space="preserve"><value>Зсув частоти ядра (Core Clock)</value></data>
+  <data name="gg.p.coreA" xml:space="preserve"><value>Максимальна частота ядра (від заводської)</value></data>
+  <data name="gg.p.mem" xml:space="preserve"><value>Частота пам'яті (Memory Clock)</value></data>
+  <data name="gg.p.temp" xml:space="preserve"><value>Ліміт температури (Temp Limit)</value></data>
+  <data name="gg.p.fan" xml:space="preserve"><value>Крива вентиляторів (температура → оберти)</value></data>
+  <data name="gg.p.pm" xml:space="preserve"><value>Режим керування живленням</value></data>
+  <data name="gg.p.ll" xml:space="preserve"><value>Режим низької затримки</value></data>
+  <data name="gg.p.sc" xml:space="preserve"><value>Розмір кешу шейдерів</value></data>
+  <data name="gg.p.volt" xml:space="preserve"><value>Напруга ядра (Undervolt)</value></data>
+  <data name="gg.p.ft" xml:space="preserve"><value>Таймінги пам'яті</value></data>
+  <data name="gg.p.al" xml:space="preserve"><value>Radeon Anti-Lag</value></data>
+  <data name="gg.p.scA" xml:space="preserve"><value>Кеш шейдерів AMD</value></data>
+  <data name="gg.p.sam" xml:space="preserve"><value>Smart Access Memory (Resizable BAR)</value></data>
+  <data name="gg.v.auto" xml:space="preserve"><value>Авто</value></data>
+  <data name="gg.v.def" xml:space="preserve"><value>За замовчуванням</value></data>
+  <data name="gg.v.stock" xml:space="preserve"><value>Заводське</value></data>
+  <data name="gg.v.opt" xml:space="preserve"><value>Оптимальне</value></data>
+  <data name="gg.v.maxperf" xml:space="preserve"><value>Максимальна продуктивність</value></data>
+  <data name="gg.v.off" xml:space="preserve"><value>Вимк.</value></data>
+  <data name="gg.v.on" xml:space="preserve"><value>Увімк.</value></data>
+  <data name="gg.v.amdopt" xml:space="preserve"><value>Оптимізовано AMD</value></data>
+  <data name="gg.v.always" xml:space="preserve"><value>Завжди увімкнено</value></data>
+  <data name="gg.w.nv" xml:space="preserve"><value>Ліміт потужності та зсуви частот Corvite застосовує сам: слайдери нижче на цій вкладці. Решта: Панель керування NVIDIA → Керування параметрами 3D → Глобальні параметри. Ліміт температури та крива вентиляторів: MSI Afterburner.</value></data>
+  <data name="gg.w.amd" xml:space="preserve"><value>AMD Software: Adrenalin Edition → Продуктивність → Налаштування → Ручне налаштування. Anti-Lag, кеш шейдерів: вкладка Ігри → Графіка. Smart Access Memory вмикається в BIOS (Above 4G Decoding і Resizable BAR).</value></data>
+  <data name="gg.n.nv" xml:space="preserve"><value>Слайдери потужності та частот працюють через драйвер NVIDIA без сторонніх програм. Введіть у них значення з таблиці; Corvite повідомить, якщо відеокарта не приймає значення. Частоти задаються як у MSI Afterburner.</value></data>
+  <data name="gg.n.g6x" xml:space="preserve"><value>Пам'ять GDDR6X виправляє помилки сама: при надто високій частоті картинка не ламається, але FPS падає. Після кожного кроку порівнюйте FPS в одному й тому ж тесті і зупиняйтеся, коли він перестає рости.</value></data>
+  <data name="gg.n.reflex" xml:space="preserve"><value>Якщо в грі є NVIDIA Reflex, вмикайте його в налаштуваннях гри і не ставте режим Ultra одночасно. Режим низької затримки корисний у іграх без Reflex.</value></data>
+  <data name="gg.n.amd" xml:space="preserve"><value>Для відеокарт AMD Corvite нічого не записує: значення ви вводите самі в AMD Software. Значення напруги та частот у таблиці дано як зсув від заводських, у різних екземплярів запас різний.</value></data>
+  <data name="gg.n.warn" xml:space="preserve"><value>Підвищення лімітів і частот збільшує нагрів і споживання відеокарти. Робіть це на свій ризик і за справного охолодження. Довідник показується лише для настільних відеокарт: у ноутбучних межі закриті виробником.</value></data>
 </root>
