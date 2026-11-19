@@ -687,4 +687,41 @@
   <data name="pf.saved" xml:space="preserve"><value>Профіль збережено</value></data>
   <data name="pf.loaded" xml:space="preserve"><value>Профіль завантажено, параметрів: {0}. Натисніть «Застосувати»</value></data>
   <data name="pf.bad" xml:space="preserve"><value>Файл не підходить або в ньому немає відповідних параметрів</value></data>
+  <data name="cg.t" xml:space="preserve"><value>Підбір значень для процесора</value></data>
+  <data name="cg.sub" xml:space="preserve"><value>Довідник: що змінювати в BIOS або програмі виробника і до яких значень</value></data>
+  <data name="cg.sock" xml:space="preserve"><value>Сокет</value></data>
+  <data name="cg.cpu" xml:space="preserve"><value>Процесор</value></data>
+  <data name="cg.pick" xml:space="preserve"><value>Оберіть процесор</value></data>
+  <data name="cg.det" xml:space="preserve"><value>Визначено ваш процесор: {0}</value></data>
+  <data name="cg.spec" xml:space="preserve"><value>{0} ядер, {1} потоків · {2}–{3} ГГц · TDP {4} Вт · {5}</value></data>
+  <data name="cg.col.p" xml:space="preserve"><value>Параметр</value></data>
+  <data name="cg.safe" xml:space="preserve"><value>Безпечно</value></data>
+  <data name="cg.game" xml:space="preserve"><value>Ігровий</value></data>
+  <data name="cg.max" xml:space="preserve"><value>Максимум</value></data>
+  <data name="cg.where" xml:space="preserve"><value>Де змінювати:</value></data>
+  <data name="cg.empty" xml:space="preserve"><value>Оберіть сокет і процесор, щоб побачити значення.</value></data>
+  <data name="cg.p.pwr" xml:space="preserve"><value>Схема живлення Windows</value></data>
+  <data name="cg.p.pbo" xml:space="preserve"><value>Precision Boost Overdrive</value></data>
+  <data name="cg.p.ppt" xml:space="preserve"><value>Ліміт потужності PPT</value></data>
+  <data name="cg.p.co" xml:space="preserve"><value>Curve Optimizer (усі ядра)</value></data>
+  <data name="cg.p.boost" xml:space="preserve"><value>Max CPU Boost Clock Override</value></data>
+  <data name="cg.p.tlim" xml:space="preserve"><value>Ліміт температури</value></data>
+  <data name="cg.p.pl" xml:space="preserve"><value>Ліміти потужності PL1 / PL2</value></data>
+  <data name="cg.p.uv" xml:space="preserve"><value>Андервольт ядер (offset)</value></data>
+  <data name="cg.p.tcc" xml:space="preserve"><value>TCC Offset (зниження ліміту температури)</value></data>
+  <data name="cg.v.na" xml:space="preserve"><value>недоступно</value></data>
+  <data name="cg.v.bal" xml:space="preserve"><value>Збалансована</value></data>
+  <data name="cg.v.high" xml:space="preserve"><value>Висока продуктивність</value></data>
+  <data name="cg.w.amd" xml:space="preserve"><value>BIOS: Advanced → AMD Overclocking → Precision Boost Overdrive (Advanced). Назви пунктів залежать від плати. Підійде й програма AMD Ryzen Master.</value></data>
+  <data name="cg.w.amdold" xml:space="preserve"><value>BIOS материнської плати або програма AMD Ryzen Master.</value></data>
+  <data name="cg.w.intel" xml:space="preserve"><value>BIOS: розділ розгону (Tweaker / AI Tweaker / Advanced CPU) → Power Limits PL1 / PL2 / Tau і зміщення напруги ядра (Adaptive / Offset). Або програма Intel XTU.</value></data>
+  <data name="cg.w.lap" xml:space="preserve"><value>Застосунок виробника ноутбука (режим продуктивності) і схема живлення Windows. BIOS ноутбуків зазвичай не дає змінювати ліміти.</value></data>
+  <data name="cg.n.how" xml:space="preserve"><value>Змінюйте один параметр за раз і після кожного перевіряйте стабільність (гра, стрес-тест) і температуру. У разі вильотів поверніться на крок назад. Починайте зі стовпця «Безпечно».</value></data>
+  <data name="cg.n.warn" xml:space="preserve"><value>Corvite ці значення не записує: ви вводите їх самі в BIOS або програмі виробника. Підвищення лімітів гріє процесор, робіть це на свій ризик і за справного охолодження.</value></data>
+  <data name="cg.n.lap" xml:space="preserve"><value>На ноутбуках ліміти потужності та напруга зазвичай закриті виробником, тому таблиця коротка. Найбільше допомагають зарядка від мережі, чисте охолодження і режим продуктивності.</value></data>
+  <data name="cg.n.amdold" xml:space="preserve"><value>У Ryzen 1000 і 2000 немає Curve Optimizer, а Precision Boost Overdrive обмежений або відсутній. Процесор сам вичавлює майже максимум частоти, ручний розгін множником дає небагато і сильно гріє.</value></data>
+  <data name="cg.n.zen2" xml:space="preserve"><value>У Ryzen 3000 немає Curve Optimizer, виграш від PBO невеликий: спершу перевірте охолодження.</value></data>
+  <data name="cg.n.x3d" xml:space="preserve"><value>У процесорів із 3D V-Cache напруга й множник обмежені: не підвищуйте напругу SoC і ліміти без потреби. Найкорисніший параметр тут Curve Optimizer.</value></data>
+  <data name="cg.n.locked" xml:space="preserve"><value>У процесорів без літери K множник закритий, зміщення напруги зазвичай недоступне. Ліміти PL1 / PL2 змінюються лише на платах, де BIOS це дозволяє.</value></data>
+  <data name="cg.n.i1314" xml:space="preserve"><value>Intel Core 13 і 14 покоління: оновіть BIOS до версії з мікрокодом 0x12B або новішою і не піднімайте ліміти вище заводських, поки не переконаєтесь у стабільності. Збої цих процесорів пов’язані з підвищеними напругою і потужністю.</value></data>
 </root>

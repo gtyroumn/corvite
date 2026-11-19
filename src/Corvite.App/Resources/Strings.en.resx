@@ -687,4 +687,41 @@
   <data name="pf.saved" xml:space="preserve"><value>Profile saved</value></data>
   <data name="pf.loaded" xml:space="preserve"><value>Profile loaded, settings: {0}. Press Apply</value></data>
   <data name="pf.bad" xml:space="preserve"><value>The file is not valid or has no matching settings</value></data>
+  <data name="cg.t" xml:space="preserve"><value>Processor tuning guide</value></data>
+  <data name="cg.sub" xml:space="preserve"><value>Reference: what to change in BIOS or the manufacturer's program, and how far</value></data>
+  <data name="cg.sock" xml:space="preserve"><value>Socket</value></data>
+  <data name="cg.cpu" xml:space="preserve"><value>Processor</value></data>
+  <data name="cg.pick" xml:space="preserve"><value>Choose a processor</value></data>
+  <data name="cg.det" xml:space="preserve"><value>Detected your processor: {0}</value></data>
+  <data name="cg.spec" xml:space="preserve"><value>{0} cores, {1} threads · {2}–{3} GHz · TDP {4} W · {5}</value></data>
+  <data name="cg.col.p" xml:space="preserve"><value>Setting</value></data>
+  <data name="cg.safe" xml:space="preserve"><value>Safe</value></data>
+  <data name="cg.game" xml:space="preserve"><value>Gaming</value></data>
+  <data name="cg.max" xml:space="preserve"><value>Maximum</value></data>
+  <data name="cg.where" xml:space="preserve"><value>Where to change:</value></data>
+  <data name="cg.empty" xml:space="preserve"><value>Choose a socket and a processor to see the values.</value></data>
+  <data name="cg.p.pwr" xml:space="preserve"><value>Windows power plan</value></data>
+  <data name="cg.p.pbo" xml:space="preserve"><value>Precision Boost Overdrive</value></data>
+  <data name="cg.p.ppt" xml:space="preserve"><value>PPT power limit</value></data>
+  <data name="cg.p.co" xml:space="preserve"><value>Curve Optimizer (all cores)</value></data>
+  <data name="cg.p.boost" xml:space="preserve"><value>Max CPU Boost Clock Override</value></data>
+  <data name="cg.p.tlim" xml:space="preserve"><value>Temperature limit</value></data>
+  <data name="cg.p.pl" xml:space="preserve"><value>Power limits PL1 / PL2</value></data>
+  <data name="cg.p.uv" xml:space="preserve"><value>Core undervolt (offset)</value></data>
+  <data name="cg.p.tcc" xml:space="preserve"><value>TCC Offset (lower temperature limit)</value></data>
+  <data name="cg.v.na" xml:space="preserve"><value>n/a</value></data>
+  <data name="cg.v.bal" xml:space="preserve"><value>Balanced</value></data>
+  <data name="cg.v.high" xml:space="preserve"><value>High performance</value></data>
+  <data name="cg.w.amd" xml:space="preserve"><value>BIOS: Advanced → AMD Overclocking → Precision Boost Overdrive (Advanced). Menu names depend on the board. AMD Ryzen Master works too.</value></data>
+  <data name="cg.w.amdold" xml:space="preserve"><value>Motherboard BIOS or AMD Ryzen Master.</value></data>
+  <data name="cg.w.intel" xml:space="preserve"><value>BIOS: the overclocking section (Tweaker / AI Tweaker / Advanced CPU) → Power Limits PL1 / PL2 / Tau and the core voltage offset (Adaptive / Offset). Or Intel XTU.</value></data>
+  <data name="cg.w.lap" xml:space="preserve"><value>The laptop maker's app (performance mode) and the Windows power plan. Laptop BIOS usually does not allow changing limits.</value></data>
+  <data name="cg.n.how" xml:space="preserve"><value>Change one setting at a time and check stability (a game, a stress test) and temperature after each. If it crashes, go back one step. Start with the Safe column.</value></data>
+  <data name="cg.n.warn" xml:space="preserve"><value>Corvite does not write these values: you enter them yourself in BIOS or the manufacturer's program. Raising limits heats the processor; do it at your own risk and with working cooling.</value></data>
+  <data name="cg.n.lap" xml:space="preserve"><value>On laptops, power limits and voltage are usually locked by the maker, so the table is short. What helps most is mains power, clean cooling and the performance mode.</value></data>
+  <data name="cg.n.amdold" xml:space="preserve"><value>Ryzen 1000 and 2000 have no Curve Optimizer, and Precision Boost Overdrive is limited or missing. The processor already boosts close to its maximum; a manual multiplier overclock gains little and runs hot.</value></data>
+  <data name="cg.n.zen2" xml:space="preserve"><value>Ryzen 3000 has no Curve Optimizer and PBO gains are small: check your cooling first.</value></data>
+  <data name="cg.n.x3d" xml:space="preserve"><value>Processors with 3D V-Cache have limited voltage and multiplier: do not raise SoC voltage or limits without need. The most useful setting here is Curve Optimizer.</value></data>
+  <data name="cg.n.locked" xml:space="preserve"><value>Processors without the K suffix have a locked multiplier and usually no voltage offset. PL1 / PL2 can be changed only on boards whose BIOS allows it.</value></data>
+  <data name="cg.n.i1314" xml:space="preserve"><value>Intel Core 13th and 14th gen: update the BIOS to a version with microcode 0x12B or newer and do not raise limits above stock until you are sure it is stable. Crashes on these processors are tied to high voltage and power.</value></data>
 </root>

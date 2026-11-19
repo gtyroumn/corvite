@@ -32,6 +32,7 @@ public partial class MainViewModel : ObservableObject
     private Dictionary<string, double> _a;
     private sealed record HistEntry(Dictionary<string, string> Snaps, Dictionary<string, double> Prior, DateTime When, List<string> Ids);
     private readonly Stack<HistEntry> _hist = new();
+    private CpuGuideVm? _cpuGuide;
     private readonly TweakEngine _engine = new(Environment.GetCommandLineArgs().Contains("--dry-run"));
     private BaselineData? _baseline;
     private Dictionary<string, double> _base = new();
@@ -307,6 +308,7 @@ public partial class MainViewModel : ObservableObject
     {
         Info = info;
         Hw = info.ToProfile();
+        _cpuGuide?.Reload();
         // vendor-specific tweaks of the previous hardware must not leave pending changes behind
         foreach (var d in TweakCatalog.All.Where(d => d.Vendor != Vendor.Any)) _s[d.Id] = _a[d.Id];
         _profile = DetectProfileLocal();
@@ -403,7 +405,9 @@ public partial class MainViewModel : ObservableObject
         var defs = TweakCatalog.All.Where(d => d.Section == sec.Id && !d.IsGuard && ProfileEngine.IsVisible(d, Hw)).ToList();
         foreach (var g in defs.Select(d => d.GroupKey).Distinct())
             groups.Add(new GroupVm(g, defs.Where(d => d.GroupKey == g).Select(d => _vms[d.Id]).ToList()));
-        return new SectionPage(sec, groups, ResetSectionCommand);
+        _cpuGuide ??= new CpuGuideVm(() => Platform == PlatformKind.Laptop, () => Info.CpuName, _settings.CpuGuide,
+            id => { _settings.CpuGuide = id; SettingsStore.Save(_settings); });
+        return new SectionPage(sec, groups, ResetSectionCommand, sec.Id == Section.Cpu ? _cpuGuide : null);
     }
 
     [RelayCommand]
@@ -673,6 +677,7 @@ public partial class MainViewModel : ObservableObject
             if (_a[d.Id] > max) _a[d.Id] = max;
         }
         _hist.Clear(); // changing the device type resets the undo history
+        _cpuGuide?.Reload();
         RebuildHist();
         _profile = DetectProfileLocal();
         Navigate(_cur);

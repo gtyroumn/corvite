@@ -121,10 +121,12 @@ public sealed class SectionPage : PageVm
     private readonly SectionVm _sec;
     public List<GroupVm> Groups { get; }
     public ICommand ResetCommand { get; }
-    public SectionPage(SectionVm sec, List<GroupVm> groups, ICommand reset) { _sec = sec; Groups = groups; ResetCommand = reset; }
+    /// <summary>Tuning guide card, only on the Processor page.</summary>
+    public CpuGuideVm? Guide { get; }
+    public SectionPage(SectionVm sec, List<GroupVm> groups, ICommand reset, CpuGuideVm? guide = null) { _sec = sec; Groups = groups; ResetCommand = reset; Guide = guide; }
     public string Title => _sec.Name;
     public string Description => _sec.Description;
-    public override void Refresh() { base.Refresh(); foreach (var g in Groups) { g.Refresh(); foreach (var t in g.Items) t.Refresh(); } }
+    public override void Refresh() { base.Refresh(); Guide?.Refresh(); foreach (var g in Groups) { g.Refresh(); foreach (var t in g.Items) t.Refresh(); } }
 }
 
 /// <summary>Placeholder for pages that belong to later development stages (TZ section 15).</summary>
