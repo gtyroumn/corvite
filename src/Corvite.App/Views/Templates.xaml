@@ -246,6 +246,20 @@
                         <TextBlock Margin="2,10,0,0" FontSize="12.5" TextWrapping="Wrap" Foreground="{StaticResource Fg2}">
                             <Run Text="{loc:T cg.where}" Foreground="{StaticResource Fg}" FontWeight="SemiBold"/> <Run Text="{Binding Where, Mode=OneWay}"/>
                         </TextBlock>
+                        <StackPanel Visibility="{Binding HasSteps, Converter={StaticResource B2V}}" Margin="2,14,0,0">
+                            <TextBlock Text="{Binding StepsTitle}" FontWeight="SemiBold" FontSize="12.5" Margin="0,0,0,6"/>
+                            <ItemsControl ItemsSource="{Binding Steps}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding}" Foreground="{StaticResource Fg2}" FontSize="12.5" TextWrapping="Wrap" Margin="0,0,0,5"/>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                        <WrapPanel Visibility="{Binding HasApp, Converter={StaticResource B2V}}" Margin="0,12,0,0">
+                            <Button Style="{StaticResource PrimaryBtn}" Content="{Binding OpenAppText}" Command="{Binding OpenAppCommand}" Margin="0,0,10,6"/>
+                            <Button Style="{StaticResource Btn}" Content="{loc:T gg.site}" Command="{Binding OpenSiteCommand}" Margin="0,0,0,6"/>
+                        </WrapPanel>
                         <ItemsControl ItemsSource="{Binding Notes}" Margin="2,8,0,0">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>

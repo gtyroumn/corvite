@@ -15,10 +15,12 @@ public static class GpuGuide
         var rows = new List<GuideRow>();
         var notes = new List<string>();
         string where;
+        string[] steps;
 
         if (g.IsNvidia)
         {
             where = "gg.w.nv";
+            steps = new[] { "gg.s.nv1", "gg.s.nv2", "gg.s.nv3", "gg.s.nv4", "gg.s.nv5", "gg.s.nv6", "gg.s.nv7" };
             rows.Add(new GuideRow("gg.p.pow", "100 %", "105 %", "110 %"));
 
             var (c1, c2, c3) = g.S switch
@@ -53,6 +55,7 @@ public static class GpuGuide
         else
         {
             where = "gg.w.amd";
+            steps = new[] { "gg.s.amd1", "gg.s.amd2", "gg.s.amd3", "gg.s.amd4", "gg.s.amd5", "gg.s.amd6" };
             var old = g.S is "amdgcn" or "amd5";
             rows.Add(new GuideRow("gg.p.pow", "0 %", old ? "+10 %" : "+5 %", old ? "+20 %" : "+15 %"));
 
@@ -73,6 +76,6 @@ public static class GpuGuide
 
         notes.Add("cg.n.how");
         notes.Add("gg.n.warn");
-        return new Guide(rows, notes, where);
+        return new Guide(rows, notes, where, steps);
     }
 }

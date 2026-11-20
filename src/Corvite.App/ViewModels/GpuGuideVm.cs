@@ -1,4 +1,5 @@
 using Corvite.App.Localization;
+using Corvite.App.Services;
 using Corvite.Core.Hardware;
 
 namespace Corvite.App.ViewModels;
@@ -72,7 +73,7 @@ public sealed class GpuGuideVm : TuningGuideVm
         Detected = g != null && det?.Id == g.Id ? string.Format(Loc.I["gg.det"], det.N) : "";
         if (g == null)
         {
-            Rows = new(); Notes = new(); Specs = ""; Where = "";
+            Rows = new(); Notes = new(); Steps = new(); Specs = ""; Where = ""; App = null;
         }
         else
         {
@@ -80,6 +81,8 @@ public sealed class GpuGuideVm : TuningGuideVm
             Rows = guide.Rows.Select(r => new GuideRowVm(Loc.I[r.ParamKey], r.Safe, r.Game, r.Max)).ToList();
             Notes = guide.NoteKeys.Select(k => Loc.I[k]).ToList();
             Where = Loc.I[guide.WhereKey];
+            Steps = Number((guide.StepKeys ?? Array.Empty<string>()).Select(k => Loc.I[k]));
+            App = g.IsNvidia ? OfficialApp.NvidiaPanel : OfficialApp.AmdSoftware;
             Specs = string.Format(Loc.I["gg.spec"], g.Vram, g.Mem, g.D, g.X, g.R);
         }
         Changed();

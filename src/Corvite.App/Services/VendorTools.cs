@@ -20,10 +20,10 @@ public static class VendorTools
     /// <summary>Thaiphoon Burner on Softpedia (a third-party software catalogue, chosen by the user): the original author's site is gone.</summary>
     public const string ThaiphoonUrl = "https://www.softpedia.com/get/Tweak/Memory-Tweak/Thaiphoon-Burner.shtml#download";
 
-    private const string Xtu = "https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html";
-    private const string RyzenMaster = "https://www.amd.com/en/products/software/ryzen-master.html";
-    private const string NvidiaDrivers = "https://www.nvidia.com/Download/index.aspx";
-    private const string AmdGpuDrivers = "https://www.amd.com/en/resources/support-articles/faqs/GPU-131.html";
+    internal const string Xtu = "https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html";
+    internal const string RyzenMaster = "https://www.amd.com/en/products/software/ryzen-master.html";
+    internal const string NvidiaDrivers = "https://www.nvidia.com/Download/index.aspx";
+    internal const string AmdGpuDrivers = "https://www.amd.com/en/resources/support-articles/faqs/GPU-131.html";
 
     /// <summary>
     /// Which official program explains / unlocks a locked tweak, chosen from the detected hardware

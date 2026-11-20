@@ -1,5 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Corvite.App.Localization;
+using Corvite.App.Services;
 
 namespace Corvite.App.ViewModels;
 
@@ -21,6 +23,19 @@ public abstract partial class TuningGuideVm : ObservableObject
     public string Specs { get; protected set; } = "";
     public string Where { get; protected set; } = "";
     public string Detected { get; protected set; } = "";
+    public List<string> Steps { get; protected set; } = new();
+    protected OfficialApp? App;
+
+    public bool HasSteps => Steps.Count > 0;
+    public bool HasApp => App != null;
+    public string StepsTitle => Loc.I["gg.steps"];
+    public string OpenAppText => App == null ? "" : string.Format(Loc.I["gg.open"], Loc.I[App.NameKey]);
+
+    /// <summary>Numbers the step texts ("1. ...") for display.</summary>
+    protected static List<string> Number(IEnumerable<string> texts) => texts.Select((t, i) => $"{i + 1}. {t}").ToList();
+
+    [RelayCommand] private void OpenApp() => App?.Launch();
+    [RelayCommand] private void OpenSite() => App?.OpenSite();
 
     public abstract string Title { get; }
     public abstract string Subtitle { get; }

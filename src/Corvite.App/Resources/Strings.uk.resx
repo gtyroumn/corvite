@@ -762,4 +762,24 @@
   <data name="gg.n.reflex" xml:space="preserve"><value>Якщо в грі є NVIDIA Reflex, вмикайте його в налаштуваннях гри і не ставте режим Ultra одночасно. Режим низької затримки корисний у іграх без Reflex.</value></data>
   <data name="gg.n.amd" xml:space="preserve"><value>Для відеокарт AMD Corvite нічого не записує: значення ви вводите самі в AMD Software. Значення напруги та частот у таблиці дано як зсув від заводських, у різних екземплярів запас різний.</value></data>
   <data name="gg.n.warn" xml:space="preserve"><value>Підвищення лімітів і частот збільшує нагрів і споживання відеокарти. Робіть це на свій ризик і за справного охолодження. Довідник показується лише для настільних відеокарт: у ноутбучних межі закриті виробником.</value></data>
+  <data name="gg.steps" xml:space="preserve"><value>Покроково:</value></data>
+  <data name="gg.open" xml:space="preserve"><value>Відкрити: {0}</value></data>
+  <data name="gg.site" xml:space="preserve"><value>Сторінка на сайті виробника</value></data>
+  <data name="app.nvcp" xml:space="preserve"><value>Панель керування NVIDIA</value></data>
+  <data name="app.amdsw" xml:space="preserve"><value>AMD Software</value></data>
+  <data name="app.rm" xml:space="preserve"><value>AMD Ryzen Master</value></data>
+  <data name="app.xtu" xml:space="preserve"><value>Intel XTU</value></data>
+  <data name="gg.s.nv1" xml:space="preserve"><value>Натисніть кнопку «Відкрити» нижче. Якщо вікно не відкрилося: правий клік по робочому столу → NVIDIA Control Panel; якщо пункту немає, встановіть драйвер із сайту nvidia.com (кнопка поруч).</value></data>
+  <data name="gg.s.nv2" xml:space="preserve"><value>Ліворуч оберіть «Керування параметрами 3D», вкладка «Глобальні параметри».</value></data>
+  <data name="gg.s.nv3" xml:space="preserve"><value>«Режим керування живленням»: оберіть значення зі стовпця «Для ігор».</value></data>
+  <data name="gg.s.nv4" xml:space="preserve"><value>«Режим низької затримки» і «Розмір кешу шейдерів»: оберіть значення з того ж стовпця.</value></data>
+  <data name="gg.s.nv5" xml:space="preserve"><value>Натисніть «Застосувати» внизу вікна.</value></data>
+  <data name="gg.s.nv6" xml:space="preserve"><value>Ліміт потужності та зсуви частот ставте слайдерами Corvite нижче. Почніть зі стовпця «Безпечно», запустіть гру або тест на 10–15 хвилин. Якщо немає вильотів і артефактів, переходьте до стовпця «Для ігор».</value></data>
+  <data name="gg.s.nv7" xml:space="preserve"><value>Ліміт температури і вентилятори: MSI Afterburner, повзунок Temp. Limit і крива вентиляторів (Налаштування → Кулер).</value></data>
+  <data name="gg.s.amd1" xml:space="preserve"><value>Натисніть кнопку «Відкрити» нижче (або правий клік по робочому столу → AMD Software).</value></data>
+  <data name="gg.s.amd2" xml:space="preserve"><value>Відкрийте вкладку «Продуктивність» → «Налаштування».</value></data>
+  <data name="gg.s.amd3" xml:space="preserve"><value>Увімкніть «Ручне налаштування» (Manual) і підтвердьте попередження.</value></data>
+  <data name="gg.s.amd4" xml:space="preserve"><value>Введіть значення з таблиці: ліміт потужності, напругу, максимальну частоту ядра, частоту і таймінги пам'яті, криву вентиляторів. Починайте зі стовпця «Безпечно».</value></data>
+  <data name="gg.s.amd5" xml:space="preserve"><value>Натисніть «Застосувати», запустіть гру або тест на 10–15 хвилин. При вильотах і артефактах поверніться на крок назад або натисніть «Скидання».</value></data>
+  <data name="gg.s.amd6" xml:space="preserve"><value>Вкладка «Ігри» → «Графіка»: увімкніть Radeon Anti-Lag і оберіть режим кешу шейдерів із таблиці.</value></data>
 </root>

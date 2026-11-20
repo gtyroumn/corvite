@@ -1,4 +1,5 @@
 using Corvite.App.Localization;
+using Corvite.App.Services;
 using Corvite.Core.Hardware;
 
 namespace Corvite.App.ViewModels;
@@ -73,7 +74,7 @@ public sealed class CpuGuideVm : TuningGuideVm
         Detected = c != null && det?.Id == c.Id ? string.Format(Loc.I["cg.det"], det.N) : "";
         if (c == null)
         {
-            Rows = new(); Notes = new(); Specs = ""; Where = "";
+            Rows = new(); Notes = new(); Steps = new(); Specs = ""; Where = ""; App = null;
         }
         else
         {
@@ -81,6 +82,8 @@ public sealed class CpuGuideVm : TuningGuideVm
             Rows = g.Rows.Select(r => new GuideRowVm(Loc.I[r.ParamKey], r.Safe, r.Game, r.Max)).ToList();
             Notes = g.NoteKeys.Select(k => Loc.I[k]).ToList();
             Where = Loc.I[g.WhereKey];
+            Steps = new();
+            App = c.IsLaptop ? null : c.IsAmd ? OfficialApp.RyzenMaster : OfficialApp.Xtu;
             Specs = string.Format(Loc.I["cg.spec"], c.C, c.T, c.B.ToString("0.0#"), c.X.ToString("0.0#"), c.D, c.R);
         }
         Changed();

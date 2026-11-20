@@ -3,7 +3,7 @@ namespace Corvite.Core.Hardware;
 /// <summary>One line of the tuning table. ParamKey is a Strings.resx key; the three values are ready-to-show text.</summary>
 public sealed record GuideRow(string ParamKey, string Safe, string Game, string Max);
 
-public sealed record Guide(IReadOnlyList<GuideRow> Rows, IReadOnlyList<string> NoteKeys, string WhereKey);
+public sealed record Guide(IReadOnlyList<GuideRow> Rows, IReadOnlyList<string> NoteKeys, string WhereKey, IReadOnlyList<string>? StepKeys = null);
 
 /// <summary>
 /// Reference values for tuning a processor in BIOS or the manufacturer's program. Rules, not measurements: they start from the
