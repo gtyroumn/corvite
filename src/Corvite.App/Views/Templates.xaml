@@ -201,12 +201,12 @@
                     <WrapPanel>
                         <StackPanel Margin="0,0,16,10">
                             <TextBlock Text="{Binding GroupLabel}" Foreground="{StaticResource Fg3}" FontSize="12" Margin="2,0,0,5"/>
-                            <ComboBox Style="{StaticResource GlassCombo}" Width="280" ItemsSource="{Binding Groups}" DisplayMemberPath="Label"
+                            <ComboBox Style="{StaticResource GlassCombo}" Width="280" ItemsSource="{Binding Groups}"
                                       SelectedValuePath="Id" SelectedValue="{Binding GroupId, Mode=TwoWay}"/>
                         </StackPanel>
                         <StackPanel Margin="0,0,0,10">
                             <TextBlock Text="{Binding ItemLabel}" Foreground="{StaticResource Fg3}" FontSize="12" Margin="2,0,0,5"/>
-                            <ComboBox Style="{StaticResource GlassCombo}" Width="300" ItemsSource="{Binding Items}" DisplayMemberPath="Label"
+                            <ComboBox Style="{StaticResource GlassCombo}" Width="300" ItemsSource="{Binding Items}"
                                       SelectedValuePath="Id" SelectedValue="{Binding ItemId, Mode=TwoWay}"/>
                         </StackPanel>
                     </WrapPanel>

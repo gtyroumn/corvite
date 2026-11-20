@@ -573,6 +573,13 @@
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="MaxDropDownHeight" Value="320"/>
         <Setter Property="ItemContainerStyle" Value="{StaticResource GlassComboItem}"/>
+        <Setter Property="ItemTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Label}" TextTrimming="CharacterEllipsis"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="Template">
             <Setter.Value>
