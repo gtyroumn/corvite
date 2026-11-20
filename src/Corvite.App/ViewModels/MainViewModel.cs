@@ -545,6 +545,15 @@ public partial class MainViewModel : ObservableObject
     }
 
     // ---------------------------------------------------------------- backup of original settings (TZ 13)
+    /// <summary>Uninstall is offered only for an installed copy (not for a portable one or a debug build).</summary>
+    public bool CanUninstall { get; } = Corvite.App.Setup.Installer.RunningInstalled();
+
+    [RelayCommand]
+    private void UninstallApp()
+    {
+        if (Corvite.App.Setup.Installer.StartUninstall()) System.Windows.Application.Current.Shutdown();
+    }
+
     public bool BkExists => _baseline != null;
     public bool BkMissing => _baseline == null;
     public string BkWhen => _baseline == null ? "" : _baseline.Created.ToString("dd.MM.yyyy HH:mm");

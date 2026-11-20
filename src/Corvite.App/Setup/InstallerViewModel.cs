@@ -74,6 +74,13 @@ public partial class InstallerViewModel : ObservableObject
 
     [RelayCommand] private void SetLang(string l) => Lang = l;
 
+    /// <summary>"Remove the installed Corvite" from the setup window: opens the uninstall window of the installed copy and closes this one.</summary>
+    [RelayCommand]
+    private void UninstallExisting()
+    {
+        if (_dry || Installer.StartUninstall()) System.Windows.Application.Current.Shutdown();
+    }
+
     [RelayCommand]
     private void Browse()
     {

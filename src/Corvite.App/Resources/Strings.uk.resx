@@ -781,4 +781,7 @@
   <data name="gg.s.amd4" xml:space="preserve"><value>Введіть значення з таблиці: ліміт потужності, напругу, максимальну частоту ядра, частоту і таймінги пам'яті, криву вентиляторів. Починайте зі стовпця «Безпечно».</value></data>
   <data name="gg.s.amd5" xml:space="preserve"><value>Натисніть «Застосувати», запустіть гру або тест на 10–15 хвилин. При вильотах і артефактах поверніться на крок назад або натисніть «Скидання».</value></data>
   <data name="gg.s.amd6" xml:space="preserve"><value>Вкладка «Ігри» → «Графіка»: увімкніть Radeon Anti-Lag і оберіть режим кешу шейдерів із таблиці.</value></data>
+  <data name="un_t" xml:space="preserve"><value>Видалення програми</value></data>
+  <data name="un_d" xml:space="preserve"><value>Відкриється вікно видалення. У ньому можна спершу повернути початкові налаштування Windows і за бажання видалити дані Corvite (копію налаштувань, журнал).</value></data>
+  <data name="un_b" xml:space="preserve"><value>Видалити Corvite…</value></data>
 </root>

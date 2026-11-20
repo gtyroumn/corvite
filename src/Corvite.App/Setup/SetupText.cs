@@ -26,6 +26,7 @@ public static class SetupText
         ["s.inst"]   = new[] { "Версия {0}. Несколько секунд, и можно играть.", "Версія {0}. Кілька секунд, і можна грати.", "Version {0}. A few seconds and you are ready to play." },
         ["s.uninst"] = new[] { "Corvite будет удалён с этого компьютера.", "Corvite буде видалено з цього комп'ютера.", "Corvite will be removed from this computer." },
         ["b.inst"]   = new[] { "Установить", "Встановити", "Install" },
+        ["unb"]      = new[] { "Удалить установленный Corvite", "Видалити встановлений Corvite", "Uninstall the installed Corvite" },
         ["b.uninst"] = new[] { "Удалить", "Видалити", "Uninstall" },
         ["d.inst"]   = new[] { "Corvite установлен", "Corvite встановлено", "Corvite is installed" },
         ["d.uninst"] = new[] { "Corvite удалён", "Corvite видалено", "Corvite was removed" },

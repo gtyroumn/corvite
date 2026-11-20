@@ -34,6 +34,33 @@ public static class Installer
         catch { return null; }
     }
 
+    /// <summary>True when this process runs from the installed folder (so "Uninstall" makes sense; a portable copy has nothing to uninstall).</summary>
+    public static bool RunningInstalled()
+    {
+        try
+        {
+            var dir = InstalledDir();
+            var exe = Environment.ProcessPath;
+            if (string.IsNullOrEmpty(dir) || string.IsNullOrEmpty(exe)) return false;
+            return Path.GetFullPath(exe).StartsWith(Path.GetFullPath(dir).TrimEnd('\\') + "\\", StringComparison.OrdinalIgnoreCase);
+        }
+        catch { return false; }
+    }
+
+    /// <summary>Starts the installed copy in uninstall mode (the same window as the "Apps" entry opens).</summary>
+    public static bool StartUninstall()
+    {
+        try
+        {
+            var dir = InstalledDir();
+            var exe = dir == null ? null : Path.Combine(dir, "Corvite.exe");
+            if (exe == null || !File.Exists(exe)) return false;
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(exe, "--uninstall") { UseShellExecute = true });
+            return true;
+        }
+        catch { return false; }
+    }
+
     /// <summary>The program always lives in a folder called "Corvite": picking "D:\Games" installs to "D:\Games\Corvite".</summary>
     public static string NormalizeDir(string dir)
     {

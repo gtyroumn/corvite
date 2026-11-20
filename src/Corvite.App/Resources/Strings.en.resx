@@ -781,4 +781,7 @@
   <data name="gg.s.amd4" xml:space="preserve"><value>Enter the values from the table: power limit, voltage, maximum core clock, memory clock and timing, fan curve. Start with the Safe column.</value></data>
   <data name="gg.s.amd5" xml:space="preserve"><value>Press Apply and run a game or test for 10–15 minutes. On crashes or artifacts go back a step or press Reset.</value></data>
   <data name="gg.s.amd6" xml:space="preserve"><value>Gaming tab → Graphics: turn on Radeon Anti-Lag and choose the shader cache mode from the table.</value></data>
+  <data name="un_t" xml:space="preserve"><value>Uninstall</value></data>
+  <data name="un_d" xml:space="preserve"><value>The uninstall window opens. There you can first restore the original Windows settings and, if you want, delete Corvite's data (settings copy, log).</value></data>
+  <data name="un_b" xml:space="preserve"><value>Uninstall Corvite…</value></data>
 </root>
