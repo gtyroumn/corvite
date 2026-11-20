@@ -1,3 +1,2 @@
-Place the font files here (embedded as WPF Resources, TZ section 3):
-  Tektur (Regular/Medium/SemiBold/Bold), IBM Plex Sans (Regular/Medium/SemiBold), JetBrains Mono (Regular/Medium/Bold)
-All three are SIL OFL licensed. Without the files the app falls back to Segoe UI / Consolas.
+Fonts embedded in the app: Tektur (Regular, Bold), IBM Plex Sans (Medium, Regular, SemiBold), JetBrains Mono (Medium, Bold).
+All three are licensed under SIL OFL 1.1. If a font file is missing, the app falls back to Segoe UI / Consolas.
