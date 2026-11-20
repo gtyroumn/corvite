@@ -28,11 +28,11 @@ public sealed class TweakEngine
 
     /// <summary>
     /// Tweaks that would need a manufacturer driver or private API that cannot be used safely from here (CPU power limits and
-    /// voltage, Curve Optimizer, driver-profile switches). Shown as locked, never faked.
+    /// voltage, Curve Optimizer, GPU temperature target, AMD driver switches). Shown as locked, never faked.
     /// </summary>
     private static readonly HashSet<string> DriverBound = new()
     {
-        "boost", "ppt", "tlim", "co", "pbo", "pl2", "uvi", "gtemp", "lowlat", "shader", "gpm", "antil", "refl"
+        "boost", "ppt", "tlim", "co", "pbo", "pl2", "uvi", "gtemp", "antil", "refl"
     };
 
     public bool IsDriverBound(string id) => DriverBound.Contains(id);

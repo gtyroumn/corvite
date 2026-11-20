@@ -755,9 +755,9 @@
   <data name="gg.v.on" xml:space="preserve"><value>Увімк.</value></data>
   <data name="gg.v.amdopt" xml:space="preserve"><value>Оптимізовано AMD</value></data>
   <data name="gg.v.always" xml:space="preserve"><value>Завжди увімкнено</value></data>
-  <data name="gg.w.nv" xml:space="preserve"><value>Ліміт потужності та зсуви частот Corvite застосовує сам: слайдери нижче на цій вкладці. Решта: Панель керування NVIDIA → Керування параметрами 3D → Глобальні параметри. Ліміт температури та крива вентиляторів: MSI Afterburner.</value></data>
+  <data name="gg.w.nv" xml:space="preserve"><value>Ліміт потужності, частоти та перемикачі драйвера: на цій вкладці нижче (Corvite застосовує їх сам). Те саме вручну: Панель керування NVIDIA → Керування параметрами 3D → Глобальні параметри. Ліміт температури та крива вентиляторів: MSI Afterburner.</value></data>
   <data name="gg.w.amd" xml:space="preserve"><value>AMD Software: Adrenalin Edition → Продуктивність → Налаштування → Ручне налаштування. Anti-Lag, кеш шейдерів: вкладка Ігри → Графіка. Smart Access Memory вмикається в BIOS (Above 4G Decoding і Resizable BAR).</value></data>
-  <data name="gg.n.nv" xml:space="preserve"><value>Слайдери потужності та частот працюють через драйвер NVIDIA без сторонніх програм. Введіть у них значення з таблиці; Corvite повідомить, якщо відеокарта не приймає значення. Частоти задаються як у MSI Afterburner.</value></data>
+  <data name="gg.n.nv" xml:space="preserve"><value>Слайдери потужності та частот і перемикачі драйвера працюють без сторонніх програм: Corvite використовує офіційні інтерфейси NVIDIA (NVML і NVAPI), встановлені разом із драйвером. Частоти задаються як у MSI Afterburner. Якщо відеокарта не приймає значення, Corvite повідомить про це. Перемикачі драйвера зберігаються і після перезавантаження, їх можна повернути кнопкою відкату в історії.</value></data>
   <data name="gg.n.g6x" xml:space="preserve"><value>Пам'ять GDDR6X виправляє помилки сама: при надто високій частоті картинка не ламається, але FPS падає. Після кожного кроку порівнюйте FPS в одному й тому ж тесті і зупиняйтеся, коли він перестає рости.</value></data>
   <data name="gg.n.reflex" xml:space="preserve"><value>Якщо в грі є NVIDIA Reflex, вмикайте його в налаштуваннях гри і не ставте режим Ultra одночасно. Режим низької затримки корисний у іграх без Reflex.</value></data>
   <data name="gg.n.amd" xml:space="preserve"><value>Для відеокарт AMD Corvite нічого не записує: значення ви вводите самі в AMD Software. Значення напруги та частот у таблиці дано як зсув від заводських, у різних екземплярів запас різний.</value></data>
@@ -769,13 +769,12 @@
   <data name="app.amdsw" xml:space="preserve"><value>AMD Software</value></data>
   <data name="app.rm" xml:space="preserve"><value>AMD Ryzen Master</value></data>
   <data name="app.xtu" xml:space="preserve"><value>Intel XTU</value></data>
-  <data name="gg.s.nv1" xml:space="preserve"><value>Натисніть кнопку «Відкрити» нижче. Якщо вікно не відкрилося: правий клік по робочому столу → NVIDIA Control Panel; якщо пункту немає, встановіть драйвер із сайту nvidia.com (кнопка поруч).</value></data>
-  <data name="gg.s.nv2" xml:space="preserve"><value>Ліворуч оберіть «Керування параметрами 3D», вкладка «Глобальні параметри».</value></data>
-  <data name="gg.s.nv3" xml:space="preserve"><value>«Режим керування живленням»: оберіть значення зі стовпця «Для ігор».</value></data>
-  <data name="gg.s.nv4" xml:space="preserve"><value>«Режим низької затримки» і «Розмір кешу шейдерів»: оберіть значення з того ж стовпця.</value></data>
-  <data name="gg.s.nv5" xml:space="preserve"><value>Натисніть «Застосувати» внизу вікна.</value></data>
-  <data name="gg.s.nv6" xml:space="preserve"><value>Ліміт потужності та зсуви частот ставте слайдерами Corvite нижче. Почніть зі стовпця «Безпечно», запустіть гру або тест на 10–15 хвилин. Якщо немає вильотів і артефактів, переходьте до стовпця «Для ігор».</value></data>
-  <data name="gg.s.nv7" xml:space="preserve"><value>Ліміт температури і вентилятори: MSI Afterburner, повзунок Temp. Limit і крива вентиляторів (Налаштування → Кулер).</value></data>
+  <data name="gg.s.nv1" xml:space="preserve"><value>Перемикачі Corvite нижче («Максимальна продуктивність у драйвері», «Режим низької затримки», «Розширений кеш шейдерів») змінюють ті самі глобальні параметри драйвера, що й Панель керування NVIDIA. Увімкніть потрібні та натисніть «Застосувати» внизу вікна Corvite.</value></data>
+  <data name="gg.s.nv2" xml:space="preserve"><value>Ліміт потужності та зсуви частот ставте слайдерами Corvite. Почніть зі стовпця «Безпечно», запустіть гру або тест на 10–15 хвилин. Якщо немає вильотів і артефактів, переходьте до стовпця «Для ігор».</value></data>
+  <data name="gg.s.nv3" xml:space="preserve"><value>Те саме вручну: кнопка «Відкрити» нижче (або правий клік по робочому столу → NVIDIA Control Panel). Якщо вікно не відкрилося, встановіть драйвер із сайту nvidia.com (кнопка поруч).</value></data>
+  <data name="gg.s.nv4" xml:space="preserve"><value>Ліворуч «Керування параметрами 3D» → вкладка «Глобальні параметри».</value></data>
+  <data name="gg.s.nv5" xml:space="preserve"><value>Оберіть значення з таблиці: «Режим керування живленням», «Режим низької затримки», «Розмір кешу шейдерів». Натисніть «Застосувати» внизу вікна.</value></data>
+  <data name="gg.s.nv6" xml:space="preserve"><value>Ліміт температури і вентилятори: MSI Afterburner, повзунок Temp. Limit і крива вентиляторів (Налаштування → Кулер).</value></data>
   <data name="gg.s.amd1" xml:space="preserve"><value>Натисніть кнопку «Відкрити» нижче (або правий клік по робочому столу → AMD Software).</value></data>
   <data name="gg.s.amd2" xml:space="preserve"><value>Відкрийте вкладку «Продуктивність» → «Налаштування».</value></data>
   <data name="gg.s.amd3" xml:space="preserve"><value>Увімкніть «Ручне налаштування» (Manual) і підтвердьте попередження.</value></data>

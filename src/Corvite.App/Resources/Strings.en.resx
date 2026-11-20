@@ -755,9 +755,9 @@
   <data name="gg.v.on" xml:space="preserve"><value>On</value></data>
   <data name="gg.v.amdopt" xml:space="preserve"><value>AMD optimized</value></data>
   <data name="gg.v.always" xml:space="preserve"><value>Always on</value></data>
-  <data name="gg.w.nv" xml:space="preserve"><value>Corvite applies the power limit and clock offsets itself: use the sliders below on this page. Everything else: NVIDIA Control Panel → Manage 3D settings → Global settings. Temperature limit and fan curve: MSI Afterburner.</value></data>
+  <data name="gg.w.nv" xml:space="preserve"><value>Power limit, clocks and driver switches: on this page below (Corvite applies them itself). The same by hand: NVIDIA Control Panel → Manage 3D settings → Global settings. Temperature limit and fan curve: MSI Afterburner.</value></data>
   <data name="gg.w.amd" xml:space="preserve"><value>AMD Software: Adrenalin Edition → Performance → Tuning → Manual tuning. Anti-Lag and shader cache: Gaming → Graphics. Smart Access Memory is enabled in BIOS (Above 4G Decoding and Resizable BAR).</value></data>
-  <data name="gg.n.nv" xml:space="preserve"><value>The power and clock sliders work through the NVIDIA driver without third-party tools. Enter the values from the table; Corvite tells you if the card refuses a value. Clocks are entered the same way as in MSI Afterburner.</value></data>
+  <data name="gg.n.nv" xml:space="preserve"><value>The power and clock sliders and the driver switches work without third-party tools: Corvite uses NVIDIA's official interfaces (NVML and NVAPI) installed with the driver. Clocks are entered the same way as in MSI Afterburner. If the card refuses a value, Corvite says so. The driver switches persist after a reboot and can be rolled back from the history.</value></data>
   <data name="gg.n.g6x" xml:space="preserve"><value>GDDR6X corrects errors itself: at too high a clock the picture does not break, but FPS drops. After each step compare FPS in the same test and stop when it no longer rises.</value></data>
   <data name="gg.n.reflex" xml:space="preserve"><value>If a game has NVIDIA Reflex, turn it on in the game and do not set Ultra at the same time. Low Latency Mode is useful in games without Reflex.</value></data>
   <data name="gg.n.amd" xml:space="preserve"><value>For AMD cards Corvite writes nothing: you enter the values yourself in AMD Software. Voltage and clock values in the table are offsets from stock; headroom differs between individual cards.</value></data>
@@ -769,13 +769,12 @@
   <data name="app.amdsw" xml:space="preserve"><value>AMD Software</value></data>
   <data name="app.rm" xml:space="preserve"><value>AMD Ryzen Master</value></data>
   <data name="app.xtu" xml:space="preserve"><value>Intel XTU</value></data>
-  <data name="gg.s.nv1" xml:space="preserve"><value>Press the Open button below. If the window does not open: right-click the desktop → NVIDIA Control Panel; if the item is missing, install the driver from nvidia.com (button next to it).</value></data>
-  <data name="gg.s.nv2" xml:space="preserve"><value>On the left choose Manage 3D settings, tab Global settings.</value></data>
-  <data name="gg.s.nv3" xml:space="preserve"><value>Power management mode: choose the value from the Game column.</value></data>
-  <data name="gg.s.nv4" xml:space="preserve"><value>Low Latency Mode and Shader Cache Size: choose the values from the same column.</value></data>
-  <data name="gg.s.nv5" xml:space="preserve"><value>Press Apply at the bottom of the window.</value></data>
-  <data name="gg.s.nv6" xml:space="preserve"><value>Set the power limit and clock offsets with the Corvite sliders below. Start with the Safe column and run a game or test for 10–15 minutes. If there are no crashes or artifacts, move to the Game column.</value></data>
-  <data name="gg.s.nv7" xml:space="preserve"><value>Temperature limit and fans: MSI Afterburner, the Temp. Limit slider and the fan curve (Settings → Fan).</value></data>
+  <data name="gg.s.nv1" xml:space="preserve"><value>The Corvite switches below (maximum performance in the driver, low latency mode, extended shader cache) change the same global driver settings as the NVIDIA Control Panel. Turn on the ones you need and press Apply at the bottom of the Corvite window.</value></data>
+  <data name="gg.s.nv2" xml:space="preserve"><value>Set the power limit and clock offsets with the Corvite sliders. Start with the Safe column and run a game or test for 10–15 minutes. If there are no crashes or artifacts, move to the Game column.</value></data>
+  <data name="gg.s.nv3" xml:space="preserve"><value>The same by hand: press Open below (or right-click the desktop → NVIDIA Control Panel). If the window does not open, install the driver from nvidia.com (button next to it).</value></data>
+  <data name="gg.s.nv4" xml:space="preserve"><value>On the left choose Manage 3D settings → Global settings tab.</value></data>
+  <data name="gg.s.nv5" xml:space="preserve"><value>Choose the values from the table: Power management mode, Low Latency Mode, Shader Cache Size. Press Apply at the bottom of the window.</value></data>
+  <data name="gg.s.nv6" xml:space="preserve"><value>Temperature limit and fans: MSI Afterburner, the Temp. Limit slider and the fan curve (Settings → Fan).</value></data>
   <data name="gg.s.amd1" xml:space="preserve"><value>Press the Open button below (or right-click the desktop → AMD Software).</value></data>
   <data name="gg.s.amd2" xml:space="preserve"><value>Open the Performance tab → Tuning.</value></data>
   <data name="gg.s.amd3" xml:space="preserve"><value>Turn on Manual tuning and confirm the warning.</value></data>

@@ -20,7 +20,7 @@ public static class GpuGuide
         if (g.IsNvidia)
         {
             where = "gg.w.nv";
-            steps = new[] { "gg.s.nv1", "gg.s.nv2", "gg.s.nv3", "gg.s.nv4", "gg.s.nv5", "gg.s.nv6", "gg.s.nv7" };
+            steps = new[] { "gg.s.nv1", "gg.s.nv2", "gg.s.nv3", "gg.s.nv4", "gg.s.nv5", "gg.s.nv6" };
             rows.Add(new GuideRow("gg.p.pow", "100 %", "105 %", "110 %"));
 
             var (c1, c2, c3) = g.S switch

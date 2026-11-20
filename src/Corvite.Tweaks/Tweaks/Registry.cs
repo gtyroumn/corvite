@@ -18,6 +18,10 @@ public static class TweakRegistry
         list.Add(new NvmlPowerTweak());
         list.Add(new NvmlOffsetTweak(false));
         list.Add(new NvmlOffsetTweak(true));
+        // NVIDIA global driver profile (NVAPI): power management mode "prefer maximum performance", max pre-rendered frames 1, unlimited shader cache
+        list.Add(new NvDrsTweak("gpm", 0x1057EB71, 1));
+        list.Add(new NvDrsTweak("lowlat", 0x007BA09E, 1));
+        list.Add(new NvDrsTweak("shader", 0x00AC8497, 0xFFFFFFFF));
         list.Add(new TcpAutoTweak());
         list.Add(new DnsTweak());
         foreach (var id in new[] { "prio", "standby", "aggr", "tmp", "upd", "idx", "focus", "kill", "bgcap" }) list.Add(new SessionSettingTweak(id));

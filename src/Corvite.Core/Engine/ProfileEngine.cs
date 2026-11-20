@@ -16,8 +16,20 @@ public static class ProfileEngine
     private static readonly HashSet<string> OcIds = new()
     { "ppt", "boost", "tlim", "gpow", "gcore", "gmem", "gtemp", "co", "pl2", "uvi" };
 
+    /// <summary>Processor limits that need a kernel driver: they have no sliders, the Processor page shows the tuning guide instead.</summary>
+    private static readonly HashSet<string> CpuGuided = new() { "ppt", "boost", "tlim", "co", "pbo", "pl2", "uvi" };
+
+    /// <summary>GPU switches that cannot be written from here (temperature target, Reflex, AMD Anti-Lag): the Graphics page shows the guide instead.</summary>
+    private static readonly HashSet<string> GpuGuided = new() { "gtemp", "refl", "antil" };
+
+    /// <summary>Driver-profile switches written through NVIDIA's NVAPI: they exist for NVIDIA cards only.</summary>
+    private static readonly HashSet<string> NvidiaDriverProfile = new() { "gpm", "lowlat", "shader" };
+
     public static bool IsVisible(TweakDef d, HardwareProfile hw)
     {
+        if (d.Section == Section.Cpu && CpuGuided.Contains(d.Id)) return false;
+        if (GpuGuided.Contains(d.Id)) return false;
+        if (NvidiaDriverProfile.Contains(d.Id) && hw.Gpu != GpuVendor.Nvidia) return false;
         if (d.Section == Section.Gpu && hw.Gpu is GpuVendor.IntelArc or GpuVendor.Unknown) return false;
         return d.Vendor switch
         {
